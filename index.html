@@ -155,6 +155,29 @@
   .topb { font-size: 10px; font-weight: 700; letter-spacing: .04em; color: #38bdf8; border: 1px solid rgba(56, 189, 248, .5); background: rgba(56, 189, 248, .1); border-radius: 4px; padding: 1px 6px; }
   .btn { background: var(--panel); border: 1px solid var(--line); color: var(--ink); border-radius: 6px; padding: 7px 12px; font: 500 13px "Inter Tight", sans-serif; cursor: pointer; white-space: nowrap; }
   .btn:hover { border-color: #52525b; }
+  /* tournament picker + now playing */
+  .tbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 0 0; }
+  .tbar label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .tbar select { background: var(--panel-2); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px 34px 8px 12px; font: 600 14px "Inter Tight", sans-serif; max-width: 100%;
+    appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px; background-repeat: no-repeat; }
+  .tbar select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .tbar .past { color: var(--gold); font-size: 13px; }
+  .tbar .past button { background: none; border: 0; color: var(--ink); text-decoration: underline; cursor: pointer; font: inherit; padding: 0 0 0 6px; }
+  .now { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; background: var(--panel); padding: 14px 18px; margin-bottom: 14px; }
+  .now .live { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--accent); }
+  .now .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(239, 68, 68, .6); animation: pulse 1.6s infinite; }
+  .now.idle { border-left-color: var(--line); } .now.idle .live { color: var(--dim); } .now.idle .live i { background: var(--dim); animation: none; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, .6); } 70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+  @media (prefers-reduced-motion: reduce) { .now .live i { animation: none; } }
+  .now .tn2 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+  .now .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .tlist .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-2); cursor: pointer; }
+  .tlist .row:first-of-type { border-top: 0; }
+  .tlist .row:hover .nm { color: var(--accent); }
+  .tlist .nm { font-weight: 600; }
+  .tlist .sub { color: var(--dim); font-size: 12px; }
+  .final td.pl1 { color: var(--gold); font-weight: 700; }
+  @media (max-width: 700px) { .now { grid-template-columns: 1fr; } }
   footer { color: var(--dim); font-size: 12px; text-align: center; padding: 0 20px 32px; }
   @media (max-width: 900px) {
     .grid2 { grid-template-columns: 1fr; }
@@ -176,6 +199,7 @@
     <div class="brand"><div class="mark">OT<b>R</b></div><span>ON THE RISE: PB CIRCUIT</span></div>
     <nav class="tabs" id="tabs"></nav>
   </div>
+  <div class="tbar" id="tbar"></div>
   <main id="view"></main>
 </div>
 <footer>ON THE RISE: PB CIRCUIT · Practical Basketball on Roblox · updates automatically from the circuit's Discord bot · <span id="updated"></span></footer>
@@ -183,7 +207,8 @@
 <script>
 const STAGES = { signups: "Entries open", swiss: "Swiss stage", swiss_done: "Qualifier finished", groups: "Group stage",
   groups_done: "Qualifier finished", main: "Main draw", done: "Complete" };
-let tab = null, LOGOS = {}, D = null;
+let tab = null, LOGOS = {}, D = null, VIEW = "current";
+window.PBL_ARCHIVES = window.PBL_ARCHIVES || {};
 try { tab = localStorage.getItem("otr-tab"); } catch (e) {}
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -226,6 +251,36 @@ function nextMatch(d) {
   return d.main.matches.find(m => m.ready) || null;
 }
 
+function nowPlaying() {
+  const tz = D.tourney;
+  const live = D.main ? D.main.matches.filter(m => m.ready).length : 0;
+  if (!tz || (D.stage === "done" && !tz.open)) {
+    const last = tz && D.champion ? ` The last one, ${esc(tz.name)}, was won by <b>${esc(D.champion)}</b>.` : "";
+    return `<div class="now idle"><span class="live"><i></i>NO TOURNAMENT RIGHT NOW</span><div><div class="tn2">Between tournaments</div><div class="meta">The next one will be announced in #announcements on Discord.${last}</div></div><span></span></div>`;
+  }
+  const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · ${tz.entrants.length} teams registered`
+    : `${esc(STAGES[D.stage] || "Entries closed")} · ${tz.entrants.length} teams${live ? ` · ${live} match${live > 1 ? "es" : ""} ready to play` : ""}`;
+  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}</div>
+    <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div>
+    ${VIEW !== "current" ? '<button class="btn" data-view="current">View it</button>' : live ? '<button class="btn" data-k="bracket">Go to the bracket</button>' : "<span></span>"}</div>`;
+}
+
+function tournamentList() {
+  const ts = D.tournaments || [];
+  const year = new Date().getFullYear();
+  const mine = ts.filter(t => !t.year || t.year === year);
+  if (!mine.length) return '<div class="empty">No tournaments yet this year.</div>';
+  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
+    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div>
+    <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div></div>`).join("")}</div>`;
+}
+
+function finalPanel(d) {
+  if (!d.final || !d.final.length) return "";
+  return `<div class="panel" style="margin-top:16px"><h3>Final standings${d.tourney ? " · " + esc(d.tourney.name) : ""}</h3><table class="final"><thead><tr><th>Place</th><th>Team</th><th class="num">RISER POINTS</th></tr></thead><tbody>
+    ${d.final.map((r, i) => `<tr><td class="${i === 0 ? "pl1" : ""}" style="width:110px">${esc(r.place)}</td><td>${r.teams.map(t => team(t)).join('<span style="color:var(--dim)"> · </span>')}</td><td class="num">${r.points ? "+" + r.points : "—"}</td></tr>`).join("")}</tbody></table></div>`;
+}
+
 function overview(d) {
   const tz = d.tourney, c = d.circuit || { standings: [] };
   const live = d.main ? d.main.matches.filter(m => m.ready) : [];
@@ -253,13 +308,15 @@ function overview(d) {
 
   const pts = c.standings.slice(0, 8);
   const max = Math.max(1, c.needed || 0, ...pts.map(r => r.points));
-  return `<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>ON THE RISE: PB CIRCUIT</h1>
+  return `${nowPlaying()}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
       <div class="stats">${stats.map(([k, v, s]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("")}</div></div>${spot}</section>
     <div class="steps">${steps}</div>
     <div class="grid2">
-      <div class="panel"><h3>Play now</h3>${live.length ? live.slice(0, 6).map(m => `<div class="label" style="margin:12px 0 6px">${esc(m.label)}</div>` + matchCard(m)).join("") : '<div class="empty">No matches waiting right now.</div>'}</div>
-      <div class="panel"><h3>RISER POINTS</h3>${pts.length ? `<table><tbody>${pts.map((r, i) => `<tr><td class="idx">${i + 1}</td><td>${team(r.team)}</td><td class="heat" style="background:${heat(r.points, max)}">${r.points}</td></tr>`).join("")}</tbody></table>` : '<div class="empty">No teams yet.</div>'}</div>
-    </div>`;
+      <div class="panel"><h3>${d.archived ? "Grand final" : "Play now"}</h3>${d.archived ? (d.main ? d.main.matches.filter(m => m.label && m.label.startsWith("Grand")).map(matchCard).join("") : '<div class="empty">No main draw.</div>') : live.length ? live.slice(0, 6).map(m => `<div class="label" style="margin:12px 0 6px">${esc(m.label)}</div>` + matchCard(m)).join("") : '<div class="empty">No matches waiting right now.</div>'}</div>
+      <div class="panel"><h3>RISER POINTS${d.archived ? " · current totals" : ""}</h3>${pts.length ? `<table><tbody>${pts.map((r, i) => `<tr><td class="idx">${i + 1}</td><td>${team(r.team)}</td><td class="heat" style="background:${heat(r.points, max)}">${r.points}</td></tr>`).join("")}</tbody></table>` : '<div class="empty">No teams yet.</div>'}</div>
+    </div>
+    ${finalPanel(d)}
+    <div class="panel" style="margin-top:16px"><h3>Tournaments this year</h3>${tournamentList()}</div>`;
 }
 
 function bracketView(d) {
@@ -424,23 +481,60 @@ function teamsView(d) {
   </div>`).join("")}</div>`;
 }
 
+function viewData() {
+  if (VIEW === "current") return D;
+  const a = window.PBL_ARCHIVES[VIEW];
+  if (!a) return D;
+  const site = a.site || {};
+  return { ...D, ...site, stage: "done", archived: true,
+    tourney: { name: a.name, kind: a.kind, open: false, entrants: Array(a.teams || 0).fill(""), points: a.points },
+    champion: a.champion,
+    stats: { tournament_name: a.name, tournament: site.stats || [], year_label: (D.stats || {}).year_label, year: (D.stats || {}).year || [] } };
+}
+
+function picker() {
+  const ts = D.tournaments || [];
+  const bar = document.getElementById("tbar");
+  if (!ts.length) { bar.innerHTML = ""; return; }
+  const years = [...new Set(ts.map(t => t.year || new Date().getFullYear()))].sort((a, b) => b - a);
+  const opt = t => `<option value="${esc(t.id)}" ${t.id === VIEW ? "selected" : ""}>${t.current ? "Now: " : ""}${esc(t.name)}${t.kind === "major" ? " (Major)" : ""}${t.champion && !t.current ? " · won by " + esc(t.champion) : ""}</option>`;
+  const cur = ts.find(t => t.id === VIEW);
+  bar.innerHTML = `<label for="tsel">Tournament</label><select id="tsel">${years.map(y => `<optgroup label="${y}">${ts.filter(t => (t.year || new Date().getFullYear()) === y).map(opt).join("")}</optgroup>`).join("")}</select>
+    ${VIEW !== "current" && cur ? `<span class="past">Viewing a past tournament<button data-view="current">back to now</button></span>` : ""}`;
+}
+
+function setView(id) {
+  if (id === VIEW) return;
+  if (id === "current" || window.PBL_ARCHIVES[id]) { VIEW = id; return render(); }
+  const sc = document.createElement("script");
+  sc.src = `archive/${encodeURIComponent(id)}.js?t=${Date.now()}`;
+  sc.onload = () => { VIEW = id; render(); sc.remove(); };
+  sc.onerror = () => { sc.remove(); alert("Couldn't load that tournament yet. Try again in a minute."); };
+  document.head.appendChild(sc);
+}
+
 function render() {
-  const d = window.PBL_DATA;
+  const raw = window.PBL_DATA;
   const view = document.getElementById("view");
-  if (!d) { view.innerHTML = '<div class="empty">No circuit data yet. Staff can run /website in Discord.</div>'; return; }
-  D = d;
+  if (!raw) { view.innerHTML = '<div class="empty">No circuit data yet. Staff can run /website in Discord.</div>'; return; }
+  D = raw;
+  if (VIEW !== "current" && !(D.tournaments || []).some(t => t.id === VIEW)) VIEW = "current";
+  const d = viewData();
   LOGOS = {};
-  (d.teams || []).forEach(t => { if (t && t.logo) LOGOS[t.name] = t.logo; });
-  document.title = d.league || "ON THE RISE: PB CIRCUIT";
+  Object.assign(LOGOS, (d.archived && d.logos) || {});
+  (D.teams || []).forEach(t => { if (t && t.logo) LOGOS[t.name] = t.logo; });
+  picker();
+  document.title = (d.archived ? d.tourney.name + " · " : "") + (D.league || "ON THE RISE: PB CIRCUIT");
   document.getElementById("updated").textContent = d.updated ? "updated " + new Date(d.updated).toLocaleString() : "";
   MATCHES = {};
   [...(d.main ? d.main.matches : []), ...(d.swiss ? d.swiss.matches : []), ...(d.groups ? d.groups.list.flatMap(g => g.matches) : [])]
     .forEach(m => { MATCHES[m.id] = m; });
-  const live = d.main ? d.main.matches.filter(m => m.ready).length : 0;
+  const live = !d.archived && d.main ? d.main.matches.filter(m => m.ready).length : 0;
   const tabs = [["overview", "Overview"], ["bracket", "Main draw", live]];
   if (d.swiss || d.groups) tabs.push(["qual", d.swiss ? "Swiss stage" : "Groups"]);
   tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["teams", "Teams"]);
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
+  window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
   view.innerHTML = tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "teams" ? teamsView(d) : overview(d);
 }
@@ -458,10 +552,17 @@ document.getElementById("view").addEventListener("click", e => {
   if (g) return openBox(Number(g.dataset.mid));
   const sc = e.target.closest("[data-scope]");
   if (sc) { STAT_SCOPE = sc.dataset.scope; return render(); }
-  if (e.target.closest("[data-csv=stats]")) return exportStats(D);
+  if (e.target.closest("[data-csv=stats]")) return exportStats(window.__view || D);
+  const v = e.target.closest("[data-view]");
+  if (v) return setView(v.dataset.view);
+  const k = e.target.closest("[data-k]");
+  if (k) { tab = k.dataset.k; return render(); }
   const so = e.target.closest("[data-sort]");
   if (so) { STAT_SORT = so.dataset.sort; return render(); }
 });
+
+document.getElementById("tbar").addEventListener("change", e => { if (e.target.id === "tsel") setView(e.target.value); });
+document.getElementById("tbar").addEventListener("click", e => { const v = e.target.closest("[data-view]"); if (v) setView(v.dataset.view); });
 
 function load() {
   const s = document.createElement("script");

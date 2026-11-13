@@ -169,6 +169,9 @@
   .now.idle { border-left-color: var(--line); } .now.idle .live { color: var(--dim); } .now.idle .live i { background: var(--dim); animation: none; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, .6); } 70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
   @media (prefers-reduced-motion: reduce) { .now .live i { animation: none; } }
+  .tlogo { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex: none; background: var(--panel); border: 1px solid var(--line); }
+  .tlogo.sm { width: 32px; height: 32px; border-radius: 6px; }
+  .tnrow { display: flex; align-items: center; gap: 12px; min-width: 0; }
   .now .tn2 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
   .now .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
   .tlist .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-2); cursor: pointer; }
@@ -274,8 +277,8 @@ function nowPlaying() {
   }
   const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · ${tz.entrants.length} teams registered`
     : `${esc(STAGES[D.stage] || "Entries closed")} · ${tz.entrants.length} teams${live ? ` · ${live} match${live > 1 ? "es" : ""} ready to play` : ""}`;
-  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}</div>
-    <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div>
+  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div class="tnrow">${tz.logo ? `<img class="tlogo" src="${esc(tz.logo)}" alt="">` : ""}<div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : tz.winner_qualifies ? ' <span class="chip q">WINNER → MAJOR</span>' : ""}</div>
+    <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div></div>
     ${VIEW !== "current" ? '<button class="btn" data-view="current">View it</button>' : live ? '<button class="btn" data-k="bracket">Go to the bracket</button>' : "<span></span>"}</div>`;
 }
 
@@ -284,8 +287,8 @@ function tournamentList() {
   const year = new Date().getFullYear();
   const mine = ts.filter(t => !t.year || t.year === year);
   if (!mine.length) return '<div class="empty">No tournaments yet this year.</div>';
-  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
-    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div>
+  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div class="tnrow">${t.logo ? `<img class="tlogo sm" src="${esc(t.logo)}" alt="">` : ""}<div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
+    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div></div>
     <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div></div>`).join("")}</div>`;
 }
 
@@ -474,7 +477,7 @@ function qualifierView(d) {
 function pointsView(d) {
   const c = d.circuit || { standings: [] }, need = c.needed;
   const max = Math.max(1, need || 0, ...c.standings.map(r => r.points));
-  let html = `<h2>RISER POINTS</h2><p class="note">${need != null ? `${need} points to qualify for the Major. ` : ""}Tournament winners qualify automatically. Points reset to 0 after every Major.${d.tourney && d.tourney.points ? `<br>${esc(d.tourney.name)} pays ${esc(d.tourney.points)}` : ""}</p>`;
+  let html = `<h2>RISER POINTS</h2><p class="note">${need != null ? `${need} points to qualify for the Major. ` : ""}Winners of Major-qualifier events qualify automatically. Points reset to 0 after every Major.${d.tourney && d.tourney.points ? `<br>${esc(d.tourney.name)} pays ${esc(d.tourney.points)}${d.tourney.kind !== "major" ? (d.tourney.winner_qualifies === false ? " · winner does not get a Major spot" : " · winner qualifies for the Major") : ""}` : ""}</p>`;
   if (!c.standings.length) return html + '<div class="empty">No complete teams yet.</div>';
   return html + `<div class="tablewrap"><div class="toolbar">Showing ${c.standings.length} teams · colour shows points against the Major target</div>
     <table><thead><tr><th>#</th><th>Team</th><th class="num">Points</th><th>To the Major</th><th>Status</th></tr></thead><tbody>
@@ -501,7 +504,7 @@ function viewData() {
   if (!a) return D;
   const site = a.site || {};
   return { ...D, ...site, stage: "done", archived: true,
-    tourney: { name: a.name, kind: a.kind, open: false, entrants: Array(a.teams || 0).fill(""), points: a.points },
+    tourney: { name: a.name, kind: a.kind, logo: a.logo, open: false, entrants: Array(a.teams || 0).fill(""), points: a.points },
     champion: a.champion,
     stats: { tournament_name: a.name, tournament: site.stats || [], year_label: (D.stats || {}).year_label, year: (D.stats || {}).year || [] } };
 }
@@ -661,7 +664,8 @@ function load() {
   document.head.appendChild(s);
 }
 load();
-setInterval(load, 60000);
+setInterval(() => { if (!document.hidden) load(); }, 20000);  // the ranked queue changes often
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
 </script>
 </body>
 </html>

@@ -169,6 +169,9 @@
   .now.idle { border-left-color: var(--line); } .now.idle .live { color: var(--dim); } .now.idle .live i { background: var(--dim); animation: none; }
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, .6); } 70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
   @media (prefers-reduced-motion: reduce) { .now .live i { animation: none; } }
+  .tlogo { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex: none; background: var(--panel); border: 1px solid var(--line); }
+  .tlogo.sm { width: 32px; height: 32px; border-radius: 6px; }
+  .tnrow { display: flex; align-items: center; gap: 12px; min-width: 0; }
   .now .tn2 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
   .now .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
   .tlist .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-2); cursor: pointer; }
@@ -178,6 +181,20 @@
   .tlist .sub { color: var(--dim); font-size: 12px; }
   .final td.pl1 { color: var(--gold); font-weight: 700; }
   @media (max-width: 700px) { .now { grid-template-columns: 1fr; } }
+  /* pickups */
+  .rk { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 12px; letter-spacing: .03em; padding: 3px 9px 3px 7px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+  .rk i { width: 9px; height: 9px; border-radius: 2px; transform: rotate(45deg); display: inline-block; }
+  .ladder { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+  .rrbar { width: 120px; height: 5px; border-radius: 3px; background: var(--line); display: inline-block; vertical-align: middle; overflow: hidden; margin-right: 8px; }
+  .rrbar span { display: block; height: 100%; }
+  .pm-row { display: grid; grid-template-columns: 70px 1fr auto 1fr; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line-2); font-size: 13px; }
+  .pm-row:first-of-type { border-top: 0; }
+  .pm-row .side { color: var(--muted); } .pm-row .side.won { color: var(--win); font-weight: 600; }
+  .pm-row .mid { color: var(--dim); font-size: 12px; text-align: center; }
+  @media (max-width: 700px) { .pm-row { grid-template-columns: 1fr; gap: 4px; } .pm-row .mid { text-align: left; } }
+  .podium { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 16px; margin: 0 0 16px; }
+  .podium .panel { min-width: 0; }
+  @media (max-width: 700px) { .podium { grid-template-columns: 1fr; } }
   footer { color: var(--dim); font-size: 12px; text-align: center; padding: 0 20px 32px; }
   @media (max-width: 900px) {
     .grid2 { grid-template-columns: 1fr; }
@@ -260,8 +277,8 @@ function nowPlaying() {
   }
   const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · ${tz.entrants.length} teams registered`
     : `${esc(STAGES[D.stage] || "Entries closed")} · ${tz.entrants.length} teams${live ? ` · ${live} match${live > 1 ? "es" : ""} ready to play` : ""}`;
-  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}</div>
-    <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div>
+  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div class="tnrow">${tz.logo ? `<img class="tlogo" src="${esc(tz.logo)}" alt="">` : ""}<div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : tz.winner_qualifies ? ' <span class="chip q">WINNER → MAJOR</span>' : ""}</div>
+    <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div></div>
     ${VIEW !== "current" ? '<button class="btn" data-view="current">View it</button>' : live ? '<button class="btn" data-k="bracket">Go to the bracket</button>' : "<span></span>"}</div>`;
 }
 
@@ -270,8 +287,8 @@ function tournamentList() {
   const year = new Date().getFullYear();
   const mine = ts.filter(t => !t.year || t.year === year);
   if (!mine.length) return '<div class="empty">No tournaments yet this year.</div>';
-  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
-    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div>
+  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div class="tnrow">${t.logo ? `<img class="tlogo sm" src="${esc(t.logo)}" alt="">` : ""}<div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
+    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div></div>
     <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div></div>`).join("")}</div>`;
 }
 
@@ -460,7 +477,7 @@ function qualifierView(d) {
 function pointsView(d) {
   const c = d.circuit || { standings: [] }, need = c.needed;
   const max = Math.max(1, need || 0, ...c.standings.map(r => r.points));
-  let html = `<h2>RISER POINTS</h2><p class="note">${need != null ? `${need} points to qualify for the Major. ` : ""}Tournament winners qualify automatically. Points reset to 0 after every Major.${d.tourney && d.tourney.points ? `<br>${esc(d.tourney.name)} pays ${esc(d.tourney.points)}` : ""}</p>`;
+  let html = `<h2>RISER POINTS</h2><p class="note">${need != null ? `${need} points to qualify for the Major. ` : ""}Winners of Major-qualifier events qualify automatically. Points reset to 0 after every Major.${d.tourney && d.tourney.points ? `<br>${esc(d.tourney.name)} pays ${esc(d.tourney.points)}${d.tourney.kind !== "major" ? (d.tourney.winner_qualifies === false ? " · winner does not get a Major spot" : " · winner qualifies for the Major") : ""}` : ""}</p>`;
   if (!c.standings.length) return html + '<div class="empty">No complete teams yet.</div>';
   return html + `<div class="tablewrap"><div class="toolbar">Showing ${c.standings.length} teams · colour shows points against the Major target</div>
     <table><thead><tr><th>#</th><th>Team</th><th class="num">Points</th><th>To the Major</th><th>Status</th></tr></thead><tbody>
@@ -487,7 +504,7 @@ function viewData() {
   if (!a) return D;
   const site = a.site || {};
   return { ...D, ...site, stage: "done", archived: true,
-    tourney: { name: a.name, kind: a.kind, open: false, entrants: Array(a.teams || 0).fill(""), points: a.points },
+    tourney: { name: a.name, kind: a.kind, logo: a.logo, open: false, entrants: Array(a.teams || 0).fill(""), points: a.points },
     champion: a.champion,
     stats: { tournament_name: a.name, tournament: site.stats || [], year_label: (D.stats || {}).year_label, year: (D.stats || {}).year || [] } };
 }
@@ -513,6 +530,68 @@ function setView(id) {
   document.head.appendChild(sc);
 }
 
+function rankBadge(pk, name, div) {
+  const c = (pk.ranks.find(r => r[0] === name) || [name, "#a1a1aa"])[1];
+  return `<span class="rk" style="color:${c};border-color:${c}55;background:${c}1a"><i style="background:${c}"></i>${esc(name)}${div ? " " + div : ""}</span>`;
+}
+const sideList = (names, ds) => names.map((n, i) => { const v = ds && ds[i]; return `${esc(n)}${v != null ? ` <i style="font-style:normal;color:${v > 0 ? "var(--win)" : "var(--loss)"}">${v > 0 ? "+" : ""}${Math.round(v)}</i>` : ""}`; }).join("<br>");
+let LB_RANK = "all", LB_POS = "all", LB_Q = "", LB_SORT = "rr";
+function lbRow(pk, r, i) {
+  const c = (pk.ranks.find(x => x[0] === r.rank) || ["", "#a1a1aa"])[1]; const g = r.w + r.l; const unr = r.placed === false;
+  return `<tr><td class="idx">${unr ? "—" : i + 1}</td><td><span class="pl">${avatar(r)}<span style="font-weight:600">${esc(r.player)}</span>${r.streak >= 3 ? ` <span title="win streak">🔥${r.streak}</span>` : ""}</span></td><td style="color:var(--muted);font-weight:600">${esc(r.pos || "—")}</td><td>${unr ? '<span class="rk" style="color:var(--muted);border-color:var(--line)">Unranked</span>' : rankBadge(pk, r.rank, r.div)}</td>
+    <td>${unr ? `<span style="color:var(--dim)">Placements ${r.games}/${pk.placements || 3}</span>` : `<span class="rrbar"><span style="width:${Math.min(100, r.inside)}%;background:${c}"></span></span><span style="color:var(--dim)">${r.inside} RR</span>`}</td>
+    <td class="num" style="font-weight:700">${unr ? "—" : Math.round(r.rr)}</td><td class="num">${r.w}-${r.l}</td><td class="num">${g ? Math.round(100 * r.w / g) + "%" : "—"}</td></tr>`;
+}
+const LB_HEAD = `<thead><tr><th>#</th><th>Player</th><th>Pos</th><th>Rank</th><th>Progress</th><th class="num">RR</th><th class="num">W-L</th><th class="num">Win%</th></tr></thead>`;
+
+function leaderboardView(d) {
+  const pk = d.pickups;
+  if (!pk || !pk.players.length) return `<h2>Leaderboard</h2><div class="empty">No ranked games played yet. Join the queue on Discord.</div>`;
+  const placed = pk.players.filter(r => r.placed !== false);
+  const unranked = pk.players.filter(r => r.placed === false);
+  const counts = {}; placed.forEach(r => counts[r.rank] = (counts[r.rank] || 0) + 1);
+  let rows = placed.slice();
+  if (LB_RANK !== "all") rows = rows.filter(r => r.rank === LB_RANK);
+  if (LB_POS !== "all") rows = rows.filter(r => r.pos === LB_POS);
+  if (LB_Q) rows = rows.filter(r => r.player.toLowerCase().includes(LB_Q.toLowerCase()));
+  const key = { rr: r => r.rr, wins: r => r.w, winp: r => (r.w + r.l ? r.w / (r.w + r.l) : 0), games: r => r.w + r.l, streak: r => r.streak || 0 }[LB_SORT];
+  rows.sort((a, b) => key(b) - key(a) || b.rr - a.rr);
+  const rankIdx = new Map(placed.slice().sort((a, b) => b.rr - a.rr).map((r, i) => [r, i]));
+  const top3 = placed.slice().sort((a, b) => b.rr - a.rr).slice(0, 3);
+  const medal = ["🥇", "🥈", "🥉"];
+  const podium = top3.length ? `<div class="podium">${top3.map((r, i) => {
+      const c = (pk.ranks.find(x => x[0] === r.rank) || ["", "#a1a1aa"])[1];
+      return `<div class="panel" style="border-top:3px solid ${c};text-align:center"><div style="font-size:26px">${medal[i]}</div>
+        <div style="display:flex;justify-content:center;margin:6px 0">${avatar(r)}</div><div style="font-weight:700;font-size:17px">${esc(r.player)}</div>
+        <div style="margin:6px 0">${rankBadge(pk, r.rank, r.div)}</div><div style="font-weight:800;font-size:22px">${Math.round(r.rr)} <small style="font-size:11px;color:var(--muted)">RR</small></div>
+        <div style="color:var(--dim);font-size:12px">${r.w}-${r.l}${r.streak >= 3 ? ` · 🔥${r.streak}` : ""}</div></div>`; }).join("")}</div>` : "";
+  const chips = `<div class="ladder"><button class="rk" data-lbrank="all" style="cursor:pointer;color:${LB_RANK === "all" ? "var(--ink)" : "var(--muted)"};border-color:var(--line);background:${LB_RANK === "all" ? "var(--line)" : "none"}">All ranks · ${placed.length}</button>${pk.ranks.map(([n, c]) => `<button class="rk" data-lbrank="${esc(n)}" style="cursor:pointer;color:${c};border-color:${c}${LB_RANK === n ? "" : "55"};background:${c}${LB_RANK === n ? "40" : "1a"}"><i style="background:${c}"></i>${esc(n)} · ${counts[n] || 0}</button>`).join("")}</div>`;
+  const pos = ["all", "PG", "SG", "SF", "PF", "C"];
+  const toolbar = `<div class="toolbar" style="flex-wrap:wrap"><div class="seg">${pos.map(p => `<button data-lbpos="${p}" class="${LB_POS === p ? "on" : ""}">${p === "all" ? "All positions" : p}</button>`).join("")}</div>
+    <input id="lbq" placeholder="Search player" value="${esc(LB_Q)}" style="background:var(--panel-2);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:7px 10px;font:inherit;min-width:160px">
+    <label style="margin-left:auto">Sort <select id="lbsort" style="background:var(--panel-2);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px;font:inherit">${[["rr", "RR"], ["wins", "Wins"], ["winp", "Win %"], ["games", "Games"], ["streak", "Win streak"]].map(([v, l]) => `<option value="${v}" ${LB_SORT === v ? "selected" : ""}>${l}</option>`).join("")}</select></label></div>`;
+  return `<h2>Leaderboard</h2><p class="note">Ranked ${pk.size / 2}v${pk.size / 2} pickups · every player with a rank, highest RR first · updates after every game</p>
+    ${podium}${chips}
+    <div class="tablewrap">${toolbar}<table>${LB_HEAD}<tbody>${rows.map(r => lbRow(pk, r, rankIdx.get(r))).join("") || '<tr><td colspan="8" style="color:var(--dim)">No players match.</td></tr>'}</tbody></table></div>
+    ${unranked.length ? `<div class="tablewrap" style="margin-top:16px"><div class="toolbar">In placements · ${unranked.length} player(s) still playing their first ${pk.placements || 3} games</div><table>${LB_HEAD}<tbody>${unranked.map(r => lbRow(pk, r, 0)).join("")}</tbody></table></div>` : ""}`;
+}
+
+function pickupsView(d) {
+  const pk = d.pickups;
+  if (!pk) return `<h2>Ranked</h2><div class="empty">Ranked pickups haven't been set up yet.</div>`;
+  let html = `<h2>Ranked</h2><p class="note">Ranked pickup ${pk.size / 2}v${pk.size / 2} queue on Discord · 3 placement games to get ranked · +10 to +32 a win, -10 to -32 a loss · great games x2 · win streaks multiply · Vibrant is the top rank${pk.queue ? ` · <b style="color:var(--ink)">${pk.queue} in queue now</b>` : ""}</p>
+    <div class="ladder">${pk.ranks.map(([n]) => rankBadge(pk, n, "")).join("")}</div>
+    ${(pk.queue_list || []).length ? `<div class="panel" style="margin-bottom:16px"><h3>In the queue now · ${pk.queue_list.length}/${pk.size}</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${pk.queue_list.map(q => `<span class="chip in" style="font-size:12px;padding:5px 10px"><b style="color:var(--ink)">${esc(q.pos || "?")}</b>&nbsp; ${esc(q.player)} · ${esc(String(q.rr))}</span>`).join("")}</div></div>` : `<div class="panel" style="margin-bottom:16px"><h3>Queue</h3><div class="empty">Nobody in the queue right now.</div></div>`}`;
+  const placed = pk.players.filter(r => r.placed !== false).slice(0, 10);
+  html += `<div class="grid2" style="grid-template-columns:1.2fr 1fr;margin-top:0">
+    <div class="tablewrap"><div class="toolbar">Top 10 <button class="btn" data-k="leaderboard" style="margin-left:auto">Full leaderboard</button></div><table>${LB_HEAD}<tbody>${placed.map((r, i) => lbRow(pk, r, i)).join("") || '<tr><td colspan="8" style="color:var(--dim)">Nobody has a rank yet.</td></tr>'}</tbody></table></div>
+    <div class="panel"><h3>Recent pickups</h3>${pk.matches.length ? pk.matches.map(m => `<div class="pm-row"><span style="font-weight:700">P${m.id}</span>
+      <span class="side ${m.winner === "A" ? "won" : ""}">${sideList(m.a, m.da)}</span><span class="mid">${m.winner === "A" ? "🏆 WON" : "lost"} vs ${m.winner === "B" ? "WON 🏆" : "lost"}</span>
+      <span class="side ${m.winner === "B" ? "won" : ""}">${sideList(m.b, m.db)}</span></div>`).join("") : '<div class="empty">No finished pickups yet.</div>'}</div></div>`;
+  return html;
+}
+
 function render() {
   const raw = window.PBL_DATA;
   const view = document.getElementById("view");
@@ -530,13 +609,13 @@ function render() {
   [...(d.main ? d.main.matches : []), ...(d.swiss ? d.swiss.matches : []), ...(d.groups ? d.groups.list.flatMap(g => g.matches) : [])]
     .forEach(m => { MATCHES[m.id] = m; });
   const live = !d.archived && d.main ? d.main.matches.filter(m => m.ready).length : 0;
-  const tabs = [["overview", "Overview"], ["bracket", "Main draw", live]];
+  const tabs = [["overview", "Overview"], ["pickups", "Ranked"], ["bracket", "Main draw", live]];
   if (d.swiss || d.groups) tabs.push(["qual", d.swiss ? "Swiss stage" : "Groups"]);
-  tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["teams", "Teams"]);
+  tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["leaderboard", "Leaderboard"], ["teams", "Teams"]);
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
-  view.innerHTML = tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "teams" ? teamsView(d) : overview(d);
+  view.innerHTML = tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
 }
 
 document.getElementById("tabs").addEventListener("click", e => {
@@ -557,10 +636,18 @@ document.getElementById("view").addEventListener("click", e => {
   if (v) return setView(v.dataset.view);
   const k = e.target.closest("[data-k]");
   if (k) { tab = k.dataset.k; return render(); }
+  const lr = e.target.closest("[data-lbrank]");
+  if (lr) { LB_RANK = lr.dataset.lbrank === LB_RANK ? "all" : lr.dataset.lbrank; return render(); }
+  const lp = e.target.closest("[data-lbpos]");
+  if (lp) { LB_POS = lp.dataset.lbpos; return render(); }
   const so = e.target.closest("[data-sort]");
   if (so) { STAT_SORT = so.dataset.sort; return render(); }
 });
 
+document.getElementById("view").addEventListener("input", e => {
+  if (e.target.id === "lbq") { LB_Q = e.target.value; const pos = e.target.selectionStart; render(); const q = document.getElementById("lbq"); if (q) { q.focus(); q.setSelectionRange(pos, pos); } }
+});
+document.getElementById("view").addEventListener("change", e => { if (e.target.id === "lbsort") { LB_SORT = e.target.value; render(); } });
 document.getElementById("tbar").addEventListener("change", e => { if (e.target.id === "tsel") setView(e.target.value); });
 document.getElementById("tbar").addEventListener("click", e => { const v = e.target.closest("[data-view]"); if (v) setView(v.dataset.view); });
 
@@ -569,6 +656,7 @@ function load() {
   s.src = "data.js?t=" + Date.now();
   s.onload = s.onerror = () => {
     render(); s.remove();
+    if (!window.__hashDone && /^#(ranked|queue|leaderboard)$/.test(location.hash)) { window.__hashDone = true; tab = location.hash === "#leaderboard" ? "leaderboard" : "pickups"; render(); return; }
     const hm = !window.__hashDone && location.hash.match(/^#m(\d+)$/);  // link from a Discord score card
     window.__hashDone = true;
     if (hm && MATCHES[Number(hm[1])]) { tab = MATCHES[Number(hm[1])].label ? "bracket" : (D.swiss || D.groups) ? "qual" : tab; render(); openBox(Number(hm[1])); }
@@ -576,7 +664,8 @@ function load() {
   document.head.appendChild(s);
 }
 load();
-setInterval(load, 60000);
+setInterval(() => { if (!document.hidden) load(); }, 20000);  // the ranked queue changes often
+document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
 </script>
 </body>
 </html>

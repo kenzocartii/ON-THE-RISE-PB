@@ -1,7 +1,21 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-16T07:16:11+00:00",
+ "updated": "2026-11-16T14:34:56+00:00",
  "teams": [
+  {
+   "name": "336FN",
+   "logo": "logos/287415d3bfe6.png",
+   "captain": "Attorney (@attorney) \u00b7 C",
+   "players": [
+    "BippinInCali (@uufaailen) \u00b7 SF",
+    "BreezyVert (@BalmainSpecialist) \u00b7 SG",
+    "JusticeFor336 (@banbliqky) \u00b7 SF",
+    "fhwz \u00b7 PF"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
   {
    "name": "Nightrydas Elite",
    "logo": "logos/6a737592ee66.png",
@@ -20,6 +34,11 @@ window.PBL_DATA = {
  "circuit": {
   "needed": 700,
   "standings": [
+   {
+    "team": "336FN",
+    "points": 0,
+    "qualified": false
+   },
    {
     "team": "Nightrydas Elite",
     "points": 0,

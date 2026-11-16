@@ -1,10 +1,31 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-16T07:15:55+00:00",
- "teams": [],
+ "updated": "2026-11-16T07:16:11+00:00",
+ "teams": [
+  {
+   "name": "Nightrydas Elite",
+   "logo": "logos/6a737592ee66.png",
+   "captain": "slinger (@bigdr_p) \u00b7 PG",
+   "players": [
+    "Pete Maravich (@zendayalover756) \u00b7 PF",
+    "Dougatron (@TheSkullMaster88) \u00b7 SG",
+    "CJ0 (@PH2NTOMCJ) \u00b7 SF",
+    "ace (@acetweakin) \u00b7 PG"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  }
+ ],
  "circuit": {
   "needed": 700,
-  "standings": []
+  "standings": [
+   {
+    "team": "Nightrydas Elite",
+    "points": 0,
+    "qualified": false
+   }
+  ]
  },
  "tourney": {
   "name": "OTR: TURKEY TAKEOVER",

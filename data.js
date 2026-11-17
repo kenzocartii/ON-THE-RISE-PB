@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-16T18:13:19+00:00",
+ "updated": "2026-11-17T00:48:13+00:00",
  "teams": [
   {
    "name": "336FN",

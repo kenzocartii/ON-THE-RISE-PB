@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-17T00:48:13+00:00",
+ "updated": "2026-11-17T00:48:38+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -29,6 +29,20 @@ window.PBL_DATA = {
    "points": 0,
    "qualified": false,
    "registered": false
+  },
+  {
+   "name": "Yore",
+   "logo": "logos/11686f37553a.webp",
+   "captain": "wydpolo (@LaPoloBall) \u00b7 C",
+   "players": [
+    "wydherbo (@dontlosesleep) \u00b7 PF",
+    "raz (@razeyrazeyrazey) \u00b7 SG",
+    "eric (@buklau_18) \u00b7 SF",
+    "colden (@buklau_09) \u00b7 SF"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
   }
  ],
  "circuit": {
@@ -41,6 +55,11 @@ window.PBL_DATA = {
    },
    {
     "team": "Nightrydas Elite",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "Yore",
     "points": 0,
     "qualified": false
    }

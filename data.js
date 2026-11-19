@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-19T21:08:24+00:00",
+ "updated": "2026-11-19T21:08:43+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -28,7 +28,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": false
+   "registered": true
   },
   {
    "name": "Nightrydas Elite",
@@ -95,7 +95,8 @@ window.PBL_DATA = {
   "entrants": [
    "336FN",
    "Yore",
-   "Nightrydas Elite"
+   "Nightrydas Elite",
+   "BEASTCOAST"
   ]
  },
  "stage": "signups",
@@ -180,7 +181,7 @@ window.PBL_DATA = {
    "logo": "logos/170d683d7317.png",
    "date": null,
    "champion": null,
-   "teams": 3,
+   "teams": 4,
    "current": true
   }
  ]

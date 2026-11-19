@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-19T21:40:29+00:00",
+ "updated": "2026-11-19T21:40:44+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -24,7 +24,8 @@ window.PBL_DATA = {
     "xxix (@RangeIess) \u00b7 PF",
     "tony (@NiceOneTonyy) \u00b7 SG",
     "offyachest (@vbChief) \u00b7 C",
-    "sunny (@dummy_fresh) \u00b7 PG"
+    "sunny (@dummy_fresh) \u00b7 PG",
+    "WFRezkin3K \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,

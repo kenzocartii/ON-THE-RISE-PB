@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-19T17:22:33+00:00",
+ "updated": "2026-11-19T17:23:38+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -14,7 +14,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": false
+   "registered": true
   },
   {
    "name": "Nightrydas Elite",
@@ -73,7 +73,9 @@ window.PBL_DATA = {
   "logo": "logos/170d683d7317.png",
   "winner_qualifies": false,
   "points": "1st: 150 \u00b7 2nd: 75 \u00b7 3rd: 50 \u00b7 4th: 40 \u00b7 5th-6th: 15 \u00b7 7th-8th: 5",
-  "entrants": []
+  "entrants": [
+   "336FN"
+  ]
  },
  "stage": "signups",
  "swiss": null,
@@ -157,7 +159,7 @@ window.PBL_DATA = {
    "logo": "logos/170d683d7317.png",
    "date": null,
    "champion": null,
-   "teams": 0,
+   "teams": 1,
    "current": true
   }
  ]

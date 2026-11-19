@@ -21,6 +21,13 @@
   .wrap { max-width: 1380px; margin: 0 auto; padding: 0 20px; }
   /* nav */
   .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; border-bottom: 1px solid var(--line); padding-top: 14px; }
+  .dcbtn { display: inline-flex; align-items: center; gap: 8px; flex: none; margin-bottom: 12px; padding: 7px 14px; border-radius: 8px; background: #5865F2; color: #fff; font-weight: 700; font-size: 13px; text-decoration: none; white-space: nowrap; }
+  .dcbtn:hover { background: #4752c4; }
+  .dccard { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 16px; padding: 18px 20px; border-radius: 8px; border: 1px solid rgba(88,101,242,.5); background: linear-gradient(135deg, rgba(88,101,242,.22), rgba(88,101,242,.06)); }
+  .dccard .t { font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+  .dccard .d { color: var(--muted); margin-top: 2px; }
+  .dccard .dcbtn { margin: 0; padding: 10px 18px; font-size: 14px; }
+  @media (max-width: 700px) { #dcTop { align-self: flex-start; } }
   .brand { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; white-space: nowrap; }
   .mark { font-weight: 800; font-size: 19px; letter-spacing: -.04em; line-height: 1; }
   .mark b { color: var(--accent); }
@@ -109,6 +116,12 @@
   .g .id { color: var(--dim); }
   /* teams */
   .teams { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .tlist .signed { grid-column: 1 / -1; padding: 10px 0 2px; cursor: default; }
+  .entries { display: flex; flex-wrap: wrap; gap: 8px; }
+  .entry { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 5px 5px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); font-size: 13px; font-weight: 600; max-width: 100%; }
+  .entries.notin .entry { opacity: .55; border-style: dashed; }
+  .entry img, .entry .ph { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; flex: none; font-size: 10px; display: inline-flex; align-items: center; justify-content: center; }
+  .seedno { font-size: 12px; font-weight: 700; color: var(--dim); min-width: 18px; }
   .team { border: 1px solid var(--line); border-radius: 8px; background: var(--panel); overflow: hidden; }
   .team .top { display: flex; align-items: center; gap: 12px; padding: 14px; background: linear-gradient(135deg, rgba(255, 255, 255, .04), transparent); border-bottom: 1px solid var(--line); }
   .team .top img, .team .top .ph { width: 48px; height: 48px; border-radius: 6px; object-fit: cover; flex: none; font-size: 14px; }
@@ -215,16 +228,18 @@
   <div class="nav">
     <div class="brand"><div class="mark">OT<b>R</b></div><span>ON THE RISE: PB CIRCUIT</span></div>
     <nav class="tabs" id="tabs"></nav>
+    <a class="dcbtn" id="dcTop" href="https://discord.gg/UbAPSJnkVp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg><span>Join the Discord</span></a>
   </div>
   <div class="tbar" id="tbar"></div>
   <main id="view"></main>
 </div>
-<footer>ON THE RISE: PB CIRCUIT · Practical Basketball on Roblox · updates automatically from the circuit's Discord bot · <span id="updated"></span></footer>
+<footer>ON THE RISE: PB CIRCUIT · Practical Basketball on Roblox · <a href="https://discord.gg/UbAPSJnkVp" target="_blank" rel="noopener" style="color:#8b93ff">Join the Discord</a> · updates automatically from the circuit's Discord bot · <span id="updated"></span></footer>
 
 <script>
 const STAGES = { signups: "Entries open", swiss: "Swiss stage", swiss_done: "Qualifier finished", groups: "Group stage",
   groups_done: "Qualifier finished", main: "Main draw", done: "Complete" };
 let tab = null, LOGOS = {}, D = null, VIEW = "current";
+const DISCORD_URL = "https://discord.gg/UbAPSJnkVp";
 window.PBL_ARCHIVES = window.PBL_ARCHIVES || {};
 try { tab = localStorage.getItem("otr-tab"); } catch (e) {}
 
@@ -275,11 +290,35 @@ function nowPlaying() {
     const last = tz && D.champion ? ` The last one, ${esc(tz.name)}, was won by <b>${esc(D.champion)}</b>.` : "";
     return `<div class="now idle"><span class="live"><i></i>NO TOURNAMENT RIGHT NOW</span><div><div class="tn2">Between tournaments</div><div class="meta">The next one will be announced in #announcements on Discord.${last}</div></div><span></span></div>`;
   }
-  const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · ${tz.entrants.length} teams registered`
+  const ec = entryCounts(D);
+  const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · <b>${plural(ec.entered, "team")} entered</b>${ec.ready.length ? ` · ${ec.ready.length} more ready to /register` : ""}`
     : `${esc(STAGES[D.stage] || "Entries closed")} · ${tz.entrants.length} teams${live ? ` · ${live} match${live > 1 ? "es" : ""} ready to play` : ""}`;
   return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div class="tnrow">${tz.logo ? `<img class="tlogo" src="${esc(tz.logo)}" alt="">` : ""}<div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : tz.winner_qualifies ? ' <span class="chip q">WINNER → MAJOR</span>' : ""}</div>
     <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div></div>
     ${VIEW !== "current" ? '<button class="btn" data-view="current">View it</button>' : live ? '<button class="btn" data-k="bracket">Go to the bracket</button>' : "<span></span>"}</div>`;
+}
+
+function entryCounts(d) {
+  const tz = d.tourney;
+  if (!tz) return { entered: 0, ready: [] };
+  const inn = new Set((tz.entrants || []).filter(Boolean));
+  const ready = (d.teams || []).filter(t => !inn.has(t.name) && (tz.kind !== "major" || t.qualified)).map(t => t.name);
+  return { entered: inn.size, ready };
+}
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+
+function signedUpRow() {
+  const tz = D.tourney;
+  if (!tz || (D.stage === "done" && !tz.open)) return "";
+  const list = (tz.entrants || []).filter(Boolean);
+  const chip = n => { const t = D.teams.find(x => x.name === n) || {};
+    return `<span class="entry" title="${esc(t.captain ? "Captain · " + t.captain : n)}">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(n))}</span>`}${esc(n)}</span>`; };
+  const ready = tz.open ? entryCounts(D).ready : [];
+  return `<div class="signed"><div class="sub" style="margin-bottom:8px">Entered${tz.open ? ` · entries open${tz.closes ? ", close " + esc(tz.closes) : ""}` : " · entries closed"}</div>
+    ${list.length ? `<div class="entries">${list.map(chip).join("")}</div>`
+      : `<div class="sub">No teams entered yet. Captains: type <b>/register</b> in Discord to enter.</div>`}
+    ${ready.length ? `<div class="sub" style="margin:12px 0 8px">Ready but not entered yet · captains, type <b>/register</b></div><div class="entries notin">${ready.map(chip).join("")}</div>` : ""}
+    ${list.length ? `<button class="btn" data-k="entries" style="margin-top:10px">See full rosters</button>` : ""}</div>`;
 }
 
 function tournamentList() {
@@ -288,8 +327,8 @@ function tournamentList() {
   const mine = ts.filter(t => !t.year || t.year === year);
   if (!mine.length) return '<div class="empty">No tournaments yet this year.</div>';
   return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div class="tnrow">${t.logo ? `<img class="tlogo sm" src="${esc(t.logo)}" alt="">` : ""}<div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
-    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.teams || 0} teams</div></div></div>
-    <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div></div>`).join("")}</div>`;
+    <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.current && !D.champion ? (() => { const ec = entryCounts(D); return `${plural(ec.entered, "team")} entered${ec.ready.length ? ` · ${ec.ready.length} ready to register` : ""}`; })() : plural(t.teams || 0, "team")}</div></div></div>
+    <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div>${t.current ? signedUpRow() : ""}</div>`).join("")}</div>`;
 }
 
 function finalPanel(d) {
@@ -311,13 +350,13 @@ function overview(d) {
   const stats = [
     ["Teams", d.teams.length, "complete rosters"],
     ["Major target", c.needed != null ? c.needed : "TBA", "RISER POINTS"],
-    ["Entered", tz ? tz.entrants.length : 0, tz ? (tz.open ? "entries open" : "entries closed") : "no tournament"],
+    ["Entered", tz ? tz.entrants.length : 0, tz ? (tz.open ? (entryCounts(d).ready.length ? `${entryCounts(d).ready.length} more ready to /register` : "entries open") : "entries closed") : "no tournament"],
     ["Live matches", live.length, live.length ? "ready to play" : "waiting"],
   ];
   const order = ["signups", "qual", "main", "done"];
   const at = d.stage === "signups" ? 0 : ["swiss", "groups", "swiss_done", "groups_done"].includes(d.stage) ? 1 : d.stage === "main" ? 2 : d.stage === "done" ? 3 : -1;
   const steps = [
-    ["Entries", tz ? (tz.open ? `${tz.entrants.length} teams registered` : `${tz.entrants.length} teams in`) : "Waiting for staff"],
+    ["Entries", tz ? (tz.open ? `${plural(tz.entrants.length, "team")} entered${entryCounts(d).ready.length ? ` · ${entryCounts(d).ready.length} ready to /register` : ""}` : `${plural(tz.entrants.length, "team")} in`) : "Waiting for staff"],
     ["Qualifier", d.swiss ? `Swiss · ${d.swiss.wins} wins to qualify` : d.groups ? `Groups of 4 · top ${d.groups.advance} advance` : "Optional"],
     ["Main draw", "Double elimination"],
     [tz && tz.kind === "major" ? "Major champion" : "Champion", tz && tz.kind === "major" ? "Points reset to 0" : "Qualifies for the Major"],
@@ -328,7 +367,9 @@ function overview(d) {
   return `${nowPlaying()}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
       <div class="stats">${stats.map(([k, v, s]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("")}</div></div>${spot}</section>
     <div class="steps">${steps}</div>
-    <div class="grid2">
+    <div class="dccard"><div><div class="t">Join the ON THE RISE Discord</div><div class="d">Open registration: start a team with your friends using <b>/signup</b>, find a squad as a free agent, and get pinged when tournaments drop.</div></div>
+      <a class="dcbtn" href="${DISCORD_URL}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.6 1.3a18.4 18.4 0 0 0-5.6 0L8.6 3a19.7 19.7 0 0 0-4.9 1.5C.6 9.1-.3 13.6.1 18.1a19.9 19.9 0 0 0 6 3l1.3-2.1a12.9 12.9 0 0 1-2-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.9 12.9 0 0 1-2 1l1.3 2.1a19.8 19.8 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7ZM8.3 15.3c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Zm7.4 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4Z"/></svg><span>Join the Discord</span></a></div>
+    <div class="grid2" style="margin-top:16px">
       <div class="panel"><h3>${d.archived ? "Grand final" : "Play now"}</h3>${d.archived ? (d.main ? d.main.matches.filter(m => m.label && m.label.startsWith("Grand")).map(matchCard).join("") : '<div class="empty">No main draw.</div>') : live.length ? live.slice(0, 6).map(m => `<div class="label" style="margin:12px 0 6px">${esc(m.label)}</div>` + matchCard(m)).join("") : '<div class="empty">No matches waiting right now.</div>'}</div>
       <div class="panel"><h3>RISER POINTS${d.archived ? " · current totals" : ""}</h3>${pts.length ? `<table><tbody>${pts.map((r, i) => `<tr><td class="idx">${i + 1}</td><td>${team(r.team)}</td><td class="heat" style="background:${heat(r.points, max)}">${r.points}</td></tr>`).join("")}</tbody></table>` : '<div class="empty">No teams yet.</div>'}</div>
     </div>
@@ -489,6 +530,38 @@ function pointsView(d) {
     }).join("")}</tbody></table></div>`;
 }
 
+function entryTeams(d) {
+  const tz = d.tourney;
+  if (!tz || d.archived) return null;
+  return (tz.entrants || []).filter(Boolean).map(n => d.teams.find(t => t.name === n) || { name: n, players: [] });
+}
+
+function entryCard(t, i) {
+  return `<div class="team">
+    <div class="top"><span class="seedno">${i + 1}</span>${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div>${t.captain ? `<div class="cap">Captain · ${esc(t.captain)}</div>` : ""}</div></div>
+    ${(t.players || []).length ? `<ul>${t.players.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
+    <div class="foot"><span class="pts">${t.points || 0}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span>' : ""}</span></div>
+  </div>`;
+}
+
+function entriesPanel(d, limit) {
+  const list = entryTeams(d);
+  if (!list) return "";
+  const tz = d.tourney;
+  const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""}` : "Entries closed";
+  const shown = limit ? list.slice(0, limit) : list;
+  return `<div class="panel" style="margin-top:16px"><h3>Signed up · ${esc(tz.name)} <span class="sub" style="font-weight:500;text-transform:none;letter-spacing:0">${list.length} team${list.length === 1 ? "" : "s"} · ${status}</span></h3>
+    ${list.length ? `<div class="teams">${shown.map(entryCard).join("")}</div>${limit && list.length > limit ? `<div style="margin-top:12px"><button class="btn" data-k="entries">See all ${list.length} teams</button></div>` : ""}`
+      : `<div class="empty">No teams have signed up yet.${tz.open ? " Captains: type <b>/register</b> in Discord to enter." : ""}</div>`}</div>`;
+}
+
+function entriesView(d) {
+  const tz = d.tourney;
+  if (!entryTeams(d)) return `<h2>Entries</h2><div class="empty">No tournament is taking entries right now.</div>`;
+  const ready = tz.open ? entryCounts(d).ready : [];
+  return `<h2>Entries</h2>${ready.length ? `<p class="note" style="color:var(--ink)">Not entered yet: ${ready.map(esc).join(", ")}. Captains, type <b>/register</b> in Discord.</p>` : ""}<p class="note">Teams entered in ${esc(tz.name)}${tz.kind === "major" ? " (Major)" : ""}, in the order they registered.${tz.open ? " Captains enter with <b>/register</b> in Discord." : ""}</p>${entriesPanel(d)}`;
+}
+
 function teamsView(d) {
   if (!d.teams.length) return `<h2>Teams</h2><div class="empty">No complete rosters yet. Teams show up once they have 5 players.</div>`;
   return `<h2>Teams</h2><p class="note">${d.teams.length} complete rosters</p><div class="teams">${d.teams.map(t => `<div class="team">
@@ -609,13 +682,16 @@ function render() {
   [...(d.main ? d.main.matches : []), ...(d.swiss ? d.swiss.matches : []), ...(d.groups ? d.groups.list.flatMap(g => g.matches) : [])]
     .forEach(m => { MATCHES[m.id] = m; });
   const live = !d.archived && d.main ? d.main.matches.filter(m => m.ready).length : 0;
-  const tabs = [["overview", "Overview"], ["pickups", "Ranked"], ["bracket", "Main draw", live]];
+  const tabs = [["overview", "Overview"]];
+  const ents = entryTeams(d);
+  if (ents) tabs.push(["entries", "Entries", ents.length]);
+  tabs.push(["pickups", "Ranked"], ["bracket", "Main draw", live]);
   if (d.swiss || d.groups) tabs.push(["qual", d.swiss ? "Swiss stage" : "Groups"]);
   tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["leaderboard", "Leaderboard"], ["teams", "Teams"]);
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
-  view.innerHTML = tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
+  view.innerHTML = tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
 }
 
 document.getElementById("tabs").addEventListener("click", e => {
@@ -632,10 +708,11 @@ document.getElementById("view").addEventListener("click", e => {
   const sc = e.target.closest("[data-scope]");
   if (sc) { STAT_SCOPE = sc.dataset.scope; return render(); }
   if (e.target.closest("[data-csv=stats]")) return exportStats(window.__view || D);
+  const k = e.target.closest("[data-k]");
+  if (k) { tab = k.dataset.k; if (k.closest(".signed") && VIEW !== "current") return setView("current"); return render(); }
+  if (e.target.closest(".signed")) return;  // the signed-up list inside a tournament row
   const v = e.target.closest("[data-view]");
   if (v) return setView(v.dataset.view);
-  const k = e.target.closest("[data-k]");
-  if (k) { tab = k.dataset.k; return render(); }
   const lr = e.target.closest("[data-lbrank]");
   if (lr) { LB_RANK = lr.dataset.lbrank === LB_RANK ? "all" : lr.dataset.lbrank; return render(); }
   const lp = e.target.closest("[data-lbpos]");

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-19T20:56:29+00:00",
+ "updated": "2026-11-19T21:04:13+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -15,6 +15,20 @@ window.PBL_DATA = {
    "points": 0,
    "qualified": false,
    "registered": true
+  },
+  {
+   "name": "BEASTCOAST",
+   "logo": "logos/43b1e3b4ffb2.png",
+   "captain": "colin \u00b7 PG",
+   "players": [
+    "xxix (@RangeIess) \u00b7 PF",
+    "tony (@NiceOneTonyy) \u00b7 SG",
+    "offyachest (@vbChief) \u00b7 SG",
+    "sunny (@dummy_fresh) \u00b7 PG"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
   },
   {
    "name": "Nightrydas Elite",
@@ -50,6 +64,11 @@ window.PBL_DATA = {
   "standings": [
    {
     "team": "336FN",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "BEASTCOAST",
     "points": 0,
     "qualified": false
    },

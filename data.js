@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T18:20:28+00:00",
+ "updated": "2026-11-20T18:22:44+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -21,11 +21,10 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 3,
+   "size": 2,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
    "players": [
-    "NIZLE (@Jioquick) \u00b7 SG",
     "Yacht (@hitaIicc) \u00b7 SG"
    ],
    "points": 0,
@@ -188,12 +187,6 @@ window.PBL_DATA = {
      "name": "Shxfty",
      "pos": "PG",
      "cap": true,
-     "co": false
-    },
-    {
-     "name": "NIZLE (@Jioquick)",
-     "pos": "SG",
-     "cap": false,
      "co": false
     },
     {

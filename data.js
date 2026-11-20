@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T07:00:00+00:00",
+ "updated": "2026-11-20T07:31:21+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -62,6 +62,17 @@ window.PBL_DATA = {
    "points": 0,
    "qualified": false,
    "registered": true
+  },
+  {
+   "name": "DEADEND",
+   "complete": false,
+   "size": 1,
+   "logo": "logos/15c025d25dbf.png",
+   "captain": "2BUSYSLIDIN (@LiLLUCIX_BD) \u00b7 SF",
+   "players": [],
+   "points": 0,
+   "qualified": false,
+   "registered": false
   },
   {
    "name": "Elevation",
@@ -260,6 +271,20 @@ window.PBL_DATA = {
     }
    ]
   },
+  "DEADEND": {
+   "logo": "logos/15c025d25dbf.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "2BUSYSLIDIN (@LiLLUCIX_BD)",
+     "pos": "SF",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
   "Elevation": {
    "logo": "logos/824c0d888428.png",
    "points": 0,
@@ -415,6 +440,11 @@ window.PBL_DATA = {
    },
    {
     "team": "BEASTCOAST",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "DEADEND",
     "points": 0,
     "qualified": false
    },

@@ -174,6 +174,29 @@
   .clickteam:hover span:last-child, span.n.clickteam:hover { text-decoration: underline; }
   a.rbxname { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--dim); }
   a.rbxname:hover { color: #fff; border-color: var(--accent); }
+
+  /* live games + coming up */
+  .livegames { border: 1px solid rgba(239, 68, 68, .45); border-radius: 10px; background: linear-gradient(180deg, rgba(239,68,68,.08), transparent 70%), var(--panel); padding: 12px 14px; margin-bottom: 14px; }
+  .livegames h3, .upnext h3 { margin: 0 0 10px; font-size: 12px; letter-spacing: .12em; display: flex; align-items: center; gap: 8px; }
+  .livegames h3 { color: var(--accent); }
+  .livegames h3 i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s infinite; }
+  .lvgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+  .lvc { border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); padding: 10px 12px; min-width: 0; }
+  .lvc .lvh { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
+  .lvc .lvt { display: flex; flex-direction: column; gap: 4px; font-weight: 700; min-width: 0; }
+  .lvc .lvt .vsx { color: var(--dim); font-size: 11px; font-weight: 700; }
+  .lvc .lvf { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+  .watch { display: inline-flex; align-items: center; gap: 6px; background: #9146ff; color: #fff; border-radius: 6px; padding: 6px 10px; font-weight: 700; font-size: 12.5px; text-decoration: none; white-space: nowrap; }
+  .watch:hover { filter: brightness(1.1); }
+  .nostream { font-size: 12px; color: var(--dim); }
+  .upnext { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 12px 14px; margin-bottom: 14px; }
+  .upnext h3 { color: var(--muted); }
+  .un { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line-2); font-size: 13.5px; min-width: 0; }
+  .un:first-of-type { border-top: 0; }
+  .un .when { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 12.5px; }
+  .un .who { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .un .who small { color: var(--dim); display: block; font-size: 10.5px; letter-spacing: .06em; font-weight: 700; }
+  @media (max-width: 560px) { .un { grid-template-columns: 1fr; gap: 6px; } .un .watch { justify-self: start; } }
   .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, .7); display: flex; align-items: flex-start; justify-content: center; padding: 6vh 16px; z-index: 50; overflow-y: auto; }
   .sheet { width: min(860px, 100%); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
   .sheet .head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 18px; border-bottom: 1px solid var(--line); background: radial-gradient(600px 160px at 0 0, rgba(239, 68, 68, .14), transparent 60%); }
@@ -414,6 +437,40 @@ function nextMatch(d) {
   return d.main.matches.find(m => m.ready) || null;
 }
 
+
+/* games: LIVE from tip-off until the result comes in (max 3 hours), with the stream linked */
+const LIVE_MS = 3 * 3600 * 1000;
+function gameSplit(d) {
+  const now = Date.now(), gs = (d && d.games) || [];
+  const live = gs.filter(g => { const t = Date.parse(g.time); return t <= now && now < t + LIVE_MS; });
+  const soon = gs.filter(g => Date.parse(g.time) > now).slice(0, 6);
+  return { live, soon };
+}
+const fmtTime = iso => new Date(iso).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" });
+function sinceText(iso) {
+  const m = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 60000));
+  return m < 1 ? "just started" : m < 60 ? `started ${m} min ago` : `started ${Math.floor(m / 60)}h ${m % 60}m ago`;
+}
+const watchBtn = g => g.link ? `<a class="watch" href="${esc(g.link)}" target="_blank" rel="noopener">▶ Watch ${esc(g.stream || "stream")}</a>`
+  : g.stream ? `<span class="nostream">📺 ${esc(g.stream)} is streaming</span>` : `<span class="nostream">No stream yet</span>`;
+function liveStrip(d) {
+  if (VIEW !== "current") return "";
+  const { live } = gameSplit(d);
+  if (!live.length) return "";
+  return `<section class="livegames" aria-label="Live games"><h3><i></i>LIVE NOW · ${live.length} GAME${live.length > 1 ? "S" : ""}</h3><div class="lvgrid">${live.map(g => `
+    <div class="lvc"><div class="lvh">${esc(g.head)}</div><div class="lvt">${team(g.a)}<span class="vsx">VS</span>${team(g.b)}</div>
+    <div class="lvf"><span>${esc(sinceText(g.time))}${g.arena ? ` · ${esc(g.arena)}` : ""}</span>${watchBtn(g)}</div></div>`).join("")}</div></section>`;
+}
+function upNext(d) {
+  if (VIEW !== "current") return "";
+  const { soon } = gameSplit(d);
+  if (!soon.length) return "";
+  return `<section class="upnext" aria-label="Coming up"><h3>COMING UP</h3>${soon.map(g => `<div class="un"><span class="when">${esc(fmtTime(g.time))}</span>
+    <div class="who"><small>${esc(g.head)}</small>${team(g.a)} <span style="color:var(--dim)">vs</span> ${team(g.b)}</div>${g.stream ? watchBtn(g) : "<span></span>"}</div>`).join("")}</section>`;
+}
+// flip games to LIVE on time even between data updates
+setInterval(() => { const el = document.getElementById("livestrip"); if (el && D) el.innerHTML = liveStrip(window.__view || D); }, 30000);
+
 function nowPlaying() {
   const tz = D.tourney;
   const live = D.main ? D.main.matches.filter(m => m.ready).length : 0;
@@ -482,7 +539,7 @@ function overview(d) {
     ["Teams", d.teams.length, "complete rosters"],
     ["Major target", c.needed != null ? c.needed : "TBA", "RISER POINTS"],
     ["Entered", tz ? tz.entrants.length : 0, tz ? (tz.open ? (entryCounts(d).ready.length ? `${entryCounts(d).ready.length} more ready to /register` : "entries open") : "entries closed") : "no tournament"],
-    ["Live matches", live.length, live.length ? "ready to play" : "waiting"],
+    ["Live games", gameSplit(d).live.length || live.length, gameSplit(d).live.length ? "being played now" : live.length ? "ready to play" : "waiting"],
   ];
   const order = ["signups", "qual", "main", "done"];
   const at = d.stage === "signups" ? 0 : ["swiss", "groups", "swiss_done", "groups_done"].includes(d.stage) ? 1 : d.stage === "main" ? 2 : d.stage === "done" ? 3 : -1;
@@ -495,7 +552,7 @@ function overview(d) {
 
   const pts = c.standings.slice(0, 8);
   const max = Math.max(1, c.needed || 0, ...pts.map(r => r.points));
-  return `${nowPlaying()}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
+  return `${nowPlaying()}${upNext(d)}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
       <div class="stats">${stats.map(([k, v, s]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("")}</div></div>${spot}</section>
     <div class="steps">${steps}</div>
     <div class="dccard"><div><div class="t">Join the ON THE RISE Discord</div><div class="d">Open registration: start a team with your friends using <b>/signup</b>, find a squad as a free agent, and get pinged when tournaments drop.</div></div>
@@ -823,7 +880,7 @@ function render() {
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
-  view.innerHTML = tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
+  view.innerHTML = `<div id="livestrip">${liveStrip(d)}</div>` + (tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d));
 }
 
 document.getElementById("tabs").addEventListener("click", e => {

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T22:23:36+00:00",
+ "updated": "2026-11-20T22:34:10+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -22,10 +22,12 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
-   "players": [],
+   "players": [
+    "eagle (@EagleTakeTheWheel) \u00b7 PF"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -193,6 +195,12 @@ window.PBL_DATA = {
      "name": "Shxfty",
      "pos": "PG",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "eagle (@EagleTakeTheWheel)",
+     "pos": "PF",
+     "cap": false,
      "co": false
     }
    ]
@@ -664,6 +672,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/455039767868997633/e2310ec29bff63604e74df14c3c8e31f.png?size=1024",
    "pos": "SG",
    "team": "Nightrydas Elite",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "eagle (@EagleTakeTheWheel)",
+   "rbx": "@EagleTakeTheWheel",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/391426015223873538/06e094808c20108f2d7d71a44b86ab26.png?size=1024",
+   "pos": "PF",
+   "team": "Arctic Wolves",
    "role": "",
    "fa": false,
    "suspended": false,

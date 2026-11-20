@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T20:19:34+00:00",
+ "updated": "2026-11-20T20:32:59+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1107,7 +1107,15 @@ window.PBL_DATA = {
    "activity": null
   }
  ],
- "events": [],
+ "events": [
+  {
+   "kind": "signups",
+   "label": "Entries close \u00b7 OTR: TURKEY TAKEOVER",
+   "at": "2026-11-20T22:00:00+00:00",
+   "where": "/register in Discord",
+   "note": null
+  }
+ ],
  "schedule": {
   "games": [],
   "recent": [],

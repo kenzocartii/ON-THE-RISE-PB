@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T17:28:13+00:00",
+ "updated": "2026-11-20T17:28:28+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -66,10 +66,12 @@ window.PBL_DATA = {
   {
    "name": "DEADEND",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/15c025d25dbf.png",
    "captain": "2BUSYSLIDIN (@LiLLUCIX_BD) \u00b7 SF",
-   "players": [],
+   "players": [
+    "Ayy3 (@elvis7788) \u00b7 PF"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -281,6 +283,12 @@ window.PBL_DATA = {
      "name": "2BUSYSLIDIN (@LiLLUCIX_BD)",
      "pos": "SF",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "Ayy3 (@elvis7788)",
+     "pos": "PF",
+     "cap": false,
      "co": false
     }
    ]

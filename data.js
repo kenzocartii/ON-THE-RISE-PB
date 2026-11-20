@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T00:00:01+00:00",
+ "updated": "2026-11-20T00:00:28+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -15,6 +15,20 @@ window.PBL_DATA = {
    "points": 0,
    "qualified": false,
    "registered": true
+  },
+  {
+   "name": "BallHog Elite",
+   "logo": "logos/a513cffb73ec.jpg",
+   "captain": "jacami (@JaCamii2)",
+   "players": [
+    "imovethechains \u00b7 SG",
+    "WFRezkin3K \u00b7 PG",
+    "IsoDrip (@lsoDrlp) \u00b7 PG",
+    "Jayywuan \u00b7 PF"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
   },
   {
    "name": "BEASTCOAST",
@@ -64,6 +78,11 @@ window.PBL_DATA = {
   "standings": [
    {
     "team": "336FN",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "BallHog Elite",
     "points": 0,
     "qualified": false
    },

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T03:33:21+00:00",
+ "updated": "2026-11-20T04:18:28+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -74,6 +74,264 @@ window.PBL_DATA = {
    "registered": true
   }
  ],
+ "rosters": {
+  "336FN": {
+   "logo": "logos/287415d3bfe6.png",
+   "points": 0,
+   "complete": true,
+   "qualified": false,
+   "players": [
+    {
+     "name": "Attorney (@attorney)",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "BippinInCali (@uufaailen)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "BreezyVert (@BalmainSpecialist)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "JusticeFor336 (@banbliqky)",
+     "pos": "SF",
+     "cap": false,
+     "co": true
+    },
+    {
+     "name": "fhwz",
+     "pos": "PF",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "articwolves": {
+   "logo": "logos/314d2a06ad77.jpg",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "Shxfty",
+     "pos": "PG",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "NIZLE (@Jioquick)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "BallHog Elite": {
+   "logo": "logos/a513cffb73ec.jpg",
+   "points": 0,
+   "complete": true,
+   "qualified": false,
+   "players": [
+    {
+     "name": "jacami (@JaCamii2)",
+     "pos": "",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "imovethechains",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "WFRezkin3K",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "IsoDrip (@lsoDrlp)",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Jayywuan",
+     "pos": "PF",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "BEASTCOAST": {
+   "logo": "logos/43b1e3b4ffb2.png",
+   "points": 0,
+   "complete": true,
+   "qualified": false,
+   "players": [
+    {
+     "name": "colin",
+     "pos": "PG",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "xxix (@RangeIess)",
+     "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "tony (@NiceOneTonyy)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "offyachest (@vbChief)",
+     "pos": "C",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "sunny (@dummy_fresh)",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "Elevation": {
+   "logo": "logos/824c0d888428.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "survivin (@nevergonnchange)",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "sigredeye (@Disvanti)",
+     "pos": "PF",
+     "cap": false,
+     "co": true
+    },
+    {
+     "name": "yuzoo (@SevereDamagess)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "Nightrydas Elite": {
+   "logo": "logos/6a737592ee66.png",
+   "points": 0,
+   "complete": true,
+   "qualified": false,
+   "players": [
+    {
+     "name": "slinger (@bigdr_p)",
+     "pos": "PG",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "Pete Maravich (@zendayalover756)",
+     "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Dougatron (@TheSkullMaster88)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "CJ0 (@PH2NTOMCJ)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "ace (@acetweakin)",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
+  "Reapas": {
+   "logo": "logos/ff5187ab624b.jpg",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "j_shbrady (@JoshBradyIV)",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
+  "Yore": {
+   "logo": "logos/11686f37553a.webp",
+   "points": 0,
+   "complete": true,
+   "qualified": false,
+   "players": [
+    {
+     "name": "wydpolo (@LaPoloBall)",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "wydherbo (@dontlosesleep)",
+     "pos": "PF",
+     "cap": false,
+     "co": true
+    },
+    {
+     "name": "raz (@razeyrazeyrazey)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "eric (@buklau_18)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "colden (@buklau_09)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "buklau_99",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    }
+   ]
+  }
+ },
  "circuit": {
   "needed": 700,
   "standings": [

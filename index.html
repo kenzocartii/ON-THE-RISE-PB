@@ -137,6 +137,43 @@
   .m.click:hover { border-color: #52525b; }
   .g.click:hover { background: rgba(255, 255, 255, .03); }
   .m .bx, .g .bx { font-size: 10px; letter-spacing: .06em; color: var(--dim); }
+
+  /* draw cards (like the draw pictures) */
+  .dgrid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .dgroup, .dpair { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; min-width: 0; }
+  .dgroup h4 { margin: 2px 4px 8px; color: var(--accent); font-size: 20px; font-weight: 800; letter-spacing: .02em; }
+  .drow { display: flex; align-items: center; gap: 10px; padding: 7px 4px; border-radius: 8px; cursor: pointer; min-width: 0; position: relative; }
+  .drow:hover { background: rgba(255,255,255,.04); }
+  .drow.adv::before { content: ""; position: absolute; left: -10px; top: 8px; bottom: 8px; width: 4px; border-radius: 2px; background: var(--accent); }
+  .drow img, .drow .ph { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; background: #26262b; }
+  .drow .tx { min-width: 0; flex: 1; }
+  .drow .nm { font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .drow .nm b { color: var(--accent); margin-right: 6px; }
+  .drow .st { color: var(--dim); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+  .dpair .vs { display: flex; align-items: center; gap: 10px; color: var(--accent); font-weight: 800; font-size: 12px; margin: 2px 4px; }
+  .dpair .vs::before, .dpair .vs::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .dpair .drow.w .nm { color: #4ade80; } .dpair .drow.l { opacity: .55; }
+  .pool { margin: 22px 0 10px; color: var(--accent); font-weight: 800; font-size: 18px; letter-spacing: .03em; }
+  .rchips { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 4px; }
+  .rchips button { background: var(--panel); border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 5px 12px; cursor: pointer; font: inherit; font-weight: 600; }
+  .rchips button.on { color: #fff; border-color: var(--accent); }
+  /* team popup */
+  .tmodal { background: var(--bg); border: 1px solid var(--line); border-radius: 14px; width: min(560px, 100%); padding: 20px; }
+  .tmodal .hd { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .tmodal .hd img, .tmodal .hd .ph { width: 64px; height: 64px; border-radius: 14px; object-fit: cover; display: inline-flex; align-items: center; justify-content: center; background: #26262b; font-weight: 800; }
+  .tmodal .hd .t { font-size: 22px; font-weight: 800; }
+  .tmodal .hd .s { color: var(--dim); font-size: 13px; }
+  .tmodal ul { list-style: none; margin: 0; padding: 0; }
+  .tmodal li { display: flex; align-items: center; gap: 10px; padding: 9px 4px; border-top: 1px solid var(--line-2); }
+  .tmodal li .pos { font-size: 11px; font-weight: 800; color: var(--accent); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; min-width: 32px; text-align: center; }
+  .tmodal li .badge { font-size: 11px; font-weight: 800; color: #111; background: var(--accent); border-radius: 6px; padding: 1px 6px; }
+  .tmodal li a.rbx { margin-left: auto; font-size: 12.5px; font-weight: 700; color: #cfd3ff; text-decoration: none; border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; white-space: nowrap; }
+  .tmodal li a.rbx:hover { border-color: var(--accent); color: #fff; }
+  .tmodal .x { margin-left: auto; background: none; border: 0; color: var(--muted); font-size: 22px; cursor: pointer; }
+  .clickteam { cursor: pointer; }
+  .clickteam:hover span:last-child, span.n.clickteam:hover { text-decoration: underline; }
+  a.rbxname { color: inherit; text-decoration: none; border-bottom: 1px dotted var(--dim); }
+  a.rbxname:hover { color: #fff; border-color: var(--accent); }
   .modal { position: fixed; inset: 0; background: rgba(0, 0, 0, .7); display: flex; align-items: flex-start; justify-content: center; padding: 6vh 16px; z-index: 50; overflow-y: auto; }
   .sheet { width: min(860px, 100%); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
   .sheet .head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 16px 18px; border-bottom: 1px solid var(--line); background: radial-gradient(600px 160px at 0 0, rgba(239, 68, 68, .14), transparent 60%); }
@@ -250,11 +287,105 @@ function logo(name, cls = "lg") {
   if (tbd(name)) return "";
   return LOGOS[name] ? `<img class="${cls}" src="${esc(LOGOS[name])}" alt="" loading="lazy">` : `<span class="${cls} ph">${esc(initials(name))}</span>`;
 }
-const team = name => `<span class="tn">${logo(name)}<span>${esc(name)}</span></span>`;
+const team = name => tbd(name) ? `<span class="tn">${logo(name)}<span>${esc(name)}</span></span>`
+  : `<span class="tn clickteam" data-team="${esc(name)}" title="See ${esc(name)}'s roster">${logo(name)}<span>${esc(name)}</span></span>`;
 
 /* heatmap colors, low -> high (red, rust, olive, green, teal, blue, violet) */
 const HEAT = ["#7f1d1d", "#7c3a1d", "#6b6a1f", "#2f6b33", "#256a6a", "#2c4f8a", "#4c2f8f"];
 const heat = (v, max) => max > 0 ? HEAT[Math.min(HEAT.length - 1, Math.floor((v / max) * (HEAT.length - 1) + 1e-9))] : HEAT[0];
+
+
+/* Roblox: a player's shown name is their Roblox username */
+const RBX = n => `https://www.roblox.com/user.aspx?username=${encodeURIComponent(String(n || "").split(" · ")[0].trim())}`;
+const rbxLink = (n, label) => `<a class="rbxname" href="${RBX(n)}" target="_blank" rel="noopener" title="Open ${esc(n)} on Roblox">${esc(label || n)}</a>`;
+function rosterOf(name) { return (D && D.rosters && D.rosters[name]) || null; }
+
+function openTeam(name) {
+  const r = rosterOf(name);
+  const t = (D.teams || []).find(x => x.name === name) || {};
+  const dr = (window.__view || D).draw || {};
+  const seed = (dr.seeds || []).indexOf(name);
+  const rec = (dr.rec || {})[name], pd = (dr.pd || {})[name];
+  const lg = (r && r.logo) || t.logo || LOGOS[name];
+  const pts = r ? r.points : (t.points || 0);
+  const players = r ? r.players : [];
+  const sub = [`${pts} RISER POINTS`, seed >= 0 ? `#${seed + 1} seed` : "", rec ? `${rec[0]}-${rec[1]} this tournament` : "",
+    pd != null && rec ? `PD ${pd >= 0 ? "+" : ""}${pd}` : "", r && !r.complete ? "roster still building" : ""].filter(Boolean).join(" · ");
+  const el = document.createElement("div");
+  el.className = "modal";
+  el.innerHTML = `<div class="tmodal" role="dialog" aria-label="${esc(name)} roster">
+    <div class="hd">${lg ? `<img src="${esc(lg)}" alt="">` : `<span class="ph">${esc(initials(name))}</span>`}
+      <div style="min-width:0"><div class="t">${esc(name)}${r && r.qualified ? ' <span class="chip q">MAJOR</span>' : ""}</div><div class="s">${esc(sub)}</div></div>
+      <button class="x" aria-label="Close">×</button></div>
+    ${players.length ? `<ul>${players.map(p => `<li><span class="pos">${esc(p.pos || "–")}</span><span style="font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis">${esc(p.name)}</span>${p.cap ? '<span class="badge">C</span>' : p.co ? '<span class="badge">CC</span>' : ""}<a class="rbx" href="${RBX(p.name)}" target="_blank" rel="noopener">Roblox profile ↗</a></li>`).join("")}</ul>`
+      : `<div class="empty">No roster on file for this team.</div>`}
+  </div>`;
+  el.addEventListener("click", e => { if (e.target === el || e.target.closest(".x")) el.remove(); });
+  document.body.appendChild(el);
+}
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-team]");
+  if (!t || e.target.closest("a")) return;
+  e.stopPropagation(); e.preventDefault();
+  openTeam(t.dataset.team);
+}, true);
+
+/* ---- draw view, styled like the draw pictures ---- */
+let SW_ROUND = null;
+function drow(d, name, extra = "", cls = "", pdOver = null) {
+  if (!name || name === "BYE") return `<div class="drow"><span class="ph">–</span><div class="tx"><div class="nm" style="color:var(--dim)">BYE</div></div></div>`;
+  const dr = d.draw || {}, r = rosterOf(name);
+  const seed = (dr.seeds || []).indexOf(name);
+  const rec = (dr.rec || {})[name] || [0, 0], pd = pdOver != null ? pdOver : ((dr.pd || {})[name] || 0);
+  const pts = r ? r.points : 0;
+  const lg = (r && r.logo) || LOGOS[name];
+  return `<div class="drow ${cls}" data-team="${esc(name)}" title="See ${esc(name)}'s roster">${lg ? `<img src="${esc(lg)}" alt="">` : `<span class="ph">${esc(initials(name))}</span>`}
+    <div class="tx"><div class="nm">${seed >= 0 ? `<b>#${seed + 1}</b>` : ""}${esc(name)}</div>
+    <div class="st">${extra || `${rec[0]}-${rec[1]}`} · PD ${pd >= 0 ? "+" : ""}${pd} · ${pts} RP</div></div></div>`;
+}
+function dpair(d, a, b, winner) {
+  const c = n => winner ? (winner === n ? "w" : "l") : "";
+  return `<div class="dpair">${drow(d, a, "", c(a))}<div class="vs">VS</div>${drow(d, b, "", c(b))}</div>`;
+}
+function drawView(d) {
+  const tz = d.tourney || {};
+  const note = `Seeds by RISER POINTS · RP = RISER POINTS · PD = point differential this tournament · click a team for its roster`;
+  if (d.groups) {
+    const adv = d.groups.advance;
+    return `<h2>Group draw</h2><p class="note">${note}. The red bar marks teams in a top-${adv} spot.</p>
+      <div class="dgrid">${d.groups.list.map(g => `<div class="dgroup"><h4>${esc(g.name.toUpperCase())}</h4>
+        ${g.table.map((r, i) => drow(d, r.team, `${r.w}-${r.l}`, i < adv ? "adv" : "", r.pd)).join("")}</div>`).join("")}</div>
+      ${d.main ? `<h2 style="margin-top:28px">Main draw · first round</h2>${mainR1(d)}` : ""}`;
+  }
+  if (d.swiss) {
+    const sw = d.swiss;
+    const rounds = [...new Set(sw.matches.map(m => m.round))].sort((a, b) => a - b);
+    const r = rounds.includes(SW_ROUND) ? SW_ROUND : rounds[rounds.length - 1];
+    const before = {};  // record going into round r
+    sw.matches.filter(m => m.round < r && m.winner).forEach(m => {
+      for (const n of [m.a, m.b]) { before[n] = before[n] || [0, 0]; before[n][m.winner === n ? 0 : 1]++; }
+    });
+    const pools = {};
+    sw.matches.filter(m => m.round === r).forEach(m => {
+      const k = (before[m.a] || [0, 0]).join("-");
+      (pools[k] = pools[k] || []).push(m);
+    });
+    const keys = Object.keys(pools).sort((x, y) => { const [a1, b1] = x.split("-").map(Number), [a2, b2] = y.split("-").map(Number); return a2 - a1 || b1 - b2; });
+    return `<h2>Swiss draw</h2><p class="note">${note}. ${r === 1 ? "Round 1: top-half seeds play bottom-half seeds." : "Teams are drawn at random within each record."}</p>
+      <div class="rchips">${rounds.map(x => `<button class="${x === r ? "on" : ""}" data-swround="${x}">Round ${x}</button>`).join("")}</div>
+      ${keys.map(k => `<div class="pool">${k} POOL</div><div class="dgrid">${pools[k].map(m => dpair(d, m.a, m.b, m.winner)).join("")}</div>`).join("")}
+      ${d.main ? `<h2 style="margin-top:28px">Main draw · first round</h2>${mainR1(d)}` : ""}`;
+  }
+  if (d.main) return `<h2>Main draw</h2><p class="note">${note}. Double elimination: lose twice and you're out.</p>${mainR1(d)}`;
+  return `<h2>Draw</h2><div class="empty">The draw hasn't happened yet${tz.name ? ` for ${esc(tz.name)}` : ""}.</div>`;
+}
+function mainR1(d) {
+  const r1 = d.main.matches.filter(m => m.label === "Winners R1" && !m.bye);
+  const inR1 = new Set(r1.flatMap(m => [m.a, m.b]));
+  const byes = ((d.draw || {}).seeds || []).filter(n => !inR1.has(n));
+  return `<div class="dgrid">${r1.map(m => dpair(d, m.a, m.b, m.winner)).join("")}</div>
+    ${byes.length ? `<div class="pool">BYES TO ROUND 2</div><div class="dgrid">${byes.map(n => `<div class="dpair">${drow(d, n)}</div>`).join("")}</div>` : ""}`;
+}
 
 function matchCard(m) {
   if (m.bye) return `<div class="m"><div class="bye">${esc(m.a === "BYE" ? m.b : m.a)} advances (bye)</div></div>`;
@@ -262,7 +393,7 @@ function matchCard(m) {
   const row = name => {
     const won = m.winner && m.winner === name, lost = m.winner && !won;
     const sc = m.winner ? (m.score ? (won ? sw : sl) : (won ? "W" : "L")) : "";
-    return `<div class="r ${won ? "w" : lost ? "l" : ""} ${tbd(name) ? "tbd" : ""}">${logo(name)}<span class="n">${esc(tbd(name) && name !== "BYE" ? "TBD" : name)}</span><span class="sc">${esc(sc)}</span></div>`;
+    return `<div class="r ${won ? "w" : lost ? "l" : ""} ${tbd(name) ? "tbd" : ""}">${logo(name)}<span class="n${tbd(name) ? "" : " clickteam"}"${tbd(name) ? "" : ` data-team="${esc(name)}" title="See ${esc(name)}'s roster"`}>${esc(tbd(name) && name !== "BYE" ? "TBD" : name)}</span><span class="sc">${esc(sc)}</span></div>`;
   };
   const has = m.box && m.box.length;
   return `<div class="m ${m.ready ? "live" : ""} ${has ? "click" : ""}" ${has ? `data-mid="${m.id}"` : ""}><div class="mhead"><span>M${m.id}</span>${m.ready ? "<b>PLAY NOW</b>" : has ? '<span class="bx">BOX SCORE</span>' : ""}</div>${row(m.a)}${row(m.b)}</div>`;
@@ -357,7 +488,7 @@ function overview(d) {
   const at = d.stage === "signups" ? 0 : ["swiss", "groups", "swiss_done", "groups_done"].includes(d.stage) ? 1 : d.stage === "main" ? 2 : d.stage === "done" ? 3 : -1;
   const steps = [
     ["Entries", tz ? (tz.open ? `${plural(tz.entrants.length, "team")} entered${entryCounts(d).ready.length ? ` · ${entryCounts(d).ready.length} ready to /register` : ""}` : `${plural(tz.entrants.length, "team")} in`) : "Waiting for staff"],
-    ["Qualifier", d.swiss ? `Swiss · ${d.swiss.wins} wins to qualify` : d.groups ? `Groups of 4 · top ${d.groups.advance} advance` : "Optional"],
+    ["Qualifier", d.swiss ? `Swiss · ${d.swiss.wins} wins to qualify` : d.groups ? `Groups of ${d.groups.size || 4} · top ${d.groups.advance} advance` : "Optional"],
     ["Main draw", "Double elimination"],
     [tz && tz.kind === "major" ? "Major champion" : "Champion", tz && tz.kind === "major" ? "Points reset to 0" : "Qualifies for the Major"],
   ].map(([t, s], i) => `<div class="step ${i === at ? "on" : i < at ? "done" : ""}"><div class="t">${t}</div><div class="d">${esc(s)}</div></div>`).join("");
@@ -422,7 +553,7 @@ function openBox(id) {
     SUM_KEYS.forEach(k => tot[k] = rows.reduce((s, r) => s + (r[k] || 0), 0));
     return `<div class="tablewrap boxcard"><div class="boxhead">${logo(t, "lg big")}<div><div class="nm">${esc(t)}${m.winner === t ? ' <span class="chip q">WIN</span>' : ""}</div><div class="ab">${esc(abbr(t))}</div></div></div>
       <table class="box"><thead><tr><th>Player</th>${BOX_COLS.map(([l]) => `<th class="num">${l}</th>`).join("")}</tr></thead><tbody>
-      ${rows.map(r => `<tr><td><span class="pl">${avatar(r)}<span class="pn">${esc(r.player)}</span>${top.has(r.player) ? '<span class="topb">TOP</span>' : ""}</span></td>${BOX_COLS.map(([, f]) => `<td class="num">${f(r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="16" style="color:var(--dim)">No stats entered yet</td></tr>`}
+      ${rows.map(r => `<tr><td><span class="pl">${avatar(r)}<span class="pn">${rbxLink(r.player)}</span>${top.has(r.player) ? '<span class="topb">TOP</span>' : ""}</span></td>${BOX_COLS.map(([, f]) => `<td class="num">${f(r)}</td>`).join("")}</tr>`).join("") || `<tr><td colspan="16" style="color:var(--dim)">No stats entered yet</td></tr>`}
       ${rows.length ? `<tr class="tot"><td>TOTALS</td>${BOX_COLS.map(([, , f]) => `<td class="num">${f(tot)}</td>`).join("")}</tr>` : ""}</tbody></table></div>`;
   };
   const wa = m.winner === m.a;
@@ -564,9 +695,9 @@ function entriesView(d) {
 
 function teamsView(d) {
   if (!d.teams.length) return `<h2>Teams</h2><div class="empty">No complete rosters yet. Teams show up once they have 5 players.</div>`;
-  return `<h2>Teams</h2><p class="note">${d.teams.length} complete rosters</p><div class="teams">${d.teams.map(t => `<div class="team">
-    <div class="top">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div><div class="cap">Captain · ${esc(t.captain)}</div></div></div>
-    <ul>${(t.players || []).map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+  return `<h2>Teams</h2><p class="note">${d.teams.length} complete rosters · click a player to open their Roblox profile</p><div class="teams">${d.teams.map(t => `<div class="team">
+    <div class="top clickteam" data-team="${esc(t.name)}">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div><div class="cap">Captain · ${rbxLink(t.captain, t.captain)}</div></div></div>
+    <ul>${(t.players || []).map(p => `<li>${rbxLink(p, p)}</li>`).join("")}</ul>
     <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? '<span class="chip in">ENTERED</span>' : ""}</span></div>
   </div>`).join("")}</div>`;
 }
@@ -685,13 +816,14 @@ function render() {
   const tabs = [["overview", "Overview"]];
   const ents = entryTeams(d);
   if (ents) tabs.push(["entries", "Entries", ents.length]);
+  if (d.groups || d.swiss || d.main) tabs.push(["draw", "Draw"]);
   tabs.push(["pickups", "Ranked"], ["bracket", "Main draw", live]);
   if (d.swiss || d.groups) tabs.push(["qual", d.swiss ? "Swiss stage" : "Groups"]);
   tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["leaderboard", "Leaderboard"], ["teams", "Teams"]);
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
-  view.innerHTML = tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
+  view.innerHTML = tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d);
 }
 
 document.getElementById("tabs").addEventListener("click", e => {
@@ -703,6 +835,8 @@ document.getElementById("tabs").addEventListener("click", e => {
 });
 
 document.getElementById("view").addEventListener("click", e => {
+  const swr = e.target.closest("[data-swround]");
+  if (swr) { SW_ROUND = Number(swr.dataset.swround); return render(); }
   const g = e.target.closest("[data-mid]");
   if (g) return openBox(Number(g.dataset.mid));
   const sc = e.target.closest("[data-scope]");

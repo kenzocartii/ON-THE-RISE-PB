@@ -298,7 +298,7 @@
 
 <script>
 const STAGES = { signups: "Entries open", swiss: "Swiss stage", swiss_done: "Qualifier finished", groups: "Group stage",
-  groups_done: "Qualifier finished", main: "Main draw", done: "Complete", playin: "LCQ play-in", playin_done: "Play-in finished" };
+  groups_done: "Qualifier finished", main: "Main draw", done: "Complete", playin: "LCQ play-in", playin_done: "Play-in finished", drawing: "🎥 Live draw happening in Discord (#bracket)" };
 let tab = null, LOGOS = {}, D = null, VIEW = "current";
 const DISCORD_URL = "https://discord.gg/UbAPSJnkVp";
 window.PBL_ARCHIVES = window.PBL_ARCHIVES || {};
@@ -320,7 +320,9 @@ const heat = (v, max) => max > 0 ? HEAT[Math.min(HEAT.length - 1, Math.floor((v 
 
 
 /* Roblox: a player's shown name is their Roblox username */
-const RBX = n => `https://www.roblox.com/user.aspx?username=${encodeURIComponent(String(n || "").split(" · ")[0].trim())}`;
+/* Server names are Roblox usernames. With two names, like "yaro (yachtyshifts)", the one in brackets is the Roblox one. */
+const robloxUser = n => { const t = String(n || "").split(" · ")[0].trim(); const m = t.match(/\(([^()]+)\)\s*$/); return (m ? m[1] : t).trim(); };
+const RBX = n => `https://www.roblox.com/user.aspx?username=${encodeURIComponent(robloxUser(n))}`;
 const rbxLink = (n, label) => `<a class="rbxname" href="${RBX(n)}" target="_blank" rel="noopener" title="Open ${esc(n)} on Roblox">${esc(label || n)}</a>`;
 function rosterOf(name) { return (D && D.rosters && D.rosters[name]) || null; }
 
@@ -779,7 +781,7 @@ function teamsView(d) {
   if (!d.teams.length) return `<h2>Teams</h2><div class="empty">No teams yet. Start one with /signup in Discord.</div>`;
   const done = d.teams.filter(t => t.complete !== false).length, building = d.teams.length - done;
   const list = [...d.teams].sort((a, b) => (b.complete !== false) - (a.complete !== false));
-  return `<h2>Teams</h2><p class="note">${done} complete${building ? ` · ${building} still building (need 5 players to enter tournaments)` : ""} · click a player to open their Roblox profile</p><div class="teams">${list.map(t => `<div class="team">
+  return `<h2>Teams</h2><p class="note">${done} complete${building ? ` · ${building} still building (need 5 players to enter tournaments)` : ""} · click a player to open their Roblox profile</p><p class="note">Names are Roblox usernames. If a player shows two names, like <b>yaro (yachtyshifts)</b>, the one in brackets is their Roblox name.</p><div class="teams">${list.map(t => `<div class="team">
     <div class="top clickteam" data-team="${esc(t.name)}">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div><div class="cap">Captain · ${rbxLink(t.captain, t.captain)}</div></div></div>
     <ul>${(t.players || []).map(p => `<li>${rbxLink(p, p)}</li>`).join("")}</ul>
     <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.complete === false ? `<span class="chip o">BUILDING ${t.size}/5</span>` : ""}${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? (lcqChip(t.name) || '<span class="chip in">ENTERED</span>') : ""}</span></div>

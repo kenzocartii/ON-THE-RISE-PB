@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T18:15:17+00:00",
+ "updated": "2026-11-20T18:19:33+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -19,7 +19,7 @@ window.PBL_DATA = {
    "registered": true
   },
   {
-   "name": "articwolves",
+   "name": "Arctic Wolves",
    "complete": false,
    "size": 3,
    "logo": "logos/314d2a06ad77.jpg",
@@ -178,7 +178,7 @@ window.PBL_DATA = {
     }
    ]
   },
-  "articwolves": {
+  "Arctic Wolves": {
    "logo": "logos/314d2a06ad77.jpg",
    "points": 0,
    "complete": false,
@@ -444,7 +444,7 @@ window.PBL_DATA = {
     "qualified": false
    },
    {
-    "team": "articwolves",
+    "team": "Arctic Wolves",
     "points": 0,
     "qualified": false
    },

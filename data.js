@@ -1,9 +1,11 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T06:37:51+00:00",
+ "updated": "2026-11-20T06:42:12+00:00",
  "teams": [
   {
    "name": "336FN",
+   "complete": true,
+   "size": 5,
    "logo": "logos/287415d3bfe6.png",
    "captain": "Attorney (@attorney) \u00b7 C",
    "players": [
@@ -17,7 +19,22 @@ window.PBL_DATA = {
    "registered": true
   },
   {
+   "name": "articwolves",
+   "complete": false,
+   "size": 2,
+   "logo": "logos/314d2a06ad77.jpg",
+   "captain": "Shxfty \u00b7 PG",
+   "players": [
+    "NIZLE (@Jioquick) \u00b7 SG"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
    "name": "BallHog Elite",
+   "complete": true,
+   "size": 5,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -32,6 +49,8 @@ window.PBL_DATA = {
   },
   {
    "name": "BEASTCOAST",
+   "complete": true,
+   "size": 5,
    "logo": "logos/43b1e3b4ffb2.png",
    "captain": "colin \u00b7 PG",
    "players": [
@@ -45,7 +64,23 @@ window.PBL_DATA = {
    "registered": true
   },
   {
+   "name": "Elevation",
+   "complete": false,
+   "size": 3,
+   "logo": "logos/824c0d888428.png",
+   "captain": "survivin (@nevergonnchange) \u00b7 C",
+   "players": [
+    "sigredeye (@Disvanti) \u00b7 PF",
+    "yuzoo (@SevereDamagess) \u00b7 SF"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
    "name": "Nightrydas Elite",
+   "complete": true,
+   "size": 5,
    "logo": "logos/6a737592ee66.png",
    "captain": "slinger (@bigdr_p) \u00b7 PG",
    "players": [
@@ -59,7 +94,23 @@ window.PBL_DATA = {
    "registered": true
   },
   {
+   "name": "Reapas",
+   "complete": false,
+   "size": 3,
+   "logo": "logos/ff5187ab624b.jpg",
+   "captain": "j_shbrady (@JoshBradyIV) \u00b7 C",
+   "players": [
+    "bbcbuffet (@rf_hz) \u00b7 SF",
+    "TheGreatestMosser (@3DJohnson) \u00b7 SF"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
    "name": "Yore",
+   "complete": true,
+   "size": 6,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
@@ -353,6 +404,11 @@ window.PBL_DATA = {
     "qualified": false
    },
    {
+    "team": "articwolves",
+    "points": 0,
+    "qualified": false
+   },
+   {
     "team": "BallHog Elite",
     "points": 0,
     "qualified": false
@@ -363,7 +419,17 @@ window.PBL_DATA = {
     "qualified": false
    },
    {
+    "team": "Elevation",
+    "points": 0,
+    "qualified": false
+   },
+   {
     "team": "Nightrydas Elite",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "Reapas",
     "points": 0,
     "qualified": false
    },
@@ -389,8 +455,7 @@ window.PBL_DATA = {
    "Yore",
    "Nightrydas Elite",
    "BEASTCOAST",
-   "BallHog Elite",
-   "Reapas"
+   "BallHog Elite"
   ]
  },
  "stage": "signups",
@@ -476,7 +541,7 @@ window.PBL_DATA = {
    "logo": "logos/170d683d7317.png",
    "date": null,
    "champion": null,
-   "teams": 6,
+   "teams": 5,
    "current": true
   }
  ]

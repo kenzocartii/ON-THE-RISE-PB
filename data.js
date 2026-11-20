@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T04:39:00+00:00",
+ "updated": "2026-11-20T04:47:43+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -287,6 +287,12 @@ window.PBL_DATA = {
     },
     {
      "name": "bbcbuffet (@rf_hz)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "TheGreatestMosser (@3DJohnson)",
      "pos": "SF",
      "cap": false,
      "co": false

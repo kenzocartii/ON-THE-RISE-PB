@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T05:39:10+00:00",
+ "updated": "2026-11-20T06:33:29+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -345,7 +345,7 @@ window.PBL_DATA = {
   }
  },
  "circuit": {
-  "needed": 700,
+  "needed": 600,
   "standings": [
    {
     "team": "336FN",
@@ -381,6 +381,8 @@ window.PBL_DATA = {
   "closes": "Friday at 5 PM EST",
   "logo": "logos/170d683d7317.png",
   "winner_qualifies": false,
+  "lcq_spots": null,
+  "lcq": null,
   "points": "1st: 150 \u00b7 2nd: 75 \u00b7 3rd: 50 \u00b7 4th: 40 \u00b7 5th-6th: 15 \u00b7 7th-8th: 5",
   "entrants": [
    "336FN",

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T04:18:28+00:00",
+ "updated": "2026-11-20T04:27:31+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -383,6 +383,7 @@ window.PBL_DATA = {
  "groups": null,
  "main": null,
  "champion": null,
+ "games": [],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
   "tournament": [],

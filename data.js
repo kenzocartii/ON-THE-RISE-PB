@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T20:32:59+00:00",
+ "updated": "2026-11-20T20:33:15+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -53,14 +53,15 @@ window.PBL_DATA = {
   {
    "name": "BEASTCOAST",
    "complete": true,
-   "size": 5,
+   "size": 6,
    "logo": "logos/43b1e3b4ffb2.png",
    "captain": "colin \u00b7 PG",
    "players": [
     "xxix (@RangeIess) \u00b7 PF",
     "tony (@NiceOneTonyy) \u00b7 SG",
     "offyachest (@vbChief) \u00b7 C",
-    "sunny (@dummy_fresh) \u00b7 PG"
+    "sunny (@dummy_fresh) \u00b7 PG",
+    "saii (@ittlya) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -289,6 +290,12 @@ window.PBL_DATA = {
     {
      "name": "sunny (@dummy_fresh)",
      "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "saii (@ittlya)",
+     "pos": "SG",
      "cap": false,
      "co": false
     }
@@ -889,6 +896,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/823061979266285588/f2e4688fc0c652765b0a9703d8155ae5.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "saii (@ittlya)",
+   "rbx": "@ittlya",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/254486321572085762/e7bd82e94c7f9f9bb75922cddf75c4af.png?size=1024",
+   "pos": "SG",
+   "team": "BEASTCOAST",
    "role": "",
    "fa": false,
    "suspended": false,

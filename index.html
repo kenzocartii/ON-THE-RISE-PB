@@ -297,14 +297,14 @@
 
 <script>
 const STAGES = { signups: "Entries open", swiss: "Swiss stage", swiss_done: "Qualifier finished", groups: "Group stage",
-  groups_done: "Qualifier finished", main: "Main draw", done: "Complete" };
+  groups_done: "Qualifier finished", main: "Main draw", done: "Complete", playin: "LCQ play-in", playin_done: "Play-in finished" };
 let tab = null, LOGOS = {}, D = null, VIEW = "current";
 const DISCORD_URL = "https://discord.gg/UbAPSJnkVp";
 window.PBL_ARCHIVES = window.PBL_ARCHIVES || {};
 try { tab = localStorage.getItem("otr-tab"); } catch (e) {}
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const tbd = s => !s || s === "BYE" || /^(Winner|Loser) of M\d+$/.test(s);
+const tbd = s => !s || s === "BYE" || s === "TBD" || /^(Winner|Loser) of M\d+$/.test(s);
 const initials = n => String(n).split(/\s+/).map(w => w[0] || "").join("").slice(0, 2).toUpperCase();
 function logo(name, cls = "lg") {
   if (tbd(name)) return "";
@@ -451,7 +451,8 @@ function sinceText(iso) {
   const m = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 60000));
   return m < 1 ? "just started" : m < 60 ? `started ${m} min ago` : `started ${Math.floor(m / 60)}h ${m % 60}m ago`;
 }
-const watchBtn = g => g.link ? `<a class="watch" href="${esc(g.link)}" target="_blank" rel="noopener">▶ Watch ${esc(g.stream || "stream")}</a>`
+const watchBtn = g => g.tracked && !g.on_air ? `<span class="nostream">📺 ${esc(g.stream)}'s stream isn't live yet</span>`
+  : g.link ? `<a class="watch" href="${esc(g.link)}" target="_blank" rel="noopener">${g.on_air ? "🔴 LIVE · " : "▶ "}Watch ${esc(g.stream || "stream")}</a>`
   : g.stream ? `<span class="nostream">📺 ${esc(g.stream)} is streaming</span>` : `<span class="nostream">No stream yet</span>`;
 function liveStrip(d) {
   if (VIEW !== "current") return "";
@@ -481,7 +482,7 @@ function nowPlaying() {
   const ec = entryCounts(D);
   const status = tz.open ? `Entries open${tz.closes ? " · close " + esc(tz.closes) : ""} · <b>${plural(ec.entered, "team")} entered</b>${ec.ready.length ? ` · ${ec.ready.length} more ready to /register` : ""}`
     : `${esc(STAGES[D.stage] || "Entries closed")} · ${tz.entrants.length} teams${live ? ` · ${live} match${live > 1 ? "es" : ""} ready to play` : ""}`;
-  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div class="tnrow">${tz.logo ? `<img class="tlogo" src="${esc(tz.logo)}" alt="">` : ""}<div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : tz.winner_qualifies ? ' <span class="chip q">WINNER → MAJOR</span>' : ""}</div>
+  return `<div class="now"><span class="live"><i></i>HAPPENING NOW</span><div class="tnrow">${tz.logo ? `<img class="tlogo" src="${esc(tz.logo)}" alt="">` : ""}<div><div class="tn2">${esc(tz.name)}${tz.kind === "major" ? ' <span class="chip in">MAJOR</span>' : tz.kind === "lcq" ? ` <span class="chip q">LCQ · TOP ${tz.lcq_spots || 4} → MAJOR</span>` : tz.winner_qualifies ? ' <span class="chip q">WINNER → MAJOR</span>' : ""}</div>
     <div class="meta">${status}${tz.points && tz.kind !== "major" ? ` · pays ${esc(tz.points)}` : ""}</div></div></div>
     ${VIEW !== "current" ? '<button class="btn" data-view="current">View it</button>' : live ? '<button class="btn" data-k="bracket">Go to the bracket</button>' : "<span></span>"}</div>`;
 }
@@ -514,7 +515,7 @@ function tournamentList() {
   const year = new Date().getFullYear();
   const mine = ts.filter(t => !t.year || t.year === year);
   if (!mine.length) return '<div class="empty">No tournaments yet this year.</div>';
-  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div class="tnrow">${t.logo ? `<img class="tlogo sm" src="${esc(t.logo)}" alt="">` : ""}<div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
+  return `<div class="tlist">${mine.map(t => `<div class="row" data-view="${esc(t.id)}"><div class="tnrow">${t.logo ? `<img class="tlogo sm" src="${esc(t.logo)}" alt="">` : ""}<div><div class="nm">${esc(t.name)}${t.kind === "major" ? ' <span class="chip in">MAJOR</span>' : t.kind === "lcq" ? ' <span class="chip q">LCQ</span>' : ""}${t.current ? ' <span class="chip q">NOW</span>' : ""}</div>
     <div class="sub">${t.date ? esc(new Date(t.date + "T12:00:00").toLocaleDateString()) + " · " : ""}${t.current && !D.champion ? (() => { const ec = entryCounts(D); return `${plural(ec.entered, "team")} entered${ec.ready.length ? ` · ${ec.ready.length} ready to register` : ""}`; })() : plural(t.teams || 0, "team")}</div></div></div>
     <div style="text-align:right">${t.champion ? `${team(t.champion)}<div class="sub">champion</div>` : '<span class="sub">in progress</span>'}</div>${t.current ? signedUpRow() : ""}</div>`).join("")}</div>`;
 }
@@ -529,7 +530,7 @@ function overview(d) {
   const tz = d.tourney, c = d.circuit || { standings: [] };
   const live = d.main ? d.main.matches.filter(m => m.ready) : [];
   const nxt = nextMatch(d);
-  const eyebrow = [tz ? esc(tz.name) + (tz.kind === "major" ? " (MAJOR)" : "") : "Circuit", esc(STAGES[d.stage] || "Between tournaments"), nxt ? "Next: " + esc(nxt.label) : ""].filter(Boolean).join(" · ");
+  const eyebrow = [tz ? esc(tz.name) + (tz.kind === "major" ? " (MAJOR)" : tz.kind === "lcq" ? " (LCQ)" : "") : "Circuit", esc(STAGES[d.stage] || "Between tournaments"), nxt ? "Next: " + esc(nxt.label) : ""].filter(Boolean).join(" · ");
   const leader = c.standings[0];
   const spotName = d.champion || (leader && leader.points ? leader.team : null);
   const spot = spotName ? `<div class="spot">${LOGOS[spotName] ? `<img src="${esc(LOGOS[spotName])}" alt="">` : `<span class="ph">${esc(initials(spotName))}</span>`}
@@ -547,7 +548,7 @@ function overview(d) {
     ["Entries", tz ? (tz.open ? `${plural(tz.entrants.length, "team")} entered${entryCounts(d).ready.length ? ` · ${entryCounts(d).ready.length} ready to /register` : ""}` : `${plural(tz.entrants.length, "team")} in`) : "Waiting for staff"],
     ["Qualifier", d.swiss ? `Swiss · ${d.swiss.wins} wins to qualify` : d.groups ? `Groups of ${d.groups.size || 4} · top ${d.groups.advance} advance` : "Optional"],
     ["Main draw", "Double elimination"],
-    [tz && tz.kind === "major" ? "Major champion" : "Champion", tz && tz.kind === "major" ? "Points reset to 0" : "Qualifies for the Major"],
+    [tz && tz.kind === "major" ? "Major champion" : tz && tz.kind === "lcq" ? `Top ${tz.lcq_spots || 4}` : "Champion", tz && tz.kind === "major" ? "Points reset to 0" : "Qualifies for the Major"],
   ].map(([t, s], i) => `<div class="step ${i === at ? "on" : i < at ? "done" : ""}"><div class="t">${t}</div><div class="d">${esc(s)}</div></div>`).join("");
 
   const pts = c.standings.slice(0, 8);
@@ -565,13 +566,19 @@ function overview(d) {
     <div class="panel" style="margin-top:16px"><h3>Tournaments this year</h3>${tournamentList()}</div>`;
 }
 
+function consView(d) {
+  const c = d.consolation;
+  if (!c) return "";
+  return `<h2 style="margin-top:30px">Consolation bracket</h2><p class="note">For teams knocked out in the qualifier. Single elimination. The winner gets bonus RISER POINTS that leave them ${c.gap} behind last place in the main draw${c.bonus ? ` (+${c.bonus[0]}; runner-up +${c.bonus[1]})` : ""}.${c.champion ? ` Won by <b>${esc(c.champion)}</b>.` : ""}</p>
+    <div class="sect">${columns(c.matches, () => true)}</div>`;
+}
 function bracketView(d) {
-  if (!d.main) return `<h2>Main draw</h2><p class="note">Always double elimination: lose twice and you're out.</p><div class="empty">The main draw hasn't started yet.</div>`;
+  if (!d.main) return `<h2>Main draw</h2><p class="note">Always double elimination: lose twice and you're out.</p><div class="empty">The main draw hasn't started yet.</div>${consView(d)}`;
   const ms = d.main.matches;
   return `<h2>Main draw</h2><p class="note">Double elimination. Winners in green, losers in red. If the Lower bracket team wins the Grand Final, it resets for one more game.</p>
     <div class="sect"><div class="label">Upper bracket</div>${columns(ms, l => l.startsWith("Winners"))}</div>
     <div class="sect"><div class="label">Lower bracket</div>${columns(ms, l => l.startsWith("Losers")) || '<div class="empty">Starts after the first upper round.</div>'}</div>
-    <div class="sect"><div class="label">Grand final</div>${columns(ms, l => l.startsWith("Grand"))}</div>`;
+    <div class="sect"><div class="label">Grand final</div>${columns(ms, l => l.startsWith("Grand"))}</div>${consView(d)}`;
 }
 
 function game(m) {
@@ -724,11 +731,26 @@ function entryTeams(d) {
   return (tz.entrants || []).filter(Boolean).map(n => d.teams.find(t => t.name === n) || { name: n, players: [] });
 }
 
+function lcqChip(name) {
+  const l = D && D.tourney && D.tourney.lcq;
+  if (!l) return "";
+  return l.next_up.includes(name) ? '<span class="chip in">NEXT MAN UP</span>' : l.invited.includes(name) ? '<span class="chip q">INVITED</span>' : "";
+}
+function lcqNote(d) {
+  const tz = d.tourney, l = tz && tz.lcq;
+  if (!l) return "";
+  const line = l.line.length ? ` Next ${l.line.length} in line if a team drops: ${l.line.map(x => `<b>${esc(x.name)}</b> (${x.points})`).join(", ")}.` : "";
+  const pi = l.playin;
+  const piHtml = pi ? `<div class="panel" style="margin-top:12px"><h3>Play-in · ${pi.teams.length} teams tied at the cutoff for ${pi.spots} spot${pi.spots === 1 ? "" : "s"}</h3>
+    <p class="note">Single elimination. ${pi.winners.length ? `Into the LCQ: <b>${pi.winners.map(esc).join(", ")}</b>.` : "Win and you're in."}</p>
+    <div class="sect">${columns(pi.matches, () => true)}</div></div>` : "";
+  return piHtml + `<p class="note" style="color:var(--ink)"><b>Last Chance Qualifier:</b> invite-only. The next ${l.size || 8} teams${l.target != null ? ` under ${l.target} RISER POINTS` : ""} that haven't qualified are in, and the top ${tz.lcq_spots} go to the Major. If a team drops out or the count is odd, the next man up gets the spot.${line}</p>`;
+}
 function entryCard(t, i) {
   return `<div class="team">
     <div class="top"><span class="seedno">${i + 1}</span>${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div>${t.captain ? `<div class="cap">Captain · ${esc(t.captain)}</div>` : ""}</div></div>
     ${(t.players || []).length ? `<ul>${t.players.map(p => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
-    <div class="foot"><span class="pts">${t.points || 0}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span>' : ""}</span></div>
+    <div class="foot"><span class="pts">${t.points || 0}<small>RISER POINTS</small></span><span>${lcqChip(t.name)}${t.qualified ? '<span class="chip q">MAJOR</span>' : ""}</span></div>
   </div>`;
 }
 
@@ -747,7 +769,7 @@ function entriesView(d) {
   const tz = d.tourney;
   if (!entryTeams(d)) return `<h2>Entries</h2><div class="empty">No tournament is taking entries right now.</div>`;
   const ready = tz.open ? entryCounts(d).ready : [];
-  return `<h2>Entries</h2>${ready.length ? `<p class="note" style="color:var(--ink)">Not entered yet: ${ready.map(esc).join(", ")}. Captains, type <b>/register</b> in Discord.</p>` : ""}<p class="note">Teams entered in ${esc(tz.name)}${tz.kind === "major" ? " (Major)" : ""}, in the order they registered.${tz.open ? " Captains enter with <b>/register</b> in Discord." : ""}</p>${entriesPanel(d)}`;
+  return `<h2>Entries</h2>${ready.length ? `<p class="note" style="color:var(--ink)">Not entered yet: ${ready.map(esc).join(", ")}. Captains, type <b>/register</b> in Discord.</p>` : ""}${lcqNote(d)}<p class="note">Teams entered in ${esc(tz.name)}${tz.kind === "major" ? " (Major)" : tz.kind === "lcq" ? " (LCQ), invited by RISER POINTS" : ", in the order they registered"}.${tz.open ? " Captains enter with <b>/register</b> in Discord." : ""}</p>${entriesPanel(d)}`;
 }
 
 function teamsView(d) {
@@ -755,7 +777,7 @@ function teamsView(d) {
   return `<h2>Teams</h2><p class="note">${d.teams.length} complete rosters · click a player to open their Roblox profile</p><div class="teams">${d.teams.map(t => `<div class="team">
     <div class="top clickteam" data-team="${esc(t.name)}">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div><div class="cap">Captain · ${rbxLink(t.captain, t.captain)}</div></div></div>
     <ul>${(t.players || []).map(p => `<li>${rbxLink(p, p)}</li>`).join("")}</ul>
-    <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? '<span class="chip in">ENTERED</span>' : ""}</span></div>
+    <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? (lcqChip(t.name) || '<span class="chip in">ENTERED</span>') : ""}</span></div>
   </div>`).join("")}</div>`;
 }
 
@@ -775,7 +797,7 @@ function picker() {
   const bar = document.getElementById("tbar");
   if (!ts.length) { bar.innerHTML = ""; return; }
   const years = [...new Set(ts.map(t => t.year || new Date().getFullYear()))].sort((a, b) => b - a);
-  const opt = t => `<option value="${esc(t.id)}" ${t.id === VIEW ? "selected" : ""}>${t.current ? "Now: " : ""}${esc(t.name)}${t.kind === "major" ? " (Major)" : ""}${t.champion && !t.current ? " · won by " + esc(t.champion) : ""}</option>`;
+  const opt = t => `<option value="${esc(t.id)}" ${t.id === VIEW ? "selected" : ""}>${t.current ? "Now: " : ""}${esc(t.name)}${t.kind === "major" ? " (Major)" : t.kind === "lcq" ? " (LCQ)" : ""}${t.champion && !t.current ? " · won by " + esc(t.champion) : ""}</option>`;
   const cur = ts.find(t => t.id === VIEW);
   bar.innerHTML = `<label for="tsel">Tournament</label><select id="tsel">${years.map(y => `<optgroup label="${y}">${ts.filter(t => (t.year || new Date().getFullYear()) === y).map(opt).join("")}</optgroup>`).join("")}</select>
     ${VIEW !== "current" && cur ? `<span class="past">Viewing a past tournament<button data-view="current">back to now</button></span>` : ""}`;
@@ -867,7 +889,7 @@ function render() {
   document.title = (d.archived ? d.tourney.name + " · " : "") + (D.league || "ON THE RISE: PB CIRCUIT");
   document.getElementById("updated").textContent = d.updated ? "updated " + new Date(d.updated).toLocaleString() : "";
   MATCHES = {};
-  [...(d.main ? d.main.matches : []), ...(d.swiss ? d.swiss.matches : []), ...(d.groups ? d.groups.list.flatMap(g => g.matches) : [])]
+  [...(d.main ? d.main.matches : []), ...(d.consolation ? d.consolation.matches : []), ...(d.tourney && d.tourney.lcq && d.tourney.lcq.playin ? d.tourney.lcq.playin.matches : []), ...(d.swiss ? d.swiss.matches : []), ...(d.groups ? d.groups.list.flatMap(g => g.matches) : [])]
     .forEach(m => { MATCHES[m.id] = m; });
   const live = !d.archived && d.main ? d.main.matches.filter(m => m.ready).length : 0;
   const tabs = [["overview", "Overview"]];

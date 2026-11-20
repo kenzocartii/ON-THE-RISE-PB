@@ -491,7 +491,7 @@ function entryCounts(d) {
   const tz = d.tourney;
   if (!tz) return { entered: 0, ready: [] };
   const inn = new Set((tz.entrants || []).filter(Boolean));
-  const ready = (d.teams || []).filter(t => !inn.has(t.name) && (tz.kind !== "major" || t.qualified)).map(t => t.name);
+  const ready = (d.teams || []).filter(t => t.complete !== false && !inn.has(t.name) && (tz.kind !== "major" || t.qualified)).map(t => t.name);
   return { entered: inn.size, ready };
 }
 const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
@@ -537,7 +537,7 @@ function overview(d) {
       <div><div class="eyebrow">${d.champion ? "Champions" : "Points leader"}</div><div class="name">${esc(spotName)}</div>
       <div class="sub">${d.champion ? esc(tz ? tz.name : "") : leader.points + " RISER POINTS"}</div></div></div>` : "";
   const stats = [
-    ["Teams", d.teams.length, "complete rosters"],
+    ["Teams", d.teams.length, `${d.teams.filter(t => t.complete !== false).length} complete rosters`],
     ["Major target", c.needed != null ? c.needed : "TBA", "RISER POINTS"],
     ["Entered", tz ? tz.entrants.length : 0, tz ? (tz.open ? (entryCounts(d).ready.length ? `${entryCounts(d).ready.length} more ready to /register` : "entries open") : "entries closed") : "no tournament"],
     ["Live games", gameSplit(d).live.length || live.length, gameSplit(d).live.length ? "being played now" : live.length ? "ready to play" : "waiting"],
@@ -773,11 +773,13 @@ function entriesView(d) {
 }
 
 function teamsView(d) {
-  if (!d.teams.length) return `<h2>Teams</h2><div class="empty">No complete rosters yet. Teams show up once they have 5 players.</div>`;
-  return `<h2>Teams</h2><p class="note">${d.teams.length} complete rosters · click a player to open their Roblox profile</p><div class="teams">${d.teams.map(t => `<div class="team">
+  if (!d.teams.length) return `<h2>Teams</h2><div class="empty">No teams yet. Start one with /signup in Discord.</div>`;
+  const done = d.teams.filter(t => t.complete !== false).length, building = d.teams.length - done;
+  const list = [...d.teams].sort((a, b) => (b.complete !== false) - (a.complete !== false));
+  return `<h2>Teams</h2><p class="note">${done} complete${building ? ` · ${building} still building (need 5 players to enter tournaments)` : ""} · click a player to open their Roblox profile</p><div class="teams">${list.map(t => `<div class="team">
     <div class="top clickteam" data-team="${esc(t.name)}">${t.logo ? `<img src="${esc(t.logo)}" alt="">` : `<span class="ph">${esc(initials(t.name))}</span>`}<div><div class="nm">${esc(t.name)}</div><div class="cap">Captain · ${rbxLink(t.captain, t.captain)}</div></div></div>
     <ul>${(t.players || []).map(p => `<li>${rbxLink(p, p)}</li>`).join("")}</ul>
-    <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? (lcqChip(t.name) || '<span class="chip in">ENTERED</span>') : ""}</span></div>
+    <div class="foot"><span class="pts">${t.points}<small>RISER POINTS</small></span><span>${t.complete === false ? `<span class="chip o">BUILDING ${t.size}/5</span>` : ""}${t.qualified ? '<span class="chip q">MAJOR</span> ' : ""}${t.registered && d.tourney ? (lcqChip(t.name) || '<span class="chip in">ENTERED</span>') : ""}</span></div>
   </div>`).join("")}</div>`;
 }
 

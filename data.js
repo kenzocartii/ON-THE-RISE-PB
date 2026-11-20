@@ -1,11 +1,11 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T18:48:39+00:00",
+ "updated": "2026-11-20T19:28:10+00:00",
  "teams": [
   {
    "name": "336FN",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/287415d3bfe6.png",
    "captain": "Attorney (@attorney) \u00b7 C",
    "players": [
@@ -13,7 +13,8 @@ window.PBL_DATA = {
     "BreezyVert (@BalmainSpecialist) \u00b7 SG",
     "JusticeFor336 (@banbliqky) \u00b7 SF",
     "fhwz \u00b7 PF",
-    "spiduh (@ontuzo) \u00b7 SG"
+    "spiduh (@ontuzo) \u00b7 SG",
+    "wazzabi \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,
@@ -180,6 +181,12 @@ window.PBL_DATA = {
     {
      "name": "spiduh (@ontuzo)",
      "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "wazzabi",
+     "pos": "PG",
      "cap": false,
      "co": false
     }

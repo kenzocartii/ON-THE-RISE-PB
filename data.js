@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T21:25:53+00:00",
+ "updated": "2026-11-20T22:23:16+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -22,12 +22,11 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 3,
+   "size": 2,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
    "players": [
-    "Yacht (@hitaIicc) \u00b7 SG",
-    "rory (@comxfi) \u00b7 SG"
+    "Yacht (@hitaIicc) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -200,12 +199,6 @@ window.PBL_DATA = {
     },
     {
      "name": "Yacht (@hitaIicc)",
-     "pos": "SG",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "rory (@comxfi)",
      "pos": "SG",
      "cap": false,
      "co": false
@@ -869,20 +862,6 @@ window.PBL_DATA = {
    "activity": null
   },
   {
-   "name": "rory (@comxfi)",
-   "rbx": "@comxfi",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/f2e4688fc0c652765b0a9703d8155ae5.png?size=1024",
-   "pos": "SG",
-   "team": "Arctic Wolves",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "saii (@ittlya)",
    "rbx": "@ittlya",
    "rbx_id": null,
@@ -1107,15 +1086,7 @@ window.PBL_DATA = {
    "activity": null
   }
  ],
- "events": [
-  {
-   "kind": "signups",
-   "label": "Entries close \u00b7 OTR: TURKEY TAKEOVER",
-   "at": "2026-11-20T22:00:00+00:00",
-   "where": "/register in Discord",
-   "note": null
-  }
- ],
+ "events": [],
  "schedule": {
   "games": [],
   "recent": [],

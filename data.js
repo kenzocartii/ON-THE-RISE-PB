@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T22:23:16+00:00",
+ "updated": "2026-11-20T22:23:36+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -22,12 +22,10 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 2,
+   "size": 1,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
-   "players": [
-    "Yacht (@hitaIicc) \u00b7 SG"
-   ],
+   "players": [],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -195,12 +193,6 @@ window.PBL_DATA = {
      "name": "Shxfty",
      "pos": "PG",
      "cap": true,
-     "co": false
-    },
-    {
-     "name": "Yacht (@hitaIicc)",
-     "pos": "SG",
-     "cap": false,
      "co": false
     }
    ]
@@ -1050,20 +1042,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1012527844569645146/08094ee2d5db3640d19a748d307552e1.png?size=1024",
    "pos": "PF",
    "team": "BEASTCOAST",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "Yacht (@hitaIicc)",
-   "rbx": "@hitaIicc",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/205878662283788288/e3a0515d5000a3301522e31e93d74176.png?size=1024",
-   "pos": "SG",
-   "team": "Arctic Wolves",
    "role": "",
    "fa": false,
    "suspended": false,

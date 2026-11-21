@@ -1,11 +1,11 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T23:38:12+00:00",
+ "updated": "2026-11-21T23:48:53+00:00",
  "teams": [
   {
    "name": "336FN",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/287415d3bfe6.png",
    "captain": "Attorney (@attorney) \u00b7 C",
    "players": [
@@ -14,7 +14,8 @@ window.PBL_DATA = {
     "fhwz \u00b7 PF",
     "spiduh (@ontuzo) \u00b7 SG",
     "wazzabi \u00b7 PG",
-    "Cheonsoundcld (@Lurqqy) \u00b7 PF"
+    "Cheonsoundcld (@Lurqqy) \u00b7 PF",
+    "BippinInCali (@uufaailen) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -211,6 +212,12 @@ window.PBL_DATA = {
     {
      "name": "Cheonsoundcld (@Lurqqy)",
      "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "BippinInCali (@uufaailen)",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -865,6 +872,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/771890099348045825/4c12f0ef3fdfd7e23c6bccc8f8a4fcff.png?size=1024",
    "pos": "SF",
    "team": "Reapas",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "BippinInCali (@uufaailen)",
+   "rbx": "@uufaailen",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/1715c259aa05971be67b7fbc6dcfdd75.png?size=1024",
+   "pos": "SF",
+   "team": "336FN",
    "role": "",
    "fa": false,
    "suspended": false,

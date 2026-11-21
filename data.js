@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T21:19:11+00:00",
+ "updated": "2026-11-21T21:29:10+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -87,7 +87,7 @@ window.PBL_DATA = {
    "name": "DemBoyz",
    "complete": false,
    "size": 1,
-   "logo": "logos/b7830275568b.jpg",
+   "logo": "logos/19583417ae15.png",
    "captain": "Splashman2konYT \u00b7 C",
    "players": [],
    "points": 0,
@@ -358,7 +358,7 @@ window.PBL_DATA = {
    ]
   },
   "DemBoyz": {
-   "logo": "logos/b7830275568b.jpg",
+   "logo": "logos/19583417ae15.png",
    "points": 0,
    "complete": false,
    "qualified": false,

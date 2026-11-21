@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T22:55:37+00:00",
+ "updated": "2026-11-21T22:57:41+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -979,6 +979,20 @@ window.PBL_DATA = {
    "team": "Yore",
    "role": "",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Faygo (@Hunodesires)",
+   "rbx": "@Hunodesires",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1415533939564744745/a1d0f92270610079738d0eef18f96dcf.png?size=1024",
+   "pos": "PG",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

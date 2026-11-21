@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T21:29:37+00:00",
+ "updated": "2026-11-21T22:45:15+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1118,6 +1118,20 @@ window.PBL_DATA = {
    "team": "336FN",
    "role": "CC",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "MachineTear",
+   "rbx": "MachineTear",
+   "rbx_id": 8071047833,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-55B8B87D4B58328BC0FCD89DB7BA8D4F-Png/420/420/AvatarHeadshot/Png/noFilter",
+   "pos": "SF",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

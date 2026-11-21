@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:43:56+00:00",
+ "updated": "2026-11-21T01:14:31+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -553,11 +553,12 @@ window.PBL_DATA = {
    "Arctic Wolves"
   ]
  },
- "stage": null,
+ "stage": "drawing",
  "swiss": null,
  "groups": null,
  "main": null,
  "champion": null,
+ "draw_at": "2026-11-21T01:19:26+00:00",
  "games": [],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
@@ -1198,7 +1199,15 @@ window.PBL_DATA = {
    "activity": null
   }
  ],
- "events": [],
+ "events": [
+  {
+   "kind": "draw",
+   "label": "Live draw \u00b7 OTR: TURKEY TAKEOVER",
+   "at": "2026-11-21T01:19:26+00:00",
+   "where": "#bracket on Discord",
+   "live": true
+  }
+ ],
  "schedule": {
   "games": [],
   "recent": [],

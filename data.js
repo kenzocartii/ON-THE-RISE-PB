@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T22:58:59+00:00",
+ "updated": "2026-11-21T23:23:49+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -39,7 +39,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -47,7 +47,8 @@ window.PBL_DATA = {
     "WFRezkin3K \u00b7 PG",
     "IsoDrip (@lsoDrlp) \u00b7 PG",
     "Jayywuan \u00b7 PF",
-    "MachineTear \u00b7 SF"
+    "MachineTear \u00b7 SF",
+    "slayr (@DesiredBuiId) \u00b7 C"
    ],
    "points": 0,
    "qualified": false,
@@ -292,6 +293,12 @@ window.PBL_DATA = {
     {
      "name": "MachineTear",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "slayr (@DesiredBuiId)",
+     "pos": "C",
      "cap": false,
      "co": false
     }
@@ -1293,6 +1300,20 @@ window.PBL_DATA = {
    "pos": "PF",
    "team": "Elevation",
    "role": "CC",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "slayr (@DesiredBuiId)",
+   "rbx": "@DesiredBuiId",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/896502768775340042/f19fba3534591b5cd8bc9984076f4684.png?size=1024",
+   "pos": "C",
+   "team": "BallHog Elite",
+   "role": "",
    "fa": false,
    "suspended": false,
    "build": null,

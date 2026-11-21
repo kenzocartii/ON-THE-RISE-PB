@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T23:37:38+00:00",
+ "updated": "2026-11-21T23:38:02+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -39,7 +39,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -47,7 +47,8 @@ window.PBL_DATA = {
     "WFRezkin3K \u00b7 PG",
     "Jayywuan \u00b7 PF",
     "MachineTear \u00b7 SF",
-    "slayr (@DesiredBuiId) \u00b7 C"
+    "slayr (@DesiredBuiId) \u00b7 C",
+    "Skii (@braylen2rd) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -292,6 +293,12 @@ window.PBL_DATA = {
     {
      "name": "slayr (@DesiredBuiId)",
      "pos": "C",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Skii (@braylen2rd)",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -1279,6 +1286,20 @@ window.PBL_DATA = {
    "pos": "PF",
    "team": "Elevation",
    "role": "CC",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Skii (@braylen2rd)",
+   "rbx": "@braylen2rd",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
+   "pos": "SF",
+   "team": "BallHog Elite",
+   "role": "",
    "fa": false,
    "suspended": false,
    "build": null,

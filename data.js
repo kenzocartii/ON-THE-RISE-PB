@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T04:00:06+00:00",
+ "updated": "2026-11-21T04:03:23+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -713,21 +713,7 @@ window.PBL_DATA = {
    ]
   }
  },
- "games": [
-  {
-   "id": 4,
-   "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
-   "a": "BEASTCOAST",
-   "b": "BallHog Elite",
-   "time": "2026-11-22T04:00:00+00:00",
-   "stream": null,
-   "link": null,
-   "host": null,
-   "tracked": false,
-   "on_air": false,
-   "arena": null
-  }
- ],
+ "games": [],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
   "tournament": [],
@@ -1371,20 +1357,6 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 4,
-    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
-    "label": "Group B \u00b7 round 1",
-    "a": "BEASTCOAST",
-    "b": "BallHog Elite",
-    "time": "2026-11-22T04:00:00+00:00",
-    "deadline": "2026-11-23T01:20:44+00:00",
-    "stream": null,
-    "link": null,
-    "tracked": false,
-    "on_air": false,
-    "arena": null
-   },
-   {
     "id": 1,
     "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
     "label": "Group A \u00b7 round 1",
@@ -1392,6 +1364,20 @@ window.PBL_DATA = {
     "b": "336FN",
     "time": null,
     "deadline": "2026-11-23T01:20:38+00:00",
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   },
+   {
+    "id": 4,
+    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+    "label": "Group B \u00b7 round 1",
+    "a": "BEASTCOAST",
+    "b": "BallHog Elite",
+    "time": null,
+    "deadline": "2026-11-23T01:20:44+00:00",
     "stream": null,
     "link": null,
     "tracked": false,

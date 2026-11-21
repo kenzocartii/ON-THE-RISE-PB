@@ -1166,19 +1166,21 @@ function rulesView(d) {
   if (!r) return `<h2>Rules</h2><div class="empty">The rules will show here once the bot updates the website.</div>`;
   const slug = s => "r-" + s.toLowerCase().replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
   const title = t => t.replace(/^[^A-Za-z]+/, "");
+  const rpCard = r.cards.find(c => /RISER POINTS/i.test(c.title));  // shown inside the points card, not twice
+  const cards = r.cards.filter(c => c !== rpCard);
   const pts = String(r.points || "").split(" · ").map(x => x.trim().split(": ")).filter(x => x.length === 2);
   const facts = [["Major target", r.target != null ? r.target : "TBA", "RISER POINTS to qualify"], ["LCQ", `Next ${r.lcq_invites}`, `teams invited · top ${r.lcq_spots} go to the Major`],
     ["Champion", pts.length ? pts[0][1] : "—", "RISER POINTS for 1st"], ["Rosters", "5–8", "players, captain included"]];
   return `<h2>Rules</h2><p class="note">The full ON THE RISE rulebook. The same rules are posted in Discord. Questions? Open a ticket there.</p>
     <div class="stats">${facts.map(([k, v, s]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("")}</div>
-    <div class="rjump"><a href="#r-settings">Game settings</a><a href="#r-report">Reporting scores</a><a href="#r-points">Points table</a>${r.cards.map(c => `<a href="#${slug(title(c.title))}">${esc(title(c.title))}</a>`).join("")}</div>
+    <div class="rjump"><a href="#r-settings">Game settings</a><a href="#r-report">Reporting scores</a><a href="#r-points">RISER POINTS and Majors</a>${cards.map(c => `<a href="#${slug(title(c.title))}">${esc(title(c.title))}</a>`).join("")}</div>
     <div class="rgrid">
       <div class="rcard" id="r-settings" style="grid-column:1/-1"><h3>🏀 Game settings</h3><p class="note" style="margin:0 0 10px">Set every league game up like this before tip-off. Wrong settings? Restart before the first basket, or the result stands.</p>
         <div class="settings">${r.settings.map(([k, v]) => `<div><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join("")}</div></div>
       <div class="rcard" id="r-report"><h3>📊 Reporting the score</h3><ol>${r.report.map(x => `<li>${md(x)}</li>`).join("")}</ol></div>
-      <div class="rcard" id="r-points"><h3>⭐ RISER POINTS table</h3>${pts.length ? `<table><tbody>${pts.map(([k, v]) => `<tr><td>${esc(k.replace("-", "–"))}</td><td class="num"><b>${esc(v)}</b></td></tr>`).join("")}</tbody></table>` : '<p class="note">Posted when entries open.</p>'}
+      <div class="rcard" id="r-points"><h3>⭐ RISER POINTS and Majors</h3>${rpCard ? `<ol style="margin-bottom:14px">${rpCard.items.map(x => `<li>${md(x)}</li>`).join("")}</ol>` : ""}${pts.length ? `<table><tbody>${pts.map(([k, v]) => `<tr><td>${esc(k.replace("-", "–"))}</td><td class="num"><b>${esc(v)}</b></td></tr>`).join("")}</tbody></table>` : '<p class="note">Posted when entries open.</p>'}
         <p class="note" style="margin:10px 0 0">Last place in the main draw always gets ${r.cons_gap} more points than the consolation bracket winner.</p></div>
-      ${r.cards.map(c => `<div class="rcard" id="${slug(title(c.title))}"><h3>${esc(c.title)}</h3><ol>${c.items.map(x => `<li>${md(x)}</li>`).join("")}</ol>
+      ${cards.map(c => `<div class="rcard" id="${slug(title(c.title))}"><h3>${esc(c.title)}</h3><ol>${c.items.map(x => `<li>${md(x)}</li>`).join("")}</ol>
         ${/suspension/i.test(c.title) && r.suspensions ? `<p class="note" style="margin:12px 0 0"><b style="color:var(--ink)">Director of Enforcement:</b> ${esc(r.suspensions.enforcement.join(", "))}.<br><b style="color:var(--ink)">League Staff:</b> ${esc(r.suspensions.staff.join(", "))}.</p>` : ""}</div>`).join("")}
     </div>`;
 }

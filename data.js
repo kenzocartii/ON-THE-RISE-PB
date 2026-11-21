@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-20T22:34:19+00:00",
+ "updated": "2026-11-21T00:17:05+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -22,11 +22,12 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 2,
+   "size": 3,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
    "players": [
-    "eagle (@EagleTakeTheWheel) \u00b7 PF"
+    "eagle (@EagleTakeTheWheel) \u00b7 PF",
+    "juls (@oottaah) \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,
@@ -200,6 +201,12 @@ window.PBL_DATA = {
     {
      "name": "eagle (@EagleTakeTheWheel)",
      "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "juls (@oottaah)",
+     "pos": "PG",
      "cap": false,
      "co": false
     }
@@ -798,6 +805,20 @@ window.PBL_DATA = {
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FF5DFCF9D4623E42C1124CAD1144723C-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PF",
    "team": "BallHog Elite",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "juls (@oottaah)",
+   "rbx": "@oottaah",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/789615862352445461/b23aaece90604bee50a2a4c45287c3de.png?size=1024",
+   "pos": "PG",
+   "team": "Arctic Wolves",
    "role": "",
    "fa": false,
    "suspended": false,

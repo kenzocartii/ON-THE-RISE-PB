@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T16:42:35+00:00",
+ "updated": "2026-11-21T16:47:40+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -99,14 +99,15 @@ window.PBL_DATA = {
   {
    "name": "Nightrydas Elite",
    "complete": true,
-   "size": 5,
+   "size": 6,
    "logo": "logos/6a737592ee66.png",
    "captain": "slinger (@bigdr_p) \u00b7 PG",
    "players": [
     "Pete Maravich (@zendayalover756) \u00b7 PF",
     "Dougatron (@TheSkullMaster88) \u00b7 SG",
     "CJ0 (@PH2NTOMCJ) \u00b7 SF",
-    "ace (@acetweakin) \u00b7 SF"
+    "ace (@acetweakin) \u00b7 SF",
+    "isovert (@iisovertical) \u00b7 C"
    ],
    "points": 0,
    "qualified": false,
@@ -397,6 +398,12 @@ window.PBL_DATA = {
     {
      "name": "ace (@acetweakin)",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "isovert (@iisovertical)",
+     "pos": "C",
      "cap": false,
      "co": false
     }
@@ -960,6 +967,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1166463569764831333/0265c97bf92bdf0cf44f4332c4543863.png?size=1024",
    "pos": "PG",
    "team": "BallHog Elite",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "isovert (@iisovertical)",
+   "rbx": "@iisovertical",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/bcd8b4b35f84fe7e63cc438f41e7dfdc.png?size=1024",
+   "pos": "C",
+   "team": "Nightrydas Elite",
    "role": "",
    "fa": false,
    "suspended": false,

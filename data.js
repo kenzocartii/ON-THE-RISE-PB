@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T01:20:40+00:00",
+ "updated": "2026-11-21T03:39:13+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -713,7 +713,21 @@ window.PBL_DATA = {
    ]
   }
  },
- "games": [],
+ "games": [
+  {
+   "id": 4,
+   "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+   "a": "BEASTCOAST",
+   "b": "BallHog Elite",
+   "time": "2026-11-22T04:00:00+00:00",
+   "stream": null,
+   "link": null,
+   "host": null,
+   "tracked": false,
+   "on_air": false,
+   "arena": null
+  }
+ ],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
   "tournament": [],
@@ -1062,7 +1076,7 @@ window.PBL_DATA = {
    "name": "offyachest (@vbChief)",
    "rbx": "@vbChief",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/5ad18e514f4a7274d27b18df38a23630.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/9f09278061e814d3eda6486c03f1d215.png?size=1024",
    "pos": "C",
    "team": "BEASTCOAST",
    "role": "",
@@ -1357,13 +1371,13 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 1,
-    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
-    "label": "Group A \u00b7 round 1",
-    "a": "Arctic Wolves",
-    "b": "336FN",
-    "time": null,
-    "deadline": null,
+    "id": 4,
+    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+    "label": "Group B \u00b7 round 1",
+    "a": "BEASTCOAST",
+    "b": "BallHog Elite",
+    "time": "2026-11-22T04:00:00+00:00",
+    "deadline": "2026-11-23T01:20:44+00:00",
     "stream": null,
     "link": null,
     "tracked": false,
@@ -1371,13 +1385,13 @@ window.PBL_DATA = {
     "arena": null
    },
    {
-    "id": 4,
-    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
-    "label": "Group B \u00b7 round 1",
-    "a": "BEASTCOAST",
-    "b": "BallHog Elite",
+    "id": 1,
+    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
+    "label": "Group A \u00b7 round 1",
+    "a": "Arctic Wolves",
+    "b": "336FN",
     "time": null,
-    "deadline": null,
+    "deadline": "2026-11-23T01:20:38+00:00",
     "stream": null,
     "link": null,
     "tracked": false,

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T21:29:10+00:00",
+ "updated": "2026-11-21T21:29:37+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -84,7 +84,7 @@ window.PBL_DATA = {
    "registered": false
   },
   {
-   "name": "DemBoyz",
+   "name": "DemBoyz Elite",
    "complete": false,
    "size": 1,
    "logo": "logos/19583417ae15.png",
@@ -357,7 +357,7 @@ window.PBL_DATA = {
     }
    ]
   },
-  "DemBoyz": {
+  "DemBoyz Elite": {
    "logo": "logos/19583417ae15.png",
    "points": 0,
    "complete": false,
@@ -559,7 +559,7 @@ window.PBL_DATA = {
     "qualified": false
    },
    {
-    "team": "DemBoyz",
+    "team": "DemBoyz Elite",
     "points": 0,
     "qualified": false
    },
@@ -1283,7 +1283,7 @@ window.PBL_DATA = {
    "rbx_id": 2265224855,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-898A900BA75B07FA2D0C66C75E2A843C-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "C",
-   "team": "DemBoyz",
+   "team": "DemBoyz Elite",
    "role": "C",
    "fa": false,
    "suspended": false,

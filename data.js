@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:17:59+00:00",
+ "updated": "2026-11-21T00:19:40+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -22,12 +22,13 @@ window.PBL_DATA = {
   {
    "name": "Arctic Wolves",
    "complete": false,
-   "size": 3,
+   "size": 4,
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
    "players": [
     "eagle (@EagleTakeTheWheel) \u00b7 PF",
-    "juls (@oottaah) \u00b7 PG"
+    "juls (@oottaah) \u00b7 PG",
+    "Yacht (@hitaIicc) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -208,6 +209,12 @@ window.PBL_DATA = {
     {
      "name": "juls (@oottaah)",
      "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Yacht (@hitaIicc)",
+     "pos": "SG",
      "cap": false,
      "co": false
     }
@@ -1106,6 +1113,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1012527844569645146/08094ee2d5db3640d19a748d307552e1.png?size=1024",
    "pos": "PF",
    "team": "BEASTCOAST",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Yacht (@hitaIicc)",
+   "rbx": "@hitaIicc",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/205878662283788288/e3a0515d5000a3301522e31e93d74176.png?size=1024",
+   "pos": "SG",
+   "team": "Arctic Wolves",
    "role": "",
    "fa": false,
    "suspended": false,

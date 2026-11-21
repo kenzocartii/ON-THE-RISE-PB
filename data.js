@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T23:23:56+00:00",
+ "updated": "2026-11-21T23:37:38+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -39,13 +39,12 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 7,
+   "size": 6,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 PG",
-    "IsoDrip (@lsoDrlp) \u00b7 PG",
     "Jayywuan \u00b7 PF",
     "MachineTear \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C"
@@ -274,12 +273,6 @@ window.PBL_DATA = {
     },
     {
      "name": "WFRezkin3K",
-     "pos": "PG",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "IsoDrip (@lsoDrlp)",
      "pos": "PG",
      "cap": false,
      "co": false
@@ -1046,20 +1039,6 @@ window.PBL_DATA = {
    "rbx_id": 11304790412,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F10B7F2001D8AF030B0E64FD720C09AE-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "SG",
-   "team": "BallHog Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "IsoDrip (@lsoDrlp)",
-   "rbx": "@lsoDrlp",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1166463569764831333/0265c97bf92bdf0cf44f4332c4543863.png?size=1024",
-   "pos": "PG",
    "team": "BallHog Elite",
    "role": "",
    "fa": false,

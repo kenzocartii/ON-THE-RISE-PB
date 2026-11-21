@@ -335,10 +335,10 @@ ROLES = [
     ("Commissioner", 0xF1C40F, discord.Permissions(administrator=True), True),
     ("Director of Enforcement", 0x8E44AD, discord.Permissions(
         manage_messages=True, kick_members=True, moderate_members=True,
-        manage_roles=True, manage_nicknames=True), True),  # above League Staff: suspensions are theirs
+        manage_roles=True, manage_nicknames=True, mention_everyone=True), True),  # above League Staff: suspensions are theirs
     ("League Staff", 0xE74C3C, discord.Permissions(
         manage_messages=True, kick_members=True, moderate_members=True,
-        manage_roles=True, manage_nicknames=True), True),
+        manage_roles=True, manage_nicknames=True, mention_everyone=True), True),
     ("Referee", 0xE67E22, discord.Permissions.none(), True),
     ("Team Captain", 0x3498DB, discord.Permissions.none(), False),  # not hoisted: captains stay listed with their team
     ("Co-Captain", 0x5DADE2, discord.Permissions.none(), False),  # not shown as its own group in the member list
@@ -971,6 +971,10 @@ async def on_ready():
             await ensure_doe_role(guild)  # Director of Enforcement: made once, above League Staff
         except Exception as e:
             print(f"[{guild.name}] {DOE} role: {e}")
+        try:
+            await lock_everyone_pings(guild)  # @everyone/@here: League Staff and up, Media, Streamer only
+        except Exception as e:
+            print(f"[{guild.name}] everyone pings: {e}")
         try:
             n = await separate_team_roles(guild)
             if n:
@@ -1647,6 +1651,59 @@ DOE = "Director of Enforcement"
 def is_enforcer(member) -> bool:
     """Who can hand out and lift suspensions: the Director of Enforcement, or Commissioner and above."""
     return is_commissioner(member) or any(r.name == DOE for r in getattr(member, "roles", []))
+
+
+PING_ROLES = ("Media", "Streamer")  # below League Staff, but still allowed to use @everyone / @here
+
+
+def may_ping_everyone(guild: discord.Guild, r: discord.Role) -> bool:
+    """League Staff and every role above it, plus Media and Streamer."""
+    ls = role(guild, "League Staff")
+    if r.name in PING_ROLES or r.permissions.administrator:
+        return True
+    return ls is not None and r.position >= ls.position
+
+
+async def lock_everyone_pings(guild: discord.Guild) -> list[str]:
+    """Only League Staff and up, Media and Streamer can @everyone / @here. Everyone else loses it, in the role
+    settings and in any channel that had it turned on for them. Returns what changed."""
+    changed = []
+    top = guild.me.top_role.position
+    for r in guild.roles:
+        if r.managed or r.position >= top:
+            continue  # bot roles, and roles above the bot (the bot can't edit those)
+        want = may_ping_everyone(guild, r) and not r.is_default()
+        if r.permissions.mention_everyone != want:
+            if not want or r.name in PING_ROLES or r.name in ("League Staff", DOE):
+                perms = discord.Permissions(r.permissions.value)
+                perms.mention_everyone = want
+                try:
+                    await r.edit(permissions=perms, reason="@everyone pings: League Staff and up, Media, Streamer only")
+                    changed.append(f"{'+' if want else '-'} {r.name}")
+                    await asyncio.sleep(0.4)
+                except discord.HTTPException:
+                    pass
+    for ch in guild.channels:  # channel settings can't turn it back on for anyone else
+        for target, ow in list(ch.overwrites.items()):
+            if ow.mention_everyone is not True:
+                continue
+            if isinstance(target, discord.Role):
+                ok = may_ping_everyone(guild, target) and not target.is_default()
+            else:
+                ok = is_staff(target) or any(x.name in PING_ROLES for x in getattr(target, "roles", []))
+            if not ok:
+                ow.mention_everyone = None
+                try:
+                    await ch.set_permissions(target, overwrite=ow, reason="@everyone pings locked down")
+                    changed.append(f"#{ch.name}: {getattr(target, 'name', target)}")
+                    await asyncio.sleep(0.4)
+                except discord.HTTPException:
+                    pass
+    if not guild.me.guild_permissions.mention_everyone and not guild.me.guild_permissions.administrator:
+        print(f"[{guild.name}] The bot's own role can't @everyone: turn on 'Mention @everyone' for it.")
+    if changed:
+        print(f"[{guild.name}] @everyone pings: " + ", ".join(changed))
+    return changed
 
 
 async def ensure_doe_role(guild: discord.Guild):
@@ -7050,6 +7107,10 @@ async def mediasetup(interaction: discord.Interaction):
                                         reason="Media setup")
             except discord.HTTPException:
                 pass
+    try:
+        await lock_everyone_pings(guild)
+    except Exception as e:
+        print(f"[everyone pings] {e}")
     data = load_data()
     s = guild_signups(data, guild.id)
     c = media(s)["chans"]

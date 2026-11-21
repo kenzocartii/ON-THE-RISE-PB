@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T22:47:17+00:00",
+ "updated": "2026-11-21T22:47:53+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1143,7 +1143,7 @@ window.PBL_DATA = {
    "suspended": false,
    "build": null,
    "ovr": 99,
-   "activity": null
+   "activity": 9
   },
   {
    "name": "NIZLE (@Jioquick)",

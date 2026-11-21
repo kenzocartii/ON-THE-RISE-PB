@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T04:03:58+00:00",
+ "updated": "2026-11-21T08:19:27+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -54,7 +54,7 @@ window.PBL_DATA = {
   {
    "name": "BEASTCOAST",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/43b1e3b4ffb2.png",
    "captain": "colin \u00b7 PG",
    "players": [
@@ -62,7 +62,8 @@ window.PBL_DATA = {
     "tony (@NiceOneTonyy) \u00b7 SG",
     "offyachest (@vbChief) \u00b7 C",
     "sunny (@dummy_fresh) \u00b7 PG",
-    "saii (@ittlya) \u00b7 SG"
+    "saii (@ittlya) \u00b7 SG",
+    "zlo (@maybakks) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -305,6 +306,12 @@ window.PBL_DATA = {
     },
     {
      "name": "saii (@ittlya)",
+     "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "zlo (@maybakks)",
      "pos": "SG",
      "cap": false,
      "co": false
@@ -1076,7 +1083,7 @@ window.PBL_DATA = {
    "name": "Pete Maravich (@zendayalover756)",
    "rbx": "@zendayalover756",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/544293323423350784/1f133d1d488143011befd6303f3f1d70.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/544293323423350784/8d10bccf8aa8222bf35751f344751da9.png?size=1024",
    "pos": "PF",
    "team": "Nightrydas Elite",
    "role": "",
@@ -1345,6 +1352,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/872182943899058248/92545d2ba8b60e727420cb54bbc3acde.png?size=1024",
    "pos": "SF",
    "team": "Elevation",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "zlo (@maybakks)",
+   "rbx": "@maybakks",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/558505939913670666/a_8eb85432b985e83d9b887ad0e36e3e06.gif?size=1024",
+   "pos": "SG",
+   "team": "BEASTCOAST",
    "role": "",
    "fa": false,
    "suspended": false,

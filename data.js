@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T22:47:53+00:00",
+ "updated": "2026-11-21T22:55:37+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -39,14 +39,15 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 5,
+   "size": 6,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 PG",
     "IsoDrip (@lsoDrlp) \u00b7 PG",
-    "Jayywuan \u00b7 PF"
+    "Jayywuan \u00b7 PF",
+    "MachineTear \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -284,6 +285,12 @@ window.PBL_DATA = {
     {
      "name": "Jayywuan",
      "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "MachineTear",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -1137,9 +1144,9 @@ window.PBL_DATA = {
    "rbx_id": 8071047833,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-55B8B87D4B58328BC0FCD89DB7BA8D4F-Png/420/420/AvatarHeadshot/Png/noFilter",
    "pos": "SF",
-   "team": null,
+   "team": "BallHog Elite",
    "role": "",
-   "fa": true,
+   "fa": false,
    "suspended": false,
    "build": null,
    "ovr": 99,

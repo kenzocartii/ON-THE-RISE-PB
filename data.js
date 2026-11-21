@@ -1,11 +1,11 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T21:10:05+00:00",
+ "updated": "2026-11-21T21:10:26+00:00",
  "teams": [
   {
    "name": "336FN",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/287415d3bfe6.png",
    "captain": "Attorney (@attorney) \u00b7 C",
    "players": [
@@ -13,7 +13,8 @@ window.PBL_DATA = {
     "JusticeFor336 (@banbliqky) \u00b7 SF",
     "fhwz \u00b7 PF",
     "spiduh (@ontuzo) \u00b7 SG",
-    "wazzabi \u00b7 PG"
+    "wazzabi \u00b7 PG",
+    "Cheonsoundcld (@Lurqqy) \u00b7 PF"
    ],
    "points": 0,
    "qualified": false,
@@ -188,6 +189,12 @@ window.PBL_DATA = {
     {
      "name": "wazzabi",
      "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Cheonsoundcld (@Lurqqy)",
+     "pos": "PF",
      "cap": false,
      "co": false
     }
@@ -827,6 +834,20 @@ window.PBL_DATA = {
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2463DB3438C6A84C4B19EB042CAE0852-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PG",
    "team": "Yore",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Cheonsoundcld (@Lurqqy)",
+   "rbx": "@Lurqqy",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1007666677544128594/116b5c189654afe2026744869045a05d.png?size=1024",
+   "pos": "PF",
+   "team": "336FN",
    "role": "",
    "fa": false,
    "suspended": false,

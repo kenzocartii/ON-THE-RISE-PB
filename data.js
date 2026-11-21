@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T08:19:37+00:00",
+ "updated": "2026-11-21T16:42:35+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -106,7 +106,7 @@ window.PBL_DATA = {
     "Pete Maravich (@zendayalover756) \u00b7 PF",
     "Dougatron (@TheSkullMaster88) \u00b7 SG",
     "CJ0 (@PH2NTOMCJ) \u00b7 SF",
-    "ace (@acetweakin) \u00b7 PG"
+    "ace (@acetweakin) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -396,7 +396,7 @@ window.PBL_DATA = {
     },
     {
      "name": "ace (@acetweakin)",
-     "pos": "PG",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -748,7 +748,7 @@ window.PBL_DATA = {
    "rbx": "@acetweakin",
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/670839744326008833/75a7b6ece7153b0ecf97b79023f82fe5.png?size=1024",
-   "pos": "PG",
+   "pos": "SF",
    "team": "Nightrydas Elite",
    "role": "",
    "fa": false,
@@ -1265,7 +1265,7 @@ window.PBL_DATA = {
    "name": "wazzabi",
    "rbx": "wazzabi",
    "rbx_id": 965664,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D988D7499459C67D469E51965125134E-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C3C5D38ABDD4B075B3508527F832A1D3-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PG",
    "team": "336FN",
    "role": "",

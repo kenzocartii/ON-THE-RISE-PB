@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:17:05+00:00",
+ "updated": "2026-11-21T00:17:51+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -126,7 +126,7 @@ window.PBL_DATA = {
   {
    "name": "Yore",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
@@ -134,7 +134,8 @@ window.PBL_DATA = {
     "raz (@razeyrazeyrazey) \u00b7 SG",
     "eric (@buklau_18) \u00b7 SF",
     "colden (@buklau_09) \u00b7 SF",
-    "buklau_99 \u00b7 PG"
+    "buklau_99 \u00b7 PG",
+    "JOAO (@ZTK0611) \u00b7 C"
    ],
    "points": 0,
    "qualified": false,
@@ -443,6 +444,12 @@ window.PBL_DATA = {
     {
      "name": "buklau_99",
      "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "JOAO (@ZTK0611)",
+     "pos": "C",
      "cap": false,
      "co": false
     }
@@ -805,6 +812,20 @@ window.PBL_DATA = {
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FF5DFCF9D4623E42C1124CAD1144723C-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PF",
    "team": "BallHog Elite",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "JOAO (@ZTK0611)",
+   "rbx": "@ZTK0611",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1337522961766420582/bf53cf8451c6f6720e568331be7a4638.png?size=1024",
+   "pos": "C",
+   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:19:58+00:00",
+ "updated": "2026-11-21T00:21:43+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -33,7 +33,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": false
+   "registered": true
   },
   {
    "name": "BallHog Elite",
@@ -536,7 +536,8 @@ window.PBL_DATA = {
    "Nightrydas Elite",
    "BEASTCOAST",
    "BallHog Elite",
-   "Reapas"
+   "Reapas",
+   "Arctic Wolves"
   ]
  },
  "stage": "signups",
@@ -1397,7 +1398,7 @@ window.PBL_DATA = {
    "logo": "logos/170d683d7317.png",
    "date": null,
    "champion": null,
-   "teams": 6,
+   "teams": 7,
    "current": true
   }
  ]

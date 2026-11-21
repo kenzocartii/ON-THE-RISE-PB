@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T22:47:09+00:00",
+ "updated": "2026-11-21T22:47:17+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -86,10 +86,12 @@ window.PBL_DATA = {
   {
    "name": "DemBoyz Elite",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/19583417ae15.png",
    "captain": "Splashman2konYT \u00b7 C",
-   "players": [],
+   "players": [
+    "GOM60 (@Marlesgardener) \u00b7 SF"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -367,6 +369,12 @@ window.PBL_DATA = {
      "name": "Splashman2konYT",
      "pos": "C",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "GOM60 (@Marlesgardener)",
+     "pos": "SF",
+     "cap": false,
      "co": false
     }
    ]
@@ -989,9 +997,9 @@ window.PBL_DATA = {
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/1546705313804189770/5393df99cd921e043515065eba00c99a.png?size=1024",
    "pos": "SF",
-   "team": null,
+   "team": "DemBoyz Elite",
    "role": "",
-   "fa": true,
+   "fa": false,
    "suspended": false,
    "build": null,
    "ovr": null,

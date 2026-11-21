@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:34:22+00:00",
+ "updated": "2026-11-21T00:43:56+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -124,7 +124,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": true
+   "registered": false
   },
   {
    "name": "Yore",
@@ -537,8 +537,8 @@ window.PBL_DATA = {
  "tourney": {
   "name": "OTR: TURKEY TAKEOVER",
   "kind": "event",
-  "open": true,
-  "closes": "Friday at 5 PM EST",
+  "open": false,
+  "closes": null,
   "logo": "logos/170d683d7317.png",
   "winner_qualifies": false,
   "lcq_spots": null,
@@ -550,11 +550,10 @@ window.PBL_DATA = {
    "Nightrydas Elite",
    "BEASTCOAST",
    "BallHog Elite",
-   "Reapas",
    "Arctic Wolves"
   ]
  },
- "stage": "signups",
+ "stage": null,
  "swiss": null,
  "groups": null,
  "main": null,
@@ -1426,7 +1425,7 @@ window.PBL_DATA = {
    "logo": "logos/170d683d7317.png",
    "date": null,
    "champion": null,
-   "teams": 7,
+   "teams": 6,
    "current": true
   }
  ]

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T21:10:26+00:00",
+ "updated": "2026-11-21T21:19:11+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -79,6 +79,17 @@ window.PBL_DATA = {
    "players": [
     "Ayy3 (@elvis7788) \u00b7 PF"
    ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
+   "name": "DemBoyz",
+   "complete": false,
+   "size": 1,
+   "logo": "logos/b7830275568b.jpg",
+   "captain": "Splashman2konYT \u00b7 C",
+   "players": [],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -346,6 +357,20 @@ window.PBL_DATA = {
     }
    ]
   },
+  "DemBoyz": {
+   "logo": "logos/b7830275568b.jpg",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "Splashman2konYT",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
   "Elevation": {
    "logo": "logos/824c0d888428.png",
    "points": 0,
@@ -530,6 +555,11 @@ window.PBL_DATA = {
    },
    {
     "team": "DEADEND",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "DemBoyz",
     "points": 0,
     "qualified": false
    },
@@ -845,7 +875,7 @@ window.PBL_DATA = {
    "name": "Cheonsoundcld (@Lurqqy)",
    "rbx": "@Lurqqy",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1007666677544128594/116b5c189654afe2026744869045a05d.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1007666677544128594/ee686f89d638bfc1222cddf9b8d39ae9.png?size=1024",
    "pos": "PF",
    "team": "336FN",
    "role": "",
@@ -1241,6 +1271,20 @@ window.PBL_DATA = {
    "pos": "SG",
    "team": "336FN",
    "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Splashman2konYT",
+   "rbx": "Splashman2konYT",
+   "rbx_id": 2265224855,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-898A900BA75B07FA2D0C66C75E2A843C-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "pos": "C",
+   "team": "DemBoyz",
+   "role": "C",
    "fa": false,
    "suspended": false,
    "build": null,

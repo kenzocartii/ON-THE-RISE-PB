@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T01:14:31+00:00",
+ "updated": "2026-11-21T01:20:40+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -553,12 +553,166 @@ window.PBL_DATA = {
    "Arctic Wolves"
   ]
  },
- "stage": "drawing",
+ "stage": "groups",
  "swiss": null,
- "groups": null,
+ "groups": {
+  "advance": 2,
+  "size": 3,
+  "list": [
+   {
+    "name": "Group A",
+    "table": [
+     {
+      "team": "Arctic Wolves",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     },
+     {
+      "team": "336FN",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     },
+     {
+      "team": "Yore",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     }
+    ],
+    "matches": [
+     {
+      "id": 1,
+      "round": 1,
+      "a": "Arctic Wolves",
+      "b": "336FN",
+      "winner": null,
+      "score": null,
+      "box": []
+     },
+     {
+      "id": 2,
+      "round": 2,
+      "a": "Yore",
+      "b": "336FN",
+      "winner": null,
+      "score": null,
+      "box": []
+     },
+     {
+      "id": 3,
+      "round": 3,
+      "a": "Yore",
+      "b": "Arctic Wolves",
+      "winner": null,
+      "score": null,
+      "box": []
+     }
+    ]
+   },
+   {
+    "name": "Group B",
+    "table": [
+     {
+      "team": "BEASTCOAST",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     },
+     {
+      "team": "Nightrydas Elite",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     },
+     {
+      "team": "BallHog Elite",
+      "w": 0,
+      "l": 0,
+      "pd": 0,
+      "qualified": false
+     }
+    ],
+    "matches": [
+     {
+      "id": 4,
+      "round": 1,
+      "a": "BEASTCOAST",
+      "b": "BallHog Elite",
+      "winner": null,
+      "score": null,
+      "box": []
+     },
+     {
+      "id": 5,
+      "round": 2,
+      "a": "Nightrydas Elite",
+      "b": "BallHog Elite",
+      "winner": null,
+      "score": null,
+      "box": []
+     },
+     {
+      "id": 6,
+      "round": 3,
+      "a": "Nightrydas Elite",
+      "b": "BEASTCOAST",
+      "winner": null,
+      "score": null,
+      "box": []
+     }
+    ]
+   }
+  ]
+ },
  "main": null,
  "champion": null,
- "draw_at": "2026-11-21T01:19:26+00:00",
+ "draw": {
+  "seeds": [
+   "Nightrydas Elite",
+   "Yore"
+  ],
+  "pd": {
+   "BallHog Elite": 0,
+   "336FN": 0,
+   "BEASTCOAST": 0,
+   "Nightrydas Elite": 0,
+   "Yore": 0,
+   "Arctic Wolves": 0
+  },
+  "rec": {
+   "BallHog Elite": [
+    0,
+    0
+   ],
+   "336FN": [
+    0,
+    0
+   ],
+   "BEASTCOAST": [
+    0,
+    0
+   ],
+   "Nightrydas Elite": [
+    0,
+    0
+   ],
+   "Yore": [
+    0,
+    0
+   ],
+   "Arctic Wolves": [
+    0,
+    0
+   ]
+  }
+ },
  "games": [],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
@@ -1199,17 +1353,38 @@ window.PBL_DATA = {
    "activity": null
   }
  ],
- "events": [
-  {
-   "kind": "draw",
-   "label": "Live draw \u00b7 OTR: TURKEY TAKEOVER",
-   "at": "2026-11-21T01:19:26+00:00",
-   "where": "#bracket on Discord",
-   "live": true
-  }
- ],
+ "events": [],
  "schedule": {
-  "games": [],
+  "games": [
+   {
+    "id": 1,
+    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
+    "label": "Group A \u00b7 round 1",
+    "a": "Arctic Wolves",
+    "b": "336FN",
+    "time": null,
+    "deadline": null,
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   },
+   {
+    "id": 4,
+    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+    "label": "Group B \u00b7 round 1",
+    "a": "BEASTCOAST",
+    "b": "BallHog Elite",
+    "time": null,
+    "deadline": null,
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   }
+  ],
   "recent": [],
   "preset": {
    "time": "18:00",

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:24:09+00:00",
+ "updated": "2026-11-21T00:34:12+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -129,7 +129,7 @@ window.PBL_DATA = {
   {
    "name": "Yore",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
@@ -138,7 +138,8 @@ window.PBL_DATA = {
     "eric (@buklau_18) \u00b7 SF",
     "colden (@buklau_09) \u00b7 SF",
     "buklau_99 \u00b7 PG",
-    "JOAO (@ZTK0611) \u00b7 C"
+    "JOAO (@ZTK0611) \u00b7 C",
+    "red (@SemperDominus) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -471,6 +472,12 @@ window.PBL_DATA = {
     {
      "name": "JOAO (@ZTK0611)",
      "pos": "C",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "red (@SemperDominus)",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -931,6 +938,20 @@ window.PBL_DATA = {
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/1416934849993773167/7592e708b6cff1b1739c3c85efe6300d.png?size=1024",
    "pos": "SG",
+   "team": "Yore",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "red (@SemperDominus)",
+   "rbx": "@SemperDominus",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/508676221069164545/9dd7e40a8c8207cbc17c002b1a3e9951.png?size=1024",
+   "pos": "SF",
    "team": "Yore",
    "role": "",
    "fa": false,

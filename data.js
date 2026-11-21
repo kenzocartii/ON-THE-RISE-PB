@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T16:47:51+00:00",
+ "updated": "2026-11-21T21:10:05+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1384,7 +1384,7 @@ window.PBL_DATA = {
    "name": "zlo (@maybakks)",
    "rbx": "@maybakks",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/558505939913670666/a_8eb85432b985e83d9b887ad0e36e3e06.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/558505939913670666/8eb85432b985e83d9b887ad0e36e3e06.png?size=1024",
    "pos": "SG",
    "team": "BEASTCOAST",
    "role": "",

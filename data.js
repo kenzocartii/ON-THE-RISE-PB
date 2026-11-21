@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T00:21:43+00:00",
+ "updated": "2026-11-21T00:24:09+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -114,12 +114,13 @@ window.PBL_DATA = {
   {
    "name": "Reapas",
    "complete": false,
-   "size": 3,
+   "size": 4,
    "logo": "logos/ff5187ab624b.jpg",
    "captain": "j_shbrady (@JoshBradyIV) \u00b7 C",
    "players": [
     "bbcbuffet (@rf_hz) \u00b7 SF",
-    "TheGreatestMosser (@3DJohnson) \u00b7 SF"
+    "TheGreatestMosser (@3DJohnson) \u00b7 SF",
+    "NIZLE (@Jioquick) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -414,6 +415,12 @@ window.PBL_DATA = {
     {
      "name": "TheGreatestMosser (@3DJohnson)",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "NIZLE (@Jioquick)",
+     "pos": "SG",
      "cap": false,
      "co": false
     }
@@ -882,9 +889,9 @@ window.PBL_DATA = {
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/1562874379925200947/4c15884a5b74b7a2772fe6f30c7391c5.png?size=1024",
    "pos": "SG",
-   "team": null,
+   "team": "Reapas",
    "role": "",
-   "fa": true,
+   "fa": false,
    "suspended": false,
    "build": null,
    "ovr": null,

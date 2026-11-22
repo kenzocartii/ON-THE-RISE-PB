@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T01:23:49+00:00",
+ "updated": "2026-11-22T01:24:08+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -89,11 +89,12 @@ window.PBL_DATA = {
   {
    "name": "DemBoyz Elite",
    "complete": false,
-   "size": 2,
+   "size": 3,
    "logo": "logos/19583417ae15.png",
    "captain": "Splashman2konYT \u00b7 C",
    "players": [
-    "GOM60 (@Marlesgardener) \u00b7 SF"
+    "GOM60 (@Marlesgardener) \u00b7 SF",
+    "Jaywadis (@Just_JayPlaying) \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,
@@ -396,6 +397,12 @@ window.PBL_DATA = {
     {
      "name": "GOM60 (@Marlesgardener)",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Jaywadis (@Just_JayPlaying)",
+     "pos": "PG",
      "cap": false,
      "co": false
     }
@@ -1111,6 +1118,20 @@ window.PBL_DATA = {
    "pos": "",
    "team": "BallHog Elite",
    "role": "C",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Jaywadis (@Just_JayPlaying)",
+   "rbx": "@Just_JayPlaying",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1154980166351728670/869e0236248b48821b50dc039786201a.png?size=1024",
+   "pos": "PG",
+   "team": "DemBoyz Elite",
+   "role": "",
    "fa": false,
    "suspended": false,
    "build": null,

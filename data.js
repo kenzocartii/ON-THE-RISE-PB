@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T01:27:26+00:00",
+ "updated": "2026-11-22T01:27:46+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -88,14 +88,15 @@ window.PBL_DATA = {
   },
   {
    "name": "DemBoyz Elite",
-   "complete": false,
-   "size": 4,
+   "complete": true,
+   "size": 5,
    "logo": "logos/19583417ae15.png",
    "captain": "Splashman2konYT \u00b7 C",
    "players": [
     "GOM60 (@Marlesgardener) \u00b7 SF",
     "Jaywadis (@Just_JayPlaying) \u00b7 PG",
-    "wel (@wel1of1) \u00b7 PG"
+    "wel (@wel1of1) \u00b7 PG",
+    "\u30c6\u30a3\u30e2\u30b7\u30fc (@LeTimTimJames) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -386,7 +387,7 @@ window.PBL_DATA = {
   "DemBoyz Elite": {
    "logo": "logos/19583417ae15.png",
    "points": 0,
-   "complete": false,
+   "complete": true,
    "qualified": false,
    "players": [
     {
@@ -410,6 +411,12 @@ window.PBL_DATA = {
     {
      "name": "wel (@wel1of1)",
      "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "\u30c6\u30a3\u30e2\u30b7\u30fc (@LeTimTimJames)",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -1572,6 +1579,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/558505939913670666/8eb85432b985e83d9b887ad0e36e3e06.png?size=1024",
    "pos": "SG",
    "team": "BEASTCOAST",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "\u30c6\u30a3\u30e2\u30b7\u30fc (@LeTimTimJames)",
+   "rbx": "@LeTimTimJames",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1382425241200103424/eaf50cc53fdad4db6ca0b25a0a5b7935.png?size=1024",
+   "pos": "SF",
+   "team": "DemBoyz Elite",
    "role": "",
    "fa": false,
    "suspended": false,

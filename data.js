@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:56:41+00:00",
+ "updated": "2026-11-22T05:50:37+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -904,7 +904,7 @@ window.PBL_DATA = {
    "name": "BippinInCali (@uufaailen)",
    "rbx": "@uufaailen",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/1715c259aa05971be67b7fbc6dcfdd75.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/bbbe75a585d337049c77b9ab1242a91c.png?size=1024",
    "pos": "SF",
    "team": "336FN",
    "role": "",
@@ -1100,7 +1100,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/bcd8b4b35f84fe7e63cc438f41e7dfdc.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/19dbe1ac3d958534233ee1c5defe9301.png?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -1831,14 +1831,8 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 3,
+  "queue": 2,
   "queue_list": [
-   {
-    "player": "colin",
-    "pos": "PG",
-    "rr": "placements 0/3",
-    "rank": "Unranked"
-   },
    {
     "player": "WFRezkin3K",
     "pos": "SF",

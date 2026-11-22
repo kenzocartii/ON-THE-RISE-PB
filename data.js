@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:38:26+00:00",
+ "updated": "2026-11-22T02:51:20+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1831,7 +1831,7 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 2,
+  "queue": 3,
   "queue_list": [
    {
     "player": "colin",
@@ -1842,6 +1842,12 @@ window.PBL_DATA = {
    {
     "player": "WFRezkin3K",
     "pos": "SF",
+    "rr": "placements 0/3",
+    "rank": "Unranked"
+   },
+   {
+    "player": "egoVoltic",
+    "pos": "C",
     "rr": "placements 0/3",
     "rank": "Unranked"
    }
@@ -1918,6 +1924,20 @@ window.PBL_DATA = {
     "player": "WFRezkin3K",
     "pos": "SF",
     "avatar": "https://cdn.discordapp.com/avatars/759116360298528818/9b7d8e66d3d0b56cb1ae00f5d1a7abfb.png?size=1024",
+    "rr": 900,
+    "placed": false,
+    "games": 0,
+    "streak": 0,
+    "rank": "Gold",
+    "div": 1,
+    "inside": 0,
+    "w": 0,
+    "l": 0
+   },
+   {
+    "player": "egoVoltic",
+    "pos": "C",
+    "avatar": "https://cdn.discordapp.com/avatars/725442060005539900/3cb99636916b904f90f776db48a7c2e8.png?size=1024",
     "rr": 900,
     "placed": false,
     "games": 0,

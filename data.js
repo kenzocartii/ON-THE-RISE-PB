@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T01:27:46+00:00",
+ "updated": "2026-11-22T01:38:10+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -46,7 +46,7 @@ window.PBL_DATA = {
    "players": [
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 PG",
-    "Jayywuan \u00b7 PF",
+    "Player \u00b7 PF",
     "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SF"
@@ -289,7 +289,7 @@ window.PBL_DATA = {
      "co": false
     },
     {
-     "name": "Jayywuan",
+     "name": "Player",
      "pos": "PF",
      "cap": false,
      "co": false
@@ -1153,20 +1153,6 @@ window.PBL_DATA = {
    "activity": null
   },
   {
-   "name": "Jayywuan",
-   "rbx": "Jayywuan",
-   "rbx_id": 79441277,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FF5DFCF9D4623E42C1124CAD1144723C-Png/150/150/AvatarHeadshot/Png/noFilter",
-   "pos": "PF",
-   "team": "BallHog Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "JOAO (@ZTK0611)",
    "rbx": "@ZTK0611",
    "rbx_id": null,
@@ -1845,8 +1831,15 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 0,
-  "queue_list": [],
+  "queue": 1,
+  "queue_list": [
+   {
+    "player": "wydherbo (@dontlosesleep)",
+    "pos": "PF",
+    "rr": "placements 0/3",
+    "rank": "Unranked"
+   }
+  ],
   "ranks": [
    [
     "Iron",
@@ -1891,6 +1884,20 @@ window.PBL_DATA = {
     "player": "colin",
     "pos": "PG",
     "avatar": "https://cdn.discordapp.com/avatars/247125560592039936/a_2383e3ae22705f13b7d79c8dd5ea3447.gif?size=1024",
+    "rr": 900,
+    "placed": false,
+    "games": 0,
+    "streak": 0,
+    "rank": "Gold",
+    "div": 1,
+    "inside": 0,
+    "w": 0,
+    "l": 0
+   },
+   {
+    "player": "wydherbo (@dontlosesleep)",
+    "pos": "PF",
+    "avatar": "https://cdn.discordapp.com/avatars/1480987974836686920/65f2f8577018664237f50c8e0d56c904.png?size=1024",
     "rr": 900,
     "placed": false,
     "games": 0,

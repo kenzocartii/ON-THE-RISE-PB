@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T01:38:10+00:00",
+ "updated": "2026-11-22T01:39:16+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1831,15 +1831,8 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 1,
-  "queue_list": [
-   {
-    "player": "wydherbo (@dontlosesleep)",
-    "pos": "PF",
-    "rr": "placements 0/3",
-    "rank": "Unranked"
-   }
-  ],
+  "queue": 0,
+  "queue_list": [],
   "ranks": [
    [
     "Iron",

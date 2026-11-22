@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-21T23:48:53+00:00",
+ "updated": "2026-11-22T01:23:49+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -47,7 +47,7 @@ window.PBL_DATA = {
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 PG",
     "Jayywuan \u00b7 PF",
-    "MachineTear \u00b7 SF",
+    "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SF"
    ],
@@ -292,7 +292,7 @@ window.PBL_DATA = {
      "co": false
     },
     {
-     "name": "MachineTear",
+     "name": "Player",
      "pos": "SF",
      "cap": false,
      "co": false
@@ -1023,7 +1023,7 @@ window.PBL_DATA = {
    "name": "Faygo (@Hunodesires)",
    "rbx": "@Hunodesires",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1415533939564744745/a1d0f92270610079738d0eef18f96dcf.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1415533939564744745/3a32a591e9397c6afd8d770f99a51796.png?size=1024",
    "pos": "PG",
    "team": "Reapas",
    "role": "",
@@ -1163,7 +1163,7 @@ window.PBL_DATA = {
    "name": "JusticeFor336 (@banbliqky)",
    "rbx": "@banbliqky",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/embed/avatars/2.png",
+   "img": "https://cdn.discordapp.com/avatars/535612005671763979/9aa106be32929ed097b4bbb50cec6671.png?size=1024",
    "pos": "SF",
    "team": "336FN",
    "role": "CC",
@@ -1172,20 +1172,6 @@ window.PBL_DATA = {
    "build": null,
    "ovr": null,
    "activity": null
-  },
-  {
-   "name": "MachineTear",
-   "rbx": "MachineTear",
-   "rbx_id": 8071047833,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-55B8B87D4B58328BC0FCD89DB7BA8D4F-Png/420/420/AvatarHeadshot/Png/noFilter",
-   "pos": "SF",
-   "team": "BallHog Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": 99,
-   "activity": 9
   },
   {
    "name": "NIZLE (@Jioquick)",
@@ -1205,7 +1191,7 @@ window.PBL_DATA = {
    "name": "offyachest (@vbChief)",
    "rbx": "@vbChief",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/9f09278061e814d3eda6486c03f1d215.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/fa5b849073324ef92588adcca2994205.png?size=1024",
    "pos": "C",
    "team": "BEASTCOAST",
    "role": "",

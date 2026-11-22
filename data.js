@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:35:08+00:00",
+ "updated": "2026-11-22T02:35:33+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1831,10 +1831,16 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 1,
+  "queue": 2,
   "queue_list": [
    {
     "player": "colin",
+    "pos": "PG",
+    "rr": "placements 0/3",
+    "rank": "Unranked"
+   },
+   {
+    "player": "WFRezkin3K",
     "pos": "PG",
     "rr": "placements 0/3",
     "rank": "Unranked"
@@ -1898,6 +1904,20 @@ window.PBL_DATA = {
     "player": "wydherbo (@dontlosesleep)",
     "pos": "PF",
     "avatar": "https://cdn.discordapp.com/avatars/1480987974836686920/65f2f8577018664237f50c8e0d56c904.png?size=1024",
+    "rr": 900,
+    "placed": false,
+    "games": 0,
+    "streak": 0,
+    "rank": "Gold",
+    "div": 1,
+    "inside": 0,
+    "w": 0,
+    "l": 0
+   },
+   {
+    "player": "WFRezkin3K",
+    "pos": "PG",
+    "avatar": "https://cdn.discordapp.com/avatars/759116360298528818/9b7d8e66d3d0b56cb1ae00f5d1a7abfb.png?size=1024",
     "rr": 900,
     "placed": false,
     "games": 0,

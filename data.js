@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:54:32+00:00",
+ "updated": "2026-11-22T02:56:41+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -931,8 +931,8 @@ window.PBL_DATA = {
   {
    "name": "buklau_99",
    "rbx": "buklau_99",
-   "rbx_id": 1525103874,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2463DB3438C6A84C4B19EB042CAE0852-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/783254707278708736/a_f6ee7b2e429af365b74df760a11e03f4.gif?size=1024",
    "pos": "PG",
    "team": "Yore",
    "role": "",
@@ -987,8 +987,8 @@ window.PBL_DATA = {
   {
    "name": "colin",
    "rbx": "colin",
-   "rbx_id": 1837,
-   "img": "https://tr.rbxcdn.com/180DAY-87249609dae614261c1058785f217b72/150/150/UnapprovedImage/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/247125560592039936/a_2383e3ae22705f13b7d79c8dd5ea3447.gif?size=1024",
    "pos": "PG",
    "team": "BEASTCOAST",
    "role": "C",
@@ -1057,8 +1057,8 @@ window.PBL_DATA = {
   {
    "name": "fhwz",
    "rbx": "fhwz",
-   "rbx_id": 417697080,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A7D918577A955FB99CC06E79DA3A59F6-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1233852344802738347/4f729c50e59507fe7447cdfd4b275698.png?size=1024",
    "pos": "PF",
    "team": "336FN",
    "role": "",
@@ -1085,8 +1085,8 @@ window.PBL_DATA = {
   {
    "name": "imovethechains",
    "rbx": "imovethechains",
-   "rbx_id": 11304790412,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F10B7F2001D8AF030B0E64FD720C09AE-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1519633300526989415/a_7fc21b3aa246fa5ca9fefe10b5c733bc.gif?size=1024",
    "pos": "SG",
    "team": "BallHog Elite",
    "role": "",
@@ -1295,8 +1295,8 @@ window.PBL_DATA = {
   {
    "name": "Shxfty",
    "rbx": "Shxfty",
-   "rbx_id": 66293113,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F91DAFE4D516EB9F7203B0F9B5E12375-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1460780219110785119/31c622d9b7e16684d81aa7e9c15e2353.png?size=1024",
    "pos": "PG",
    "team": "Arctic Wolves",
    "role": "C",
@@ -1379,8 +1379,8 @@ window.PBL_DATA = {
   {
    "name": "Splashman2konYT",
    "rbx": "Splashman2konYT",
-   "rbx_id": 2265224855,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-898A900BA75B07FA2D0C66C75E2A843C-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/773348053532278784/9472cbd58611327e0f6c7e71b9f54344.png?size=1024",
    "pos": "C",
    "team": "DemBoyz Elite",
    "role": "C",
@@ -1449,8 +1449,8 @@ window.PBL_DATA = {
   {
    "name": "wazzabi",
    "rbx": "wazzabi",
-   "rbx_id": 965664,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C3C5D38ABDD4B075B3508527F832A1D3-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/961492330064527411/4375aa5d0c1ea8d54941024cb433edc1.png?size=1024",
    "pos": "PG",
    "team": "336FN",
    "role": "",
@@ -1477,8 +1477,8 @@ window.PBL_DATA = {
   {
    "name": "WFRezkin3K",
    "rbx": "WFRezkin3K",
-   "rbx_id": 8622420125,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9556129AD246036A743CB535AD9DCC51-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/759116360298528818/9b7d8e66d3d0b56cb1ae00f5d1a7abfb.png?size=1024",
    "pos": "SF",
    "team": "BallHog Elite",
    "role": "",

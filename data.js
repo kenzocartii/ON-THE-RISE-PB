@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:35:33+00:00",
+ "updated": "2026-11-22T02:36:02+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1831,16 +1831,10 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 2,
+  "queue": 1,
   "queue_list": [
    {
     "player": "colin",
-    "pos": "PG",
-    "rr": "placements 0/3",
-    "rank": "Unranked"
-   },
-   {
-    "player": "WFRezkin3K",
     "pos": "PG",
     "rr": "placements 0/3",
     "rank": "Unranked"

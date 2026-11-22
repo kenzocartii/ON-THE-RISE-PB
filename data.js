@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T02:36:02+00:00",
+ "updated": "2026-11-22T02:36:10+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -45,7 +45,7 @@ window.PBL_DATA = {
    "captain": "jacami (@JaCamii2)",
    "players": [
     "imovethechains \u00b7 SG",
-    "WFRezkin3K \u00b7 PG",
+    "WFRezkin3K \u00b7 SF",
     "Player \u00b7 PF",
     "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
@@ -284,7 +284,7 @@ window.PBL_DATA = {
     },
     {
      "name": "WFRezkin3K",
-     "pos": "PG",
+     "pos": "SF",
      "cap": false,
      "co": false
     },
@@ -1479,7 +1479,7 @@ window.PBL_DATA = {
    "rbx": "WFRezkin3K",
    "rbx_id": 8622420125,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9556129AD246036A743CB535AD9DCC51-Png/150/150/AvatarHeadshot/Png/noFilter",
-   "pos": "PG",
+   "pos": "SF",
    "team": "BallHog Elite",
    "role": "",
    "fa": false,
@@ -1831,11 +1831,17 @@ window.PBL_DATA = {
  },
  "pickups": {
   "size": 10,
-  "queue": 1,
+  "queue": 2,
   "queue_list": [
    {
     "player": "colin",
     "pos": "PG",
+    "rr": "placements 0/3",
+    "rank": "Unranked"
+   },
+   {
+    "player": "WFRezkin3K",
+    "pos": "SF",
     "rr": "placements 0/3",
     "rank": "Unranked"
    }
@@ -1910,7 +1916,7 @@ window.PBL_DATA = {
    },
    {
     "player": "WFRezkin3K",
-    "pos": "PG",
+    "pos": "SF",
     "avatar": "https://cdn.discordapp.com/avatars/759116360298528818/9b7d8e66d3d0b56cb1ae00f5d1a7abfb.png?size=1024",
     "rr": 900,
     "placed": false,

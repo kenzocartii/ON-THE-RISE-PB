@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T03:04:47+00:00",
+ "updated": "2026-11-23T03:10:57+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -58,7 +58,7 @@ window.PBL_DATA = {
   {
    "name": "BEASTCOAST",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/43b1e3b4ffb2.png",
    "captain": "kenzocartii \u00b7 PG",
    "players": [
@@ -67,7 +67,8 @@ window.PBL_DATA = {
     "offyachest (@vbChief) \u00b7 C",
     "sunny (@dummy_fresh) \u00b7 PG",
     "saii (@ittlya) \u00b7 SG",
-    "zlo (@maybakks) \u00b7 SG"
+    "zlo (@maybakks) \u00b7 SG",
+    "vBudder \u00b7 PF"
    ],
    "points": 0,
    "qualified": false,
@@ -369,6 +370,12 @@ window.PBL_DATA = {
     {
      "name": "zlo (@maybakks)",
      "pos": "SG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "vBudder",
+     "pos": "PF",
      "cap": false,
      "co": false
     }
@@ -1136,7 +1143,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_ded6abcf11481d98d9728a028df67906.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_033c0f9a46638237d7df5f472551d315.gif?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -1488,6 +1495,20 @@ window.PBL_DATA = {
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/432337593682755584/ba01721aa5aee10a3d058c600a57a4eb.png?size=1024",
    "pos": "SG",
+   "team": "BEASTCOAST",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "vBudder",
+   "rbx": "vBudder",
+   "rbx_id": 939990888,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7273DDE7C916513E21B56919D2674EF6-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "pos": "PF",
    "team": "BEASTCOAST",
    "role": "",
    "fa": false,

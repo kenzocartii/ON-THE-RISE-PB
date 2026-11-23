@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T15:59:54+00:00",
+ "updated": "2026-11-23T21:17:23+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -101,7 +101,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": false
+   "registered": true
   },
   {
    "name": "Elevation",
@@ -176,7 +176,7 @@ window.PBL_DATA = {
    ],
    "points": 0,
    "qualified": false,
-   "registered": true
+   "registered": false
   }
  ],
  "rosters": {
@@ -677,7 +677,7 @@ window.PBL_DATA = {
   "points": "1st: 150 \u00b7 2nd: 75 \u00b7 3rd: 50 \u00b7 4th: 40 \u00b7 5th-6th: 15 \u00b7 7th-8th: 5",
   "entrants": [
    "336FN",
-   "Yore",
+   "DemBoyz Elite",
    "Nightrydas Elite",
    "BEASTCOAST",
    "BallHog Elite",
@@ -708,7 +708,7 @@ window.PBL_DATA = {
       "qualified": false
      },
      {
-      "team": "Yore",
+      "team": "DemBoyz Elite",
       "w": 0,
       "l": 0,
       "pd": 0,
@@ -728,7 +728,7 @@ window.PBL_DATA = {
      {
       "id": 2,
       "round": 2,
-      "a": "Yore",
+      "a": "DemBoyz Elite",
       "b": "336FN",
       "winner": null,
       "score": null,
@@ -737,7 +737,7 @@ window.PBL_DATA = {
      {
       "id": 3,
       "round": 3,
-      "a": "Yore",
+      "a": "DemBoyz Elite",
       "b": "Arctic Wolves",
       "winner": null,
       "score": null,
@@ -1038,14 +1038,14 @@ window.PBL_DATA = {
  "draw": {
   "seeds": [
    "Nightrydas Elite",
-   "Yore"
+   "DemBoyz Elite"
   ],
   "pd": {
    "BallHog Elite": -23,
    "336FN": 0,
    "BEASTCOAST": 23,
+   "DemBoyz Elite": 0,
    "Nightrydas Elite": 0,
-   "Yore": 0,
    "Arctic Wolves": 0
   },
   "rec": {
@@ -1061,11 +1061,11 @@ window.PBL_DATA = {
     1,
     0
    ],
-   "Nightrydas Elite": [
+   "DemBoyz Elite": [
     0,
     0
    ],
-   "Yore": [
+   "Nightrydas Elite": [
     0,
     0
    ],
@@ -1077,37 +1077,11 @@ window.PBL_DATA = {
  },
  "games": [
   {
-   "id": 2,
-   "head": "GROUP A \u00b7 ROUND 2 \u00b7 GAME M2",
-   "a": "Yore",
-   "b": "336FN",
-   "time": "2026-11-23T23:00:00+00:00",
-   "stream": null,
-   "link": null,
-   "host": null,
-   "tracked": false,
-   "on_air": false,
-   "arena": null
-  },
-  {
    "id": 5,
    "head": "GROUP B \u00b7 ROUND 2 \u00b7 GAME M5",
    "a": "Nightrydas Elite",
    "b": "BallHog Elite",
    "time": "2026-11-23T23:00:00+00:00",
-   "stream": null,
-   "link": null,
-   "host": null,
-   "tracked": false,
-   "on_air": false,
-   "arena": null
-  },
-  {
-   "id": 3,
-   "head": "GROUP A \u00b7 ROUND 3 \u00b7 GAME M3",
-   "a": "Yore",
-   "b": "Arctic Wolves",
-   "time": "2026-11-24T00:30:00+00:00",
    "stream": null,
    "link": null,
    "host": null,
@@ -1902,7 +1876,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_033c0f9a46638237d7df5f472551d315.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_1524a58f0e7a3e573587cc37fce76dc1.gif?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -2454,20 +2428,6 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 2,
-    "head": "GROUP A \u00b7 ROUND 2 \u00b7 GAME M2",
-    "label": "Group A \u00b7 round 2",
-    "a": "Yore",
-    "b": "336FN",
-    "time": "2026-11-23T23:00:00+00:00",
-    "deadline": "2026-11-23T03:59:37+00:00",
-    "stream": null,
-    "link": null,
-    "tracked": false,
-    "on_air": false,
-    "arena": null
-   },
-   {
     "id": 5,
     "head": "GROUP B \u00b7 ROUND 2 \u00b7 GAME M5",
     "label": "Group B \u00b7 round 2",
@@ -2475,20 +2435,6 @@ window.PBL_DATA = {
     "b": "BallHog Elite",
     "time": "2026-11-23T23:00:00+00:00",
     "deadline": "2026-11-23T03:59:51+00:00",
-    "stream": null,
-    "link": null,
-    "tracked": false,
-    "on_air": false,
-    "arena": null
-   },
-   {
-    "id": 3,
-    "head": "GROUP A \u00b7 ROUND 3 \u00b7 GAME M3",
-    "label": "Group A \u00b7 round 3",
-    "a": "Yore",
-    "b": "Arctic Wolves",
-    "time": "2026-11-24T00:30:00+00:00",
-    "deadline": "2026-11-23T03:59:47+00:00",
     "stream": null,
     "link": null,
     "tracked": false,
@@ -2522,6 +2468,34 @@ window.PBL_DATA = {
     "tracked": false,
     "on_air": false,
     "arena": null
+   },
+   {
+    "id": 2,
+    "head": "GROUP A \u00b7 ROUND 2 \u00b7 GAME M2",
+    "label": "Group A \u00b7 round 2",
+    "a": "DemBoyz Elite",
+    "b": "336FN",
+    "time": null,
+    "deadline": "2026-11-24T21:17:10+00:00",
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   },
+   {
+    "id": 3,
+    "head": "GROUP A \u00b7 ROUND 3 \u00b7 GAME M3",
+    "label": "Group A \u00b7 round 3",
+    "a": "DemBoyz Elite",
+    "b": "Arctic Wolves",
+    "time": null,
+    "deadline": "2026-11-24T21:17:12+00:00",
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
    }
   ],
   "recent": [
@@ -2532,10 +2506,11 @@ window.PBL_DATA = {
    }
   ],
   "preset": {
-   "time": "18:00",
+   "time": "20:00",
    "tz": "ET"
   },
-  "agree_hours": 48
+  "agree_hours": 48,
+  "stage_end": "2026-11-26T21:17:10+00:00"
  },
  "rules": {
   "cards": [
@@ -2574,8 +2549,8 @@ window.PBL_DATA = {
     "title": "\ud83d\udcc5 Scheduling and match day",
     "items": [
      "When your match is posted, captains and co-captains get a DM (game times and reminders too), and both captains are pinged in #scheduling.",
-     "Captains have **48 hours** to agree a game time with `/gametime`; the other captain confirms in DMs.",
-     "No time after 48 hours? The bot sets the match for the **next day at 6 PM ET**. It can still be moved earlier or later, but **both captains must confirm** the new time.",
+     "Captains agree a game time with `/gametime` (or `/confirmtime`); the other captain confirms in DMs. You get **24 hours** in group stages under 16 teams, **12 hours** per game in the main draw, and 48 hours otherwise. Group stages under 16 teams and the main draw are played inside **3 days**.",
+     "No time agreed? The bot sets the **first open evening slot from 8 PM ET** (every 30 minutes), spread out so games don't start at the same time. It can still be moved, but **both captains must confirm** the new time.",
      "Once a game time passes, it can't be changed. No-show rules apply.",
      "Be in your team voice channel **10 minutes** before game time. The higher seed hosts the private server and shares the code with the other captain only.",
      "**No-shows:** fewer than 5 players ready **15 minutes** after the set time is a forfeit. Two forfeits in one tournament and your team is removed.",

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T01:32:15+00:00",
+ "updated": "2026-11-23T01:43:54+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -858,8 +858,8 @@ window.PBL_DATA = {
    "a": "BEASTCOAST",
    "b": "BallHog Elite",
    "time": "2026-11-23T03:00:00+00:00",
-   "stream": null,
-   "link": null,
+   "stream": "etomi (@kbmcd)",
+   "link": "https://www.twitch.tv/etomi_i",
    "host": null,
    "tracked": false,
    "on_air": false,
@@ -1669,8 +1669,8 @@ window.PBL_DATA = {
     "b": "BallHog Elite",
     "time": "2026-11-23T03:00:00+00:00",
     "deadline": "2026-11-23T01:20:44+00:00",
-    "stream": null,
-    "link": null,
+    "stream": "etomi (@kbmcd)",
+    "link": "https://www.twitch.tv/etomi_i",
     "tracked": false,
     "on_air": false,
     "arena": null

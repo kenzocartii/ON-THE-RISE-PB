@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T01:52:22+00:00",
+ "updated": "2026-11-23T01:53:07+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1725,7 +1725,7 @@ window.PBL_DATA = {
     "a": "BEASTCOAST",
     "b": "BallHog Elite",
     "time": null,
-    "deadline": "2026-11-24T01:52:16+00:00",
+    "deadline": "2026-11-24T01:52:59+00:00",
     "stream": "etomi (@kbmcd)",
     "link": "https://www.twitch.tv/etomi_i",
     "tracked": false,

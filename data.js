@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T23:44:42+00:00",
+ "updated": "2026-11-23T23:44:57+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1645,6 +1645,20 @@ window.PBL_DATA = {
    "team": "336FN",
    "role": "",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Black (@samuelbrogod)",
+   "rbx": "@samuelbrogod",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/927015202489245736/50697e9414cb8cbe22bfa7ec593d8c60.png?size=1024",
+   "pos": "PG",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

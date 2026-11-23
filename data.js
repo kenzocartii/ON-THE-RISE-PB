@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T21:57:07+00:00",
+ "updated": "2026-11-23T23:38:54+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -163,13 +163,12 @@ window.PBL_DATA = {
   {
    "name": "Yore",
    "complete": true,
-   "size": 6,
+   "size": 5,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
     "eric (@buklau_18) \u00b7 SF",
     "colden (@buklau_09) \u00b7 SF",
-    "buklau_99 \u00b7 PG",
     "JOAO (@ZTK0611) \u00b7 C",
     "red (@SemperDominus) \u00b7 SF"
    ],
@@ -574,12 +573,6 @@ window.PBL_DATA = {
     {
      "name": "colden (@buklau_09)",
      "pos": "SF",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "buklau_99",
-     "pos": "PG",
      "cap": false,
      "co": false
     },
@@ -1664,20 +1657,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1152798151158272020/a_e0e45eaa6a478fa3f0ef63e948d677d6.gif?size=1024",
    "pos": "SG",
    "team": "336FN",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "buklau_99",
-   "rbx": "buklau_99",
-   "rbx_id": 1525103874,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2463DB3438C6A84C4B19EB042CAE0852-Png/150/150/AvatarHeadshot/Png/noFilter",
-   "pos": "PG",
-   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T08:57:33+00:00",
+ "updated": "2026-11-23T10:36:52+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1788,6 +1788,20 @@ window.PBL_DATA = {
    "team": "Yore",
    "role": "",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "cole (@Pandevox)",
+   "rbx": "@Pandevox",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/992135809278943263/661234abc863d44d9a61855b81b59525.png?size=1024",
+   "pos": "PF",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

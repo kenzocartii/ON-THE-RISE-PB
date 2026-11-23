@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T10:37:35+00:00",
+ "updated": "2026-11-23T15:59:54+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -163,11 +163,10 @@ window.PBL_DATA = {
   {
    "name": "Yore",
    "complete": true,
-   "size": 8,
+   "size": 7,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
-    "wydherbo (@dontlosesleep) \u00b7 PF",
     "raz (@razeyrazeyrazey) \u00b7 SG",
     "eric (@buklau_18) \u00b7 SF",
     "colden (@buklau_09) \u00b7 SF",
@@ -566,12 +565,6 @@ window.PBL_DATA = {
      "pos": "C",
      "cap": true,
      "co": false
-    },
-    {
-     "name": "wydherbo (@dontlosesleep)",
-     "pos": "PF",
-     "cap": false,
-     "co": true
     },
     {
      "name": "raz (@razeyrazeyrazey)",
@@ -2368,20 +2361,6 @@ window.PBL_DATA = {
    "activity": null
   },
   {
-   "name": "wydherbo (@dontlosesleep)",
-   "rbx": "@dontlosesleep",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1480987974836686920/65f2f8577018664237f50c8e0d56c904.png?size=1024",
-   "pos": "PF",
-   "team": "Yore",
-   "role": "CC",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "wydpolo (@LaPoloBall)",
    "rbx": "@LaPoloBall",
    "rbx_id": null,
@@ -2777,9 +2756,9 @@ window.PBL_DATA = {
     "l": 0
    },
    {
-    "player": "wydherbo (@dontlosesleep)",
+    "player": "Player",
     "pos": "PF",
-    "avatar": "https://cdn.discordapp.com/avatars/1480987974836686920/65f2f8577018664237f50c8e0d56c904.png?size=1024",
+    "avatar": null,
     "rr": 900,
     "placed": false,
     "games": 0,

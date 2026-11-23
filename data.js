@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T05:12:38+00:00",
+ "updated": "2026-11-23T07:14:07+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1990,6 +1990,20 @@ window.PBL_DATA = {
    "activity": null
   },
   {
+   "name": "JustOneIsaiah",
+   "rbx": "JustOneIsaiah",
+   "rbx_id": 1650150670,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C83AFCD9CC8434E29520A7C6F04B2A44-Png/420/420/AvatarHeadshot/Png/noFilter",
+   "pos": "SF",
+   "team": null,
+   "role": "",
+   "fa": true,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
    "name": "kenzocartii",
    "rbx": "kenzocartii",
    "rbx_id": 70087751,
@@ -2091,7 +2105,7 @@ window.PBL_DATA = {
    "name": "rory (@comxfi)",
    "rbx": "@comxfi",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/f2e4688fc0c652765b0a9703d8155ae5.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/823061979266285588/98f36c913bd282c952aadf6236168d2a.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
    "role": "",

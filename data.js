@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T07:15:51+00:00",
+ "updated": "2026-11-23T08:57:33+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1853,7 +1853,7 @@ window.PBL_DATA = {
    "name": "fhwz",
    "rbx": "fhwz",
    "rbx_id": 417697080,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DD6F8BD018663F3EF98D65F6C46E41FB-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-382EED9EC1B14234070142E176C3381F-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PF",
    "team": "336FN",
    "role": "",
@@ -1993,7 +1993,7 @@ window.PBL_DATA = {
    "name": "JustOneIsaiah",
    "rbx": "JustOneIsaiah",
    "rbx_id": 1650150670,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C83AFCD9CC8434E29520A7C6F04B2A44-Png/420/420/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C83AFCD9CC8434E29520A7C6F04B2A44-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "SF",
    "team": null,
    "role": "",
@@ -2427,7 +2427,7 @@ window.PBL_DATA = {
    "name": "zlo (@maybakks)",
    "rbx": "@maybakks",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/558505939913670666/8eb85432b985e83d9b887ad0e36e3e06.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/558505939913670666/4baf2768d359b7309d6907146ed49cef.png?size=1024",
    "pos": "SG",
    "team": "BEASTCOAST",
    "role": "",
@@ -2452,6 +2452,11 @@ window.PBL_DATA = {
    "activity": null
   }
  ],
+ "media": {
+  "rankings": null,
+  "analysis": [],
+  "posts": []
+ },
  "events": [],
  "schedule": {
   "games": [

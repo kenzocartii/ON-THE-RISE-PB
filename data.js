@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T04:17:09+00:00",
+ "updated": "2026-11-23T04:32:58+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,7 +40,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -49,7 +49,8 @@ window.PBL_DATA = {
     "Player \u00b7 PF",
     "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
-    "Skii (@braylen2rd) \u00b7 SF"
+    "Skii (@braylen2rd) \u00b7 SF",
+    "timtastic (@longheadtim) \u00b7 PF"
    ],
    "points": 0,
    "qualified": false,
@@ -320,6 +321,12 @@ window.PBL_DATA = {
     {
      "name": "Skii (@braylen2rd)",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "timtastic (@longheadtim)",
+     "pos": "PF",
      "cap": false,
      "co": false
     }
@@ -1737,6 +1744,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/663109011838730283/764a90068d58c825224e15cc09622e11.png?size=1024",
    "pos": "SF",
    "team": "Reapas",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "timtastic (@longheadtim)",
+   "rbx": "@longheadtim",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1065485182783721482/e77471f56daf35d471a53ed1b0875205.png?size=1024",
+   "pos": "PF",
+   "team": "BallHog Elite",
    "role": "",
    "fa": false,
    "suspended": false,

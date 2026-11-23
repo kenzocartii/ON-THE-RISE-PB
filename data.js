@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T23:44:57+00:00",
+ "updated": "2026-11-23T23:46:59+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1660,9 +1660,9 @@ window.PBL_DATA = {
    "role": "",
    "fa": true,
    "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
+   "build": "3-level architect",
+   "ovr": 94,
+   "activity": 6
   },
   {
    "name": "BreezyVert (@BalmainSpecialist)",

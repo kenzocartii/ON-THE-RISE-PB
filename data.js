@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T05:07:51+00:00",
+ "updated": "2026-11-23T05:07:58+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -59,7 +59,7 @@ window.PBL_DATA = {
    "complete": true,
    "size": 8,
    "logo": "logos/43b1e3b4ffb2.png",
-   "captain": "kenzocartii \u00b7 PF",
+   "captain": "kenzocartii \u00b7 PG",
    "players": [
     "xxix (@RangeIess) \u00b7 PF",
     "tony (@NiceOneTonyy) \u00b7 SG",
@@ -326,7 +326,7 @@ window.PBL_DATA = {
    "players": [
     {
      "name": "kenzocartii",
-     "pos": "PF",
+     "pos": "PG",
      "cap": true,
      "co": false
     },
@@ -1916,7 +1916,7 @@ window.PBL_DATA = {
    "rbx": "kenzocartii",
    "rbx_id": 70087751,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-B7F1C566743BEA387212C3A80725E361-Png/150/150/AvatarHeadshot/Png/noFilter",
-   "pos": "PF",
+   "pos": "PG",
    "team": "BEASTCOAST",
    "role": "C",
    "fa": false,
@@ -2639,7 +2639,7 @@ window.PBL_DATA = {
   "players": [
    {
     "player": "kenzocartii",
-    "pos": "PF",
+    "pos": "PG",
     "avatar": "https://cdn.discordapp.com/avatars/247125560592039936/a_2383e3ae22705f13b7d79c8dd5ea3447.gif?size=1024",
     "rr": 900,
     "placed": false,

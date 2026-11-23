@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T04:51:36+00:00",
+ "updated": "2026-11-23T05:03:31+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,14 +40,12 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 8,
+   "size": 6,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 SF",
-    "Player \u00b7 PF",
-    "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SF",
     "timtastic (@longheadtim) \u00b7 PF"
@@ -296,18 +294,6 @@ window.PBL_DATA = {
     },
     {
      "name": "WFRezkin3K",
-     "pos": "SF",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "Player",
-     "pos": "PF",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "Player",
      "pos": "SF",
      "cap": false,
      "co": false

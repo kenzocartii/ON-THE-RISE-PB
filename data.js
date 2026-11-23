@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T01:53:38+00:00",
+ "updated": "2026-11-23T02:08:06+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -135,15 +135,14 @@ window.PBL_DATA = {
   },
   {
    "name": "Reapas",
-   "complete": true,
-   "size": 5,
+   "complete": false,
+   "size": 4,
    "logo": "logos/ff5187ab624b.jpg",
    "captain": "j_shbrady (@JoshBradyIV) \u00b7 C",
    "players": [
     "bbcbuffet (@rf_hz) \u00b7 SF",
     "TheGreatestMosser (@3DJohnson) \u00b7 SF",
-    "NIZLE (@Jioquick) \u00b7 SG",
-    "Faygo (@Hunodesires) \u00b7 PG"
+    "NIZLE (@Jioquick) \u00b7 SG"
    ],
    "points": 0,
    "qualified": false,
@@ -506,7 +505,7 @@ window.PBL_DATA = {
   "Reapas": {
    "logo": "logos/ff5187ab624b.jpg",
    "points": 0,
-   "complete": true,
+   "complete": false,
    "qualified": false,
    "players": [
     {
@@ -530,12 +529,6 @@ window.PBL_DATA = {
     {
      "name": "NIZLE (@Jioquick)",
      "pos": "SG",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "Faygo (@Hunodesires)",
-     "pos": "PG",
      "cap": false,
      "co": false
     }
@@ -1112,20 +1105,6 @@ window.PBL_DATA = {
    "activity": null
   },
   {
-   "name": "Faygo (@Hunodesires)",
-   "rbx": "@Hunodesires",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1415533939564744745/3a32a591e9397c6afd8d770f99a51796.png?size=1024",
-   "pos": "PG",
-   "team": "Reapas",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "fhwz",
    "rbx": "fhwz",
    "rbx_id": 417697080,
@@ -1171,7 +1150,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_30d8424059ee53107e3c02096ba01360.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_ded6abcf11481d98d9728a028df67906.gif?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",

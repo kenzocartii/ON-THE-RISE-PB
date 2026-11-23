@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T02:08:47+00:00",
+ "updated": "2026-11-23T02:50:58+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -860,10 +860,10 @@ window.PBL_DATA = {
    "time": "2026-11-23T03:00:00+00:00",
    "stream": "etomi (@kbmcd)",
    "link": "https://www.twitch.tv/etomi_i",
-   "host": null,
+   "host": "colin",
    "tracked": false,
    "on_air": false,
-   "arena": null
+   "arena": "kenzocartii beastcoast"
   },
   {
    "id": 1,
@@ -1283,7 +1283,7 @@ window.PBL_DATA = {
    "name": "offyachest (@vbChief)",
    "rbx": "@vbChief",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/fa5b849073324ef92588adcca2994205.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1312324370282319903/bc760714c3b281c3e71d5ae0a4c809f3.png?size=1024",
    "pos": "C",
    "team": "BEASTCOAST",
    "role": "",
@@ -1673,7 +1673,7 @@ window.PBL_DATA = {
     "link": "https://www.twitch.tv/etomi_i",
     "tracked": false,
     "on_air": false,
-    "arena": null
+    "arena": "kenzocartii beastcoast"
    },
    {
     "id": 1,

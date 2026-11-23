@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T10:36:52+00:00",
+ "updated": "2026-11-23T10:37:35+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1803,9 +1803,9 @@ window.PBL_DATA = {
    "role": "",
    "fa": true,
    "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
+   "build": "2 way no fun build",
+   "ovr": 89,
+   "activity": 8
   },
   {
    "name": "Dougatron (@TheSkullMaster88)",

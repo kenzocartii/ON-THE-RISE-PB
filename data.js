@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T07:14:07+00:00",
+ "updated": "2026-11-23T07:15:51+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1999,9 +1999,9 @@ window.PBL_DATA = {
    "role": "",
    "fa": true,
    "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
+   "build": "2-Way Scoring Point Forward",
+   "ovr": 99,
+   "activity": 7
   },
   {
    "name": "kenzocartii",

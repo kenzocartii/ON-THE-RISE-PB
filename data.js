@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T21:20:40+00:00",
+ "updated": "2026-11-23T21:31:32+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1076,32 +1076,6 @@ window.PBL_DATA = {
   }
  },
  "games": [
-  {
-   "id": 5,
-   "head": "GROUP B \u00b7 ROUND 2 \u00b7 GAME M5",
-   "a": "Nightrydas Elite",
-   "b": "BallHog Elite",
-   "time": "2026-11-23T23:00:00+00:00",
-   "stream": null,
-   "link": null,
-   "host": null,
-   "tracked": false,
-   "on_air": false,
-   "arena": null
-  },
-  {
-   "id": 6,
-   "head": "GROUP B \u00b7 ROUND 3 \u00b7 GAME M6",
-   "a": "Nightrydas Elite",
-   "b": "BEASTCOAST",
-   "time": "2026-11-24T00:30:00+00:00",
-   "stream": null,
-   "link": null,
-   "host": null,
-   "tracked": false,
-   "on_air": false,
-   "arena": null
-  },
   {
    "id": 1,
    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
@@ -2428,34 +2402,6 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 5,
-    "head": "GROUP B \u00b7 ROUND 2 \u00b7 GAME M5",
-    "label": "Group B \u00b7 round 2",
-    "a": "Nightrydas Elite",
-    "b": "BallHog Elite",
-    "time": "2026-11-23T23:00:00+00:00",
-    "deadline": "2026-11-23T03:59:51+00:00",
-    "stream": null,
-    "link": null,
-    "tracked": false,
-    "on_air": false,
-    "arena": null
-   },
-   {
-    "id": 6,
-    "head": "GROUP B \u00b7 ROUND 3 \u00b7 GAME M6",
-    "label": "Group B \u00b7 round 3",
-    "a": "Nightrydas Elite",
-    "b": "BEASTCOAST",
-    "time": "2026-11-24T00:30:00+00:00",
-    "deadline": "2026-11-23T03:59:53+00:00",
-    "stream": null,
-    "link": null,
-    "tracked": false,
-    "on_air": false,
-    "arena": null
-   },
-   {
     "id": 1,
     "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
     "label": "Group A \u00b7 round 1",
@@ -2491,6 +2437,34 @@ window.PBL_DATA = {
     "b": "Arctic Wolves",
     "time": null,
     "deadline": "2026-11-24T21:17:12+00:00",
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   },
+   {
+    "id": 5,
+    "head": "GROUP B \u00b7 ROUND 2 \u00b7 GAME M5",
+    "label": "Group B \u00b7 round 2",
+    "a": "Nightrydas Elite",
+    "b": "BallHog Elite",
+    "time": null,
+    "deadline": "2026-11-24T21:31:20+00:00",
+    "stream": null,
+    "link": null,
+    "tracked": false,
+    "on_air": false,
+    "arena": null
+   },
+   {
+    "id": 6,
+    "head": "GROUP B \u00b7 ROUND 3 \u00b7 GAME M6",
+    "label": "Group B \u00b7 round 3",
+    "a": "Nightrydas Elite",
+    "b": "BEASTCOAST",
+    "time": null,
+    "deadline": "2026-11-24T21:31:27+00:00",
     "stream": null,
     "link": null,
     "tracked": false,

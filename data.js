@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T02:08:06+00:00",
+ "updated": "2026-11-23T02:08:47+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,7 +40,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -49,7 +49,8 @@ window.PBL_DATA = {
     "Player \u00b7 PF",
     "Player \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
-    "Skii (@braylen2rd) \u00b7 SF"
+    "Skii (@braylen2rd) \u00b7 SF",
+    "Faygo (@Hunodesires) \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,
@@ -319,6 +320,12 @@ window.PBL_DATA = {
     {
      "name": "Skii (@braylen2rd)",
      "pos": "SF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Faygo (@Hunodesires)",
+     "pos": "PG",
      "cap": false,
      "co": false
     }
@@ -1098,6 +1105,20 @@ window.PBL_DATA = {
    "pos": "SG",
    "team": "Vice Beach Ballers",
    "role": "C",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Faygo (@Hunodesires)",
+   "rbx": "@Hunodesires",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1415533939564744745/3a32a591e9397c6afd8d770f99a51796.png?size=1024",
+   "pos": "PG",
+   "team": "BallHog Elite",
+   "role": "",
    "fa": false,
    "suspended": false,
    "build": null,

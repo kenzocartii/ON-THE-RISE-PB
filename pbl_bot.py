@@ -9750,6 +9750,118 @@ async def _match_watch_once(guild: discord.Guild):
         save_data(data)
 
 
+# ---------------------------------------------------------------- Game day post (#game-announcements)
+#
+# Every morning (10 AM ET) the bot posts today's games in #game-announcements: a GAME DAY graphic with every
+# matchup and its time, plus a list with live countdowns and who's streaming. Games scheduled later in the day
+# are added by editing the same post.
+
+GAMEDAY_HOUR = 10  # ET
+
+
+def todays_games(s: dict, now: datetime) -> list[tuple[str, dict]]:
+    tz = tzinfo("ET")
+    today = now.astimezone(tz).date()
+    out = [(mid, e_) for mid, e_ in sched(s)["matches"].items()
+           if not e_.get("done") and e_.get("time") and datetime.fromisoformat(e_["time"]).astimezone(tz).date() == today]
+    return sorted(out, key=lambda x: (x[1]["time"], int(x[0])))
+
+
+def gameday_picture(s: dict, games: list[tuple[str, dict]], day: datetime) -> bytes:
+    WHITE, GREY, ORANGE, PANEL, LINE = (245, 245, 245), (150, 150, 155), (255, 122, 0), (22, 22, 26), (52, 52, 58)
+    tz_ = s.get("tourney") or {}
+    tlogo = str(LOGO_DIR / tz_["logo"]) if tz_.get("logo") and (LOGO_DIR / tz_["logo"]).exists() else None
+    W, RH = 1600, 118
+    H = 250 + RH * len(games) + 70
+    img, d = _canvas(W, H, "GAME DAY", day.strftime("%A, %B %d").replace(" 0", " ") + " · "
+                     + tz_.get("name", "ON THE RISE"), tlogo)
+    note = f"{len(games)} game{'s' if len(games) != 1 else ''} today · times in ET"
+    d.text((W - 50 - d.textlength(note, font=_font(22, bold=False)), 110), note, font=_font(22, bold=False), fill=GREY)
+    y = 240
+    for mid, e_ in games:
+        d.rounded_rectangle((50, y, W - 50, y + RH - 16), 12, fill=PANEL, outline=LINE, width=2)
+        t = datetime.fromisoformat(e_["time"]).astimezone(tzinfo("ET"))
+        tt = t.strftime("%I:%M %p").lstrip("0")
+        d.text((78, y + 22), tt, font=_font(40), fill=ORANGE)
+        d.text((78, y + 70), stage_heading(e_.get("label", ""), mid).title()[:40], font=_font(16, bold=False), fill=GREY)
+        for side, x in (("a", 470), ("b", 1010)):
+            team = s["teams"].get(str(e_[side]), {})
+            lg = _logo((LOGO_DIR / team["logo"]) if team.get("logo") else None, 72, team.get("name", "TBD"))
+            img.paste(lg, (x, y + 15), lg)
+            name = team.get("name", "TBD")
+            d.text((x + 88, y + 34), name, font=_fit(d, name, 330, 32, 16), fill=WHITE)
+        d.text((925, y + 30), "VS", font=_font(34), fill=ORANGE)
+        if e_.get("stream"):
+            lt = "LIVE ON STREAM"
+            d.text((W - 80 - d.textlength(lt, font=_font(16)), y + 72), lt, font=_font(16), fill=(239, 68, 68))
+        y += RH
+    return _png(img)
+
+
+def gameday_text(s: dict, games: list[tuple[str, dict]]) -> str:
+    lines = []
+    for mid, e_ in games:
+        t = datetime.fromisoformat(e_["time"])
+        line = (f"{ts(t, 't')} · {team_emoji(s, e_['a'])}**{team_name(s, e_['a'])}** vs "
+                f"{team_emoji(s, e_['b'])}**{team_name(s, e_['b'])}** · {stage_heading(e_.get('label', ''), mid).title()}")
+        if e_.get("stream"):
+            line += f"\n> 📺 {e_.get('stream_name') or 'Streamed'}" + (f" · [Watch]({e_['stream_link']})" if e_.get("stream_link") else "")
+        lines.append(line)
+    url = site_url()
+    return "\n".join(lines) + "\n\nTimes show in your own timezone." + (f" Full schedule: {url}#schedule" if url else "")
+
+
+async def gameday_once(guild: discord.Guild):
+    """Post today's games once in the morning; edit the post if games are added or moved later today."""
+    now = datetime.now(timezone.utc)
+    local = now.astimezone(tzinfo("ET"))
+    data = load_data()
+    s = guild_signups(data, guild.id)
+    gd = s.setdefault("gameday", {})
+    today = local.date().isoformat()
+    if local.hour < GAMEDAY_HOUR and gd.get("date") != today:
+        return
+    games = todays_games(s, now)
+    sig = json.dumps([(m, e_["time"], e_["a"], e_["b"], e_.get("stream")) for m, e_ in games])
+    if gd.get("date") == today and gd.get("sig") == sig:
+        return
+    if not games and gd.get("date") != today:
+        return  # no games today: nothing to post
+    ch = chan(guild, "game-announcements")
+    if ch is None:
+        return
+    emb = brand_embed(gameday_text(s, games) if games else "Today's games were moved. Check the schedule.",
+                      f"🏀 GAME DAY · {local.strftime('%A, %B %d').replace(' 0', ' ')}", GOLD)
+    png = None
+    if games:
+        try:
+            png = await asyncio.to_thread(gameday_picture, s, games, local)
+            emb.set_image(url="attachment://gameday.png")
+        except Exception as e:
+            print(f"[game day picture] {e}")
+    msg = None
+    if gd.get("date") == today and gd.get("msg"):
+        try:
+            msg = await ch.fetch_message(int(gd["msg"]))
+            kw = {"embed": emb}
+            if png:
+                kw["attachments"] = [discord.File(io.BytesIO(png), filename="gameday.png")]
+            await msg.edit(**kw)
+        except discord.HTTPException:
+            msg = None
+    if msg is None:
+        kw = {"embed": emb, "allowed_mentions": NO_PINGS}
+        if png:
+            kw["file"] = discord.File(io.BytesIO(png), filename="gameday.png")
+        try:
+            msg = await ch.send(**kw)
+        except discord.HTTPException as e:
+            print(f"[game day] {e}")
+            return
+    gd.update({"date": today, "msg": msg.id, "sig": sig})
+    save_data(data)
+
+
 # ---------------------------------------------------------------- /remind: tell everyone what's next
 #
 # /remind what:[Next up / Sign-ups closing / Live draw / Main draw / Matches / Something else] when:8pm ...
@@ -10053,6 +10165,10 @@ async def match_watch():
                 await reminder_watch_once(guild)  # /remind ... again: the "1 hour to go" posts
             except Exception as e:
                 print(f"[reminders] {e}")
+            try:
+                await gameday_once(guild)  # #game-announcements: today's games every morning
+            except Exception as e:
+                print(f"[game day] {e}")
             try:
                 await host_cooldown_once(guild)  # Pickup Hosts get @everyone back after an hour
             except Exception as e:

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-22T05:57:35+00:00",
+ "updated": "2026-11-23T01:23:34+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -851,7 +851,34 @@ window.PBL_DATA = {
    ]
   }
  },
- "games": [],
+ "games": [
+  {
+   "id": 4,
+   "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+   "a": "BEASTCOAST",
+   "b": "BallHog Elite",
+   "time": "2026-11-23T03:00:00+00:00",
+   "stream": null,
+   "link": null,
+   "host": null,
+   "tracked": false,
+   "on_air": false,
+   "arena": null
+  },
+  {
+   "id": 1,
+   "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
+   "a": "Arctic Wolves",
+   "b": "336FN",
+   "time": "2026-11-23T23:00:00+00:00",
+   "stream": null,
+   "link": null,
+   "host": null,
+   "tracked": false,
+   "on_air": false,
+   "arena": null
+  }
+ ],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
   "tournament": [],
@@ -934,7 +961,7 @@ window.PBL_DATA = {
    "name": "BippinInCali (@uufaailen)",
    "rbx": "@uufaailen",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/bbbe75a585d337049c77b9ab1242a91c.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/4a6ea32373f2ece56513188465db75ef.png?size=1024",
    "pos": "SF",
    "team": "336FN",
    "role": "",
@@ -1102,7 +1129,7 @@ window.PBL_DATA = {
    "name": "fhwz",
    "rbx": "fhwz",
    "rbx_id": 417697080,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-A7D918577A955FB99CC06E79DA3A59F6-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-DD6F8BD018663F3EF98D65F6C46E41FB-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PF",
    "team": "336FN",
    "role": "",
@@ -1144,7 +1171,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/19dbe1ac3d958534233ee1c5defe9301.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_30d8424059ee53107e3c02096ba01360.gif?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -1228,7 +1255,7 @@ window.PBL_DATA = {
    "name": "JusticeFor336 (@banbliqky)",
    "rbx": "@banbliqky",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/535612005671763979/9aa106be32929ed097b4bbb50cec6671.png?size=1024",
+   "img": "https://cdn.discordapp.com/embed/avatars/2.png",
    "pos": "SF",
    "team": "336FN",
    "role": "CC",
@@ -1508,7 +1535,7 @@ window.PBL_DATA = {
    "name": "wel (@wel1of1)",
    "rbx": "@wel1of1",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/976219793399115777/0004038c5bbb682071140ac3a6426cc9.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/976219793399115777/454236a1c9289345cb163a5c210470ae.png?size=1024",
    "pos": "PG",
    "team": "DemBoyz Elite",
    "role": "",
@@ -1635,13 +1662,13 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 1,
-    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
-    "label": "Group A \u00b7 round 1",
-    "a": "Arctic Wolves",
-    "b": "336FN",
-    "time": null,
-    "deadline": "2026-11-23T01:20:38+00:00",
+    "id": 4,
+    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+    "label": "Group B \u00b7 round 1",
+    "a": "BEASTCOAST",
+    "b": "BallHog Elite",
+    "time": "2026-11-23T03:00:00+00:00",
+    "deadline": "2026-11-23T01:20:44+00:00",
     "stream": null,
     "link": null,
     "tracked": false,
@@ -1649,13 +1676,13 @@ window.PBL_DATA = {
     "arena": null
    },
    {
-    "id": 4,
-    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
-    "label": "Group B \u00b7 round 1",
-    "a": "BEASTCOAST",
-    "b": "BallHog Elite",
-    "time": null,
-    "deadline": "2026-11-23T01:20:44+00:00",
+    "id": 1,
+    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
+    "label": "Group A \u00b7 round 1",
+    "a": "Arctic Wolves",
+    "b": "336FN",
+    "time": "2026-11-23T23:00:00+00:00",
+    "deadline": "2026-11-23T01:20:38+00:00",
     "stream": null,
     "link": null,
     "tracked": false,

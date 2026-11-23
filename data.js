@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T21:36:19+00:00",
+ "updated": "2026-11-23T21:57:07+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -163,11 +163,10 @@ window.PBL_DATA = {
   {
    "name": "Yore",
    "complete": true,
-   "size": 7,
+   "size": 6,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
-    "raz (@razeyrazeyrazey) \u00b7 SG",
     "eric (@buklau_18) \u00b7 SF",
     "colden (@buklau_09) \u00b7 SF",
     "buklau_99 \u00b7 PG",
@@ -564,12 +563,6 @@ window.PBL_DATA = {
      "name": "wydpolo (@LaPoloBall)",
      "pos": "C",
      "cap": true,
-     "co": false
-    },
-    {
-     "name": "raz (@razeyrazeyrazey)",
-     "pos": "SG",
-     "cap": false,
      "co": false
     },
     {
@@ -1850,7 +1843,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_1524a58f0e7a3e573587cc37fce76dc1.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/a_c27963e23a134d0f6f15ba20e68a9d15.gif?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -2021,20 +2014,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/544293323423350784/6c7d44ec6c58efa99bda61ccd208f24e.png?size=1024",
    "pos": "PF",
    "team": "Nightrydas Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "raz (@razeyrazeyrazey)",
-   "rbx": "@razeyrazeyrazey",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1416934849993773167/7592e708b6cff1b1739c3c85efe6300d.png?size=1024",
-   "pos": "SG",
-   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,

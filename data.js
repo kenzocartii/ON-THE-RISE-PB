@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T04:06:47+00:00",
+ "updated": "2026-11-23T04:15:21+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1832,7 +1832,7 @@ window.PBL_DATA = {
    "name": "wydpolo (@LaPoloBall)",
    "rbx": "@LaPoloBall",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/583019227888222279/40188504f19c06fcad550c7a0028ec33.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/583019227888222279/c7dc38954378e3adc8ccbeb3e398217a.png?size=1024",
    "pos": "C",
    "team": "Yore",
    "role": "C",
@@ -1987,7 +1987,13 @@ window.PBL_DATA = {
     "arena": null
    }
   ],
-  "recent": [],
+  "recent": [
+   {
+    "id": 4,
+    "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
+    "time": "2026-11-23T03:00:00+00:00"
+   }
+  ],
   "preset": {
    "time": "18:00",
    "tz": "ET"

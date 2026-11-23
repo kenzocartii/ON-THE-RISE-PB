@@ -374,6 +374,43 @@
   .rjump { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 0; }
   .rjump a { color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; font-size: 12.5px; font-weight: 600; }
   .rjump a:hover { color: var(--ink); border-color: #52525b; }
+  /* media tab */
+  .mgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 14px; }
+  .pr { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); overflow: hidden; }
+  .pr-head { padding: 16px 18px; background: linear-gradient(135deg, rgba(224, 180, 74, .16), transparent 70%); border-bottom: 1px solid var(--line); }
+  .pr-head h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -.01em; }
+  .pr-head ul { margin: 0; padding-left: 18px; color: var(--muted); }
+  .pr-head li { margin: 3px 0; }
+  .prrow { display: grid; grid-template-columns: 44px 48px 1fr; gap: 12px; padding: 14px 18px; border-top: 1px solid var(--line-2); align-items: start; }
+  .prrow:first-of-type { border-top: 0; }
+  .prrow .prk { font-size: 28px; font-weight: 800; color: var(--gold); line-height: 1; text-align: center; }
+  .prrow img, .prrow .ph { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; font-size: 13px; }
+  .prrow .tn3 { font-weight: 800; font-size: 16px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .mv { font-size: 11px; font-weight: 800; padding: 1px 6px; border-radius: 4px; }
+  .mv.up { color: var(--win); background: rgba(74, 222, 128, .12); } .mv.dn { color: var(--loss); background: rgba(248, 113, 113, .12); }
+  .mv.nw { color: var(--gold); background: rgba(224, 180, 74, .14); } .mv.eq { color: var(--dim); background: var(--line-2); }
+  .prrow .meta2 { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .prrow .story { margin-top: 6px; color: #d4d4d8; }
+  .an { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 16px 18px; }
+  .an .hd2 { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .an .vs2 { display: flex; gap: 8px; align-items: center; font-weight: 800; flex-wrap: wrap; }
+  .an .sc2 { font-weight: 800; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .an p { margin: 0; color: #d4d4d8; }
+  .an small { color: var(--dim); font-size: 11px; letter-spacing: .08em; font-weight: 700; }
+  .vid { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); overflow: hidden; }
+  .vid .th { position: relative; aspect-ratio: 16 / 9; background: #000 center / cover no-repeat; cursor: pointer; display: block; }
+  .vid .th::after { content: "▶"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 42px; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+  .vid iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+  .vid .body { padding: 12px 14px; }
+  .vid .t { font-weight: 800; }
+  .vid .d { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .vid .by { color: var(--dim); font-size: 12px; margin-top: 6px; }
+  .gfx { display: block; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--panel); text-decoration: none; color: var(--ink); }
+  .gfx img { width: 100%; display: block; }
+  .gfx .body { padding: 10px 12px; font-weight: 700; }
+  .msec { margin-top: 28px; }
+  .msec > h3 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+  @media (max-width: 640px) { .prrow { grid-template-columns: 30px 40px 1fr; padding: 12px; } .prrow .prk { font-size: 22px; } }
 </style>
 </head>
 <body>
@@ -1185,6 +1222,55 @@ function rulesView(d) {
     </div>`;
 }
 
+/* ---- media: what the bot (and Media members) post in Discord ---- */
+let MEDIA_SEC = "all";
+const mdb = t => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\*([^*]+)\*/g, "<i>$1</i>").replace(/\n/g, "<br>");
+const ago = iso => { if (!iso) return ""; const d = (Date.now() - new Date(iso)) / 1000; return d < 3600 ? `${Math.max(1, Math.round(d / 60))} min ago` : d < 86400 ? `${Math.round(d / 3600)} hr ago` : new Date(iso).toLocaleDateString([], { month: "short", day: "numeric" }); };
+function prView(pr) {
+  if (!pr || !pr.rows) return '<div class="empty">Power rankings post automatically after the qualifier and after the final.</div>';
+  const mv = m => !m ? "" : m.startsWith("▲") ? `<span class="mv up">${esc(m)}</span>` : m.startsWith("▼") ? `<span class="mv dn">${esc(m)}</span>` : m === "=" ? '<span class="mv eq">=</span>' : '<span class="mv nw">NEW</span>';
+  return `<div class="pr"><div class="pr-head"><h3>${esc(pr.title)}</h3><ul>${(pr.recap || []).map(x => `<li>${mdb(x)}</li>`).join("")}</ul><div class="meta2" style="margin-top:6px;color:var(--dim)">${esc(ago(pr.at))}</div></div>
+    ${pr.rows.map(r => `<div class="prrow"><div class="prk">${r.rank}</div>${logo(r.team, "")}<div style="min-width:0">
+      <div class="tn3"><span class="clickteam" data-team="${esc(r.team)}" style="cursor:pointer">${esc(r.team)}</span>${mv(r.move)}${r.place ? `<span class="chip q">${esc(r.place)}</span>` : ""}</div>
+      <div class="meta2">${esc(r.record)} · ${r.pd > 0 ? "+" : ""}${r.pd} PD/game${r.best_win ? " · " + esc(r.best_win) : ""}</div>
+      ${r.star ? `<div class="meta2">⭐ <button class="plink" data-player="${esc(r.star.name)}">${esc(r.star.name)}</button>: ${r.star.ppg} PPG · ${r.star.rpg} RPG · ${r.star.apg} APG</div>` : ""}
+      ${r.story ? `<div class="story">${mdb(r.story)}</div>` : ""}</div></div>`).join("")}</div>`;
+}
+function anCard(a) {
+  const has = MATCHES[a.id] && MATCHES[a.id].box && MATCHES[a.id].box.length;
+  return `<div class="an"><div class="hd2"><div><small>${esc(a.head)}${a.tournament ? " · " + esc(a.tournament) : ""}</small>
+      <div class="vs2">${team(a.a)} <span style="color:var(--dim)">vs</span> ${team(a.b)}</div></div>
+      <div style="text-align:right"><div class="sc2">${esc(a.score || "")}</div>${has ? `<button class="btn" data-mid="${a.id}" style="margin-top:4px">Box score</button>` : ""}</div></div>
+    <p>${mdb(a.text)}</p><div class="meta2" style="color:var(--dim);font-size:12px;margin-top:8px">${esc(ago(a.at))}</div></div>`;
+}
+function vidCard(p) {
+  const thumb = p.image || (p.yt ? `https://img.youtube.com/vi/${p.yt}/hqdefault.jpg` : "");
+  const th = p.yt ? `<span class="th" data-yt="${esc(p.yt)}" style="background-image:url('${esc(thumb)}')"></span>`
+    : thumb ? `<a class="th" href="${esc(p.link || thumb)}" target="_blank" rel="noopener" style="background-image:url('${esc(thumb)}')"></a>` : "";
+  return `<div class="vid">${th}<div class="body"><div class="t">${p.link && !p.yt ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" style="color:inherit">${esc(p.title)}</a>` : esc(p.title)}</div>
+    ${p.desc ? `<div class="d">${mdb(p.desc)}</div>` : ""}<div class="by">${esc(p.by || "")} · ${esc(ago(p.at))}</div></div></div>`;
+}
+function mediaView(d) {
+  const m = d.media || {};
+  const posts = m.posts || [];
+  const reports = posts.filter(p => p.kind === "report"), vids = posts.filter(p => p.kind === "yt"), gfx = posts.filter(p => p.kind === "gfx");
+  const secs = [["all", "All"], ["rankings", "Power rankings"], ["analysis", "Game analysis"], ["report", "OTR Report"], ["yt", "Highlights"], ["gfx", "Official GFX"]];
+  const show = k => MEDIA_SEC === "all" || MEDIA_SEC === k;
+  let html = `<h2>Media</h2><p class="note">The same coverage that goes out in the ON THE RISE Discord: power rankings, a breakdown of every game, the OTR Report, highlights and official graphics.</p>
+    <div class="rchips">${secs.map(([k, l]) => `<button data-msec="${k}" class="${MEDIA_SEC === k ? "on" : ""}">${l}</button>`).join("")}</div>`;
+  if (show("rankings")) html += `<div class="msec"><h3>Power rankings</h3>${prView(m.rankings)}</div>`;
+  if (show("analysis")) html += `<div class="msec"><h3>Game analysis</h3>${(m.analysis || []).length ? `<div class="mgrid" style="grid-template-columns:repeat(auto-fill,minmax(min(380px,100%),1fr))">${m.analysis.map(anCard).join("")}</div>` : '<div class="empty">A breakdown is written for every game once its stats are in.</div>'}</div>`;
+  if (show("report")) html += `<div class="msec"><h3>The OTR Report</h3>${reports.length ? `<div class="mgrid">${reports.map(vidCard).join("")}</div>` : '<div class="empty">No episodes yet.</div>'}</div>`;
+  if (show("yt")) html += `<div class="msec"><h3>Highlights</h3>${vids.length ? `<div class="mgrid">${vids.map(vidCard).join("")}</div>` : '<div class="empty">No highlight videos yet.</div>'}</div>`;
+  if (show("gfx")) html += `<div class="msec"><h3>Official GFX</h3>${gfx.length ? `<div class="mgrid">${gfx.map(p => `<a class="gfx" href="${esc(p.image)}" target="_blank" rel="noopener"><img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"><div class="body">${esc(p.title)}</div></a>`).join("")}</div>` : '<div class="empty">No official graphics yet.</div>'}</div>`;
+  return html;
+}
+document.addEventListener("click", e => {
+  const y = e.target.closest("[data-yt]");
+  if (!y) return;
+  y.outerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(y.dataset.yt)}?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+});
+
 function render() {
   const raw = window.PBL_DATA;
   const view = document.getElementById("view");
@@ -1211,11 +1297,11 @@ function render() {
   if (d.swiss || d.groups) tabs.push(["qual", d.swiss ? "Swiss stage" : "Groups"]);
   tabs.push(["points", "RISER POINTS"], ["stats", "Stats"], ["leaderboard", "Leaderboard"], ["teams", "Teams"]);
   const faN = (D.players || []).filter(p => p.fa && !p.suspended).length;
-  tabs.push(["fa", "Free agents", faN], ["rules", "Rules"]);
+  tabs.push(["fa", "Free agents", faN], ["media", "Media"], ["rules", "Rules"]);
   if (!tabs.some(t => t[0] === tab)) tab = "overview";
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
-  view.innerHTML = `<div id="cdbar">${countdownBar(d)}</div><div id="livestrip">${liveStrip(d)}</div>` + (tab === "schedule" ? scheduleView(d) : tab === "fa" ? faView(d) : tab === "rules" ? rulesView(d) : tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d));
+  view.innerHTML = `<div id="cdbar">${countdownBar(d)}</div><div id="livestrip">${liveStrip(d)}</div>` + (tab === "schedule" ? scheduleView(d) : tab === "fa" ? faView(d) : tab === "media" ? mediaView(d) : tab === "rules" ? rulesView(d) : tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d));
 }
 
 document.getElementById("tabs").addEventListener("click", e => {
@@ -1243,6 +1329,8 @@ document.getElementById("view").addEventListener("click", e => {
   if (lr) { LB_RANK = lr.dataset.lbrank === LB_RANK ? "all" : lr.dataset.lbrank; return render(); }
   const lp = e.target.closest("[data-lbpos]");
   if (lp) { LB_POS = lp.dataset.lbpos; return render(); }
+  const ms = e.target.closest("[data-msec]");
+  if (ms) { MEDIA_SEC = ms.dataset.msec; return render(); }
   const fp = e.target.closest("[data-fapos]");
   if (fp) { FA_POS = fp.dataset.fapos; return render(); }
   const fs = e.target.closest("[data-fasort]");
@@ -1262,8 +1350,10 @@ function load() {
   const s = document.createElement("script");
   s.src = "data.js?t=" + Date.now();
   s.onload = s.onerror = () => {
-    render(); s.remove();
-    if (!window.__hashDone && /^#(ranked|queue|leaderboard|bracket|schedule|freeagents|rules)$/.test(location.hash)) { window.__hashDone = true; tab = { "#leaderboard": "leaderboard", "#bracket": "bracket", "#schedule": "schedule", "#freeagents": "fa", "#rules": "rules" }[location.hash] || "pickups"; render(); return; }
+    s.remove();
+    if (tab === "media" && document.querySelector("#view .vid iframe")) return;  // don't cut off a video that's playing
+    render();
+    if (!window.__hashDone && /^#(ranked|queue|leaderboard|bracket|schedule|freeagents|rules|media)$/.test(location.hash)) { window.__hashDone = true; tab = { "#leaderboard": "leaderboard", "#bracket": "bracket", "#schedule": "schedule", "#freeagents": "fa", "#rules": "rules", "#media": "media" }[location.hash] || "pickups"; render(); return; }
     const hm = !window.__hashDone && location.hash.match(/^#m(\d+)$/);  // link from a Discord score card
     window.__hashDone = true;
     if (hm && MATCHES[Number(hm[1])]) { tab = MATCHES[Number(hm[1])].label ? "bracket" : (D.swiss || D.groups) ? "qual" : tab; render(); openBox(Number(hm[1])); }

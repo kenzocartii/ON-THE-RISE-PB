@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T05:08:09+00:00",
+ "updated": "2026-11-23T05:08:27+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,7 +40,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 6,
+   "size": 7,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -48,7 +48,8 @@ window.PBL_DATA = {
     "WFRezkin3K \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SF",
-    "timtastic (@longheadtim) \u00b7 PF"
+    "timtastic (@longheadtim) \u00b7 PF",
+    "Madallulandrew \u00b7 C"
    ],
    "points": 0,
    "qualified": false,
@@ -313,6 +314,12 @@ window.PBL_DATA = {
     {
      "name": "timtastic (@longheadtim)",
      "pos": "PF",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "Madallulandrew",
+     "pos": "C",
      "cap": false,
      "co": false
     }
@@ -1919,6 +1926,20 @@ window.PBL_DATA = {
    "pos": "PG",
    "team": "BEASTCOAST",
    "role": "C",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Madallulandrew",
+   "rbx": "Madallulandrew",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+   "pos": "C",
+   "team": "BallHog Elite",
+   "role": "",
    "fa": false,
    "suspended": false,
    "build": null,

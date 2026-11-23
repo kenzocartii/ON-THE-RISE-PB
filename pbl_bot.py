@@ -7401,7 +7401,10 @@ def media_info_cards(guild: discord.Guild, c: dict) -> list[discord.Embed]:
     where = brand_embed("\n".join([
         f"{at('leaders')} Stat leaders and ranked leaders, updated by the bot automatically.",
         f"{at('live')} Streaming PB? Use `/golive` with your link. Media and Streamer roles only.",
-        f"{at('shows')} Podcasts, personal shows, recaps, interviews (Media role).",
+        f"{at('report')} **The OTR Report**: the league's media show. Episodes, podcasts, recaps, interviews and "
+        "breakdowns (Media role).",
+        f"{at('yt')} Official highlight videos posted to YouTube (Media role).",
+        f"{at('gfx')} Official league graphics: matchups, results, announcements (Media + staff).",
         f"{at('rankings')} Power rankings, previews and articles (Media + staff).",
         f"{at('highlights')} Everyone: post your clips and best plays.",
         f"{at('edits')} Everyone: edits, thumbnails and graphics.",
@@ -7409,7 +7412,7 @@ def media_info_cards(guild: discord.Guild, c: dict) -> list[discord.Embed]:
         "**🎙️ Media Booth** voice: Media and Streamers talk, everyone can listen in.",
     ]), "Media channels", BRAND)
     roles = brand_embed("\n".join([
-        "**Media** — content creators who cover the circuit: shows, recaps, rankings, interviews.",
+        "**Media** — content creators who cover the circuit: the OTR Report, recaps, rankings, interviews.",
         "**Streamer** — you stream PB circuit games or ranked. Lets you use `/golive`.",
         "**Stream Pings** — get notified when someone goes live. Toggle it with the button below.",
         "",
@@ -7451,7 +7454,9 @@ async def mediasetup(interaction: discord.Interaction):
         or await guild.create_category("MEDIA")
     c["category"] = cat.id
     wanted = [("info", "📌｜media-info", "ro"), ("leaders", "📊｜stat-leaders", "ro"),
-              ("live", "🔴｜live-now", ["Media", "Streamer"]), ("shows", "🎙️｜media-shows", ["Media"]),
+              ("live", "🔴｜live-now", ["Media", "Streamer"]), ("report", "📰｜otr-report", ["Media"]),
+              ("shows", "🎙️｜media-shows", ["Media"]), ("yt", "▶️｜yt-highlights", ["Media"]),
+              ("gfx", "🖼️｜official-gfx", ["Media"]),
               ("rankings", "📰｜power-rankings", ["Media"]), ("highlights", "🎬｜highlights", "open"),
               ("edits", "🎨｜edits-and-gfx", "open"), ("chat", "💬｜media-chat", None)]
     for key, name, access in wanted:

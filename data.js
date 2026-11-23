@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-23T05:08:27+00:00",
+ "updated": "2026-11-23T05:08:42+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -992,6 +992,29 @@ window.PBL_DATA = {
         "pm": -23,
         "min": 0,
         "pt": 0
+       },
+       {
+        "player": "Madallulandrew",
+        "team": "BallHog Elite",
+        "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+        "pts": 19,
+        "fg2m": 2,
+        "fg2a": 3,
+        "fg3m": 5,
+        "fg3a": 10,
+        "ftm": 0,
+        "fta": 0,
+        "orb": 1,
+        "drb": 1,
+        "reb": 2,
+        "ast": 2,
+        "stl": 0,
+        "blk": 0,
+        "to": 2,
+        "pf": 0,
+        "pm": 0,
+        "min": 0,
+        "pt": 0
        }
       ]
      },
@@ -1344,6 +1367,30 @@ window.PBL_DATA = {
     "pm": -23,
     "min": 0,
     "pt": 0
+   },
+   {
+    "player": "Madallulandrew",
+    "team": "BallHog Elite",
+    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+    "gp": 1,
+    "pts": 19,
+    "fg2m": 2,
+    "fg2a": 3,
+    "fg3m": 5,
+    "fg3a": 10,
+    "ftm": 0,
+    "fta": 0,
+    "orb": 1,
+    "drb": 1,
+    "reb": 2,
+    "ast": 2,
+    "stl": 0,
+    "blk": 0,
+    "to": 2,
+    "pf": 0,
+    "pm": 0,
+    "min": 0,
+    "pt": 0
    }
   ],
   "year_label": "2026",
@@ -1561,6 +1608,30 @@ window.PBL_DATA = {
     "to": 0,
     "pf": 1,
     "pm": -23,
+    "min": 0,
+    "pt": 0
+   },
+   {
+    "player": "Madallulandrew",
+    "team": "BallHog Elite",
+    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+    "gp": 1,
+    "pts": 19,
+    "fg2m": 2,
+    "fg2a": 3,
+    "fg3m": 5,
+    "fg3a": 10,
+    "ftm": 0,
+    "fta": 0,
+    "orb": 1,
+    "drb": 1,
+    "reb": 2,
+    "ast": 2,
+    "stl": 0,
+    "blk": 0,
+    "to": 2,
+    "pf": 0,
+    "pm": 0,
     "min": 0,
     "pt": 0
    }

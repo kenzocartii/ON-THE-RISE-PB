@@ -11,18 +11,18 @@ Slash commands
   /offer @player                  Captains: offer a spot. They Accept / Decline in DMs
                                  (DM only: nothing is posted in #free-agents). 5 to 8 per team, one team each.
   /revokeoffer [player] [team]  Captains/co-captains (or staff): take back an offer; no player = list open offers
-  /setposition player position  Staff: change anyone's position (roster card, #transactions, website, DM)
+  /position player: player position  Staff: change anyone's position (roster card, #transactions, website, DM)
   /roster [team] [player] [private]   Anyone: any team's roster (complete or still building), the team a
                                 player is on, or every team at once
-  /release, /makecaptain         Captains: release a player / hand over the captaincy
-  /cocaptain [player] [remove] [team]   Captains (or staff, any team): appoint one co-captain who can also /offer. Shown as (CC) on the
+  /release, /captain role:captain         Captains: release a player / hand over the captaincy
+  /captain [player] [remove] [team]   Captains (or staff, any team): appoint one co-captain who can also /offer. Shown as (CC) on the
                                 roster; the Co-Captain role is not listed separately in the member list.
   /register, /unregister         Captains/co-captains: enter (or leave) the tournament that's taking entries.
                                 Staff: add team:@Team to enter/remove any team (ignore_roster, late options)
                                  Shows your RISER POINTS and how many you still need for the Major.
   /leaveteam                     Players: leave your team (not while a tournament is being played)
   /disbandteam confirm:True      Captains: delete your team (not during a tournament)
-  /teaminfo [team], /points      Team card / RISER POINTS standings
+  /roster [team], /points      Team card / RISER POINTS standings
   /freeagent [position]          Turn the Free Agent role on or off
   /position                      Set your position: PG, SG, SF, PF or C. Required to create a team (/signup asks
                                  for it), accept a team's offer, become a free agent, or join the pickup queue.
@@ -31,7 +31,7 @@ Slash commands
   RISER POINTS
   - Each circuit event gives points by placement (set per tournament in /opensignups).
   - Tournament winners qualify for the Major automatically (staff can turn that off per tournament with the
-    winner_qualifies option or /majorspot); others need the target set with /setmajor.
+    winner_qualifies option or /tournament winner_qualifies:); others need the target set with /tournament major_target:.
   - If fewer than 3 of the players who earned a team's points are still on it, the points are lost.
   - When a Major finishes, everyone's points reset to 0.
 
@@ -40,15 +40,15 @@ Slash commands
                                 server (admin: roles, channels, rules), rules, ranked [ranked_size], tickets,
                                 moderation (welcome + join log + suspensions), media, champions, teamvoices,
                                 registered (the current tournament's registered-teams channel)
-  /giveplayerrole                Give the Player role to everyone already in the server
+  (/setupbot part:server also gives the Player role to everyone already in the server)
                                  (new members get it automatically when they join)
-  /setmajor points_needed        RISER POINTS needed to qualify for the Major
+  /tournament major_target: points_needed        RISER POINTS needed to qualify for the Major
   /opensignups name logo [kind] [points] [closes]   (the tournament logo is required)
-  /tournamentlogo logo          Staff: change the current tournament logo
+  /tournament logo: logo          Staff: change the current tournament logo
   /setupbot part:registered            Staff: make the 📋｜<tournament-name> channel listing registered teams (opening
                                 sign-ups makes it automatically; it updates on every /register and /unregister)
-  /setcloses closes [remind]    Staff: change when entries close; DMs captains of full teams not yet registered
-  /majorspot winner_qualifies   Staff: does this tournament's winner get an automatic Major spot? (yes/no)
+  /tournament closes: closes [remind]    Staff: change when entries close; DMs captains of full teams not yet registered
+  /tournament winner_qualifies: winner_qualifies   Staff: does this tournament's winner get an automatic Major spot? (yes/no)
                                  Open entries for a tournament. kind = Circuit event or Major.
                                  points = placement table, e.g. "1:300, 2:210, 3:150, 4:120, 5-6:75, 7-8:45"
   /closesignups                  Close entries (needs 6+ complete teams)
@@ -56,9 +56,9 @@ Slash commands
                                  (1st, 2nd, 3rd, 4th, 5th-6th, 7th-8th, 9th-12th, 13th-16th, 17th-24th, 25th-32nd,
                                  33rd-48th, 49th-64th). Only fill in the ones you want to change. Applies to the
                                  current tournament and is saved for future ones.
-  /setpoints team points, /resetpoints confirm:True
+  /setpoints team points, /setpoints reset_all:True confirm:True
   /setlogo team logo, /addteam, /removeteam, and /offer and /release with a team option
-  /signuplist, /rosterboard      Registered teams / re-send the team cards in #rosters
+  /roster, /refresh what:rosters      Registered teams / re-send the team cards in #rosters
   /endseason confirm:True        End a tournament early and send the stay-or-leave DMs
   /testtournament [teams] [style] [publish] [channels] [scorecards]
                                  Play a whole fake tournament (2 to 64 teams) with made-up team names, logos,
@@ -86,7 +86,7 @@ Slash commands
                                 One player from each team clicks who won; both must agree (or staff decide).
                                 Each win is +10 to +32 RR and each loss -10 to -32, based on how well you played:
                                 the host or staff enter stats (/pickupstats CSV or /pickupstat per player; get a
-                                sheet with /pickuptemplate). Best player in the game: +32 win / -10 loss; worst:
+                                sheet with /pickupstats). Best player in the game: +32 win / -10 loss; worst:
                                 +10 / -32. Until stats are in, everyone gets ±21, adjusted when stats arrive.
                                 Great game (top of the lobby, winning team): gains x2. Win streaks: 3 x1.25,
                                 4 x1.5, 5 x1.75, 6 x2, 7 x2.5, 8-9 x3, 10+ x4 (stack with great games), so big
@@ -94,7 +94,7 @@ Slash commands
                                 New players play 3 placement games (unranked, count 4x) and get placed between
                                 Silver 1 and Platinum 3.
   /rank [player], /leaderboard  Rank card / top 20 by RR
-  /pickupresult, /setrr, /resetrr confirm:True   Staff tools
+  /pickupresult, /setrr, /setrr reset_all:True confirm:True   Staff tools
 
   Moderation and welcome
   /setupbot part:moderation [welcome_message]   Staff: make 👋｜welcome (greets every new member with a welcome card),
@@ -103,14 +103,14 @@ Slash commands
   /suspend member reason tournaments | length [scope] [details]
                                 reason is a dropdown. Hacks/exploits and Alting/account sharing: Director of
                                 Enforcement or Commissioner only. Throwing games, Threats and Discord rule breaks:
-                                League Staff too. Same split for /unsuspend.
+                                League Staff too. Same split for /suspensions lift:True.
                                 tournaments: sit out 1-10 tournaments (the one taking sign-ups or being played
                                 counts first; counts down when a champion is crowned). Can't create, join or be
                                 signed to a team, register or free-agent until it's served.
                                 Or length: 30m, 12h, 3d, 1w, 2d12h or perm. scope: Ranked queue / League (queue,
                                 teams, tournaments) / Server timeout + league. Posts in ⛔｜suspensions, DMs the
                                 player, gives the Suspended role, and lifts itself when time is up.
-  /unsuspend member, /suspensions [member]   Lift early / list current ones or a player's history
+  /suspensions lift:True member, /suspensions [member]   Lift early / list current ones or a player's history
   /remind [what] [when] [note] [ping] [again]   Staff: reminder card in #announcements for sign-ups closing,
                                 the live draw, the main draw or games (games also go to each team's channel).
                                 when: 8pm, tomorrow 7pm, sat 6pm, in 2h. again: post again 15m/30m/1h/1d before.
@@ -122,16 +122,17 @@ Slash commands
                                 edits-and-gfx, media-chat, and a Media Booth voice channel. Roles Media,
                                 Streamer, Stream Pings.
   /golive link [title]          Media/Streamer: post a LIVE card that pings Stream Pings
-  /statleaders                  Refresh the stat leaders now
-  /mediarole member kind [remove]   Staff: give or take Media / Streamer
+  /refresh what:leaders                  Refresh the stat leaders now
+  /giverole member kind [remove]   Staff: give or take Media / Streamer
 
   Rules, team voice, match scheduling
   /setupbot part:rules                   Staff: wipe #rules and post the circuit rules as cards (edit RULE_CARDS to change)
   /setupbot part:teamvoices                   Staff: give older teams a voice channel (new teams get one automatically)
-  /presettime time [timezone]   Staff: the time the bot sets if captains don't agree one in 48 hours
-                                (default 18:00 ET, on the next day).
+  /presettime time [timezone]   Staff: the first evening slot the bot uses if captains don't agree a time
+                                (default 20:00 ET, then every 30 minutes to 11:30 PM, then the next evening).
+                                Group stages under 16 teams and main draws run on a 3-day clock.
   /gametime match [timezone]    Captains: pick the times that work; the other captain confirms one in DMs (or
-                                suggests another). 48 hours to agree, then the bot sets the preset time, which
+                                suggests another). 12-48 hours to agree (see /presettime), then the bot sets the preset time, which
                                 can still be moved earlier or later if both captains confirm (72-hour window). New matches DM captains + co-captains
                                 "YOUR NEXT ON THE RISE PB: TOURNAMENT MATCH IS ..." and ping both captains.
                                 Reminders 24h, 1h and at game time.
@@ -146,7 +147,7 @@ Slash commands
                                 When a Major ends the series resets: every circuit-event champion role from that
                                 series is deleted and Tournament Winner is removed from everyone except the Major
                                 winners, who keep it and their Major champion role.
-  /addchampion tournament team [logo]   /removechampion number   Staff: fix the list by hand
+  /champion action:add tournament team [logo]   /champion action:remove number   Staff: fix the list by hand
 
   Stats from screenshots
   /statsimage kind match image [image2]
@@ -154,7 +155,7 @@ Slash commands
                                 names to the rosters, and shows a preview: Save (box score + website, or pickup
                                 stats + RR), Fix (edit names/numbers; learned names are remembered), or Cancel.
                                 Needs Tesseract OCR installed on the bot's computer + `pip install pillow`.
-  /teststatsimage image [image2] [team1] [team2]
+  /statsimage image [image2] [team1] [team2]
                                 Staff: try the reader on any screenshot. Shows what it read (and flags lines that
                                 don't add up) and puts it on <site>/statstest/. Nothing touches the real league.
 
@@ -201,7 +202,7 @@ Slash commands
                                 in their place (groups/Swiss: their wins from that round on are flipped). After a
                                 tournament: their RISER POINTS are halved and any Major spot is removed.
                                 2+ players caught: points go to 0. Shows a preview; add confirm:True to do it.
-  /deletetestdraw [everything]  Staff: delete the last test draw (cards + picture), or every test draw with
+  /cleartest what:draw [everything]  Staff: delete the last test draw (cards + picture), or every test draw with
                                 everything:True. Stops a test draw that's still running.
   draw_in:N on /startgroups, /startswiss and /startmain: the LIVE DRAW starts N minutes later (default 5) with
   an @here in #announcements and a countdown in #bracket. Seeds, the top 8 one by one, a drum roll for #1, then
@@ -216,7 +217,7 @@ Slash commands
 
   Invites
   /invites [member]             How many people someone brought (still here / joined / left) and who invited them
-  /inviteleaderboard            Top recruiters. Every join is logged in 📥｜join-log with who invited them, and
+  /invites top:True            Top recruiters. Every join is logged in 📥｜join-log with who invited them, and
                                 anyone who brings 3+ people who stay gets the Recruiter role.
                                 The bot needs the "Manage Server" permission to see invite links.
 
@@ -237,8 +238,8 @@ Slash commands
                                 and a staff-only 📁｜ticket-logs. Picking a topic asks for details, then opens a
                                 private channel for that player and staff. Claim / Close buttons inside; closing
                                 saves a transcript to the logs and DMs it to the player.
-  /ticketadd, /ticketremove     Staff: add or remove someone from a ticket
-  /ticketclose [reason]         Close the ticket you're in
+  /ticket action:add, /ticket action:remove     Staff: add or remove someone from a ticket
+  /ticket action:close [reason]         Close the ticket you're in
 
   Tournament
   /startswiss [wins] [losses]   Optional Swiss qualifier (default: 3 wins = qualify, 3 losses = out).
@@ -252,7 +253,7 @@ Slash commands
                                 the cutoff are ALL invited to a single-elimination play-in for the last spots
                                 (results with /result, then /startmain). Odd number of
                                 teams (fewer invites, or a team drops with /unregister)? The next man up gets in.
-                                Run it with /startmain; the top 4 qualify for the Major. Target: 600 (/setmajor).
+                                Run it with /startmain; the top 4 qualify for the Major. Target: 600 (/tournament major_target:).
   /startgroups [group_size] [advance]
                                 Optional group stage. Pick how many teams per group (3-8, default 4), then
                                 how many from each group make the main draw (1 up to group size - 1, default 2).
@@ -260,7 +261,7 @@ Slash commands
   /result match winner [score]  Referees/staff: record a result. Next matches post automatically. When the
                                   champion is crowned, RISER POINTS are awarded (or reset after a Major) and
                                   every player is DMed with Stay / Leave buttons.
-  /statstemplate match          Referees/staff: get a stats sheet (CSV) for a game with both rosters listed
+  /importstats match          Referees/staff: get a stats sheet (CSV) for a game with both rosters listed
   /importstats match file       Upload the filled-in sheet: 2FG, 3FG, FT (made/att), ORB, DRB, REB, AST, STL,
                                 BLK, TO, FOUL, +/-, MIN, PT. Goes straight onto the website and the score card.
   /stat match player ...        Or enter one player at a time (run again to fix it).
@@ -415,9 +416,12 @@ RULE_CARDS = [
     ("📅 Scheduling and match day", 0x22C55E, [
         "When your match is posted, captains and co-captains get a DM (game times and reminders too), and both "
         "captains are pinged in #scheduling.",
-        "Captains have **48 hours** to agree a game time with `/gametime`; the other captain confirms in DMs.",
-        "No time after 48 hours? The bot sets the match for the **next day at 6 PM ET**. It can still be moved "
-        "earlier or later, but **both captains must confirm** the new time.",
+        "Captains agree a game time with `/gametime` (or `/confirmtime`); the other captain confirms in DMs. "
+        "You get **24 hours** in group stages under 16 teams, **12 hours** per game in the main draw, and 48 hours "
+        "otherwise. Group stages under 16 teams and the main draw are played inside **3 days**.",
+        "No time agreed? The bot sets the **first open evening slot from 8 PM ET** (every 30 minutes), spread "
+        "out so games don't start at the same time. It can "
+        "still be moved, but **both captains must confirm** the new time.",
         "Once a game time passes, it can't be changed. No-show rules apply.",
         "Be in your team voice channel **10 minutes** before game time. The higher seed hosts the private "
         "server and shares the code with the other captain only.",
@@ -1010,8 +1014,24 @@ async def on_member_join(member: discord.Member):
             print(f"Couldn't give Player to {member}. Is the bot's role above Player?")
 
 
-@bot.tree.command(description="Staff: give the Player role to everyone already in the server.")
 @app_commands.default_permissions(manage_roles=True)
+async def give_player_to_all(guild: discord.Guild) -> int:
+    """Everyone already in the server gets the Player role (new members get it when they join)."""
+    player_role = role(guild, "Player")
+    if player_role is None:
+        return 0
+    given = 0
+    async for member in guild.fetch_members(limit=None):
+        if not member.bot and player_role not in member.roles:
+            try:
+                await member.add_roles(player_role, reason="Everyone gets Player")
+                given += 1
+            except discord.HTTPException:
+                pass
+            await asyncio.sleep(0.3)
+    return given
+
+
 async def giveplayerrole(interaction: discord.Interaction):
     if not is_staff(interaction.user):
         return await interaction.response.send_message("Only league staff can do that.", ephemeral=True)
@@ -1063,6 +1083,7 @@ async def setup(interaction: discord.Interaction):
         notes.append("Couldn't reorder roles. Drag the bot's role to the top and run /setupbot part:server again.")
     await separate_team_roles(guild)  # teams stay their own groups above Players
 
+    asyncio.create_task(give_player_to_all(guild))  # members who joined before the bot get Player too
     # Give the person running /setupbot part:server the Commissioner role
     try:
         await interaction.user.add_roles(made["Commissioner"], reason="Circuit setup")
@@ -1114,7 +1135,7 @@ async def setup(interaction: discord.Interaction):
         await gr_ch.send(embed=game_rules_embed("📢 League game settings",
                                                 "Every ON THE RISE game is played with these settings."))
 
-    msg = ("ON THE RISE: PB CIRCUIT is built. Next: /giveplayerrole, /setmajor to set the Major target, "
+    msg = ("ON THE RISE: PB CIRCUIT is built. Next: /setupbot part:server, /tournament major_target: to set the Major target, "
            "then /opensignups to open your first tournament.")
     if notes:
         msg += "\n\n" + "\n".join(f"- {n}" for n in notes)
@@ -2047,7 +2068,6 @@ async def host_cooldown_once(guild: discord.Guild):
             await set_host_block(guild, member, False)
 
 
-@bot.tree.command(description="Staff: give or take the Pickup Host role (@everyone in the pickup channels, once an hour).")
 @app_commands.describe(member="Who", remove="Set True to take the role away")
 @app_commands.default_permissions(manage_roles=True)
 async def pickuphost(interaction: discord.Interaction, member: discord.Member, remove: bool = False):
@@ -2200,14 +2220,78 @@ def team_role_floor(guild: discord.Guild) -> int:
     return (max(base) + 1) if base else 1
 
 
-async def place_team_role(guild: discord.Guild, team: discord.Role):
+async def place_team_role(guild: discord.Guild, team: discord.Role, hoist: bool = True):
     want = team_role_floor(guild)
-    if team.position < want - 1 or not team.hoist:
+    if team.position < want - 1 or team.hoist != hoist:
         try:
             top = guild.me.top_role.position
-            await team.edit(hoist=True, position=min(want, top - 1), reason="Show the team as its own group")
+            await team.edit(hoist=hoist, position=min(want, top - 1),
+                            reason="Team still playing: own group in the member list" if hoist else
+                            "Team not playing right now: listed with everyone else")
         except discord.HTTPException:
             print(f"Couldn't move the {team.name} role. Put the bot's role near the top of the role list.")
+
+
+ONLY_ACTIVE_TEAMS_SHOWN = True  # member list: only teams still playing get their own group (False = every team)
+
+
+def active_team_ids(s: dict) -> set[int]:
+    """Teams shown as their own group in the member list: entered in the tournament taking sign-ups, or still
+    alive in the one being played (out of the qualifier, consolation or main draw = not shown). Between
+    tournaments only the last champion is shown."""
+    if not ONLY_ACTIVE_TEAMS_SHOWN:
+        return {int(k) for k in s["teams"]}
+    tz = s.get("tourney") or {}
+    ev = s.get("event") or {}
+    entrants = {int(k) for k in tz.get("entrants", []) if k in s["teams"]}
+    if not ev:
+        return entrants if s.get("open") else set()
+    if ev.get("stage") == "done" and not cons_running(ev):
+        champ = (ev.get("main") or {}).get("champion")
+        return {champ} if champ else set()
+    alive = set(entrants) or {int(t) for t in ev.get("seeds", [])}
+    sw, gs, main = ev.get("swiss"), ev.get("groups"), ev.get("main")
+    if sw:
+        alive -= {int(t) for t in sw.get("eliminated", [])}
+    if gs and (ev.get("stage") != "groups"):
+        alive &= {int(t) for t in gs.get("qualified", [])} | {int(t) for t in (main and [x for m in main["matches"]
+                                                                                    for x in (m.get("a"), m.get("b")) if x] or [])}
+    if main:
+        losses = {}
+        for m in main["matches"]:
+            if m["done"] and m.get("loser") is not None:
+                losses[m["loser"]] = losses.get(m["loser"], 0) + 1
+        alive -= {t for t, n in losses.items() if n >= 2}
+        if main.get("champion"):
+            alive = {main["champion"]}
+    cons = ev.get("consolation")
+    if cons and cons_running(ev):
+        in_cons = {x for m in cons["matches"] for x in (m.get("a"), m.get("b")) if x}
+        out_cons = {m["loser"] for m in cons["matches"] if m.get("winner") and m.get("loser")}
+        alive |= in_cons - out_cons
+    return {t for t in alive if str(t) in s["teams"]}
+
+
+_hoist_lock: dict[int, asyncio.Lock] = {}
+
+
+async def sync_team_hoist(guild: discord.Guild) -> int:
+    """Show only the teams still playing as their own group in the member list. Returns how many changed."""
+    lock = _hoist_lock.setdefault(guild.id, asyncio.Lock())
+    async with lock:
+        s = guild_signups(load_data(), guild.id)
+        active = active_team_ids(s)
+        changed = 0
+        for key in s["teams"]:
+            r = guild.get_role(int(key))
+            if r is None:
+                continue
+            want = int(key) in active
+            if r.hoist != want:
+                await place_team_role(guild, r, hoist=want)
+                changed += 1
+                await asyncio.sleep(0.5)
+        return changed
 
 
 async def separate_team_roles(guild: discord.Guild) -> int:
@@ -2220,10 +2304,12 @@ async def separate_team_roles(guild: discord.Guild) -> int:
             await tc.edit(hoist=False, reason="Captains are listed with their team")
         except discord.HTTPException:
             pass
+    active = active_team_ids(s)
     for key in s["teams"]:
         r = guild.get_role(int(key))
-        if r and (not r.hoist or r.position < team_role_floor(guild) - 1):
-            await place_team_role(guild, r)
+        want = int(key) in active
+        if r and (r.hoist != want or r.position < team_role_floor(guild) - 1):
+            await place_team_role(guild, r, hoist=want)
             fixed += 1
     return fixed
 
@@ -2457,6 +2543,7 @@ async def update_board(guild: discord.Guild, data: dict | None = None):
     except Exception as e:
         print(f"[free agent board] {e}")
     asyncio.create_task(sync_team_emojis(guild))  # new team or new logo: its logo emoji
+    asyncio.create_task(sync_team_hoist(guild))  # member list: only teams still playing get their own group
     schedule_publish(guild)
 
 def reg_channel_name(tname: str) -> str:
@@ -2677,10 +2764,9 @@ async def opensignups(interaction: discord.Interaction, name: str, logo: discord
     await interaction.followup.send(
         f"**{name}** is open for entries and announced with its logo. "
         + ("" if kind == "major" else "Winner gets a Major spot." if winner_qualifies else "Winner does NOT get a Major spot.")
-        + " Change it any time with /majorspot.", ephemeral=True)
+        + " Change it any time with /tournament winner_qualifies:.", ephemeral=True)
 
 
-@bot.tree.command(description="Staff: choose whether the current tournament's winner qualifies for the Major.")
 @app_commands.describe(winner_qualifies="Yes: the winner gets an automatic Major spot. No: points only.")
 @app_commands.default_permissions(manage_roles=True)
 async def majorspot(interaction: discord.Interaction, winner_qualifies: bool):
@@ -2713,7 +2799,6 @@ async def majorspot(interaction: discord.Interaction, winner_qualifies: bool):
                                                      "does not get a Major spot."), ephemeral=True)
 
 
-@bot.tree.command(description="Staff: change when entries close (and DM captains who still need to /register).")
 @app_commands.describe(closes="When entries close, e.g. 'Friday at 1 PM EST'",
                        remind="DM the captains of full teams that haven't registered yet (default yes)")
 @app_commands.default_permissions(manage_roles=True)
@@ -2760,7 +2845,6 @@ async def setcloses(interaction: discord.Interaction, closes: str, remind: bool 
                                     ephemeral=True)
 
 
-@bot.tree.command(description="Staff: change the current tournament's logo.")
 @app_commands.describe(logo="The new tournament logo (PNG, JPG, WEBP or GIF, under 1 MB)")
 @app_commands.default_permissions(manage_roles=True)
 async def tournamentlogo(interaction: discord.Interaction, logo: discord.Attachment):
@@ -2781,7 +2865,6 @@ async def tournamentlogo(interaction: discord.Interaction, logo: discord.Attachm
     await interaction.followup.send(f"Updated the logo for **{tz['name']}**.", file=logo_file(tz), ephemeral=True)
 
 
-@bot.tree.command(description="Set the position you play: PG, SG, SF, PF or C.")
 @app_commands.describe(position="Your position")
 @app_commands.choices(position=[app_commands.Choice(name=n, value=v) for v, n in POSITIONS])
 async def position(interaction: discord.Interaction, position: str):
@@ -2793,7 +2876,6 @@ async def position(interaction: discord.Interaction, position: str):
     await update_board(interaction.guild, data)
 
 
-@bot.tree.command(description="Staff: change a player's position (shows on their team's roster card and the website).")
 @app_commands.describe(player="The player", position="Their new position")
 @app_commands.choices(position=[app_commands.Choice(name=n, value=v) for v, n in POSITIONS])
 @app_commands.default_permissions(manage_roles=True)
@@ -3081,13 +3163,13 @@ async def forcesign(interaction: discord.Interaction, player: discord.Member, te
                    "off that team and sign them here.")
     elif old and s["teams"][old]["captain"] == player.id and len(s["teams"][old]["roster"]) > 1:
         problem = (f"{player.mention} is the captain of **{s['teams'][old]['name']}**. Hand the captaincy on first "
-                   "(their captain runs /makecaptain), then move them.")
+                   "(their captain runs /captain role:captain), then move them.")
     elif roster_locked(s) and not ignore_lock:
         problem = "Rosters are locked while the main draw is being played. Add `ignore_lock:True` to sign anyway."
     elif len(t["roster"]) >= ROSTER_MAX:
         problem = f"**{t['name']}** already has a full roster ({ROSTER_MAX}). Release someone first."
     elif suspended_from(s, player.id, "league"):
-        problem = f"{player.mention} is suspended from the league. Lift it with /unsuspend first."
+        problem = f"{player.mention} is suspended from the league. Lift it with /suspensions lift:True first."
     elif not position and not pos_of(s, player.id):
         problem = f"{player.mention} has no position yet. Add `position:` to the command."
     if problem:
@@ -3142,7 +3224,7 @@ async def release(interaction: discord.Interaction, player: discord.Member, team
     elif roster_locked(s):
         problem = "Rosters are locked while the main draw is being played."
     elif s["teams"][key]["captain"] == player.id:
-        problem = "You can't release the captain. Pass it on with /makecaptain first."
+        problem = "You can't release the captain. Pass it on with /captain role:captain first."
     if problem:
         return await interaction.response.send_message(problem, ephemeral=True, allowed_mentions=NO_PINGS)
     await interaction.response.defer(ephemeral=True)
@@ -3151,7 +3233,6 @@ async def release(interaction: discord.Interaction, player: discord.Member, team
     await reply_after(interaction, text)
 
 
-@bot.tree.command(description="Captains: hand the captaincy to a teammate.")
 @app_commands.describe(player="The teammate who becomes captain")
 async def makecaptain(interaction: discord.Interaction, player: discord.Member):
     guild = interaction.guild
@@ -3178,7 +3259,6 @@ async def makecaptain(interaction: discord.Interaction, player: discord.Member):
                                     allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Captains or staff: appoint a co-captain who can also sign players (or remove them).")
 @app_commands.describe(player="The teammate to make co-captain", remove="Set True to take co-captain away",
                        team="Staff only: which team (captains leave this empty)")
 async def cocaptain(interaction: discord.Interaction, player: discord.Member | None = None, remove: bool = False,
@@ -3306,7 +3386,6 @@ async def setlogo(interaction: discord.Interaction, team: discord.Role, logo: di
                                     ephemeral=True)
 
 
-@bot.tree.command(description="Show a team's logo, roster and RISER POINTS.")
 @app_commands.describe(team="The team's role (leave empty for your own team)")
 async def teaminfo(interaction: discord.Interaction, team: discord.Role | None = None):
     s = guild_signups(load_data(), interaction.guild.id)
@@ -3361,7 +3440,6 @@ async def roster(interaction: discord.Interaction, team: discord.Role | None = N
     await interaction.response.send_message(embeds=embeds, ephemeral=private, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="See the teams registered for the current tournament.")
 async def signuplist(interaction: discord.Interaction):
     s = guild_signups(load_data(), interaction.guild.id)
     tz = s.get("tourney")
@@ -3375,7 +3453,6 @@ async def signuplist(interaction: discord.Interaction):
                                             ephemeral=True, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Staff: repost the team cards in #rosters.")
 @app_commands.default_permissions(manage_roles=True)
 async def rosterboard(interaction: discord.Interaction):
     if not is_staff(interaction.user):
@@ -3898,7 +3975,7 @@ def spec_text(spec: dict) -> str:
     return " · ".join(out)
 
 
-MAJOR_TARGET = 600  # RISER POINTS needed for the Major (change any time with /setmajor)
+MAJOR_TARGET = 600  # RISER POINTS needed for the Major (change any time with /tournament major_target:)
 
 
 def circuit(s: dict) -> dict:
@@ -4257,7 +4334,6 @@ async def payout(interaction: discord.Interaction,
 
 # ---- commands
 
-@bot.tree.command(description="Staff: set how many RISER POINTS a team needs to qualify for the Major.")
 @app_commands.describe(points_needed="RISER POINTS needed (tournament winners qualify automatically)")
 @app_commands.default_permissions(manage_roles=True)
 async def setmajor(interaction: discord.Interaction, points_needed: app_commands.Range[int, 0, 100000]):
@@ -4287,7 +4363,6 @@ async def points(interaction: discord.Interaction):
     await interaction.response.send_message((head + "\n" + "\n".join(lines))[:1990], ephemeral=True)
 
 
-@bot.tree.command(description="Staff: set a team's RISER POINTS by hand.")
 @app_commands.describe(team="The team's role", points="Their new RISER POINTS total")
 @app_commands.default_permissions(manage_roles=True)
 async def setpoints(interaction: discord.Interaction, team: discord.Role, points: app_commands.Range[int, 0, 100000]):
@@ -4306,14 +4381,13 @@ async def setpoints(interaction: discord.Interaction, team: discord.Role, points
     await interaction.response.send_message(f"**{t['name']}** now has {points} RISER POINTS.", ephemeral=True)
 
 
-@bot.tree.command(description="Staff: reset every team's RISER POINTS and Major spots to 0.")
 @app_commands.describe(confirm="Set to True to confirm")
 @app_commands.default_permissions(manage_roles=True)
 async def resetpoints(interaction: discord.Interaction, confirm: bool = False):
     if not is_staff(interaction.user):
         return await interaction.response.send_message("Only league staff can do that.", ephemeral=True)
     if not confirm:
-        return await interaction.response.send_message("Run /resetpoints confirm:True to reset everything.",
+        return await interaction.response.send_message("Run /setpoints reset_all:True confirm:True to reset everything.",
                                                        ephemeral=True)
     data = load_data()
     s = guild_signups(data, interaction.guild.id)
@@ -4775,7 +4849,6 @@ async def testtournament(interaction: discord.Interaction, teams: app_commands.R
                                     ephemeral=True)
 
 
-@bot.tree.command(description="Staff: delete every message posted by test tournaments.")
 @app_commands.default_permissions(manage_roles=True)
 async def cleartest(interaction: discord.Interaction):
     if not is_staff(interaction.user):
@@ -5235,7 +5308,6 @@ def cell_int(v: str | None) -> int:
         raise ValueError(v)
 
 
-@bot.tree.command(description="Referees/staff: get a stats sheet for a match to fill in, then upload it with /importstats.")
 @app_commands.describe(match="Match number, e.g. 7 for M7")
 async def statstemplate(interaction: discord.Interaction, match: int):
     if not is_official(interaction.user):
@@ -5292,7 +5364,7 @@ async def import_tourney_csv(guild: discord.Guild, match: int, text: str) -> str
         return "That file is empty."
     keys = [sheet_key(h) for h in rows[0]]
     if "player" not in keys and "id" not in keys:
-        return ("I couldn't find a **Player** (or **Discord ID**) column. Use `/statstemplate` to get a sheet in the "
+        return ("I couldn't find a **Player** (or **Discord ID**) column. Use `/importstats` to get a sheet in the "
                 "right layout.")
 
     imported, unknown, problems = [], [], []
@@ -5338,7 +5410,7 @@ async def import_tourney_csv(guild: discord.Guild, match: int, text: str) -> str
     msg = f"Imported stats for **{len(imported)}** player(s) in M{match}. The website updates in a minute or two."
     if unknown:
         msg += ("\nCouldn't match these names to either roster: " + ", ".join(unknown[:15])
-                + ". Use their Discord name, or the Discord ID column from `/statstemplate`.")
+                + ". Use their Discord name, or the Discord ID column from `/importstats`.")
     if problems:
         msg += "\nSkipped: " + "; ".join(problems[:10])
     return msg
@@ -5443,7 +5515,6 @@ async def import_export_url(guild: discord.Guild, match: int, url: str) -> str |
     return await import_tourney_json(guild, match, text)
 
 
-@bot.tree.command(description="Referees/staff: upload a match's stats: the game's JSON export or a CSV sheet.")
 @app_commands.describe(match="Match number, e.g. 7 for M7", file="The game's stats export (.json) or a stats sheet (.csv)",
                        home="JSON only, if needed: the team that was Home in the export (usually worked out by itself)")
 async def importstats(interaction: discord.Interaction, match: int, file: discord.Attachment,
@@ -6156,7 +6227,6 @@ async def pickupstat(interaction: discord.Interaction, match: int, player: disco
         ephemeral=True, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Get a stats sheet (CSV) for a pickup to fill in, then upload it with /pickupstats.")
 @app_commands.describe(match="Pickup number, e.g. 12 for P12")
 async def pickuptemplate(interaction: discord.Interaction, match: int):
     guild = interaction.guild
@@ -6222,7 +6292,6 @@ async def import_pickup_csv(guild: discord.Guild, data: dict, m: dict, match: in
     return msg
 
 
-@bot.tree.command(description="Upload a pickup's stats sheet (CSV). RR is adjusted for how each player played.")
 @app_commands.describe(match="Pickup number, e.g. 12 for P12", file="The stats sheet saved as CSV")
 async def pickupstats(interaction: discord.Interaction, match: int, file: discord.Attachment):
     guild = interaction.guild
@@ -6403,7 +6472,7 @@ def info_cards(p: dict) -> list[discord.Embed]:
         "you in. One captain hosts: they make the private server and click **Share server code**, and the bot "
         "DMs it to everyone.",
         "4. When the game ends, **one player from each team** clicks who won. Both have to agree, or staff settle it.",
-        "5. The host (or staff) enters everyone's stats with `/pickupstats` (sheet from `/pickuptemplate`) or "
+        "5. The host (or staff) enters everyone's stats with `/pickupstats` (sheet from `/pickupstats`) or "
         "`/pickupstat`. Your RR is set from how well you played.",
     ]), f"How {n}v{n} ranked works", BRAND)
 
@@ -6433,7 +6502,7 @@ def info_cards(p: dict) -> list[discord.Embed]:
         "`/rank` your rank, RR, record and streak · `/rank player:@name` someone else's",
         "`/leaderboard` top 20 by RR",
         "`/position` set your usual position",
-        "`/pickupstat` · `/pickupstats` · `/pickuptemplate` enter a game's stats (host or staff)",
+        "`/pickupstat` · `/pickupstats` · `/pickupstats` enter a game's stats (host or staff)",
         "Website: the **Leaderboard** tab has every ranked player (filter by rank or position); **Ranked** shows the live queue and recent games.",
     ]), "Commands", INFO)
 
@@ -6644,7 +6713,6 @@ async def pickupresult(interaction: discord.Interaction, match: int, winner: str
     await interaction.followup.send(f"P{match}: Team {winner} won. RR updated.", ephemeral=True)
 
 
-@bot.tree.command(description="Staff: set a player's pickup RR.")
 @app_commands.describe(player="The player", rr="New RR: Iron 0, Bronze 300, Silver 600, Gold 900, Platinum 1200, "
                                                "Diamond 1500, Amethyst 1800, Ruby 2100, Vibrant 2400")
 @app_commands.default_permissions(manage_roles=True)
@@ -6661,14 +6729,13 @@ async def setrr(interaction: discord.Interaction, player: discord.Member, rr: ap
     schedule_publish(interaction.guild)
 
 
-@bot.tree.command(description="Staff: start a new pickup season (everyone back to the starting RR).")
 @app_commands.describe(confirm="Set to True to reset every player's RR and record")
 @app_commands.default_permissions(manage_roles=True)
 async def resetrr(interaction: discord.Interaction, confirm: bool = False):
     if not is_staff(interaction.user):
         return await interaction.response.send_message("Only staff can do that.", ephemeral=True)
     if not confirm:
-        return await interaction.response.send_message("Run /resetrr confirm:True to reset everyone.", ephemeral=True)
+        return await interaction.response.send_message("Run /setrr reset_all:True confirm:True to reset everyone.", ephemeral=True)
     data = load_data()
     p = pug(guild_signups(data, interaction.guild.id))
     p["players"] = {}
@@ -6935,7 +7002,6 @@ async def ticket_here(interaction: discord.Interaction):
     return data, t, t["open"].get(str(interaction.channel.id))
 
 
-@bot.tree.command(description="Staff: add someone to this ticket.")
 @app_commands.describe(member="Who to add")
 @app_commands.default_permissions(manage_messages=True)
 async def ticketadd(interaction: discord.Interaction, member: discord.Member):
@@ -6949,7 +7015,6 @@ async def ticketadd(interaction: discord.Interaction, member: discord.Member):
     await interaction.response.send_message(f"Added {member.mention} to the ticket.")
 
 
-@bot.tree.command(description="Staff: remove someone from this ticket.")
 @app_commands.describe(member="Who to remove")
 @app_commands.default_permissions(manage_messages=True)
 async def ticketremove(interaction: discord.Interaction, member: discord.Member):
@@ -6962,7 +7027,6 @@ async def ticketremove(interaction: discord.Interaction, member: discord.Member)
     await interaction.response.send_message(f"Removed {member.mention} from the ticket.", allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Close this ticket (saves a transcript).")
 @app_commands.describe(reason="Why it's being closed (optional)")
 async def ticketclose(interaction: discord.Interaction, reason: str | None = None):
     _d, _t, info = await ticket_here(interaction)
@@ -7265,7 +7329,6 @@ async def suspend(interaction: discord.Interaction, member: discord.Member, reas
                                     f"Case #{case}.", ephemeral=True, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Staff: lift a player's suspension early (hacks/alting ones: Director of Enforcement).")
 @app_commands.describe(member="Who to unsuspend")
 @app_commands.default_permissions(moderate_members=True)
 async def unsuspend(interaction: discord.Interaction, member: discord.Member):
@@ -7283,7 +7346,6 @@ async def unsuspend(interaction: discord.Interaction, member: discord.Member):
                                     f"{member.mention} isn't suspended.", ephemeral=True, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Staff: list current suspensions, or one player's history.")
 @app_commands.describe(member="Show this player's full suspension history (optional)")
 @app_commands.default_permissions(moderate_members=True)
 async def suspensions(interaction: discord.Interaction, member: discord.Member | None = None):
@@ -7718,11 +7780,10 @@ async def mediasetup(interaction: discord.Interaction):
     await refresh_leaders(guild, data)
     await interaction.followup.send(
         f"MEDIA is set up. Stat leaders are live in <#{c['leaders']}> and refresh every 30 minutes "
-        f"(or `/statleaders`). Give creators the **Media** or **Streamer** role so they can post shows and "
+        f"(or `/refresh what:leaders`). Give creators the **Media** or **Streamer** role so they can post shows and "
         "use `/golive`.", ephemeral=True)
 
 
-@bot.tree.command(description="Refresh the stat leaders cards in the media channel now.")
 async def statleaders(interaction: discord.Interaction):
     await interaction.response.defer(ephemeral=True)
     await refresh_leaders(interaction.guild)
@@ -7758,7 +7819,6 @@ async def golive(interaction: discord.Interaction, link: str, title: str = "Live
     await interaction.response.send_message(f"Posted in {ch.mention}. Have a good stream!", ephemeral=True)
 
 
-@bot.tree.command(description="Staff: give or take the Media / Streamer role.")
 @app_commands.describe(member="Who", kind="Which role", remove="Take it away instead")
 @app_commands.choices(kind=[app_commands.Choice(name="Media", value="Media"),
                             app_commands.Choice(name="Streamer", value="Streamer")])
@@ -7796,7 +7856,188 @@ async def media_buttons(interaction: discord.Interaction):
         await interaction.response.send_message("🔔 You'll be pinged when someone goes live." if on else
                                                 "🔕 Stream Pings off.", ephemeral=True)
     elif cid == "med:apply":
-        await interaction.response.send_modal(MediaApply())
+        await interaction.response.send_modal(ApplyModal("media"))
+
+
+# ---------------------------------------------------------------- /apply: apply for a league role
+#
+# /apply role:<Media / Streamer / Referee / Arena Host / Pickup Host / League Staff>
+# A short form, then an application card in 📝｜applications (staff only) with Accept / Deny.
+# League Staff can only be approved by the Commissioner (or an admin);
+# the rest by any staff member. Accepted = the role is given and the applicant gets a DM.
+
+APPLY_ROLES = {"media": ("Media", "🎥"), "streamer": ("Streamer", "📺"), "referee": ("Referee", "🦓"),
+               "host": ("Arena Host", "🎮"), "pickup": ("Pickup Host", "🏀"), "staff": ("League Staff", "🛡️")}
+# Commissioner and Director of Enforcement are appointed, never applied for.
+APPLY_TOP = {"staff"}  # Commissioner+ approves these
+APPLY_COOLDOWN = timedelta(days=7)  # after a denied application for the same role
+
+
+def applications(s: dict) -> dict:
+    return s.setdefault("applications", {})  # id -> {user, role, answers, status, at, by}
+
+
+class ApplyModal(discord.ui.Modal):
+    def __init__(self, key: str):
+        name, _icon = APPLY_ROLES[key]
+        super().__init__(title=f"Apply: {name}"[:45], timeout=900)
+        self.key = key
+        self.why = discord.ui.TextInput(label=f"Why do you want {name}?"[:45], style=discord.TextStyle.paragraph,
+                                        max_length=600)
+        self.exp = discord.ui.TextInput(label="Relevant experience", style=discord.TextStyle.paragraph,
+                                        max_length=600, placeholder="Other leagues, roles you've had, what you're good at")
+        self.avail = discord.ui.TextInput(label="When are you usually available?", max_length=200,
+                                          placeholder="e.g. weeknights 7-11 PM ET, weekends")
+        self.links = discord.ui.TextInput(label="Links (channel, past work)", required=key in ("media", "streamer"),
+                                          max_length=400, style=discord.TextStyle.paragraph,
+                                          placeholder="YouTube / Twitch / TikTok / portfolio" if key in ("media", "streamer")
+                                          else "Optional")
+        for x in (self.why, self.exp, self.avail, self.links):
+            self.add_item(x)
+
+    async def on_submit(self, interaction: discord.Interaction):
+        await submit_application(interaction, self.key, {"Why": str(self.why), "Experience": str(self.exp),
+                                                         "Availability": str(self.avail), "Links": str(self.links)})
+
+
+def apply_problem(guild: discord.Guild, s: dict, member, key: str) -> str | None:
+    name = APPLY_ROLES[key][0]
+    if any(r.name == name for r in getattr(member, "roles", [])):
+        return f"You already have **{name}**."
+    now = datetime.now(timezone.utc)
+    for a in applications(s).values():
+        if a["user"] == member.id and a["role"] == key:
+            if a["status"] == "open":
+                return f"You already have a **{name}** application waiting for staff."
+            if a["status"] == "denied" and now - datetime.fromisoformat(a.get("decided") or a["at"]) < APPLY_COOLDOWN:
+                again = datetime.fromisoformat(a.get("decided") or a["at"]) + APPLY_COOLDOWN
+                return f"Your last **{name}** application was declined. You can apply again {ts(again, 'R')}."
+    if suspended_from(s, member.id, "league"):
+        return "You can't apply while you're suspended."
+    return None
+
+
+async def applications_channel(guild: discord.Guild):
+    ch = discord.utils.get(guild.text_channels, name="📝｜applications") or chan(guild, "applications")
+    if ch is None:
+        try:
+            cat = discord.utils.get(guild.categories, name="STAFF") or await get_or_make_category(
+                guild, "STAFF", overwrites_for(guild, "staff"))
+            ch = await guild.create_text_channel("📝｜applications", category=cat, overwrites=overwrites_for(guild, "staff"),
+                                                 topic="Role applications from /apply. Accept or deny with the buttons.")
+        except discord.HTTPException:
+            return None
+    return ch
+
+
+async def submit_application(interaction: discord.Interaction, key: str, answers: dict):
+    guild, user = interaction.guild, interaction.user
+    data = load_data()
+    s = guild_signups(data, guild.id)
+    problem = apply_problem(guild, s, user, key)
+    if problem:
+        return await interaction.response.send_message(problem, ephemeral=True)
+    ch = await applications_channel(guild)
+    if ch is None:
+        return await interaction.response.send_message("Applications aren't set up yet. Ask staff.", ephemeral=True)
+    name, icon = APPLY_ROLES[key]
+    aid = secrets.token_hex(4)
+    applications(s)[aid] = {"user": user.id, "role": key, "answers": answers, "status": "open",
+                            "at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    save_data(data)
+    team = team_of(s, user.id)
+    joined = f"<t:{int(user.joined_at.timestamp())}:R>" if getattr(user, "joined_at", None) else "unknown"
+    e = brand_embed(f"{user.mention} · `{user}`\n**Joined the server:** {joined}"
+                    + (f"\n**Team:** {s['teams'][team]['name']}" if team else "")
+                    + ("\n*Commissioner or admin approval needed.*" if key in APPLY_TOP else ""),
+                    f"{icon} Application: {name}", GOLD)
+    for k, v in answers.items():
+        if v and v.strip():
+            e.add_field(name=k, value=v[:1000], inline=False)
+    try:
+        e.set_thumbnail(url=user.display_avatar.url)
+    except AttributeError:
+        pass
+    v = discord.ui.View(timeout=None)
+    v.add_item(discord.ui.Button(label="Accept", emoji="✅", style=discord.ButtonStyle.success,
+                                 custom_id=f"app:ok:{guild.id}:{aid}"))
+    v.add_item(discord.ui.Button(label="Deny", emoji="✖", style=discord.ButtonStyle.danger,
+                                 custom_id=f"app:no:{guild.id}:{aid}"))
+    msg = await ch.send(embed=e, view=v, allowed_mentions=NO_PINGS)
+    applications(s)[aid]["msg"] = [ch.id, msg.id]
+    save_data(data)
+    await interaction.response.send_message(f"Your **{name}** application was sent to staff. You'll get a DM when "
+                                            "they decide.", ephemeral=True)
+
+
+@bot.tree.command(description="Apply for a league role: Media, Streamer, Referee, Arena Host, Pickup Host or staff.")
+@app_commands.describe(role="The role you want")
+@app_commands.choices(role=[app_commands.Choice(name=v[0], value=k) for k, v in APPLY_ROLES.items()])
+async def apply(interaction: discord.Interaction, role: str):
+    problem = apply_problem(interaction.guild, guild_signups(load_data(), interaction.guild.id), interaction.user, role)
+    if problem:
+        return await interaction.response.send_message(problem, ephemeral=True)
+    await interaction.response.send_modal(ApplyModal(role))
+
+
+@bot.listen("on_interaction")
+async def application_buttons(interaction: discord.Interaction):
+    if interaction.type != discord.InteractionType.component:
+        return
+    cid = (interaction.data or {}).get("custom_id", "")
+    if not cid.startswith("app:"):
+        return
+    _, action, gid, aid = cid.split(":", 3)
+    guild = bot.get_guild(int(gid))
+    data = load_data()
+    s = guild_signups(data, int(gid))
+    a = applications(s).get(aid)
+    if guild is None or a is None:
+        return await interaction.response.send_message("That application doesn't exist any more.", ephemeral=True)
+    if a["status"] != "open":
+        return await interaction.response.send_message("This application was already handled.", ephemeral=True)
+    if a["role"] not in APPLY_ROLES:  # a role you can't apply for any more
+        a["status"] = "closed"
+        save_data(data)
+        return await interaction.response.edit_message(content="Closed: you can't apply for that role any more.",
+                                                       view=None)
+    staffer = interaction.user
+    if a["role"] in APPLY_TOP and not is_commissioner(staffer):
+        return await interaction.response.send_message("Only the Commissioner or an admin can decide staff applications.",
+                                                       ephemeral=True)
+    if not is_staff(staffer):
+        return await interaction.response.send_message("Only league staff can decide applications.", ephemeral=True)
+    name, icon = APPLY_ROLES[a["role"]]
+    a["status"] = "accepted" if action == "ok" else "denied"
+    a["by"], a["decided"] = staffer.id, datetime.now(timezone.utc).isoformat(timespec="seconds")
+    save_data(data)
+    note = ""
+    if action == "ok":
+        r = role(guild, name)
+        if r is None:
+            try:
+                r = await guild.create_role(name=name, reason="Role applications")
+            except discord.HTTPException:
+                r = None
+        member = guild.get_member(a["user"])
+        try:
+            if r and member:
+                await member.add_roles(r, reason=f"Application accepted by {staffer}")
+            elif not member:
+                note = " (they've left the server)"
+        except discord.HTTPException:
+            note = " (couldn't give the role: move the bot's role above it)"
+        await dm(a["user"], brand_embed(f"Your application for **{name}** in **{guild.name}** was accepted. Welcome aboard!",
+                                        f"{icon} Application accepted", GOOD))
+    else:
+        await dm(a["user"], brand_embed(f"Your application for **{name}** in **{guild.name}** wasn't accepted this time. "
+                                        f"You can apply again in {APPLY_COOLDOWN.days} days.", "Application update", MUTED))
+    e = interaction.message.embeds[0] if interaction.message and interaction.message.embeds else None
+    content = f"{'✅ Accepted' if action == 'ok' else '✖ Denied'} by {staffer.mention}{note}."
+    try:
+        await interaction.response.edit_message(content=content, embed=e, view=None, allowed_mentions=NO_PINGS)
+    except discord.HTTPException:
+        await interaction.response.send_message(content, ephemeral=True)
 
 
 class MediaApply(discord.ui.Modal, title="Apply for Media / Streamer"):
@@ -7814,7 +8055,7 @@ class MediaApply(discord.ui.Modal, title="Apply for Media / Streamer"):
             or guild.get_channel(c.get("chat") or 0)
         e = brand_embed(f"**From:** {interaction.user.mention}\n**Wants:** {self.kind.value}\n**Links:** "
                         f"{self.links.value}\n**Plan:** {self.plan.value or '—'}\n\nApprove with "
-                        f"`/mediarole member:@{interaction.user.name} kind:...`", "🎥 Media application", INFO)
+                        f"`/giverole member:@{interaction.user.name} kind:...`", "🎥 Media application", INFO)
         e.set_thumbnail(url=interaction.user.display_avatar.url)
         if staff_ch:
             await staff_ch.send(embed=e, allowed_mentions=NO_PINGS)
@@ -7858,8 +8099,70 @@ def sched(s: dict) -> dict:
     sc.setdefault("tz", {})        # user id -> timezone code
     sc.setdefault("next", 1)
     sc.setdefault("muted", [])     # users who turned match DMs off
-    sc.setdefault("preset", {"time": "18:00", "tz": "ET"})  # default game time set by /presettime
+    sc.setdefault("preset", {"time": "20:00", "tz": "ET"})  # first evening slot (8 PM ET), /presettime changes it
+    if not sc.get("preset_v2"):  # servers still on the old 6 PM default move to 8 PM
+        if sc["preset"] == {"time": "18:00", "tz": "ET"}:
+            sc["preset"] = {"time": "20:00", "tz": "ET"}
+        sc["preset_v2"] = True
     return sc
+
+
+STAGE_DAYS = 3          # group stages under 16 teams, and every main draw, are played inside 3 days
+FAST_GROUP_MAX = 16     # group stages with FEWER teams than this get the 3-day clock
+PRESET_SLOTS = 8        # evening preset slots every 30 minutes: 8:00 PM ... 11:30 PM ET
+SLOT_STEP = timedelta(minutes=30)
+
+
+def preset_text(sc: dict) -> str:
+    hh, mm = (int(x) for x in sc["preset"]["time"].split(":"))
+    return f"{(hh + 11) % 12 + 1}:{mm:02d} {'AM' if hh < 12 else 'PM'} {sc['preset']['tz']}"
+
+
+def evening_slot(sc: dict, start: datetime, busy: list[datetime] | None = None,
+                 others: list[tuple[datetime, bool]] | None = None) -> datetime:
+    """The first evening slot at or after `start` (8:00 PM ET, then every 30 minutes until 11:30 PM; the start is
+    /presettime) that works for both teams (`busy`: their other games). Games are spread out: first try a slot
+    where no other game starts, then one shared only with other bot-set games, never on top of a time captains
+    set themselves (`others`: (start, set by captains?)). Rolls to the next evening when tonight is full."""
+    hh, mm = (int(x) for x in sc["preset"]["time"].split(":"))
+    tz = tzinfo(sc["preset"]["tz"])
+    others = others or []
+    day = start.astimezone(tz).replace(hour=0, minute=0, second=0, microsecond=0)
+    near = lambda t, pool: any(abs(t - o) < SLOT_STEP for o in pool)
+    user_set = [o for o, mine in others if mine]
+    every = [o for o, _m in others]
+    fallback = None
+    for _d in range(14):
+        first = day.replace(hour=hh, minute=mm)
+        slots = [(first + SLOT_STEP * k).astimezone(timezone.utc) for k in range(PRESET_SLOTS)]
+        slots = [t for t in slots if t >= start and clear_of(t, busy or [])]
+        for t in slots:  # 1. nobody else starts then
+            if not near(t, every):
+                return t
+        for t in slots:  # 2. only other bot-set games start then
+            if not near(t, user_set):
+                return t
+        if slots and fallback is None:
+            fallback = slots[0]
+        day = (day + timedelta(days=1, hours=3)).replace(hour=0, minute=0)  # +3h: safe across clock changes
+    return fallback or (start + timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+
+def stage_clock(s: dict, label: str, now: datetime) -> tuple[int, datetime | None]:
+    """(hours captains get to agree a time, when the whole stage has to be finished or None).
+    Group stages under 16 teams and main draws get a 3-day clock that starts when their first game opens."""
+    ev = s.get("event") or {}
+    lab = (label or "").lower()
+    clock = ev.setdefault("clock", {})
+    if lab.startswith("group"):
+        n = sum(len(g) for g in (ev.get("groups") or {}).get("groups", []))
+        if n and n < FAST_GROUP_MAX:
+            clock.setdefault("group", (now + timedelta(days=STAGE_DAYS)).isoformat(timespec="seconds"))
+            return 24, datetime.fromisoformat(clock["group"])
+        return AGREE_HOURS, None
+    if lab.startswith(("winners", "losers", "grand", "consolation")):
+        clock.setdefault("main", (now + timedelta(days=STAGE_DAYS)).isoformat(timespec="seconds"))
+        return 12, datetime.fromisoformat(clock["main"])
+    return AGREE_HOURS, None
 
 
 def preset_time(sc: dict, base: datetime) -> datetime:
@@ -7915,7 +8218,7 @@ def ts(dt: datetime, style: str = "F") -> str:
     return f"<t:{int(dt.timestamp())}:{style}>"
 
 
-GAME_GAP = timedelta(minutes=90)  # a team's games are at least this far apart
+GAME_GAP = timedelta(minutes=60)  # one team's games start at least this far apart (a game + getting set up)
 
 
 def team_busy(sc: dict, teams, skip_mid: str | None = None) -> list[datetime]:
@@ -7985,7 +8288,7 @@ def next_match_card(s: dict, mid: str, our, label_extra: str = "") -> discord.Em
             if e_.get("time") else
             f"**Game time:** not set yet. Captains have until {ts(datetime.fromisoformat(e_['deadline']))} "
             f"({ts(datetime.fromisoformat(e_['deadline']), 'R')}) to agree one with `/gametime match:{mid}`, "
-            f"or it's set for the next day at {sched(s)['preset']['time']} {sched(s)['preset']['tz']}.")
+            f"or the bot sets the first open evening slot from {preset_text(sched(s))}.")
     first = e_["label"] in ("Swiss round 1", "Winners R1") or e_["label"].endswith("round 1")
     e = brand_embed(f"# YOUR NEXT ON THE RISE PB: TOURNAMENT MATCH IS M{mid}\n"
                     + (f"🆚 **Your first opponent: {team_name(s, other)}**\n" if first else "")
@@ -8015,20 +8318,156 @@ async def match_opened(guild: discord.Guild, s: dict, m: dict):
     sc = sched(s)
     now = datetime.now(timezone.utc)
     mid = str(m["id"])
+    hours, stage_end = stage_clock(s, m["label"], now)
+    deadline = now + timedelta(hours=hours)
+    if stage_end:  # 3-day stage: agree in time to still play before it ends
+        deadline = max(now + timedelta(hours=2), min(deadline, stage_end - timedelta(hours=6)))
     sc["matches"][mid] = {"a": m["a"], "b": m["b"], "label": m["label"], "opened": now.isoformat(timespec="seconds"),
-                          "deadline": (now + timedelta(hours=AGREE_HOURS)).isoformat(timespec="seconds"),
-                          "window_end": (now + timedelta(hours=SCHED_HOURS)).isoformat(timespec="seconds"),
+                          "deadline": deadline.isoformat(timespec="seconds"),
+                          "window_end": (stage_end or now + timedelta(hours=SCHED_HOURS)).isoformat(timespec="seconds"),
+                          "stage_end": stage_end.isoformat(timespec="seconds") if stage_end else None,
                           "time": None, "preset": False, "reminded": [], "done": False}
     await dm_teams(guild, s, [m["a"], m["b"]], lambda tid: next_match_card(s, mid, tid))
     dl = datetime.fromisoformat(sc["matches"][mid]["deadline"])
     p_ = sc["preset"]
     await scheduling_post(guild, s, mid,
                           f"**M{mid}** · {m['label']}\n**{team_name(s, m['a'])}** vs **{team_name(s, m['b'])}**\n\n"
-                          f"Captains, you have **48 hours** (until {ts(dl)}) to agree a game time. Run "
+                          f"Captains, you have until {ts(dl)} ({ts(dl, 'R')}) to agree a game time. Run "
                           f"`/gametime match:{mid}` and pick the times that work; the other captain confirms in DMs.\n"
-                          f"No time by then? The bot sets one for the **next day at {p_['time']} {p_['tz']}**, "
-                          "which you can still move earlier or later if both captains confirm.",
+                          f"No time by then? The bot sets the **first open evening slot from {preset_text(sc)}** "
+                          "(every 30 minutes, spread out from other games), which you can still move if both captains confirm."
+                          + (f"\nThis stage has to be finished by {ts(stage_end, 'f')}." if stage_end else ""),
                           f"📅 Schedule your match · M{mid}", INFO)
+
+
+# ---------------------------------------------------------------- priority: you asked, they ghosted
+#
+# If one captain sent game times (/gametime or /confirmtime) and the other team never answered, the bot still sets
+# the preset time, but the team that asked gets PRIORITY: they can move the game with /prioritytime without the
+# other team confirming. Staff have to approve the change (Approve / Deny card in #staff-chat).
+
+def unanswered_request(sc: dict, mid: str) -> dict | None:
+    reqs = [r for r in sc["requests"].values() if r["match"] == mid and r["status"] == "open"]
+    return reqs[-1] if reqs else None
+
+
+async def grant_priority(guild: discord.Guild, s: dict, mid: str, e_: dict):
+    sc = sched(s)
+    r = unanswered_request(sc, mid)
+    if not r:
+        return
+    r["status"] = "ignored"
+    e_["priority"] = r["from_team"]
+    for uid in captains_of(s, r["from_team"]):
+        await dm(uid, brand_embed(
+            f"**{team_name(s, r['to_team'])}** never answered your game time request for **M{mid}**, so the bot set "
+            f"the preset: {ts(datetime.fromisoformat(e_['time']))}.\n\nYour team has **priority**: if that time doesn't "
+            f"work, run `/prioritytime match:{mid} time:...` to move it without their confirmation. Staff approve it, "
+            "then both teams are told.", f"⭐ Priority · M{mid}", GOLD))
+
+
+@bot.tree.command(description="Captains with priority (the other team never answered): move the preset game time.")
+@app_commands.describe(match="Match number, e.g. 12 for M12",
+                       time="The new time: 8pm, 8:30pm, tomorrow 9pm, sat 8pm", timezone="Timezone of that time")
+@app_commands.choices(timezone=TZ_CHOICES)
+async def prioritytime(interaction: discord.Interaction, match: int, time: str, timezone: str | None = None):
+    guild, user = interaction.guild, interaction.user
+    data = load_data()
+    s = guild_signups(data, guild.id)
+    sc = sched(s)
+    mid = str(match)
+    e_ = sc["matches"].get(mid)
+    if not e_ or e_["done"]:
+        return await interaction.response.send_message(f"M{match} isn't an open match.", ephemeral=True)
+    if not e_.get("priority"):
+        return await interaction.response.send_message(
+            f"Nobody has priority on M{match}. Use `/gametime` and let the other captain confirm.", ephemeral=True)
+    if user.id not in captains_of(s, e_["priority"]):
+        return await interaction.response.send_message(
+            f"Only **{team_name(s, e_['priority'])}**'s captain or co-captain has priority on M{match}.", ephemeral=True)
+    if not can_override(e_):
+        return await interaction.response.send_message(f"M{match} has already started.", ephemeral=True)
+    tz_code = timezone or sc["tz"].get(str(user.id), "ET")
+    when, problem = parse_when(time, tz_code)
+    if problem:
+        return await interaction.response.send_message(problem, ephemeral=True)
+    now = datetime.now(timezone_utc())
+    if when <= now + timedelta(minutes=30):
+        return await interaction.response.send_message("Pick a time at least 30 minutes from now.", ephemeral=True)
+    end = datetime.fromisoformat(e_.get("stage_end") or e_.get("window_end") or e_["deadline"])
+    if e_.get("stage_end") and when > end:
+        return await interaction.response.send_message(f"This stage has to be done by {ts(end)}. Pick an earlier time.",
+                                                       ephemeral=True)
+    if not clear_of(when, team_busy(sc, (e_["a"], e_["b"]), mid)):
+        return await interaction.response.send_message("One of the teams has another game within an hour of that time.",
+                                                       ephemeral=True)
+    staff_ch = chan(guild, "staff-chat") or chan(guild, "mod-log")
+    if staff_ch is None:
+        return await interaction.response.send_message("There's no #staff-chat for staff to approve it. Ask staff.",
+                                                       ephemeral=True)
+    await interaction.response.defer(ephemeral=True)
+    pid = secrets.token_hex(4)
+    sc.setdefault("priority_reqs", {})[pid] = {"match": mid, "team": e_["priority"], "by": user.id,
+                                              "time": int(when.timestamp()), "status": "open"}
+    save_data(data)
+    other = e_["b"] if str(e_["a"]) == str(e_["priority"]) else e_["a"]
+    old = datetime.fromisoformat(e_["time"]) if e_.get("time") else None
+    v = discord.ui.View(timeout=None)
+    v.add_item(discord.ui.Button(label="Approve", emoji="✅", style=discord.ButtonStyle.success,
+                                 custom_id=f"pt:ok:{guild.id}:{pid}"))
+    v.add_item(discord.ui.Button(label="Deny", emoji="✖", style=discord.ButtonStyle.danger,
+                                 custom_id=f"pt:no:{guild.id}:{pid}"))
+    await staff_ch.send(embed=brand_embed(
+        f"**{team_name(s, e_['priority'])}** sent game times for **M{mid}** and **{team_name(s, other)}** never answered, "
+        f"so they have priority.\n\n{user.mention} wants to move it"
+        + (f" from {ts(old)}" if old else "") + f" to **{ts(when)}** ({ts(when, 'R')}).\n\nApprove to set it "
+        "(both teams are told), or deny to keep the current time.", f"⭐ Priority override · M{mid}", GOLD),
+        view=v, allowed_mentions=NO_PINGS)
+    await interaction.followup.send(f"Sent to staff to approve: M{mid} at {ts(when)}. You'll get a DM when they decide.",
+                                    ephemeral=True)
+
+
+@bot.listen("on_interaction")
+async def priority_buttons(interaction: discord.Interaction):
+    if interaction.type != discord.InteractionType.component:
+        return
+    cid = (interaction.data or {}).get("custom_id", "")
+    if not cid.startswith("pt:"):
+        return
+    _, action, gid, pid = cid.split(":", 3)
+    guild = bot.get_guild(int(gid))
+    if guild is None or not is_official(interaction.user):
+        return await interaction.response.send_message("Only staff can approve priority overrides.", ephemeral=True)
+    data = load_data()
+    s = guild_signups(data, guild.id)
+    sc = sched(s)
+    pr = sc.get("priority_reqs", {}).get(pid)
+    if not pr or pr["status"] != "open":
+        return await interaction.response.send_message("This request was already handled.", ephemeral=True)
+    e_ = sc["matches"].get(pr["match"])
+    if not e_ or e_["done"] or not can_override(e_):
+        pr["status"] = "expired"
+        save_data(data)
+        return await interaction.response.edit_message(content="Expired: the game has started or finished.", view=None)
+    pr["status"] = "approved" if action == "ok" else "denied"
+    pr["staff"] = interaction.user.id
+    save_data(data)
+    when = datetime.fromtimestamp(pr["time"], timezone.utc)
+    await interaction.response.edit_message(
+        content=f"{'✅ Approved' if action == 'ok' else '✖ Denied'} by {interaction.user.mention}.", view=None,
+        allowed_mentions=NO_PINGS)
+    if action == "ok":
+        await confirm_time(guild, data, pr["match"], pr["time"],
+                           f"<@{pr['by']}> (priority, approved by staff)")
+        d2 = load_data()
+        e2 = sched(guild_signups(d2, guild.id))["matches"].get(pr["match"])
+        if e2:
+            e2.pop("priority", None)  # priority is used up
+            save_data(d2)
+        await dm(pr["by"], brand_embed(f"Staff approved it: **M{pr['match']}** is now {ts(when)}.", "✅ Priority approved", GOOD))
+    else:
+        await dm(pr["by"], brand_embed(f"Staff kept **M{pr['match']}** at its current time. You still have priority if "
+                                       "you want to ask for a different time.", "Priority not approved", MUTED))
 
 
 # ---------------------------------------------------------------- #game-announcements: matchup graphic
@@ -8410,7 +8849,7 @@ async def confirmtime(interaction: discord.Interaction, match: int, time: str, t
             f"That's past the scheduling window for M{match}. Pick a time before {ts(end)}.", ephemeral=True)
     if not clear_of(when, team_busy(sc, (e_["a"], e_["b"]), mid)):
         return await interaction.response.send_message(
-            "One of the teams already has a game within 90 minutes of that time. Pick another.", ephemeral=True)
+            "One of the teams already has a game within an hour of that time. Pick another.", ephemeral=True)
     other_side = "b" if side == "a" else "a"
     to_team = s["teams"].get(str(e_[other_side]))
     if not to_team:
@@ -9009,8 +9448,8 @@ async def streamlink(interaction: discord.Interaction, link: str):
                                                                 if moved else ""), ephemeral=True)
 
 
-@bot.tree.command(description="Staff: the game time the bot sets when captains don't agree one in 48 hours.")
-@app_commands.describe(time="Clock time as HH:MM (24-hour), e.g. 18:00 for 6 PM", timezone="Timezone (default ET)")
+@bot.tree.command(description="Staff: the first evening slot the bot uses when captains don't agree a time (default 8 PM ET).")
+@app_commands.describe(time="Clock time as HH:MM (24-hour), e.g. 20:00 for 8 PM", timezone="Timezone (default ET)")
 @app_commands.choices(timezone=TZ_CHOICES)
 @app_commands.default_permissions(manage_roles=True)
 async def presettime(interaction: discord.Interaction, time: str, timezone: str = "ET"):
@@ -9024,8 +9463,8 @@ async def presettime(interaction: discord.Interaction, time: str, timezone: str 
     sc["preset"] = {"time": f"{int(hh):02d}:{mm}", "tz": timezone}
     save_data(data)
     await interaction.response.send_message(
-        f"If captains don't agree a time within 48 hours, the bot sets the match for the next day at "
-        f"**{sc['preset']['time']} {timezone}**. They can still move it with /gametime if both confirm.",
+        f"If captains don't agree a time, the bot sets the first open slot from **{preset_text(sc)}** "
+        "(then every 30 minutes until 11:30 PM, then the next evening). They can still move it with /gametime if both confirm.",
         ephemeral=True)
 
 
@@ -9278,20 +9717,22 @@ async def _match_watch_once(guild: discord.Guild):
                     break
         else:
             dl = datetime.fromisoformat(e_["deadline"])
-            if "12h" not in e_["reminded"] and now >= dl - timedelta(hours=12) and now < dl:
+            opened_ = datetime.fromisoformat(e_.get("opened") or e_["deadline"])
+            warn = min(timedelta(hours=12), (dl - opened_) / 3)  # 12h before, or a third of a short window
+            if "12h" not in e_["reminded"] and now >= dl - warn and now < dl:
                 e_["reminded"].append("12h")
                 changed = True
-                await scheduling_post(guild, s, mid, f"**12 hours left** to agree a time for M{mid}. "
+                await scheduling_post(guild, s, mid, f"**{human(dl - now)} left** to agree a time for M{mid}. "
                                                      f"Use `/gametime match:{mid}`.", f"⏳ M{mid} deadline soon", GOLD)
             if now >= dl:
-                preset = preset_time(sc, dl)
                 busy = team_busy(sc, (e_["a"], e_["b"]), mid)
-                while not clear_of(preset, busy):  # this team already plays then: the next free slot after it
-                    preset += GAME_GAP
+                others = [(datetime.fromisoformat(x["time"]), not x.get("preset")) for k, x in sc["matches"].items()
+                          if k != mid and not x.get("done") and x.get("time")]
+                preset = evening_slot(sc, max(dl, now) + timedelta(minutes=30), busy, others)  # 8 PM ET or later
                 e_["time"], e_["preset"], e_["reminded"] = preset.isoformat(timespec="seconds"), True, \
                     passed_reminders(preset)
                 changed = True
-                await scheduling_post(guild, s, mid, f"No time was agreed in 48 hours, so **M{mid}** "
+                await scheduling_post(guild, s, mid, f"No time was agreed in time, so **M{mid}** "
                                                      f"({team_name(s, e_['a'])} vs {team_name(s, e_['b'])}) is set for "
                                                      f"**{ts(preset)}** ({ts(preset, 'R')}).\n\nWant it earlier or "
                                                      f"later? Use `/gametime match:{mid}`. It only changes if both "
@@ -9299,6 +9740,7 @@ async def _match_watch_once(guild: discord.Guild):
                 await post_game_card(guild, s, mid)
                 await dm_teams(guild, s, [e_["a"], e_["b"]], lambda tid, mm=mid: next_match_card(s, mm, tid))
                 await dm_game_rules(guild, s, mid)
+                await grant_priority(guild, s, mid, e_)  # a team that asked and got no answer can move it (staff OK)
     try:
         if await stream_watch_once(guild, s, now):
             changed = True
@@ -10069,7 +10511,6 @@ async def championsetup(interaction: discord.Interaction):
                                     f"**{WINNER_ROLE}** role plus a role for the tournament they won.", ephemeral=True)
 
 
-@bot.tree.command(description="Staff: add or fix a champion in the champions list by hand.")
 @app_commands.describe(tournament="Tournament name", team="The winning team's role",
                        logo="Tournament logo (optional)", give_roles_to_roster="Give the roster the winner roles")
 @app_commands.default_permissions(manage_roles=True)
@@ -10105,7 +10546,6 @@ async def addchampion(interaction: discord.Interaction, tournament: str, team: d
                                     ephemeral=True)
 
 
-@bot.tree.command(description="Staff: remove a tournament from the champions list (by its number).")
 @app_commands.describe(number="The title number shown at the bottom of its card, e.g. 3")
 @app_commands.default_permissions(manage_roles=True)
 async def removechampion(interaction: discord.Interaction, number: int):
@@ -10591,7 +11031,6 @@ async def publish_stats_test(guild: discord.Guild, ev: dict, names: dict) -> str
         return f"Test page update failed: {e}"
 
 
-@bot.tree.command(description="Staff: test the screenshot stats reader and put the result on a test web page.")
 @app_commands.describe(image="A box-score screenshot", image2="The other team's box score (optional)",
                        team1="Name for the first screenshot's team (optional)",
                        team2="Name for the second screenshot's team (optional)")
@@ -10742,7 +11181,7 @@ async def setupbot(interaction: discord.Interaction, part: str, ranked_size: int
 #
 # Remembers how many times each invite link has been used. When someone joins, the link whose count went
 # up is the one they used, so we know who invited them. Logged in 📥｜join-log; /invites and
-# /inviteleaderboard show the counts. People who invite INVITE_ROLE_AT members who stay get the Recruiter role.
+# /invites top:True show the counts. People who invite INVITE_ROLE_AT members who stay get the Recruiter role.
 # The bot needs the "Manage Server" permission to see invite links.
 
 INVITE_ROLE_AT = 3
@@ -10850,7 +11289,6 @@ async def track_invite_leave(member: discord.Member):
         save_data(data)
 
 
-@bot.tree.command(description="See how many people someone has invited to the server.")
 @app_commands.describe(member="Whose invites (leave empty for your own)")
 async def invites(interaction: discord.Interaction, member: discord.Member | None = None):
     member = member or interaction.user
@@ -10866,7 +11304,6 @@ async def invites(interaction: discord.Interaction, member: discord.Member | Non
     await interaction.response.send_message(embed=e, ephemeral=True, allowed_mentions=NO_PINGS)
 
 
-@bot.tree.command(description="Top inviters: who has brought the most people to the server.")
 async def inviteleaderboard(interaction: discord.Interaction):
     s = guild_signups(load_data(), interaction.guild.id)
     counts: dict[int, list[int]] = {}
@@ -11121,7 +11558,9 @@ def site_schedule(s: dict, name, player) -> dict:
     recent = sorted(({"id": int(mid), "head": stage_heading(e_.get("label", ""), mid), "time": e_.get("time")}
                      for mid, e_ in sc["matches"].items() if e_.get("done")),
                     key=lambda r: (r["time"] or "", r["id"]), reverse=True)[:16]
-    return {"games": games, "recent": recent, "preset": sc["preset"], "agree_hours": AGREE_HOURS}
+    return {"games": games, "recent": recent, "preset": sc["preset"], "agree_hours": AGREE_HOURS,
+            "stage_end": next((e_.get("stage_end") for e_ in sc["matches"].values()
+                               if not e_.get("done") and e_.get("stage_end")), None)}
 
 
 def site_rules(s: dict) -> dict:
@@ -11777,7 +12216,6 @@ async def post_group_schedule(guild: discord.Guild, s: dict, ev: dict, restart: 
         print(f"[schedule picture] {e}")
 
 
-@bot.tree.command(description="Staff: repost the group stage schedule (every game, time TBA until set).")
 @app_commands.describe(clear_old="Delete the old group schedule posts in #schedule first (default yes)")
 @app_commands.default_permissions(manage_roles=True)
 async def refreshschedule(interaction: discord.Interaction, clear_old: bool = True):
@@ -12602,7 +13040,7 @@ async def testdraw(interaction: discord.Interaction, kind: str = "groups",
         return msg
 
     async def blocks(where: str, parts: list[str], color: int = 0xEF4444):
-        """Like send_blocks (the real tournament posts), but tracked so /deletetestdraw can remove them."""
+        """Like send_blocks (the real tournament posts), but tracked so /cleartest what:draw can remove them."""
         for chunk in pack(parts, limit=3800):
             await say(chunk, where=where, color=color, title=None)
 
@@ -12737,7 +13175,7 @@ async def testdraw(interaction: discord.Interaction, kind: str = "groups",
                         f"times (shown in your local time):\n{listing}\n\nPick one below to lock it in. If none work, "
                         f"suggest another time from the other dropdown.\n"
                         f"Deadline: {ts(datetime.fromisoformat(tsc['matches'][mid]['deadline']))}\n\n"
-                        "*Test: you have 2 minutes, then the bot sets the preset time like it would after 48 hours.*",
+                        "*Test: you have 2 minutes, then the bot sets the preset time like it would when the deadline passes.*",
                         f"🧪 TEST · Confirm your game time · {guild.name}", GOLD)
         if not await dm_tester(e, TestTimeView(fut, offered, counter, tz_code)):
             await say(f"I couldn't DM {tester.mention} (DMs closed?), so M{mid} gets a time automatically.")
@@ -12745,9 +13183,9 @@ async def testdraw(interaction: discord.Interaction, kind: str = "groups",
         try:
             kind_, t = await asyncio.wait_for(fut, timeout=120)
         except asyncio.TimeoutError:
-            when = preset_time(tsc, now)
+            when = evening_slot(tsc, now)
             await say(f"No game time agreed for M{mid} in time, so the bot set the preset: {ts(when)}.\n"
-                      "*(In a real match this happens after 48 hours.)*", title=f"⏳ TEST · M{mid} preset time",
+                      "*(In a real match this happens when the deadline passes.)*", title=f"⏳ TEST · M{mid} preset time",
                       where="scheduling", color=MUTED)
             await dm_tester(brand_embed(f"No time was picked for **M{mid}**, so the bot set it for {ts(when)}. "
                                         f"Both captains can still move it with `/gametime match:{mid}`.",
@@ -12970,7 +13408,7 @@ async def testdraw(interaction: discord.Interaction, kind: str = "groups",
                  "every post marked TEST" if channels else "in this channel")
     await interaction.response.send_message(
         f"Running a **test {kind} draw** with {len(ids)} {'real' if real_teams else 'fake'} teams {where_txt}."
-        f"{extra_txt} Nothing is saved and nobody is pinged. Clean up with /deletetestdraw.",
+        f"{extra_txt} Nothing is saved and nobody is pinged. Clean up with /cleartest what:draw.",
         ephemeral=True)
     note = "🧪 **PRACTICE DRAW** · nothing here is real.\n" + note
     test = {"s": s, "ev": ev, "channel": show_ch, "after": after, "announce": channels}
@@ -12986,7 +13424,6 @@ def _is_test_draw_msg(m) -> bool:
     return False
 
 
-@bot.tree.command(description="Staff: delete practice draws posted by /testdraw (the last one, or all of them).")
 @app_commands.describe(everything="True = delete every test draw, not just the most recent one")
 @app_commands.default_permissions(manage_roles=True)
 async def deletetestdraw(interaction: discord.Interaction, everything: bool = False):
@@ -13045,7 +13482,7 @@ async def deletetestdraw(interaction: discord.Interaction, everything: bool = Fa
                                     + (" (every test draw)." if everything else "."), ephemeral=True)
 
 
-# Test draws: every message they post is remembered (in signups.json) so /deletetestdraw can remove them.
+# Test draws: every message they post is remembered (in signups.json) so /cleartest what:draw can remove them.
 _test_tasks: dict[int, set] = {}  # guild id -> running test-draw shows
 _show_tasks: dict[int, dict] = {}  # guild id -> the real live draw running now: {task, started, skip}
 
@@ -13557,6 +13994,7 @@ async def record_result(guild: discord.Guild, match: int, winner_id: int, score:
     await post_next_up(guild, s, ev, m)  # each team's channel: the final and who they play next
     save_data(data)
     schedule_publish(guild)
+    asyncio.create_task(sync_team_hoist(guild))  # a team knocked out drops out of the member-list groups
     try:  # #power-rankings: once when the qualifier ends, once when the champion is crowned
         await auto_power_rankings(guild)
     except Exception as e:
@@ -13685,7 +14123,6 @@ async def sync_team_emojis(guild: discord.Guild) -> int:
 _emoji_report: dict[int, dict] = {}
 
 
-@bot.tree.command(description="Staff: make the team logo emojis now and see which teams have one (and why not).")
 @app_commands.default_permissions(manage_messages=True)
 async def teamemojis(interaction: discord.Interaction):
     guild = interaction.guild
@@ -13821,7 +14258,7 @@ async def mediaremove(interaction: discord.Interaction, title: str):
 # ---------------------------------------------------------------- automatic power rankings (#power-rankings)
 #
 # Posted by the bot when the qualifier (groups / Swiss) finishes and when the champion is crowned, or any time with
-# /powerrankings. Top 8 only. Score = win % + point differential per game + strength of schedule; once the main
+# /refresh what:rankings. Top 8 only. Score = win % + point differential per game + strength of schedule; once the main
 # draw is over, final placement comes first. Each team gets a one-line synopsis, plus a recap of the stage.
 
 PR_TOP = 8
@@ -14154,7 +14591,6 @@ async def auto_power_rankings(guild: discord.Guild):
         await post_power_rankings(guild, "qual")
 
 
-@bot.tree.command(description="Staff: post the power rankings now (they also post automatically after each stage).")
 @app_commands.default_permissions(manage_messages=True)
 async def powerrankings(interaction: discord.Interaction):
     if not is_staff(interaction.user):
@@ -14654,6 +15090,322 @@ async def resetevent(interaction: discord.Interaction, confirm: bool = False):
     schedule_publish(interaction.guild)
     await interaction.response.send_message(
         "Tournament cleared. Start again with /startswiss, /startgroups or /startmain.", ephemeral=True)
+
+
+
+# ---------------------------------------------------------------- /replaceteam: swap a team out of the tournament
+#
+# A team drops out (or is removed) and another takes its place: the new team inherits the old team's spot, seed,
+# group, record and bracket position. Games already played stay on the books (the old team's players keep their
+# own stats). Games still to play are re-opened for scheduling, so the new team's captains get the DMs.
+
+_SKIP_KEYS = {"box", "msgs", "card", "final_post", "analysis_post", "announce", "live_msg", "by", "from", "to",
+              "stream", "host", "reporter", "confirmed_by", "disputed_by"}
+
+
+def swap_team_ids(obj, old: int, new: int, key: str | None = None):
+    """Replace a team id everywhere in the tournament data (ints, strings and dict keys), but never inside
+    box scores or message/user references."""
+    if key in _SKIP_KEYS:
+        return obj
+    if isinstance(obj, dict):
+        return {(str(new) if k == str(old) else new if k == old else k): swap_team_ids(v, old, new, k)
+                for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [swap_team_ids(v, old, new, key) for v in obj]
+    if obj == old and isinstance(obj, int) and not isinstance(obj, bool):
+        return new
+    if obj == str(old):
+        return str(new)
+    return obj
+
+
+@bot.tree.command(description="Staff: replace a team in the tournament. The new team takes its spot, seed and record.")
+@app_commands.describe(old="The team leaving the tournament", new="The team taking its place",
+                       reason="Why (posted with the announcement)", ignore_roster="Allow a new team without 5 players",
+                       confirm="Set True to do it (without it you see a preview)")
+@app_commands.default_permissions(manage_roles=True)
+async def replaceteam(interaction: discord.Interaction, old: discord.Role, new: discord.Role,
+                      reason: str | None = None, ignore_roster: bool = False, confirm: bool = False):
+    guild = interaction.guild
+    if not is_staff(interaction.user):
+        return await interaction.response.send_message("Only league staff can replace teams.", ephemeral=True)
+    data = load_data()
+    s = guild_signups(data, guild.id)
+    tz = s.get("tourney") or {}
+    ev = s.get("event")
+    ko, kn = str(old.id), str(new.id)
+    problem = None
+    if not tz:
+        problem = "There's no tournament right now."
+    elif ko not in tz.get("entrants", []):
+        problem = f"{old.mention} isn't in **{tz.get('name', 'the tournament')}**."
+    elif kn not in s["teams"]:
+        problem = f"{new.mention} isn't a league team."
+    elif kn in tz.get("entrants", []):
+        problem = f"{new.mention} is already in the tournament."
+    elif not is_complete(s["teams"][kn]) and not ignore_roster:
+        problem = f"{new.mention} doesn't have a full roster. Add `ignore_roster:True` to use them anyway."
+    elif ev and (ev.get("main") or {}).get("champion"):
+        problem = "The tournament is already over."
+    elif ev and old.id in (ev.get("dq") or []):
+        problem = f"{old.mention} were disqualified. Their spot can't be handed on."
+    if problem:
+        return await interaction.response.send_message(problem, ephemeral=True, allowed_mentions=NO_PINGS)
+    on, nn = s["teams"][ko]["name"] if ko in s["teams"] else old.name, s["teams"][kn]["name"]
+    if ev:
+        rec = {r["tid"]: r for r in power_table(s, ev)}.get(old.id)
+        stage_txt = STAGE_TXT.get(ev.get("stage"), ev.get("stage") or "the draw")
+        inherit = f" They inherit {on}'s **{rec['w']}-{rec['l']}** record and spot." if rec else \
+            f" They take {on}'s spot in {stage_txt}."
+    else:
+        inherit = " The draw hasn't happened yet, so they simply take the place in the entries."
+    if not confirm:
+        return await interaction.response.send_message(
+            f"**Preview:** **{nn}** replace **{on}** in **{tz.get('name')}**.{inherit}\n"
+            "Games already played stay as they are; games still to play are re-opened so the new team's captains "
+            "can schedule them.\n\nRun it again with `confirm:True` to do it.", ephemeral=True)
+    await interaction.response.defer(ephemeral=True)
+    tz["entrants"] = [kn if k == ko else k for k in tz["entrants"]]
+    reopened = 0
+    if ev:
+        s["event"] = ev = swap_team_ids(ev, old.id, new.id)
+        sc = sched(s)
+        for mid, e_ in list(sc["matches"].items()):
+            if e_.get("done"):
+                continue
+            if str(e_.get("a")) == ko or str(e_.get("b")) == ko:
+                sc["matches"].pop(mid)  # the match watcher re-opens it with the new team (fresh DMs + deadline)
+                reopened += 1
+        for r in sc["requests"].values():
+            if r["status"] == "open" and ko in (str(r.get("from_team")), str(r.get("to_team"))):
+                r["status"] = "closed"
+    s.setdefault("replacements", []).append({"tournament": tz.get("name"), "old": ko, "new": kn, "reason": reason,
+                                            "by": interaction.user.id,
+                                            "at": datetime.now(timezone.utc).isoformat(timespec="seconds")})
+    save_data(data)
+    text = (f"**{nn}** replace **{on}** in **{tz.get('name')}**.{inherit}"
+            + (f"\n**Reason:** {reason}" if reason else ""))
+    ann = chan(guild, "announcements")
+    if ann:
+        await post(ann, text, title="🔁 Team replaced", color=INFO)
+    for k, msg_ in ((kn, f"You're in! **{nn}** take **{on}**'s place in **{tz.get('name')}**.{inherit}\n"
+                         "Check your DMs: captains get your next game to schedule."),
+                    (ko, f"**{on}** have been replaced in **{tz.get('name')}** by **{nn}**."
+                         + (f"\n**Reason:** {reason}" if reason else ""))):
+        tc = guild.get_channel(int(s["teams"].get(k, {}).get("channel") or 0))
+        if tc:
+            await post(tc, msg_, title="🔁 Tournament update", color=INFO)
+    log = chan(guild, "mod-log")
+    if log:
+        await post(log, text + f"\nBy {interaction.user.mention}", title="🔁 Team replaced", color=INFO)
+    try:
+        await match_watch_once(guild)  # re-open their games right away
+    except Exception as e:
+        print(f"[replace team] {e}")
+    try:
+        await refresh_registered(guild, load_data())
+    except Exception:
+        pass
+    await update_board(guild)
+    if ev and ev.get("main"):
+        try:
+            s2 = guild_signups(load_data(), guild.id)
+            await post_bracket_update(guild, s2, s2["event"])
+        except Exception as e:
+            print(f"[replace bracket] {e}")
+    await interaction.followup.send(f"Done: **{nn}** replaced **{on}**."
+                                    + (f" {reopened} game(s) re-opened for scheduling." if reopened else ""),
+                                    ephemeral=True)
+
+
+STAGE_TXT = {"groups": "the group stage", "swiss": "the Swiss stage", "main": "the main draw",
+             "groups_done": "the qualifier", "swiss_done": "the qualifier"}
+
+
+# ---------------------------------------------------------------- combined commands
+#
+# Several small commands were folded into these (Discord allows 100 slash commands). The old functions below
+# still do the work; these just pick the right one.
+
+@bot.tree.command(name="refresh", description="Staff: redo a board now: rosters, stat leaders, logos, group schedule, power rankings.")
+@app_commands.describe(what="What to refresh")
+@app_commands.choices(what=[app_commands.Choice(name="Team cards in #rosters", value="rosters"),
+                            app_commands.Choice(name="Stat leaders", value="leaders"),
+                            app_commands.Choice(name="Team logo emojis (and why a team has none)", value="emojis"),
+                            app_commands.Choice(name="Group stage schedule in #schedule", value="schedule"),
+                            app_commands.Choice(name="Post the power rankings now", value="rankings")])
+@app_commands.default_permissions(manage_messages=True)
+async def refresh_cmd(interaction: discord.Interaction, what: str):
+    if what == "rosters":
+        return await rosterboard(interaction)
+    if what == "leaders":
+        return await statleaders(interaction)
+    if what == "emojis":
+        return await teamemojis(interaction)
+    if what == "schedule":
+        return await refreshschedule(interaction, True)
+    return await powerrankings(interaction)
+
+
+@bot.tree.command(name="position", description="Set the position you play. Staff: set anyone's with the player option.")
+@app_commands.describe(position="The position", player="Staff only: whose position to change")
+@app_commands.choices(position=[app_commands.Choice(name=n, value=v) for v, n in POSITIONS])
+async def position_cmd(interaction: discord.Interaction, position: str, player: discord.Member | None = None):
+    if player is not None and player.id != interaction.user.id:
+        return await setposition(interaction, player, position)
+    return await globals()["position"](interaction, position)  # the parameter hides the function's name
+
+
+@bot.tree.command(name="ticket", description="Tickets: add or remove someone (staff), or close this ticket.")
+@app_commands.describe(action="What to do", member="Who to add or remove", reason="Why it's being closed (optional)")
+@app_commands.choices(action=[app_commands.Choice(name="Close this ticket", value="close"),
+                              app_commands.Choice(name="Add someone (staff)", value="add"),
+                              app_commands.Choice(name="Remove someone (staff)", value="remove")])
+async def ticket_cmd(interaction: discord.Interaction, action: str, member: discord.Member | None = None,
+                     reason: str | None = None):
+    if action == "close":
+        return await ticketclose(interaction, reason)
+    if member is None:
+        return await interaction.response.send_message("Pick the `member` to add or remove.", ephemeral=True)
+    return await (ticketadd if action == "add" else ticketremove)(interaction, member)
+
+
+@bot.tree.command(name="suspensions", description="Staff: current suspensions, one player's history, or lift one early.")
+@app_commands.describe(member="A player (their history)", lift="Lift this player's suspension early")
+@app_commands.default_permissions(moderate_members=True)
+async def suspensions_cmd(interaction: discord.Interaction, member: discord.Member | None = None, lift: bool = False):
+    if lift:
+        if member is None:
+            return await interaction.response.send_message("Pick the `member` whose suspension to lift.", ephemeral=True)
+        return await unsuspend(interaction, member)
+    return await suspensions(interaction, member)
+
+
+@bot.tree.command(name="invites", description="See how many people someone invited, or the top inviters.")
+@app_commands.describe(member="Whose invites (leave empty for your own)", top="Show the top inviters instead")
+async def invites_cmd(interaction: discord.Interaction, member: discord.Member | None = None, top: bool = False):
+    return await (inviteleaderboard(interaction) if top else invites(interaction, member))
+
+
+@bot.tree.command(name="setpoints", description="Staff: set a team's RISER POINTS, or reset everyone's to 0.")
+@app_commands.describe(team="The team", points="Their new RISER POINTS",
+                       reset_all="Reset EVERY team's RISER POINTS and Major spots to 0", confirm="Needed with reset_all")
+@app_commands.default_permissions(manage_roles=True)
+async def setpoints_cmd(interaction: discord.Interaction, team: discord.Role | None = None,
+                        points: app_commands.Range[int, 0, 100000] | None = None, reset_all: bool = False,
+                        confirm: bool = False):
+    if reset_all:
+        return await resetpoints(interaction, confirm)
+    if team is None or points is None:
+        return await interaction.response.send_message("Pick the `team` and its `points` (or use `reset_all`).",
+                                                       ephemeral=True)
+    return await setpoints(interaction, team, points)
+
+
+@bot.tree.command(name="tournament", description="Staff: change the tournament's close time, logo, Major spot, or the Major target.")
+@app_commands.describe(closes="When entries close, e.g. 'Friday at 1 PM EST'", logo="A new tournament logo",
+                       winner_qualifies="Does the winner get a Major spot?",
+                       major_target="RISER POINTS needed to qualify for the Major",
+                       remind="With closes: DM captains of full teams that haven't registered (default yes)")
+@app_commands.default_permissions(manage_roles=True)
+async def tournament_cmd(interaction: discord.Interaction, closes: str | None = None,
+                         logo: discord.Attachment | None = None, winner_qualifies: bool | None = None,
+                         major_target: app_commands.Range[int, 0, 100000] | None = None, remind: bool = True):
+    picked = [x for x in (closes, logo, winner_qualifies, major_target) if x is not None]
+    if len(picked) != 1:
+        return await interaction.response.send_message("Change one thing at a time: `closes`, `logo`, "
+                                                       "`winner_qualifies` or `major_target`.", ephemeral=True)
+    if closes is not None:
+        return await setcloses(interaction, closes, remind)
+    if logo is not None:
+        return await tournamentlogo(interaction, logo)
+    if winner_qualifies is not None:
+        return await majorspot(interaction, winner_qualifies)
+    return await setmajor(interaction, major_target)
+
+
+@bot.tree.command(name="pickupstats", description="Upload a pickup's stats sheet (CSV), or leave the file empty to get the sheet.")
+@app_commands.describe(match="Pickup number", file="The filled-in sheet (CSV). Leave empty to get a blank sheet.")
+async def pickupstats_cmd(interaction: discord.Interaction, match: int, file: discord.Attachment | None = None):
+    return await (pickupstats(interaction, match, file) if file else pickuptemplate(interaction, match))
+
+
+@bot.tree.command(name="setrr", description="Staff: set a player's pickup RR, or start a new pickup season.")
+@app_commands.describe(player="The player", rr="Their new RR", reset_all="New season: everyone back to the starting RR",
+                       confirm="Needed with reset_all")
+@app_commands.default_permissions(manage_roles=True)
+async def setrr_cmd(interaction: discord.Interaction, player: discord.Member | None = None,
+                    rr: app_commands.Range[int, 0, 10000] | None = None, reset_all: bool = False, confirm: bool = False):
+    if reset_all:
+        return await resetrr(interaction, confirm)
+    if player is None or rr is None:
+        return await interaction.response.send_message("Pick the `player` and their `rr` (or use `reset_all`).",
+                                                       ephemeral=True)
+    return await setrr(interaction, player, rr)
+
+
+@bot.tree.command(name="importstats", description="Referees/staff: upload a match's stats (JSON export or CSV). No file = get a blank sheet.")
+@app_commands.describe(match="Match number, e.g. 7 for M7", file="The game's stats export (.json) or a sheet (.csv)",
+                       home="JSON only, if needed: the team that was Home in the export")
+async def importstats_cmd(interaction: discord.Interaction, match: int, file: discord.Attachment | None = None,
+                          home: discord.Role | None = None):
+    return await (importstats(interaction, match, file, home) if file else statstemplate(interaction, match))
+
+
+@bot.tree.command(name="cleartest", description="Staff: delete test posts: a practice tournament's, or practice draws.")
+@app_commands.describe(what="What to delete")
+@app_commands.choices(what=[app_commands.Choice(name="Practice tournament posts (/testtournament)", value="tournament"),
+                            app_commands.Choice(name="The last practice draw (/testdraw)", value="draw"),
+                            app_commands.Choice(name="Every practice draw", value="draws")])
+@app_commands.default_permissions(manage_roles=True)
+async def cleartest_cmd(interaction: discord.Interaction, what: str = "tournament"):
+    if what == "tournament":
+        return await cleartest(interaction)
+    return await deletetestdraw(interaction, what == "draws")
+
+
+@bot.tree.command(name="champion", description="Staff: add or fix a champion in the champions list, or remove one.")
+@app_commands.describe(action="Add/fix or remove", tournament="Add: the tournament's name", team="Add: the winning team",
+                       logo="Add: the tournament logo (optional)", give_roles_to_roster="Add: give the winner roles (default yes)",
+                       number="Remove: its number in the champions list")
+@app_commands.choices(action=[app_commands.Choice(name="Add or fix", value="add"),
+                              app_commands.Choice(name="Remove", value="remove")])
+@app_commands.default_permissions(manage_roles=True)
+async def champion_cmd(interaction: discord.Interaction, action: str, tournament: str | None = None,
+                       team: discord.Role | None = None, logo: discord.Attachment | None = None,
+                       give_roles_to_roster: bool = True, number: int | None = None):
+    if action == "remove":
+        if number is None:
+            return await interaction.response.send_message("Give the `number` to remove.", ephemeral=True)
+        return await removechampion(interaction, number)
+    if not tournament or team is None:
+        return await interaction.response.send_message("Give the `tournament` name and the `team`.", ephemeral=True)
+    return await addchampion(interaction, tournament, team, logo, give_roles_to_roster)
+
+
+@bot.tree.command(name="giverole", description="Staff: give or take Media, Streamer or Pickup Host.")
+@app_commands.describe(role="Which role", member="Who", remove="Take it away instead")
+@app_commands.choices(role=[app_commands.Choice(name="Media", value="Media"),
+                            app_commands.Choice(name="Streamer", value="Streamer"),
+                            app_commands.Choice(name="Pickup Host", value="pickup")])
+@app_commands.default_permissions(manage_roles=True)
+async def giverole_cmd(interaction: discord.Interaction, role: str, member: discord.Member, remove: bool = False):
+    if role == "pickup":
+        return await pickuphost(interaction, member, remove)
+    return await mediarole(interaction, member, role, remove)
+
+
+@bot.tree.command(name="captain", description="Captains: hand over the captaincy, or add/remove a co-captain (staff: any team).")
+@app_commands.describe(player="The teammate", role="Make them captain or co-captain",
+                       remove="Co-captain only: take it away", team="Staff only: which team")
+@app_commands.choices(role=[app_commands.Choice(name="Co-captain", value="co"),
+                            app_commands.Choice(name="Captain (you stop being captain)", value="captain")])
+async def captain_cmd(interaction: discord.Interaction, player: discord.Member, role: str = "co", remove: bool = False,
+                      team: discord.Role | None = None):
+    if role == "captain":
+        return await makecaptain(interaction, player)
+    return await cocaptain(interaction, player, remove, team)
 
 
 def only_one_copy():

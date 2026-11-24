@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-24T01:02:55+00:00",
+ "updated": "2026-11-24T03:00:43+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1640,7 +1640,7 @@ window.PBL_DATA = {
    "name": "BippinInCali (@uufaailen)",
    "rbx": "@uufaailen",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/bbbe75a585d337049c77b9ab1242a91c.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/4a6ea32373f2ece56513188465db75ef.png?size=1024",
    "pos": "SF",
    "team": "336FN",
    "role": "",

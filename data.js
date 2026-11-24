@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-24T07:44:49+00:00",
+ "updated": "2026-11-24T07:45:09+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1572,7 +1572,9 @@ window.PBL_DATA = {
   "closes": "12/3 5 PM EST",
   "logo": "logos/c7496de12027.png",
   "points": "1st: 300 \u00b7 2nd: 210 \u00b7 3rd: 150 \u00b7 4th: 120 \u00b7 5th-6th: 75 \u00b7 7th-8th: 45 \u00b7 9th-12th: 30 \u00b7 13th-16th: 15 \u00b7 17th-24th: 10 \u00b7 25th-32nd: 5",
-  "entrants": []
+  "entrants": [
+   "BEASTCOAST"
+  ]
  },
  "players": [
   {

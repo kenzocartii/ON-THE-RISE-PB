@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-24T21:06:59+00:00",
+ "updated": "2026-11-24T23:52:00+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -47,7 +47,7 @@ window.PBL_DATA = {
     "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
-    "Skii (@braylen2rd) \u00b7 SF",
+    "Skii (@braylen2rd) \u00b7 SG",
     "timtastic (@longheadtim) \u00b7 PF",
     "Madallulandrew \u00b7 C"
    ],
@@ -315,7 +315,7 @@ window.PBL_DATA = {
     },
     {
      "name": "Skii (@braylen2rd)",
-     "pos": "SF",
+     "pos": "SG",
      "cap": false,
      "co": false
     },
@@ -1681,7 +1681,7 @@ window.PBL_DATA = {
    "name": "BippinInCali (@uufaailen)",
    "rbx": "@uufaailen",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/4a6ea32373f2ece56513188465db75ef.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1323088433874473063/c952aea494e384284eed1a3160337203.png?size=1024",
    "pos": "SF",
    "team": "336FN",
    "role": "",
@@ -2144,7 +2144,7 @@ window.PBL_DATA = {
    "rbx": "@braylen2rd",
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
-   "pos": "SF",
+   "pos": "SG",
    "team": "BallHog Elite",
    "role": "",
    "fa": false,

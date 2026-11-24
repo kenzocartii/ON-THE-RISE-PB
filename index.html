@@ -661,6 +661,14 @@ function finalPanel(d) {
     ${d.final.map((r, i) => `<tr><td class="${i === 0 ? "pl1" : ""}" style="width:110px">${esc(r.place)}</td><td>${r.teams.map(t => team(t)).join('<span style="color:var(--dim)"> · </span>')}</td><td class="num">${r.points ? "+" + r.points : "—"}</td></tr>`).join("")}</tbody></table></div>`;
 }
 
+function nextPanel(d) {
+  const u = d.upcoming;
+  if (!u || VIEW !== "current") return "";
+  return `<div class="now" style="border-left-color:var(--gold)"><span class="live" style="color:var(--gold)"><i style="background:var(--gold)"></i>NEXT UP</span>
+    <div class="tnrow">${u.logo ? `<img class="tlogo" src="${esc(u.logo)}" alt="">` : ""}<div><div class="tn2">${esc(u.name)}${u.kind === "major" ? ' <span class="chip in">MAJOR</span>' : ""}</div>
+    <div class="meta">${u.open ? `Entries open${u.closes ? " · close " + esc(u.closes) : ""}` : "Entries closed"} · <b>${plural(u.entrants.length, "team")} registered</b>${u.points ? " · pays " + esc(u.points) : ""} · starts when the current tournament ends</div>
+    ${u.entrants.length ? `<div class="meta" style="margin-top:6px;display:flex;flex-wrap:wrap;gap:8px">${u.entrants.map(n => team(n)).join("")}</div>` : ""}</div></div><span></span></div>`;
+}
 function overview(d) {
   const tz = d.tourney, c = d.circuit || { standings: [] };
   const live = d.main ? d.main.matches.filter(m => m.ready) : [];
@@ -688,7 +696,7 @@ function overview(d) {
 
   const pts = c.standings.slice(0, 8);
   const max = Math.max(1, c.needed || 0, ...pts.map(r => r.points));
-  return `${nowPlaying()}${upNext(d)}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
+  return `${nowPlaying()}${nextPanel(d)}${upNext(d)}<section class="hero"><div><div class="eyebrow">${eyebrow}</div><h1>${d.archived ? esc(d.tourney.name) : "ON THE RISE: PB CIRCUIT"}</h1>
       <div class="stats">${stats.map(([k, v, s]) => `<div class="stat"><div class="k">${k}</div><div class="v">${esc(v)}</div><div class="s">${esc(s)}</div></div>`).join("")}</div></div>${spot}</section>
     <div class="steps">${steps}</div>
     <div class="dccard"><div><div class="t">Join the ON THE RISE Discord</div><div class="d">Open registration: start a team with your friends using <b>/signup</b>, find a squad as a free agent, and get pinged when tournaments drop.</div></div>
@@ -1178,10 +1186,10 @@ function scheduleView(d) {
     html += days.map(([l, gs]) => `<div class="sday"><h3>${esc(l)} · ${plural(gs.length, "game")}</h3>${gs.map(gameRow).join("")}</div>`).join("");
   }
   if (waiting.length) {
-    const pre = sc.preset || { time: "18:00", tz: "ET" };
+    const pre = sc.preset || { time: "20:00", tz: "ET" };
     const [hh, mm] = pre.time.split(":").map(Number);
     const preTxt = `${((hh + 11) % 12) + 1}:${String(mm).padStart(2, "0")} ${hh < 12 ? "AM" : "PM"} ${pre.tz}`;
-    html += `<div class="sday"><h3>Waiting for a game time · ${waiting.length}</h3><p class="note" style="margin:-2px 0 10px">Captains have ${sc.agree_hours || 48} hours to agree a time. If they don't, the bot sets it for the next day at ${esc(preTxt)}.</p>
+    html += `<div class="sday"><h3>Waiting for a game time · ${waiting.length}</h3><p class="note" style="margin:-2px 0 10px">Captains agree a time before each game's deadline. If they don't, the bot picks one and staff confirm it (evenings from ${esc(preTxt)}, every 30 minutes, spread out so games don't start at the same time).${sc.stage_end ? ` This stage has to be finished by ${esc(fmtLong(sc.stage_end))}.` : ""}</p>
       ${waiting.map(g => `<div class="sg"><div class="tm">TBD<small>${g.deadline ? "agree by " + esc(new Date(g.deadline).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" })) : "not set"}</small></div>
         <div class="who"><small>${esc(g.head)}</small><div class="vs">${team(g.a)}<em>vs</em>${team(g.b)}</div></div><div class="side"><span>${g.deadline ? esc(relTime(new Date(g.deadline).getTime())) : ""}</span></div></div>`).join("")}</div>`;
   }

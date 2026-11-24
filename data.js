@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-24T03:00:43+00:00",
+ "updated": "2026-11-24T07:44:49+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1565,6 +1565,15 @@ window.PBL_DATA = {
   ]
  },
  "final": [],
+ "upcoming": {
+  "name": "FROSTBITE FRENZY",
+  "kind": "event",
+  "open": true,
+  "closes": "12/3 5 PM EST",
+  "logo": "logos/c7496de12027.png",
+  "points": "1st: 300 \u00b7 2nd: 210 \u00b7 3rd: 150 \u00b7 4th: 120 \u00b7 5th-6th: 75 \u00b7 7th-8th: 45 \u00b7 9th-12th: 30 \u00b7 13th-16th: 15 \u00b7 17th-24th: 10 \u00b7 25th-32nd: 5",
+  "entrants": []
+ },
  "players": [
   {
    "name": "2BUSYSLIDIN (@LiLLUCIX_BD)",
@@ -2032,7 +2041,7 @@ window.PBL_DATA = {
    "name": "rory (@comxfi)",
    "rbx": "@comxfi",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/98f36c913bd282c952aadf6236168d2a.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/823061979266285588/3013bbe8d133152702a4bbc3b1e1732e.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
    "role": "",
@@ -2326,7 +2335,7 @@ window.PBL_DATA = {
    "name": "yuzoo (@SevereDamagess)",
    "rbx": "@SevereDamagess",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/872182943899058248/92545d2ba8b60e727420cb54bbc3acde.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/872182943899058248/e6a3ad5d804601884e2c28606c2e3081.png?size=1024",
    "pos": "SF",
    "team": "Elevation",
    "role": "",
@@ -2496,7 +2505,7 @@ window.PBL_DATA = {
     "items": [
      "When your match is posted, captains and co-captains get a DM (game times and reminders too), and both captains are pinged in #scheduling.",
      "Captains agree a game time with `/gametime` (or `/confirmtime`); the other captain confirms in DMs. You get **24 hours** in group stages under 16 teams, **12 hours** per game in the main draw, and 48 hours otherwise. Group stages under 16 teams and the main draw are played inside **3 days**.",
-     "No time agreed? The bot sets the **first open evening slot from 8 PM ET** (every 30 minutes), spread out so games don't start at the same time. It can still be moved, but **both captains must confirm** the new time.",
+     "No time agreed? **The bot picks one and staff confirm it** (evenings from 8 PM ET, every 30 minutes), spread out so games don't start at the same time. It can still be moved, but **both captains must confirm** the new time.",
      "Once a game time passes, it can't be changed. No-show rules apply.",
      "Be in your team voice channel **10 minutes** before game time. The higher seed hosts the private server and shares the code with the other captain only.",
      "**No-shows:** fewer than 5 players ready **15 minutes** after the set time is a forfeit. Two forfeits in one tournament and your team is removed.",

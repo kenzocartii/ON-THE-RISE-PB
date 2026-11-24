@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-24T07:51:11+00:00",
+ "updated": "2026-11-24T21:06:59+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -113,6 +113,17 @@ window.PBL_DATA = {
     "sigredeye (@Disvanti) \u00b7 PF",
     "yuzoo (@SevereDamagess) \u00b7 SF"
    ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
+   "name": "K3 PROSPECTS",
+   "complete": false,
+   "size": 1,
+   "logo": "logos/a04a5a76df12.png",
+   "captain": "Mari4life (@Getmosedg) \u00b7 PG",
+   "players": [],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -462,6 +473,20 @@ window.PBL_DATA = {
     }
    ]
   },
+  "K3 PROSPECTS": {
+   "logo": "logos/a04a5a76df12.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "Mari4life (@Getmosedg)",
+     "pos": "PG",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
   "Nightrydas Elite": {
    "logo": "logos/6a737592ee66.png",
    "points": 0,
@@ -626,6 +651,11 @@ window.PBL_DATA = {
    },
    {
     "team": "Elevation",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "K3 PROSPECTS",
     "points": 0,
     "qualified": false
    },
@@ -975,7 +1005,7 @@ window.PBL_DATA = {
        {
         "player": "Madallulandrew",
         "team": "BallHog Elite",
-        "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+        "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/a208b0abd4e34e2ebe666451c304901e.png?size=1024",
         "pts": 19,
         "fg2m": 2,
         "fg2a": 3,
@@ -1298,7 +1328,7 @@ window.PBL_DATA = {
    {
     "player": "Madallulandrew",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/a208b0abd4e34e2ebe666451c304901e.png?size=1024",
     "gp": 1,
     "pts": 19,
     "fg2m": 2,
@@ -1541,7 +1571,7 @@ window.PBL_DATA = {
    {
     "player": "Madallulandrew",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1069172834938662952/a208b0abd4e34e2ebe666451c304901e.png?size=1024",
     "gp": 1,
     "pts": 19,
     "fg2m": 2,
@@ -1679,7 +1709,7 @@ window.PBL_DATA = {
    "name": "BreezyVert (@BalmainSpecialist)",
    "rbx": "@BalmainSpecialist",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1152798151158272020/a_e0e45eaa6a478fa3f0ef63e948d677d6.gif?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1152798151158272020/a_a3854c562164bd2b5e2ad3333f477fa9.gif?size=1024",
    "pos": "SG",
    "team": "336FN",
    "role": "",
@@ -1833,7 +1863,7 @@ window.PBL_DATA = {
    "name": "imovethechains",
    "rbx": "imovethechains",
    "rbx_id": 11304790412,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F10B7F2001D8AF030B0E64FD720C09AE-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FFF88CCA9613936A6B37CC1EB92F5C27-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "SG",
    "team": "BallHog Elite",
    "role": "",
@@ -1973,10 +2003,24 @@ window.PBL_DATA = {
    "name": "Madallulandrew",
    "rbx": "Madallulandrew",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1069172834938662952/6943bae109a126c7daefca3212b8936c.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1069172834938662952/a208b0abd4e34e2ebe666451c304901e.png?size=1024",
    "pos": "C",
    "team": "BallHog Elite",
    "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Mari4life (@Getmosedg)",
+   "rbx": "@Getmosedg",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1398709590274605200/a_9b6f4ea6e471fd210191037580da25ef.gif?size=1024",
+   "pos": "PG",
+   "team": "K3 PROSPECTS",
+   "role": "C",
    "fa": false,
    "suspended": false,
    "build": null,
@@ -2043,7 +2087,7 @@ window.PBL_DATA = {
    "name": "rory (@comxfi)",
    "rbx": "@comxfi",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/3013bbe8d133152702a4bbc3b1e1732e.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/823061979266285588/7038879cc86b63b44c78672d918b0b9e.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
    "role": "",
@@ -2295,7 +2339,7 @@ window.PBL_DATA = {
    "name": "wydpolo (@LaPoloBall)",
    "rbx": "@LaPoloBall",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/583019227888222279/c7dc38954378e3adc8ccbeb3e398217a.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/583019227888222279/7e99b4f492bc64daf58689ea0e3d07ad.png?size=1024",
    "pos": "C",
    "team": "Yore",
    "role": "C",

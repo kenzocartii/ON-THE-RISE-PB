@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T08:00:21+00:00",
+ "updated": "2026-11-25T08:13:02+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,11 +40,10 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 8,
+   "size": 7,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
-    "imovethechains \u00b7 SG",
     "WFRezkin3K \u00b7 SF",
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SG",
@@ -302,12 +301,6 @@ window.PBL_DATA = {
      "name": "jacami (@JaCamii2)",
      "pos": "",
      "cap": true,
-     "co": false
-    },
-    {
-     "name": "imovethechains",
-     "pos": "SG",
-     "cap": false,
      "co": false
     },
     {
@@ -1869,20 +1862,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1546705313804189770/5393df99cd921e043515065eba00c99a.png?size=1024",
    "pos": "SF",
    "team": "DemBoyz Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "imovethechains",
-   "rbx": "imovethechains",
-   "rbx_id": 11304790412,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-FFF88CCA9613936A6B37CC1EB92F5C27-Png/150/150/AvatarHeadshot/Png/noFilter",
-   "pos": "SG",
-   "team": "BallHog Elite",
    "role": "",
    "fa": false,
    "suspended": false,

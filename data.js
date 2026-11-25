@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T06:00:04+00:00",
+ "updated": "2026-11-25T06:14:50+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -102,6 +102,17 @@ window.PBL_DATA = {
    "points": 0,
    "qualified": false,
    "registered": true
+  },
+  {
+   "name": "ego",
+   "complete": false,
+   "size": 1,
+   "logo": "logos/f2612a455514.png",
+   "captain": "egoVoltic \u00b7 C",
+   "players": [],
+   "points": 0,
+   "qualified": false,
+   "registered": false
   },
   {
    "name": "Elevation",
@@ -442,6 +453,20 @@ window.PBL_DATA = {
     }
    ]
   },
+  "ego": {
+   "logo": "logos/f2612a455514.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "egoVoltic",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
   "Elevation": {
    "logo": "logos/824c0d888428.png",
    "points": 0,
@@ -617,6 +642,11 @@ window.PBL_DATA = {
    },
    {
     "team": "DemBoyz Elite",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "ego",
     "points": 0,
     "qualified": false
    },
@@ -1755,6 +1785,20 @@ window.PBL_DATA = {
    "pos": "PF",
    "team": "Arctic Wolves",
    "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "egoVoltic",
+   "rbx": "egoVoltic",
+   "rbx_id": 446503640,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3943A33D4730043F5544413798D47E21-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "pos": "C",
+   "team": "ego",
+   "role": "C",
    "fa": false,
    "suspended": false,
    "build": null,

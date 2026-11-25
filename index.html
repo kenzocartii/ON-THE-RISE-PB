@@ -185,6 +185,31 @@
   .livegames h3, .upnext h3 { margin: 0 0 10px; font-size: 12px; letter-spacing: .12em; display: flex; align-items: center; gap: 8px; }
   .livegames h3 { color: var(--accent); }
   .livegames h3 i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s infinite; }
+  .zone { border: 1px solid rgba(239, 68, 68, .5); border-radius: 12px; background: linear-gradient(180deg, rgba(239,68,68,.10), transparent 60%), var(--panel); padding: 12px 14px 14px; margin: 0 0 14px; }
+  .zone .zh { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .zone .zh h3 { margin: 0; font-size: 12px; letter-spacing: .14em; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+  .zone .zh h3 i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); animation: pulse 1.6s infinite; }
+  .zone .zh small { color: var(--dim); font-size: 11.5px; }
+  .zgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); gap: 10px; }
+  .zt { min-width: 0; border: 1px solid var(--line); border-radius: 9px; background: var(--panel-2); overflow: hidden; }
+  .zt.big { grid-column: 1 / -1; order: -1; border-color: rgba(239, 68, 68, .55); }
+  .zgrid.solo { max-width: 1000px; margin: 0 auto; }
+  @media (min-width: 900px) {  /* RedZone look: the main game big on the left, the rest stacked on the right */
+    .zgrid.multi { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); grid-auto-flow: dense; align-items: start; }
+    .zgrid.multi .zt { grid-column: 2; }
+    .zgrid.multi .zt.big { grid-column: 1; grid-row: 1 / span var(--n, 1); }
+  }
+  .zt .scr { position: relative; aspect-ratio: 16 / 9; background: #000; }
+  .zt .scr iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .zt .cap { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 10px; font-size: 12px; flex-wrap: wrap; }
+  .zt .cap .ztm { min-width: 0; font-weight: 700; }
+  .zt .cap .ztm small { display: block; font-size: 10px; letter-spacing: .08em; color: var(--muted); font-weight: 800; }
+  .zt .cap .zb { display: flex; gap: 6px; align-items: center; }
+  .zt .cap button { background: none; border: 1px solid var(--line); color: var(--ink); border-radius: 6px; font: 600 11.5px "Inter Tight", sans-serif; padding: 4px 8px; cursor: pointer; }
+  .zt.big .cap button.feat { display: none; }
+  .zt .cap a { color: var(--muted); font-size: 11.5px; }
+  .streamed { font-size: 11.5px; color: var(--muted); text-decoration: none; }
+  .streamed:hover { color: var(--ink); text-decoration: underline; }
   .lvgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
   .lvc { border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); padding: 10px 12px; min-width: 0; }
   .lvc .lvh { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: var(--muted); margin-bottom: 6px; }
@@ -424,6 +449,7 @@
   <div class="tbarrow"><div class="tbar" id="tbar"></div>
     <div class="search" role="search"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Zm5.3-2.2L21 21"/></svg>
       <input id="q" type="search" placeholder="Search players and teams" autocomplete="off" aria-label="Search players and teams"><div class="sres" id="sres" hidden></div></div></div>
+  <section id="zone" class="zone" aria-label="Live Zone" hidden></section>
   <main id="view"></main>
 </div>
 <footer>ON THE RISE: PB CIRCUIT · Practical Basketball on Roblox · <a href="https://discord.gg/UbAPSJnkVp" target="_blank" rel="noopener" style="color:#8b93ff">Join the Discord</a> · updates automatically from the circuit's Discord bot · <span id="updated"></span></footer>
@@ -586,12 +612,37 @@ function sinceText(iso) {
   const m = Math.max(0, Math.round((Date.now() - Date.parse(iso)) / 60000));
   return m < 1 ? "just started" : m < 60 ? `started ${m} min ago` : `started ${Math.floor(m / 60)}h ${m % 60}m ago`;
 }
+/* streams: which site it's on, and a player we can put on the page (starts muted so it can autoplay) */
+function platform(link) {
+  const l = String(link || "").toLowerCase();
+  return /twitch\.tv/.test(l) ? "Twitch" : /youtube\.com|youtu\.be/.test(l) ? "YouTube" : /kick\.com/.test(l) ? "Kick" : /tiktok\.com/.test(l) ? "TikTok" : "stream";
+}
+function embedUrl(link) {
+  let u; try { u = new URL(link); } catch (e) { return null; }
+  const h = u.hostname.replace(/^(www|m)\./, ""), seg = u.pathname.split("/").filter(Boolean);
+  if (h === "twitch.tv" && seg[0]) {
+    const parents = [...new Set([location.hostname, "ontherisepb.com", "www.ontherisepb.com"].filter(Boolean))].map(p => "parent=" + encodeURIComponent(p)).join("&");
+    const what = seg[0] === "videos" && seg[1] ? "video=v" + encodeURIComponent(seg[1]) : "channel=" + encodeURIComponent(seg[0]);
+    return `https://player.twitch.tv/?${what}&${parents}&muted=true&autoplay=true`;
+  }
+  const yt = id => `https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1&mute=1&playsinline=1`;
+  if (h === "youtu.be" && seg[0]) return yt(seg[0]);
+  if (h === "youtube.com") {
+    if (u.searchParams.get("v")) return yt(u.searchParams.get("v"));
+    if (["live", "shorts", "embed"].includes(seg[0]) && seg[1]) return yt(seg[1]);
+    if (seg[0] === "channel" && seg[1]) return `https://www.youtube.com/embed/live_stream?channel=${encodeURIComponent(seg[1])}&autoplay=1&mute=1`;
+  }
+  if (h === "kick.com" && seg[0]) return `https://player.kick.com/${encodeURIComponent(seg[0])}?autoplay=true&muted=true`;
+  return null;
+}
+const streamedLink = r => r && r.link ? `<a class="streamed" href="${esc(r.link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Streamed on ${esc(platform(r.link))}${r.stream ? " by " + esc(r.stream) : ""} ↗</a>` : "";
 const watchBtn = g => g.tracked && !g.on_air ? `<span class="nostream">📺 ${esc(g.stream)}'s stream isn't live yet</span>`
-  : g.link ? `<a class="watch" href="${esc(g.link)}" target="_blank" rel="noopener">${g.on_air ? "🔴 LIVE · " : "▶ "}Watch ${esc(g.stream || "stream")}</a>`
+  : g.link ? `<a class="watch" href="${esc(g.link)}" target="_blank" rel="noopener">${g.on_air ? "🔴 LIVE on " + esc(platform(g.link)) + " · " : "▶ "}Watch ${esc(g.stream || "stream")}</a>`
   : g.stream ? `<span class="nostream">📺 ${esc(g.stream)} is streaming</span>` : `<span class="nostream">No stream yet</span>`;
 function liveStrip(d) {
   if (VIEW !== "current") return "";
-  const { live } = gameSplit(d);
+  const inZone = new Set(zoneGames(d).map(g => g.id));
+  const live = gameSplit(d).live.filter(g => !inZone.has(g.id));
   if (!live.length) return "";
   return `<section class="livegames" aria-label="Live games"><h3><i></i>LIVE NOW · ${live.length} GAME${live.length > 1 ? "S" : ""}</h3><div class="lvgrid">${live.map(g => `
     <div class="lvc"><div class="lvh">${esc(g.head)}</div><div class="lvt">${team(g.a)}<span class="vsx">VS</span>${team(g.b)}</div>
@@ -604,8 +655,57 @@ function upNext(d) {
   return `<section class="upnext" aria-label="Coming up"><h3>COMING UP</h3>${soon.map(g => `<div class="un"><span class="when">${esc(fmtTime(g.time))}</span>
     <div class="who"><small>${esc(g.head)}</small>${team(g.a)} <span style="color:var(--dim)">vs</span> ${team(g.b)}</div>${g.stream ? watchBtn(g) : "<span></span>"}</div>`).join("")}</section>`;
 }
+/* LIVE ZONE: every live game with a stream plays right on the page, the biggest game up top.
+   With more than one, it cuts between them every few minutes until you pick one yourself. */
+function zoneGames(d) {
+  if (!d || d.archived || VIEW !== "current") return [];
+  const now = Date.now();
+  return ((d.games) || []).filter(g => {
+    const t = Date.parse(g.time), live = g.on_air || (t <= now && now < t + LIVE_MS);
+    return live && g.link && !(g.tracked && !g.on_air) && embedUrl(g.link);
+  });
+}
+const gameWeight = g => { const h = String(g.head || "").toUpperCase();
+  return /GRAND FINAL|^FINAL|\bFINAL\b(?!S)/.test(h) && !/SEMI|QUARTER/.test(h) ? 5 : /SEMI/.test(h) ? 4 : /QUARTER/.test(h) ? 3 : /ROUND|MAIN/.test(h) ? 2 : 1; };
+const ZONE = { key: "", feat: null, pinned: false, last: 0 };
+function feature(id) {
+  ZONE.feat = id; ZONE.last = Date.now();
+  document.querySelectorAll("#zone .zt").forEach(t => t.classList.toggle("big", Number(t.dataset.zid) === id));
+}
+function updateZone() {
+  const el = document.getElementById("zone");
+  if (!el) return;
+  const gs = zoneGames(window.__view || D);
+  const key = gs.map(g => g.id + "|" + g.link).join(",");
+  if (!gs.length) { el.hidden = true; el.innerHTML = ""; ZONE.key = ""; return; }
+  if (key !== ZONE.key) {  // only rebuild when games come or go, so players already running keep playing
+    const keep = new Map([...el.querySelectorAll(".zt")].map(t => [t.dataset.zid + "|" + t.dataset.zl, t]));
+    if (!gs.some(g => g.id === ZONE.feat)) { ZONE.feat = [...gs].sort((a, b) => gameWeight(b) - gameWeight(a) || Date.parse(a.time) - Date.parse(b.time))[0].id; ZONE.pinned = false; ZONE.last = Date.now(); }
+    el.innerHTML = `<div class="zh"><h3><i></i>LIVE ZONE · ${gs.length} GAME${gs.length > 1 ? "S" : ""} ON NOW</h3><small>Starts muted. Click the player for sound.${gs.length > 1 ? " Switches games every few minutes until you pick one." : ""}</small></div><div class="zgrid ${gs.length > 1 ? "multi" : "solo"}" style="--n:${Math.max(1, gs.length - 1)}"></div>`;
+    const grid = el.querySelector(".zgrid");
+    gs.forEach(g => {
+      const old = keep.get(g.id + "|" + g.link);
+      if (old) { grid.appendChild(old); return; }  // moving it would reload it anyway, but this keeps the caption current
+      const t = document.createElement("div");
+      t.className = "zt"; t.dataset.zid = g.id; t.dataset.zl = g.link;
+      t.innerHTML = `<div class="scr"><iframe src="${esc(embedUrl(g.link))}" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="${esc(g.a + " vs " + g.b)}"></iframe></div>
+        <div class="cap"><div class="ztm"><small>${esc(g.head)}</small>${esc(g.a)} vs ${esc(g.b)}</div><div class="zb"><button class="feat" data-zfeat="${g.id}">Watch this one</button><a href="${esc(g.link)}" target="_blank" rel="noopener">${esc(platform(g.link))}${g.stream ? " · " + esc(g.stream) : ""} ↗</a></div></div>`;
+      grid.appendChild(t);
+    });
+    ZONE.key = key;
+  }
+  el.hidden = false;
+  feature(ZONE.feat);
+}
+document.getElementById("zone").addEventListener("click", e => { const b = e.target.closest("[data-zfeat]"); if (b) { ZONE.pinned = true; feature(Number(b.dataset.zfeat)); } });
+setInterval(() => {  // the RedZone cut: next live game, biggest games first
+  const gs = zoneGames(window.__view || D);
+  if (ZONE.pinned || gs.length < 2 || Date.now() - ZONE.last < 4 * 60000) return;
+  const order = [...gs].sort((a, b) => gameWeight(b) - gameWeight(a) || a.id - b.id).map(g => g.id);
+  feature(order[(order.indexOf(ZONE.feat) + 1) % order.length]);
+}, 15000);
 // flip games to LIVE on time even between data updates
-setInterval(() => { const el = document.getElementById("livestrip"); if (el && D) el.innerHTML = liveStrip(window.__view || D); }, 30000);
+setInterval(() => { const el = document.getElementById("livestrip"); if (el && D) el.innerHTML = liveStrip(window.__view || D); updateZone(); }, 30000);
 
 function nowPlaying() {
   const tz = D.tourney;
@@ -774,7 +874,7 @@ function openBox(id) {
   const el = document.createElement("div");
   el.className = "modal";
   el.innerHTML = `<div class="sheet" role="dialog" aria-label="Box score M${m.id}"><div class="head"><div>
-      <div class="eyebrow">M${m.id}${m.label ? " · " + esc(m.label) : m.round ? " · Round " + m.round : ""}</div>
+      <div class="eyebrow">M${m.id}${m.label ? " · " + esc(m.label) : m.round ? " · Round " + m.round : ""}${(() => { const r = ((((window.__view || D).schedule) || {}).recent || []).find(x => x.id === m.id) || ((window.__view || D).games || []).find(x => x.id === m.id); return r && r.link ? " · " + streamedLink(r) : ""; })()}</div>
       <div class="vs">${logo(m.a)}<span class="${m.winner ? (wa ? "wcol" : "lcol") : ""}">${esc(m.a)}</span><span class="big">${esc(wa ? sw : sl)}<span style="color:var(--dim)"> - </span>${esc(wa ? sl : sw)}</span><span class="${m.winner ? (wa ? "lcol" : "wcol") : ""}">${esc(m.b)}</span>${logo(m.b)}</div></div>
       <div style="display:flex;gap:8px"><button class="btn" data-csv="box">Download CSV</button><button class="x" aria-label="Close">✕</button></div></div><div class="body">${side(m.a)}${side(m.b)}</div></div>`;
   el.addEventListener("click", e => {
@@ -843,6 +943,11 @@ function exportStats(d) {
 }
 
 function qualifierView(d) {
+  const html = qualifierView0(d);
+  if (!d.byes || !d.byes.length) return html;
+  return html.replace("</h2>", `</h2><p class="note"><b style="color:var(--gold)">Byes to the main draw:</b> ${d.byes.map(n => team(n)).join(" ")} · the top teams by RISER POINTS skip the qualifier and are seeded first in the main draw.</p>`);
+}
+function qualifierView0(d) {
   if (d.swiss) {
     const sw = d.swiss;
     const rounds = [...new Set(sw.matches.map(m => m.round))].sort((a, b) => b - a);
@@ -1195,11 +1300,12 @@ function scheduleView(d) {
   }
   if (!sc.games.length && !evs.length) html += `<div class="empty">Nothing scheduled right now. The next tournament will be announced in Discord.</div>`;
   const rec = (sc.recent || []).map(r => ({ ...r, m: MATCHES[r.id] })).filter(r => r.m && r.m.winner);
+  const rec0 = id => (sc.recent || []).find(r => r.id === id);
   if (rec.length) html += `<div class="sday"><h3>Recent results</h3>${rec.map(({ m, time, head }) => {
     const loser = m.winner === m.a ? m.b : m.a, has = m.box && m.box.length;
     return `<div class="sg res ${has ? "click" : ""}" ${has ? `data-mid="${m.id}" style="cursor:pointer"` : ""}><div class="tm">FINAL<small>${time ? esc(new Date(time).toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" })) : ""}</small></div>
       <div class="who"><small>${esc(head)}</small><div class="vs"><span class="w">${team(m.winner)}</span><em>beat</em><span class="l">${team(loser)}</span></div></div>
-      <div class="side"><b style="font-size:15px;color:var(--ink)">${esc(m.score || "")}</b>${has ? '<span class="bx" style="font-size:11px">BOX SCORE</span>' : ""}</div></div>`; }).join("")}</div>`;
+      <div class="side"><b style="font-size:15px;color:var(--ink)">${esc(m.score || "")}</b>${has ? '<span class="bx" style="font-size:11px">BOX SCORE</span>' : ""}${streamedLink(rec0(m.id))}</div></div>`; }).join("")}</div>`;
   return html;
 }
 
@@ -1310,6 +1416,7 @@ function render() {
   window.__view = d;
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
   view.innerHTML = `<div id="cdbar">${countdownBar(d)}</div><div id="livestrip">${liveStrip(d)}</div>` + (tab === "schedule" ? scheduleView(d) : tab === "fa" ? faView(d) : tab === "media" ? mediaView(d) : tab === "rules" ? rulesView(d) : tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d));
+  updateZone();
 }
 
 document.getElementById("tabs").addEventListener("click", e => {

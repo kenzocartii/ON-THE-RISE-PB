@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T07:52:54+00:00",
+ "updated": "2026-11-25T07:58:24+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -104,19 +104,6 @@ window.PBL_DATA = {
    "registered": true
   },
   {
-   "name": "ego",
-   "complete": false,
-   "size": 2,
-   "logo": "logos/f2612a455514.png",
-   "captain": "egoVoltic \u00b7 C",
-   "players": [
-    "givemeluck (@rqpwlekfjwlwlw) \u00b7 SF"
-   ],
-   "points": 0,
-   "qualified": false,
-   "registered": false
-  },
-  {
    "name": "Elevation",
    "complete": false,
    "size": 3,
@@ -168,6 +155,19 @@ window.PBL_DATA = {
     "bbcbuffet (@rf_hz) \u00b7 SF",
     "TheGreatestMosser (@3DJohnson) \u00b7 SF",
     "NIZLE (@Jioquick) \u00b7 SG"
+   ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
+   "name": "Team Ego",
+   "complete": false,
+   "size": 2,
+   "logo": "logos/f2612a455514.png",
+   "captain": "egoVoltic \u00b7 C",
+   "players": [
+    "givemeluck (@rqpwlekfjwlwlw) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -455,26 +455,6 @@ window.PBL_DATA = {
     }
    ]
   },
-  "ego": {
-   "logo": "logos/f2612a455514.png",
-   "points": 0,
-   "complete": false,
-   "qualified": false,
-   "players": [
-    {
-     "name": "egoVoltic",
-     "pos": "C",
-     "cap": true,
-     "co": false
-    },
-    {
-     "name": "givemeluck (@rqpwlekfjwlwlw)",
-     "pos": "SF",
-     "cap": false,
-     "co": false
-    }
-   ]
-  },
   "Elevation": {
    "logo": "logos/824c0d888428.png",
    "points": 0,
@@ -591,6 +571,26 @@ window.PBL_DATA = {
     }
    ]
   },
+  "Team Ego": {
+   "logo": "logos/f2612a455514.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "egoVoltic",
+     "pos": "C",
+     "cap": true,
+     "co": false
+    },
+    {
+     "name": "givemeluck (@rqpwlekfjwlwlw)",
+     "pos": "SF",
+     "cap": false,
+     "co": false
+    }
+   ]
+  },
   "TWEAKERS": {
    "logo": "logos/5c279d70c0f4.jpg",
    "points": 0,
@@ -654,11 +654,6 @@ window.PBL_DATA = {
     "qualified": false
    },
    {
-    "team": "ego",
-    "points": 0,
-    "qualified": false
-   },
-   {
     "team": "Elevation",
     "points": 0,
     "qualified": false
@@ -675,6 +670,11 @@ window.PBL_DATA = {
    },
    {
     "team": "Reapas",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "Team Ego",
     "points": 0,
     "qualified": false
    },
@@ -1803,9 +1803,9 @@ window.PBL_DATA = {
    "name": "egoVoltic",
    "rbx": "egoVoltic",
    "rbx_id": 446503640,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-3943A33D4730043F5544413798D47E21-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-69EF0BA09113FC1EA231DD88A3FB197A-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "C",
-   "team": "ego",
+   "team": "Team Ego",
    "role": "C",
    "fa": false,
    "suspended": false,
@@ -1847,7 +1847,7 @@ window.PBL_DATA = {
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/1344444661632340098/8814e1f9e0ae43f486d025e898e0948f.png?size=1024",
    "pos": "SF",
-   "team": "ego",
+   "team": "Team Ego",
    "role": "",
    "fa": false,
    "suspended": false,

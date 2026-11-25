@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T06:14:50+00:00",
+ "updated": "2026-11-25T06:31:44+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -106,10 +106,12 @@ window.PBL_DATA = {
   {
    "name": "ego",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/f2612a455514.png",
    "captain": "egoVoltic \u00b7 C",
-   "players": [],
+   "players": [
+    "givemeluck (@rqpwlekfjwlwlw) \u00b7 SF"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -463,6 +465,12 @@ window.PBL_DATA = {
      "name": "egoVoltic",
      "pos": "C",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "givemeluck (@rqpwlekfjwlwlw)",
+     "pos": "SF",
+     "cap": false,
      "co": false
     }
    ]
@@ -1826,6 +1834,20 @@ window.PBL_DATA = {
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2369FF83F13F03F472B7DCC191E9A90C-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PF",
    "team": "336FN",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "givemeluck (@rqpwlekfjwlwlw)",
+   "rbx": "@rqpwlekfjwlwlw",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1344444661632340098/8814e1f9e0ae43f486d025e898e0948f.png?size=1024",
+   "pos": "SF",
+   "team": "ego",
    "role": "",
    "fa": false,
    "suspended": false,

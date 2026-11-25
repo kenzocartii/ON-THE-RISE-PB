@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T08:13:02+00:00",
+ "updated": "2026-11-25T16:34:53+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -176,10 +176,12 @@ window.PBL_DATA = {
   {
    "name": "TWEAKERS",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/5c279d70c0f4.jpg",
    "captain": "Slattcjx (@SpiritualJacksonII) \u00b7 PG",
-   "players": [],
+   "players": [
+    "bulldawglover \u00b7 PF"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -601,6 +603,12 @@ window.PBL_DATA = {
      "name": "Slattcjx (@SpiritualJacksonII)",
      "pos": "PG",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "bulldawglover",
+     "pos": "PF",
+     "cap": false,
      "co": false
     }
    ]
@@ -1730,6 +1738,20 @@ window.PBL_DATA = {
    "activity": null
   },
   {
+   "name": "bulldawglover",
+   "rbx": "bulldawglover",
+   "rbx_id": 5506518,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-9369B92960889E484D173AFF2ADCE2F2-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "pos": "PF",
+   "team": "TWEAKERS",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
    "name": "Cheonsoundcld (@Lurqqy)",
    "rbx": "@Lurqqy",
    "rbx_id": null,
@@ -1803,7 +1825,7 @@ window.PBL_DATA = {
    "name": "egoVoltic",
    "rbx": "egoVoltic",
    "rbx_id": 446503640,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-69EF0BA09113FC1EA231DD88A3FB197A-Png/150/150/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2F80DEAFAE473AC05179443704CD9D62-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "C",
    "team": "Team Ego",
    "role": "C",
@@ -2083,7 +2105,7 @@ window.PBL_DATA = {
    "name": "rory (@comxfi)",
    "rbx": "@comxfi",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/7038879cc86b63b44c78672d918b0b9e.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/823061979266285588/cef091ffeb76abe06fd90e079e243de2.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
    "role": "",

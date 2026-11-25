@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T04:21:06+00:00",
+ "updated": "2026-11-25T05:54:13+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -184,13 +184,12 @@ window.PBL_DATA = {
   },
   {
    "name": "Yore",
-   "complete": true,
-   "size": 5,
+   "complete": false,
+   "size": 4,
    "logo": "logos/11686f37553a.webp",
    "captain": "wydpolo (@LaPoloBall) \u00b7 C",
    "players": [
     "eric (@buklau_18) \u00b7 SF",
-    "colden (@buklau_09) \u00b7 SF",
     "JOAO (@ZTK0611) \u00b7 C",
     "red (@SemperDominus) \u00b7 SF"
    ],
@@ -605,7 +604,7 @@ window.PBL_DATA = {
   "Yore": {
    "logo": "logos/11686f37553a.webp",
    "points": 0,
-   "complete": true,
+   "complete": false,
    "qualified": false,
    "players": [
     {
@@ -616,12 +615,6 @@ window.PBL_DATA = {
     },
     {
      "name": "eric (@buklau_18)",
-     "pos": "SF",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "colden (@buklau_09)",
      "pos": "SF",
      "cap": false,
      "co": false
@@ -1771,20 +1764,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/320388869977538562/347cbe3d54791def54eb44bd1a3e8297.png?size=1024",
    "pos": "SF",
    "team": "Nightrydas Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "colden (@buklau_09)",
-   "rbx": "@buklau_09",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/858019563589206026/10150ca0c5dbe6c031bb6bc485f8962c.png?size=1024",
-   "pos": "SF",
-   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,

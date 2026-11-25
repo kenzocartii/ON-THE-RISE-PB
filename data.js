@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T05:54:13+00:00",
+ "updated": "2026-11-25T06:00:04+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -178,21 +178,6 @@ window.PBL_DATA = {
    "logo": "logos/a4edf898aa99.png",
    "captain": "etomi (@kbmcd) \u00b7 SG",
    "players": [],
-   "points": 0,
-   "qualified": false,
-   "registered": false
-  },
-  {
-   "name": "Yore",
-   "complete": false,
-   "size": 4,
-   "logo": "logos/11686f37553a.webp",
-   "captain": "wydpolo (@LaPoloBall) \u00b7 C",
-   "players": [
-    "eric (@buklau_18) \u00b7 SF",
-    "JOAO (@ZTK0611) \u00b7 C",
-    "red (@SemperDominus) \u00b7 SF"
-   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -600,38 +585,6 @@ window.PBL_DATA = {
      "co": false
     }
    ]
-  },
-  "Yore": {
-   "logo": "logos/11686f37553a.webp",
-   "points": 0,
-   "complete": false,
-   "qualified": false,
-   "players": [
-    {
-     "name": "wydpolo (@LaPoloBall)",
-     "pos": "C",
-     "cap": true,
-     "co": false
-    },
-    {
-     "name": "eric (@buklau_18)",
-     "pos": "SF",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "JOAO (@ZTK0611)",
-     "pos": "C",
-     "cap": false,
-     "co": false
-    },
-    {
-     "name": "red (@SemperDominus)",
-     "pos": "SF",
-     "cap": false,
-     "co": false
-    }
-   ]
   }
  },
  "circuit": {
@@ -694,11 +647,6 @@ window.PBL_DATA = {
    },
    {
     "team": "Vice Beach Ballers",
-    "points": 0,
-    "qualified": false
-   },
-   {
-    "team": "Yore",
     "points": 0,
     "qualified": false
    }
@@ -1814,20 +1762,6 @@ window.PBL_DATA = {
    "activity": null
   },
   {
-   "name": "eric (@buklau_18)",
-   "rbx": "@buklau_18",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1480423672417358050/bc1bdfabdfb34ea2e54b5c5bd5930f6b.png?size=1024",
-   "pos": "SF",
-   "team": "Yore",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "etomi (@kbmcd)",
    "rbx": "@kbmcd",
    "rbx_id": null,
@@ -1932,20 +1866,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1154980166351728670/869e0236248b48821b50dc039786201a.png?size=1024",
    "pos": "PG",
    "team": "DemBoyz Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "JOAO (@ZTK0611)",
-   "rbx": "@ZTK0611",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1337522961766420582/bf53cf8451c6f6720e568331be7a4638.png?size=1024",
-   "pos": "C",
-   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,
@@ -2086,20 +2006,6 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/544293323423350784/6c7d44ec6c58efa99bda61ccd208f24e.png?size=1024",
    "pos": "PF",
    "team": "Nightrydas Elite",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "red (@SemperDominus)",
-   "rbx": "@SemperDominus",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/508676221069164545/9dd7e40a8c8207cbc17c002b1a3e9951.png?size=1024",
-   "pos": "SF",
-   "team": "Yore",
    "role": "",
    "fa": false,
    "suspended": false,
@@ -2367,20 +2273,6 @@ window.PBL_DATA = {
    "pos": "SF",
    "team": "BallHog Elite",
    "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "wydpolo (@LaPoloBall)",
-   "rbx": "@LaPoloBall",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/583019227888222279/7e99b4f492bc64daf58689ea0e3d07ad.png?size=1024",
-   "pos": "C",
-   "team": "Yore",
-   "role": "C",
    "fa": false,
    "suspended": false,
    "build": null,

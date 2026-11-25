@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T16:35:05+00:00",
+ "updated": "2026-11-25T18:38:44+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1115,6 +1115,19 @@ window.PBL_DATA = {
    "a": "Arctic Wolves",
    "b": "336FN",
    "time": "2026-11-24T03:00:00+00:00",
+   "stream": null,
+   "link": null,
+   "host": null,
+   "tracked": false,
+   "on_air": false,
+   "arena": null
+  },
+  {
+   "id": 2,
+   "head": "GROUP A \u00b7 ROUND 2 \u00b7 GAME M2",
+   "a": "DemBoyz Elite",
+   "b": "336FN",
+   "time": "2026-11-26T03:30:00+00:00",
    "stream": null,
    "link": null,
    "host": null,
@@ -2466,7 +2479,7 @@ window.PBL_DATA = {
     "label": "Group A \u00b7 round 2",
     "a": "DemBoyz Elite",
     "b": "336FN",
-    "time": null,
+    "time": "2026-11-26T03:30:00+00:00",
     "deadline": "2026-11-24T21:17:10+00:00",
     "stream": null,
     "link": null,

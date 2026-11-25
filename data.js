@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T07:58:24+00:00",
+ "updated": "2026-11-25T08:00:21+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -40,7 +40,7 @@ window.PBL_DATA = {
   {
    "name": "BallHog Elite",
    "complete": true,
-   "size": 7,
+   "size": 8,
    "logo": "logos/a513cffb73ec.jpg",
    "captain": "jacami (@JaCamii2)",
    "players": [
@@ -49,7 +49,8 @@ window.PBL_DATA = {
     "slayr (@DesiredBuiId) \u00b7 C",
     "Skii (@braylen2rd) \u00b7 SG",
     "timtastic (@longheadtim) \u00b7 PF",
-    "Madallulandrew \u00b7 C"
+    "Madallulandrew \u00b7 C",
+    "JustOneIsaiah \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -336,6 +337,12 @@ window.PBL_DATA = {
     {
      "name": "Madallulandrew",
      "pos": "C",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "JustOneIsaiah",
+     "pos": "SF",
      "cap": false,
      "co": false
     }
@@ -1987,9 +1994,9 @@ window.PBL_DATA = {
    "rbx_id": 1650150670,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-C83AFCD9CC8434E29520A7C6F04B2A44-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "SF",
-   "team": null,
+   "team": "BallHog Elite",
    "role": "",
-   "fa": true,
+   "fa": false,
    "suspended": false,
    "build": "2-Way Scoring Point Forward",
    "ovr": 99,

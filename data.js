@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T18:39:42+00:00",
+ "updated": "2026-11-25T18:42:12+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1115,8 +1115,8 @@ window.PBL_DATA = {
    "a": "Arctic Wolves",
    "b": "336FN",
    "time": "2026-11-26T03:30:00+00:00",
-   "stream": null,
-   "link": null,
+   "stream": "kenzocartii",
+   "link": "https://www.twitch.tv/colinf1ower",
    "host": null,
    "tracked": false,
    "on_air": false,
@@ -2454,8 +2454,8 @@ window.PBL_DATA = {
     "b": "336FN",
     "time": "2026-11-26T03:30:00+00:00",
     "deadline": "2026-11-23T01:20:38+00:00",
-    "stream": null,
-    "link": null,
+    "stream": "kenzocartii",
+    "link": "https://www.twitch.tv/colinf1ower",
     "tracked": false,
     "on_air": false,
     "arena": null

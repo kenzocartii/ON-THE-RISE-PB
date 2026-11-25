@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T01:36:21+00:00",
+ "updated": "2026-11-25T01:39:08+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -2009,9 +2009,9 @@ window.PBL_DATA = {
    "role": "",
    "fa": true,
    "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
+   "build": "2-Way Scoring Combo Guard",
+   "ovr": 99,
+   "activity": 8
   },
   {
    "name": "Madallulandrew",

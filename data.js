@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T18:57:37+00:00",
+ "updated": "2026-11-25T18:58:37+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -28,7 +28,7 @@ window.PBL_DATA = {
    "logo": "logos/314d2a06ad77.jpg",
    "captain": "Shxfty \u00b7 PG",
    "players": [
-    "eagle (@EagleTakeTheWheel) \u00b7 PF",
+    "eagle (@EagleTakeTheWheel) \u00b7 C",
     "juls (@oottaah) \u00b7 PG",
     "Yacht (@hitaIicc) \u00b7 SG",
     "rory (@comxfi) \u00b7 SG"
@@ -269,7 +269,7 @@ window.PBL_DATA = {
     },
     {
      "name": "eagle (@EagleTakeTheWheel)",
-     "pos": "PF",
+     "pos": "C",
      "cap": false,
      "co": false
     },
@@ -1813,7 +1813,7 @@ window.PBL_DATA = {
    "rbx": "@EagleTakeTheWheel",
    "rbx_id": null,
    "img": "https://cdn.discordapp.com/avatars/391426015223873538/06e094808c20108f2d7d71a44b86ab26.png?size=1024",
-   "pos": "PF",
+   "pos": "C",
    "team": "Arctic Wolves",
    "role": "",
    "fa": false,

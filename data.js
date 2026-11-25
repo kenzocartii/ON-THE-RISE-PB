@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T18:42:12+00:00",
+ "updated": "2026-11-25T18:57:37+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1624,6 +1624,7 @@ window.PBL_DATA = {
    "BallHog Elite"
   ]
  },
+ "byes": [],
  "players": [
   {
    "name": "2BUSYSLIDIN (@LiLLUCIX_BD)",
@@ -2521,7 +2522,9 @@ window.PBL_DATA = {
    {
     "id": 4,
     "head": "GROUP B \u00b7 ROUND 1 \u00b7 GAME M4",
-    "time": "2026-11-23T03:00:00+00:00"
+    "time": "2026-11-23T03:00:00+00:00",
+    "stream": "etomi (@kbmcd)",
+    "link": "https://www.twitch.tv/etomi_i"
    }
   ],
   "preset": {

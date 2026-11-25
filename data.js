@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T06:32:05+00:00",
+ "updated": "2026-11-25T07:52:54+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1878,6 +1878,20 @@ window.PBL_DATA = {
    "team": "BallHog Elite",
    "role": "",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "isoraq (@ireapgds)",
+   "rbx": "@ireapgds",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1562018583867822122/934a9f656d6bbee494758c5e343f14e2.png?size=1024",
+   "pos": "SF",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-25T18:39:06+00:00",
+ "updated": "2026-11-25T18:39:42+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1114,7 +1114,7 @@ window.PBL_DATA = {
    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
    "a": "Arctic Wolves",
    "b": "336FN",
-   "time": "2026-11-24T03:00:00+00:00",
+   "time": "2026-11-26T03:30:00+00:00",
    "stream": null,
    "link": null,
    "host": null,
@@ -2452,7 +2452,7 @@ window.PBL_DATA = {
     "label": "Group A \u00b7 round 1",
     "a": "Arctic Wolves",
     "b": "336FN",
-    "time": "2026-11-24T03:00:00+00:00",
+    "time": "2026-11-26T03:30:00+00:00",
     "deadline": "2026-11-23T01:20:38+00:00",
     "stream": null,
     "link": null,

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T06:39:01+00:00",
+ "updated": "2026-11-26T06:41:52+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -2483,6 +2483,13 @@ window.PBL_DATA = {
     "time": "2026-11-23T03:00:00+00:00",
     "stream": "etomi (@kbmcd)",
     "link": "https://www.twitch.tv/etomi_i"
+   },
+   {
+    "id": 3,
+    "head": "GROUP A \u00b7 ROUND 3 \u00b7 GAME M3",
+    "time": null,
+    "stream": null,
+    "link": null
    },
    {
     "id": 1,

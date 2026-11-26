@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T06:41:52+00:00",
+ "updated": "2026-11-26T07:09:02+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -730,21 +730,21 @@ window.PBL_DATA = {
       "team": "336FN",
       "w": 1,
       "l": 0,
-      "pd": 0,
+      "pd": 50,
       "qualified": false
      },
      {
       "team": "DemBoyz Elite",
       "w": 1,
       "l": 0,
-      "pd": 0,
+      "pd": 50,
       "qualified": false
      },
      {
       "team": "Arctic Wolves",
       "w": 0,
       "l": 2,
-      "pd": 0,
+      "pd": -100,
       "qualified": false
      }
     ],
@@ -1075,11 +1075,11 @@ window.PBL_DATA = {
   ],
   "pd": {
    "BallHog Elite": -23,
-   "336FN": 0,
+   "336FN": 50,
    "BEASTCOAST": 23,
-   "DemBoyz Elite": 0,
+   "DemBoyz Elite": 50,
    "Nightrydas Elite": 0,
-   "Arctic Wolves": 0
+   "Arctic Wolves": -100
   },
   "rec": {
    "BallHog Elite": [

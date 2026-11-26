@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T03:40:57+00:00",
+ "updated": "2026-11-26T03:41:23+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1117,10 +1117,10 @@ window.PBL_DATA = {
    "time": "2026-11-26T03:30:00+00:00",
    "stream": "WFRezkin3K",
    "link": "https://www.twitch.tv/rezkin3k",
-   "host": null,
+   "host": "WFRezkin3K",
    "tracked": false,
    "on_air": false,
-   "arena": null
+   "arena": "TBD"
   }
  ],
  "stats": {
@@ -2459,7 +2459,7 @@ window.PBL_DATA = {
     "link": "https://www.twitch.tv/rezkin3k",
     "tracked": false,
     "on_air": false,
-    "arena": null
+    "arena": "TBD"
    },
    {
     "id": 3,

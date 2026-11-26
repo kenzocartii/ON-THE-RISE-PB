@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T03:41:23+00:00",
+ "updated": "2026-11-26T04:08:12+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1108,21 +1108,7 @@ window.PBL_DATA = {
    ]
   }
  },
- "games": [
-  {
-   "id": 1,
-   "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
-   "a": "Arctic Wolves",
-   "b": "336FN",
-   "time": "2026-11-26T03:30:00+00:00",
-   "stream": "WFRezkin3K",
-   "link": "https://www.twitch.tv/rezkin3k",
-   "host": "WFRezkin3K",
-   "tracked": false,
-   "on_air": false,
-   "arena": "TBD"
-  }
- ],
+ "games": [],
  "stats": {
   "tournament_name": "OTR: TURKEY TAKEOVER",
   "tournament": [
@@ -2448,20 +2434,6 @@ window.PBL_DATA = {
  "schedule": {
   "games": [
    {
-    "id": 1,
-    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
-    "label": "Group A \u00b7 round 1",
-    "a": "Arctic Wolves",
-    "b": "336FN",
-    "time": "2026-11-26T03:30:00+00:00",
-    "deadline": "2026-11-23T01:20:38+00:00",
-    "stream": "WFRezkin3K",
-    "link": "https://www.twitch.tv/rezkin3k",
-    "tracked": false,
-    "on_air": false,
-    "arena": "TBD"
-   },
-   {
     "id": 3,
     "head": "GROUP A \u00b7 ROUND 3 \u00b7 GAME M3",
     "label": "Group A \u00b7 round 3",
@@ -2516,6 +2488,20 @@ window.PBL_DATA = {
     "tracked": false,
     "on_air": false,
     "arena": null
+   },
+   {
+    "id": 1,
+    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
+    "label": "Group A \u00b7 round 1",
+    "a": "Arctic Wolves",
+    "b": "336FN",
+    "time": null,
+    "deadline": "2026-11-27T04:08:04+00:00",
+    "stream": "WFRezkin3K",
+    "link": "https://www.twitch.tv/rezkin3k",
+    "tracked": false,
+    "on_air": false,
+    "arena": "TBD"
    }
   ],
   "recent": [

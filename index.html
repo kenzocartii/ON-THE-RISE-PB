@@ -436,9 +436,32 @@
   .msec { margin-top: 28px; }
   .msec > h3 { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
   @media (max-width: 640px) { .prrow { grid-template-columns: 30px 40px 1fr; padding: 12px; } .prrow .prk { font-size: 22px; } }
+  /* scores ticker across the top: live games, finals, what's next */
+  .ticker { display: flex; align-items: stretch; height: 38px; border-bottom: 1px solid var(--line); background: #0d0d10; overflow: hidden; font-size: 12.5px; }
+  .ticker[hidden] { display: none; }
+  .ticker .tlab { flex: none; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: var(--accent); color: #fff; font-weight: 800; letter-spacing: .12em; font-size: 11px; z-index: 1; }
+  .ticker .tdot { width: 7px; height: 7px; border-radius: 50%; background: #fff; animation: pulse 1.6s infinite; }
+  .ticker .tvp { flex: 1; min-width: 0; overflow: hidden; position: relative; mask-image: linear-gradient(90deg, transparent, #000 24px, #000 calc(100% - 24px), transparent); }
+  .ticker .trk { display: flex; width: max-content; height: 100%; animation: tick var(--dur, 60s) linear infinite; }
+  .ticker:hover .trk { animation-play-state: paused; }
+  @keyframes tick { to { transform: translateX(-50%); } }
+  .ticker .ti { display: flex; align-items: center; gap: 7px; padding: 0 16px; border-right: 1px solid var(--line-2); white-space: nowrap; cursor: pointer; color: var(--muted); }
+  .ticker .ti:hover { background: var(--panel-2); color: var(--ink); }
+  .ticker .ti .tg { font-size: 10px; font-weight: 800; letter-spacing: .08em; padding: 2px 6px; border-radius: 4px; background: var(--panel-2); color: var(--dim); }
+  .ticker .ti.live .tg { background: rgba(239, 68, 68, .18); color: var(--accent); }
+  .ticker .ti.fin .tg { color: var(--ink); }
+  .ticker .ti .tt { display: inline-flex; align-items: center; gap: 5px; color: var(--ink); font-weight: 700; }
+  .ticker .ti .tt img, .ticker .ti .tt .ph { width: 18px; height: 18px; border-radius: 50%; object-fit: cover; font-size: 8px; }
+  .ticker .ti .tt.l { color: var(--dim); font-weight: 600; }
+  .ticker .ti b.sc { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .ticker .ti .tw { color: var(--dim); font-size: 11.5px; }
+  .ticker .sep { display: flex; align-items: center; padding: 0 12px; color: var(--dim); font-size: 10px; font-weight: 800; letter-spacing: .12em; border-right: 1px solid var(--line-2); }
+  @media (prefers-reduced-motion: reduce) { .ticker .trk { animation: none; } .ticker .tvp { overflow-x: auto; } }
+  @media (max-width: 640px) { .ticker .tlab span { display: none; } .ticker .tlab { padding: 0 10px; } }
 </style>
 </head>
 <body>
+<div class="ticker" id="ticker" hidden aria-label="Scores"><div class="tlab"><i class="tdot"></i><span>SCORES</span></div><div class="tvp"><div class="trk" id="tickerTrack"></div></div></div>
 <div class="topline"></div>
 <div class="wrap">
   <div class="nav">
@@ -704,8 +727,50 @@ setInterval(() => {  // the RedZone cut: next live game, biggest games first
   const order = [...gs].sort((a, b) => gameWeight(b) - gameWeight(a) || a.id - b.id).map(g => g.id);
   feature(order[(order.indexOf(ZONE.feat) + 1) % order.length]);
 }, 15000);
+/* TICKER: live games, then the latest finals, then what's coming up. Built again only when something changes,
+   so the scroll doesn't jump back to the start on every data update. */
+let TICK_KEY = "";
+function updateTicker() {
+  const box = document.getElementById("ticker"), track = document.getElementById("tickerTrack");
+  const d = window.__view || D;
+  if (!box || !d || d.archived) { if (box) box.hidden = true; return; }
+  const now = Date.now(), gs = d.games || [], sc = d.schedule || {};
+  const tm = (n, cls = "") => `<span class="tt ${cls}">${logo(n, "")}${esc(abbr(n))}</span>`;
+  const live = gs.filter(g => { const t = Date.parse(g.time); return g.on_air || (t <= now && now < t + LIVE_MS); });
+  const liveIds = new Set(live.map(g => g.id));
+  const next = gs.filter(g => Date.parse(g.time) > now && !liveIds.has(g.id)).slice(0, 10);
+  const fins = (sc.recent || []).map(r => MATCHES[r.id]).filter(m => m && m.winner && !tbd(m.a) && !tbd(m.b)).slice(0, 12);
+  const items = [];
+  if (live.length) items.push(`<span class="sep">LIVE</span>`, ...live.map(g => `<span class="ti live" data-tk="live" title="${esc(g.head)}"><span class="tg">● LIVE</span>${tm(g.a)}<span class="tw">vs</span>${tm(g.b)}${g.link ? `<span class="tw">· ${esc(platform(g.link))}</span>` : ""}</span>`));
+  if (fins.length) items.push(`<span class="sep">FINAL</span>`, ...fins.map(m => {
+    const lo = m.winner === m.a ? m.b : m.a, ff = m.score === "FF";
+    const [w, l] = ff ? ["W", "FF"] : m.score ? m.score.split("-") : ["W", "L"];
+    return `<span class="ti fin" data-tk="fin" data-tid="${m.id}" title="M${m.id}"><span class="tg">FINAL</span>${tm(m.winner)}<b class="sc">${esc(w)}</b>${tm(lo, "l")}<b class="sc" style="color:var(--dim)">${esc(l)}</b></span>`;
+  }));
+  if (next.length) items.push(`<span class="sep">NEXT</span>`, ...next.map(g => `<span class="ti" data-tk="next" title="${esc(g.head)}"><span class="tg">${esc(new Date(g.time).toLocaleString([], { weekday: "short", hour: "numeric", minute: "2-digit" }))}</span>${tm(g.a)}<span class="tw">vs</span>${tm(g.b)}</span>`));
+  if (!items.length) { box.hidden = true; TICK_KEY = ""; track.innerHTML = ""; return; }
+  const html = items.join("");
+  if (html === TICK_KEY) { box.hidden = false; return; }
+  TICK_KEY = html;
+  box.hidden = false;
+  track.innerHTML = `<div style="display:flex">${html}</div><div style="display:flex" aria-hidden="true">${html}</div>`;  // twice, for a seamless loop
+  requestAnimationFrame(() => {  // same reading speed however many games there are (~70px a second)
+    const w = track.scrollWidth / 2;
+    track.style.setProperty("--dur", Math.max(20, Math.round(w / 70)) + "s");
+  });
+}
+document.getElementById("ticker").addEventListener("click", e => {
+  const it = e.target.closest(".ti");
+  if (!it) return;
+  if (it.dataset.tk === "fin") {
+    const m = MATCHES[Number(it.dataset.tid)];
+    if (m && m.box && m.box.length) return openBox(m.id);
+  }
+  if (it.dataset.tk === "live" && !document.getElementById("zone").hidden) return document.getElementById("zone").scrollIntoView({ behavior: "smooth" });
+  tab = "schedule"; render(); window.scrollTo({ top: 0, behavior: "smooth" });
+});
 // flip games to LIVE on time even between data updates
-setInterval(() => { const el = document.getElementById("livestrip"); if (el && D) el.innerHTML = liveStrip(window.__view || D); updateZone(); }, 30000);
+setInterval(() => { const el = document.getElementById("livestrip"); if (el && D) el.innerHTML = liveStrip(window.__view || D); updateZone(); updateTicker(); }, 30000);
 
 function nowPlaying() {
   const tz = D.tourney;
@@ -1417,6 +1482,7 @@ function render() {
   document.getElementById("tabs").innerHTML = tabs.map(([k, l, n]) => `<button class="${k === tab ? "on" : ""}" data-k="${k}">${l}${n ? `<span class="count">${n}</span>` : ""}</button>`).join("");
   view.innerHTML = `<div id="cdbar">${countdownBar(d)}</div><div id="livestrip">${liveStrip(d)}</div>` + (tab === "schedule" ? scheduleView(d) : tab === "fa" ? faView(d) : tab === "media" ? mediaView(d) : tab === "rules" ? rulesView(d) : tab === "draw" ? drawView(d) : tab === "entries" ? entriesView(d) : tab === "bracket" ? bracketView(d) : tab === "qual" ? qualifierView(d) : tab === "points" ? pointsView(d) : tab === "stats" ? statsView(d) : tab === "pickups" ? pickupsView(d) : tab === "leaderboard" ? leaderboardView(d) : tab === "teams" ? teamsView(d) : overview(d));
   updateZone();
+  updateTicker();
 }
 
 document.getElementById("tabs").addEventListener("click", e => {

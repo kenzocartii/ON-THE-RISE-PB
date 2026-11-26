@@ -576,7 +576,7 @@ function matchCard(m) {
   const [sw, sl] = m.score ? m.score.split("-") : ["", ""];
   const row = name => {
     const won = m.winner && m.winner === name, lost = m.winner && !won;
-    const sc = m.winner ? (m.score ? (won ? sw : sl) : (won ? "W" : "L")) : "";
+    const sc = m.winner ? (m.score === "FF" ? (won ? "W" : "FF") : m.score ? (won ? sw : sl) : (won ? "W" : "L")) : "";
     return `<div class="r ${won ? "w" : lost ? "l" : ""} ${tbd(name) ? "tbd" : ""}">${logo(name)}<span class="n${tbd(name) ? "" : " clickteam"}"${tbd(name) ? "" : ` data-team="${esc(name)}" title="See ${esc(name)}'s roster"`}>${esc(tbd(name) && name !== "BYE" ? "TBD" : name)}</span><span class="sc">${esc(sc)}</span></div>`;
   };
   const has = m.box && m.box.length;
@@ -857,7 +857,7 @@ function avatar(r) {
 function openBox(id) {
   const m = MATCHES[id];
   if (!m) return;
-  const [sw, sl] = m.score ? m.score.split("-") : ["", ""];
+  const [sw, sl] = m.score === "FF" ? ["W", "FF"] : m.score ? m.score.split("-") : ["", ""];
   const side = t => {
     const rows = m.box.filter(r => r.team === t).sort((a, b) => b.pts - a.pts);
     const top = new Set(rows.slice(0, 3).filter(r => r.pts > 0).map(r => r.player));

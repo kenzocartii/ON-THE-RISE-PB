@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T04:08:12+00:00",
+ "updated": "2026-11-26T06:38:20+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -727,16 +727,16 @@ window.PBL_DATA = {
     "name": "Group A",
     "table": [
      {
-      "team": "Arctic Wolves",
-      "w": 0,
+      "team": "336FN",
+      "w": 1,
       "l": 0,
       "pd": 0,
       "qualified": false
      },
      {
-      "team": "336FN",
+      "team": "Arctic Wolves",
       "w": 0,
-      "l": 0,
+      "l": 1,
       "pd": 0,
       "qualified": false
      },
@@ -754,8 +754,8 @@ window.PBL_DATA = {
       "round": 1,
       "a": "Arctic Wolves",
       "b": "336FN",
-      "winner": null,
-      "score": null,
+      "winner": "336FN",
+      "score": "FF",
       "box": []
      },
      {
@@ -999,7 +999,7 @@ window.PBL_DATA = {
        {
         "player": "Skii (@braylen2rd)",
         "team": "BallHog Elite",
-        "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
+        "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/e10d969787878a2137a1b8db4aab307f.png?size=1024",
         "pts": 6,
         "fg2m": 0,
         "fg2a": 1,
@@ -1087,7 +1087,7 @@ window.PBL_DATA = {
     1
    ],
    "336FN": [
-    0,
+    1,
     0
    ],
    "BEASTCOAST": [
@@ -1104,7 +1104,7 @@ window.PBL_DATA = {
    ],
    "Arctic Wolves": [
     0,
-    0
+    1
    ]
   }
  },
@@ -1307,7 +1307,7 @@ window.PBL_DATA = {
    {
     "player": "Skii (@braylen2rd)",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/e10d969787878a2137a1b8db4aab307f.png?size=1024",
     "gp": 1,
     "pts": 6,
     "fg2m": 0,
@@ -1550,7 +1550,7 @@ window.PBL_DATA = {
    {
     "player": "Skii (@braylen2rd)",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1566512920907751446/e10d969787878a2137a1b8db4aab307f.png?size=1024",
     "gp": 1,
     "pts": 6,
     "fg2m": 0,
@@ -1896,7 +1896,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/3f67849308450e570824c00e275adcdd.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/0851f04c21ac5b00eec0acd7e155a4ae.png?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -2092,7 +2092,7 @@ window.PBL_DATA = {
    "name": "rory (@comxfi)",
    "rbx": "@comxfi",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/823061979266285588/cef091ffeb76abe06fd90e079e243de2.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/823061979266285588/fb5a108081ae5e99f855795ef1450a34.png?size=1024",
    "pos": "SG",
    "team": "Arctic Wolves",
    "role": "",
@@ -2120,7 +2120,7 @@ window.PBL_DATA = {
    "name": "Shxfty",
    "rbx": "Shxfty",
    "rbx_id": 66293113,
-   "img": "https://cdn.discordapp.com/avatars/1460780219110785119/31c622d9b7e16684d81aa7e9c15e2353.png?size=1024",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-F91DAFE4D516EB9F7203B0F9B5E12375-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PG",
    "team": "Arctic Wolves",
    "role": "C",
@@ -2148,7 +2148,7 @@ window.PBL_DATA = {
    "name": "Skii (@braylen2rd)",
    "rbx": "@braylen2rd",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1566512920907751446/8de8cf45e2358d74698d7d56b6fd8ba8.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1566512920907751446/e10d969787878a2137a1b8db4aab307f.png?size=1024",
    "pos": "SG",
    "team": "BallHog Elite",
    "role": "",
@@ -2488,20 +2488,6 @@ window.PBL_DATA = {
     "tracked": false,
     "on_air": false,
     "arena": null
-   },
-   {
-    "id": 1,
-    "head": "GROUP A \u00b7 ROUND 1 \u00b7 GAME M1",
-    "label": "Group A \u00b7 round 1",
-    "a": "Arctic Wolves",
-    "b": "336FN",
-    "time": null,
-    "deadline": "2026-11-27T04:08:04+00:00",
-    "stream": "WFRezkin3K",
-    "link": "https://www.twitch.tv/rezkin3k",
-    "tracked": false,
-    "on_air": false,
-    "arena": "TBD"
    }
   ],
   "recent": [

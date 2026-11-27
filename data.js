@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-27T21:10:00+00:00",
+ "updated": "2026-11-27T21:10:55+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -189,11 +189,12 @@ window.PBL_DATA = {
   {
    "name": "VANTA ELITE",
    "complete": false,
-   "size": 2,
+   "size": 3,
    "logo": "logos/75c81cf2ecaf.png",
    "captain": "Mula (@mickbryan03) \u00b7 SF",
    "players": [
-    "cxld (@jscxldy) \u00b7 PG"
+    "cxld (@jscxldy) \u00b7 PG",
+    "MDG_CLIPZ \u00b7 PG"
    ],
    "points": 0,
    "qualified": false,
@@ -640,6 +641,12 @@ window.PBL_DATA = {
     },
     {
      "name": "cxld (@jscxldy)",
+     "pos": "PG",
+     "cap": false,
+     "co": false
+    },
+    {
+     "name": "MDG_CLIPZ",
      "pos": "PG",
      "cap": false,
      "co": false
@@ -2104,9 +2111,9 @@ window.PBL_DATA = {
    "rbx_id": 8127998206,
    "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-19F6EB627A565DF5ABC0B82925B2C760-Png/420/420/AvatarHeadshot/Png/noFilter",
    "pos": "PG",
-   "team": null,
+   "team": "VANTA ELITE",
    "role": "",
-   "fa": true,
+   "fa": false,
    "suspended": false,
    "build": null,
    "ovr": null,

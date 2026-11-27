@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-26T21:04:11+00:00",
+ "updated": "2026-11-27T20:00:47+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -182,6 +182,17 @@ window.PBL_DATA = {
    "players": [
     "bulldawglover \u00b7 PF"
    ],
+   "points": 0,
+   "qualified": false,
+   "registered": false
+  },
+  {
+   "name": "VANTA ELITE",
+   "complete": false,
+   "size": 1,
+   "logo": "logos/75c81cf2ecaf.png",
+   "captain": "Mula (@mickbryan03) \u00b7 SF",
+   "players": [],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -613,6 +624,20 @@ window.PBL_DATA = {
     }
    ]
   },
+  "VANTA ELITE": {
+   "logo": "logos/75c81cf2ecaf.png",
+   "points": 0,
+   "complete": false,
+   "qualified": false,
+   "players": [
+    {
+     "name": "Mula (@mickbryan03)",
+     "pos": "SF",
+     "cap": true,
+     "co": false
+    }
+   ]
+  },
   "Vice Beach Ballers": {
    "logo": "logos/a4edf898aa99.png",
    "points": 0,
@@ -688,6 +713,11 @@ window.PBL_DATA = {
    },
    {
     "team": "TWEAKERS",
+    "points": 0,
+    "qualified": false
+   },
+   {
+    "team": "VANTA ELITE",
     "points": 0,
     "qualified": false
    },
@@ -953,7 +983,7 @@ window.PBL_DATA = {
        {
         "player": "jacami (@JaCamii2)",
         "team": "BallHog Elite",
-        "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/8173f843a20aef6f41e7c66f9dc42049.png?size=1024",
+        "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/c7790ab50f13b8976ffd0f488eae9dbf.png?size=1024",
         "pts": 16,
         "fg2m": 2,
         "fg2a": 5,
@@ -1259,7 +1289,7 @@ window.PBL_DATA = {
    {
     "player": "jacami (@JaCamii2)",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/8173f843a20aef6f41e7c66f9dc42049.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/c7790ab50f13b8976ffd0f488eae9dbf.png?size=1024",
     "gp": 1,
     "pts": 16,
     "fg2m": 2,
@@ -1502,7 +1532,7 @@ window.PBL_DATA = {
    {
     "player": "jacami (@JaCamii2)",
     "team": "BallHog Elite",
-    "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/8173f843a20aef6f41e7c66f9dc42049.png?size=1024",
+    "avatar": "https://cdn.discordapp.com/avatars/1102132964206321704/c7790ab50f13b8976ffd0f488eae9dbf.png?size=1024",
     "gp": 1,
     "pts": 16,
     "fg2m": 2,
@@ -1896,7 +1926,7 @@ window.PBL_DATA = {
    "name": "isovert (@iisovertical)",
    "rbx": "@iisovertical",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/0851f04c21ac5b00eec0acd7e155a4ae.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/815220002956247041/940d0476e1bd0ab430acaf57bc0ff164.png?size=1024",
    "pos": "C",
    "team": "Nightrydas Elite",
    "role": "",
@@ -1924,7 +1954,7 @@ window.PBL_DATA = {
    "name": "jacami (@JaCamii2)",
    "rbx": "@JaCamii2",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1102132964206321704/8173f843a20aef6f41e7c66f9dc42049.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1102132964206321704/c7790ab50f13b8976ffd0f488eae9dbf.png?size=1024",
    "pos": "",
    "team": "BallHog Elite",
    "role": "C",
@@ -2039,6 +2069,20 @@ window.PBL_DATA = {
    "img": "https://cdn.discordapp.com/avatars/1398709590274605200/a_9b6f4ea6e471fd210191037580da25ef.gif?size=1024",
    "pos": "PG",
    "team": "K3 PROSPECTS",
+   "role": "C",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "Mula (@mickbryan03)",
+   "rbx": "@mickbryan03",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1269369496641081439/79ee349b6511e2000af8a32fb8a6974e.png?size=1024",
+   "pos": "SF",
+   "team": "VANTA ELITE",
    "role": "C",
    "fa": false,
    "suspended": false,

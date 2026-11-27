@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-27T21:03:48+00:00",
+ "updated": "2026-11-27T21:10:00+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1822,7 +1822,7 @@ window.PBL_DATA = {
    "name": "cxld (@jscxldy)",
    "rbx": "@jscxldy",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1317913293020463167/8f8b4c2ac31f45d6661755a97c8b487b.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/1317913293020463167/4d9401ba4432c86bf3da2a961a8f322d.png?size=1024",
    "pos": "PG",
    "team": "VANTA ELITE",
    "role": "",
@@ -2093,6 +2093,20 @@ window.PBL_DATA = {
    "team": "K3 PROSPECTS",
    "role": "C",
    "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
+   "name": "MDG_CLIPZ",
+   "rbx": "MDG_CLIPZ",
+   "rbx_id": 8127998206,
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-19F6EB627A565DF5ABC0B82925B2C760-Png/420/420/AvatarHeadshot/Png/noFilter",
+   "pos": "PG",
+   "team": null,
+   "role": "",
+   "fa": true,
    "suspended": false,
    "build": null,
    "ovr": null,

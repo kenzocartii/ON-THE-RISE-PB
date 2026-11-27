@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-27T20:00:47+00:00",
+ "updated": "2026-11-27T21:03:34+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -1674,7 +1674,7 @@ window.PBL_DATA = {
    "name": "Attorney (@attorney)",
    "rbx": "@attorney",
    "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/967480182724255764/c75d2430c9388ed65d3d3f52543a772e.png?size=1024",
+   "img": "https://cdn.discordapp.com/avatars/967480182724255764/ea9eedde3110aa5ea7f40c6be76c11e2.png?size=1024",
    "pos": "C",
    "team": "336FN",
    "role": "C",

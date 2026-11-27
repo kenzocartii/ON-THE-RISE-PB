@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-27T21:03:34+00:00",
+ "updated": "2026-11-27T21:03:48+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -189,10 +189,12 @@ window.PBL_DATA = {
   {
    "name": "VANTA ELITE",
    "complete": false,
-   "size": 1,
+   "size": 2,
    "logo": "logos/75c81cf2ecaf.png",
    "captain": "Mula (@mickbryan03) \u00b7 SF",
-   "players": [],
+   "players": [
+    "cxld (@jscxldy) \u00b7 PG"
+   ],
    "points": 0,
    "qualified": false,
    "registered": false
@@ -634,6 +636,12 @@ window.PBL_DATA = {
      "name": "Mula (@mickbryan03)",
      "pos": "SF",
      "cap": true,
+     "co": false
+    },
+    {
+     "name": "cxld (@jscxldy)",
+     "pos": "PG",
+     "cap": false,
      "co": false
     }
    ]
@@ -1809,6 +1817,20 @@ window.PBL_DATA = {
    "build": "2 way no fun build",
    "ovr": 89,
    "activity": 8
+  },
+  {
+   "name": "cxld (@jscxldy)",
+   "rbx": "@jscxldy",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1317913293020463167/8f8b4c2ac31f45d6661755a97c8b487b.png?size=1024",
+   "pos": "PG",
+   "team": "VANTA ELITE",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
   },
   {
    "name": "Dougatron (@TheSkullMaster88)",

@@ -1,6 +1,6 @@
 window.PBL_DATA = {
  "league": "ON THE RISE: PB CIRCUIT",
- "updated": "2026-11-27T21:10:55+00:00",
+ "updated": "2026-11-28T04:51:45+00:00",
  "teams": [
   {
    "name": "336FN",
@@ -131,15 +131,14 @@ window.PBL_DATA = {
   {
    "name": "Nightrydas Elite",
    "complete": true,
-   "size": 6,
+   "size": 5,
    "logo": "logos/6a737592ee66.png",
    "captain": "slinger (@bigdr_p) \u00b7 PG",
    "players": [
     "Pete Maravich (@zendayalover756) \u00b7 PF",
     "Dougatron (@TheSkullMaster88) \u00b7 SG",
     "CJ0 (@PH2NTOMCJ) \u00b7 SF",
-    "ace (@acetweakin) \u00b7 SF",
-    "isovert (@iisovertical) \u00b7 C"
+    "ace (@acetweakin) \u00b7 SF"
    ],
    "points": 0,
    "qualified": false,
@@ -193,7 +192,7 @@ window.PBL_DATA = {
    "logo": "logos/75c81cf2ecaf.png",
    "captain": "Mula (@mickbryan03) \u00b7 SF",
    "players": [
-    "cxld (@jscxldy) \u00b7 PG",
+    "m \u00b7 PG",
     "MDG_CLIPZ \u00b7 PG"
    ],
    "points": 0,
@@ -546,12 +545,6 @@ window.PBL_DATA = {
      "pos": "SF",
      "cap": false,
      "co": false
-    },
-    {
-     "name": "isovert (@iisovertical)",
-     "pos": "C",
-     "cap": false,
-     "co": false
     }
    ]
   },
@@ -640,7 +633,7 @@ window.PBL_DATA = {
      "co": false
     },
     {
-     "name": "cxld (@jscxldy)",
+     "name": "m",
      "pos": "PG",
      "cap": false,
      "co": false
@@ -1826,20 +1819,6 @@ window.PBL_DATA = {
    "activity": 8
   },
   {
-   "name": "cxld (@jscxldy)",
-   "rbx": "@jscxldy",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/1317913293020463167/4d9401ba4432c86bf3da2a961a8f322d.png?size=1024",
-   "pos": "PG",
-   "team": "VANTA ELITE",
-   "role": "",
-   "fa": false,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
    "name": "Dougatron (@TheSkullMaster88)",
    "rbx": "@TheSkullMaster88",
    "rbx_id": null,
@@ -1946,20 +1925,6 @@ window.PBL_DATA = {
    "team": null,
    "role": "",
    "fa": true,
-   "suspended": false,
-   "build": null,
-   "ovr": null,
-   "activity": null
-  },
-  {
-   "name": "isovert (@iisovertical)",
-   "rbx": "@iisovertical",
-   "rbx_id": null,
-   "img": "https://cdn.discordapp.com/avatars/815220002956247041/940d0476e1bd0ab430acaf57bc0ff164.png?size=1024",
-   "pos": "C",
-   "team": "Nightrydas Elite",
-   "role": "",
-   "fa": false,
    "suspended": false,
    "build": null,
    "ovr": null,
@@ -2078,6 +2043,20 @@ window.PBL_DATA = {
    "activity": 8
   },
   {
+   "name": "m",
+   "rbx": "m",
+   "rbx_id": null,
+   "img": "https://cdn.discordapp.com/avatars/1317913293020463167/4d9401ba4432c86bf3da2a961a8f322d.png?size=1024",
+   "pos": "PG",
+   "team": "VANTA ELITE",
+   "role": "",
+   "fa": false,
+   "suspended": false,
+   "build": null,
+   "ovr": null,
+   "activity": null
+  },
+  {
    "name": "Madallulandrew",
    "rbx": "Madallulandrew",
    "rbx_id": null,
@@ -2109,7 +2088,7 @@ window.PBL_DATA = {
    "name": "MDG_CLIPZ",
    "rbx": "MDG_CLIPZ",
    "rbx_id": 8127998206,
-   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-19F6EB627A565DF5ABC0B82925B2C760-Png/420/420/AvatarHeadshot/Png/noFilter",
+   "img": "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-19F6EB627A565DF5ABC0B82925B2C760-Png/150/150/AvatarHeadshot/Png/noFilter",
    "pos": "PG",
    "team": "VANTA ELITE",
    "role": "",
